@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b0d12" />
   <title>MangaBridge</title>
-  <link rel="stylesheet" href="./style.css?v=12" />
+  <link rel="stylesheet" href="./style.css?v=13" />
 </head>
 <body>
   <header class="topbar">
@@ -23,7 +23,7 @@
     <section class="hero card">
       <p class="eyebrow">TRADUÇÃO ASSISTIDA</p>
       <h1>Carregue um capítulo do MangaDex</h1>
-      <p class="muted">Cole o link do capítulo ou apenas o UUID. O GitHub prepara as páginas, detecta o texto por OCR e o MangaBridge organiza tudo por balões/regiões.</p>
+      <p class="muted">Cole o link do capítulo ou apenas o UUID. O GitHub procura todo texto visível: diálogo, narração, texto solto, vertical/inclinado, placas e SFX estilizado.</p>
 
       <div class="load-row">
         <input id="chapterInput" type="text" autocomplete="off" placeholder="https://mangadex.org/chapter/UUID" />
@@ -56,11 +56,11 @@
           Importar JSON
           <input id="translationFile" type="file" accept="application/json,.json" />
         </label>
-        <button id="reloadOcrBtn" class="ghost">Recarregar OCR limpo</button>
-        <button id="clearTranslationBtn" class="ghost">Limpar balões</button>
+        <button id="reloadOcrBtn" class="ghost">Recarregar OCR completo</button>
+        <button id="clearTranslationBtn" class="ghost">Limpar regiões</button>
         <button id="exportTranslationBtn" class="ghost">Exportar JSON v2</button>
       </div>
-      <p class="tiny muted">Editor v2 + OCR filtrado: cada página pode ter vários balões com texto original, tradução, tipo e posição em porcentagem.</p>
+      <p class="tiny muted">Editor v2 + OCR completo: cada região guarda texto original, tradução, tipo e posição. “Balão” agora é apenas um possível tipo de região.</p>
     </section>
 
     <section id="reader" class="reader"></section>
@@ -70,7 +70,7 @@
     <article class="page-card card">
       <div class="page-head">
         <span class="page-number"></span>
-        <span class="page-state">0 balões</span>
+        <span class="page-state">0 regiões</span>
       </div>
 
       <div class="image-wrap">
@@ -79,13 +79,13 @@
       </div>
 
       <div class="page-toolbar">
-        <button class="add-region primary">+ Adicionar balão</button>
+        <button class="add-region primary">+ Adicionar região</button>
       </div>
       <div class="regions-editor"></div>
     </article>
   </template>
 
-  <script src="./app.js?v=12"></script>
-  <script src="./ocr-ui.js?v=12"></script>
+  <script src="./app.js?v=13"></script>
+  <script src="./ocr-ui.js?v=13"></script>
 </body>
 </html>
