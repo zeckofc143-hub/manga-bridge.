@@ -3,6 +3,11 @@ name: Cache requested MangaDex chapter
 on:
   issues:
     types: [opened]
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/ocr-chapter.mjs"
+      - ".github/workflows/cache-chapter.yml"
 
 permissions:
   contents: write
@@ -10,20 +15,26 @@ permissions:
 
 jobs:
   cache:
-    if: startsWith(github.event.issue.title, 'MangaBridge:')
+    if: github.event_name == 'push' || startsWith(github.event.issue.title, 'MangaBridge:')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract UUID
+      - name: Resolve UUID
         id: chapter
         env:
+          EVENT_NAME: ${{ github.event_name }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
+          TEST_UUID: 51429dea-7169-4913-b5d6-a4ee00329eb7
         shell: bash
         run: |
-          UUID=$(printf '%s\n%s' "$ISSUE_TITLE" "$ISSUE_BODY" | grep -Eio '[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}' | head -1 || true)
+          if [ "$EVENT_NAME" = "push" ]; then
+            UUID="$TEST_UUID"
+          else
+            UUID=$(printf '%s\n%s' "$ISSUE_TITLE" "$ISSUE_BODY" | grep -Eio '[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}' | head -1 || true)
+          fi
           if [ -z "$UUID" ]; then
             echo "Nenhum UUID válido encontrado."
             exit 1
@@ -65,6 +76,7 @@ jobs:
           fi
 
       - name: Mark request complete
+        if: github.event_name == 'issues'
         uses: actions/github-script@v7
         with:
           script: |
