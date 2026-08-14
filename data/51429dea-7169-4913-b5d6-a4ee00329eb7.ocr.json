@@ -1,107 +1,32 @@
 {
-  "schema": "manga-bridge-ocr/v5",
+  "schema": "manga-bridge-ocr/v6",
   "chapterId": "51429dea-7169-4913-b5d6-a4ee00329eb7",
   "sourceLanguage": "en",
-  "engine": "tesseract-multipass-all-text",
+  "engine": "tesseract",
   "tesseractLanguage": "eng",
-  "generatedAt": "2026-08-14T02:58:36.715Z",
-  "strategy": {
-    "passesPerPage": 6,
-    "rotations": [
-      0,
-      90,
-      180,
-      270
-    ],
-    "psmModes": [
-      11,
-      12
-    ],
-    "enhancedGrayscale": true,
-    "focus": "all text: dialogue, narration, loose text, rotated text, signs and SFX"
-  },
+  "generatedAt": "2026-08-14T03:02:51.665Z",
   "filtering": {
-    "candidateRegionsBeforeDedupe": 783,
-    "finalRegions": 405
+    "rawLines": 912,
+    "joinedLines": 420,
+    "keptLines": 203,
+    "prunedEdgeLines": 18,
+    "mergedRegions": 79
   },
-  "totalRegions": 405,
+  "totalRegions": 79,
   "pages": [
     {
       "page": 1,
-      "regions": [
-        {
-          "id": "p1-ocr1",
-          "type": "sfx",
-          "sourceText": "TOYURY",
-          "translatedText": "",
-          "confidence": 41.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 36.86,
-            "y": 17.96,
-            "width": 9.24,
-            "height": 22.24
-          }
-        },
-        {
-          "id": "p1-ocr2",
-          "type": "other",
-          "sourceText": "PeavBun Ivanslations",
-          "translatedText": "",
-          "confidence": 59,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 26.85,
-            "y": 38.36,
-            "width": 63.93,
-            "height": 29.34
-          }
-        }
-      ]
+      "regions": []
     },
     {
       "page": 2,
       "regions": [
         {
           "id": "p2-ocr1",
-          "type": "sfx",
-          "sourceText": "ZA\nFS",
-          "translatedText": "",
-          "confidence": 64.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 6.1,
-            "y": 0.86,
-            "width": 14.8,
-            "height": 2.6
-          }
-        },
-        {
-          "id": "p2-ocr2",
-          "type": "sfx",
-          "sourceText": "AS",
-          "translatedText": "",
-          "confidence": 61.7,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 13.1,
-            "y": 5.02,
-            "width": 5.13,
-            "height": 0.49
-          }
-        },
-        {
-          "id": "p2-ocr3",
           "type": "other",
           "sourceText": "ihe",
           "translatedText": "",
           "confidence": 73.1,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 10.11,
             "y": 20.36,
@@ -110,148 +35,24 @@
           }
         },
         {
-          "id": "p2-ocr4",
+          "id": "p2-ocr2",
           "type": "other",
-          "sourceText": "Am at",
+          "sourceText": "Wan:",
           "translatedText": "",
-          "confidence": 56.9,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 88.9,
           "bounds": {
-            "x": 56.31,
-            "y": 25.46,
-            "width": 20.61,
-            "height": 2.69
-          }
-        },
-        {
-          "id": "p2-ocr5",
-          "type": "other",
-          "sourceText": "Vid",
-          "translatedText": "",
-          "confidence": 72.5,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 20.11,
-            "y": 26.25,
-            "width": 2.89,
-            "height": 0.31
-          }
-        },
-        {
-          "id": "p2-ocr6",
-          "type": "sfx",
-          "sourceText": "SM",
-          "translatedText": "",
-          "confidence": 45.3,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 68.83,
-            "y": 29.99,
-            "width": 6,
-            "height": 1.01
-          }
-        },
-        {
-          "id": "p2-ocr7",
-          "type": "other",
-          "sourceText": "a ait\nDE 3",
-          "translatedText": "",
-          "confidence": 66.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 51.41,
-            "y": 33.46,
-            "width": 17.17,
-            "height": 1.99
-          }
-        },
-        {
-          "id": "p2-ocr8",
-          "type": "other",
-          "sourceText": "co la",
-          "translatedText": "",
-          "confidence": 39.1,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 68.36,
-            "y": 33.54,
-            "width": 7.72,
-            "height": 1.8
-          }
-        },
-        {
-          "id": "p2-ocr9",
-          "type": "sfx",
-          "sourceText": "EE",
-          "translatedText": "",
-          "confidence": 88.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 29.89,
+            "x": 29.93,
             "y": 38.18,
-            "width": 4,
+            "width": 10.25,
             "height": 0.74
           }
         },
         {
-          "id": "p2-ocr10",
-          "type": "other",
-          "sourceText": "Ri",
-          "translatedText": "",
-          "confidence": 73,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 51.1,
-            "y": 38.2,
-            "width": 4.36,
-            "height": 0.72
-          }
-        },
-        {
-          "id": "p2-ocr11",
-          "type": "other",
-          "sourceText": "ae aK",
-          "translatedText": "",
-          "confidence": 46.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 27.98,
-            "y": 40.74,
-            "width": 6.6,
-            "height": 2.07
-          }
-        },
-        {
-          "id": "p2-ocr12",
-          "type": "other",
-          "sourceText": "Bt",
-          "translatedText": "",
-          "confidence": 83.2,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 42.53,
-            "y": 42.05,
-            "width": 8.6,
-            "height": 0.74
-          }
-        },
-        {
-          "id": "p2-ocr13",
+          "id": "p2-ocr3",
           "type": "other",
           "sourceText": "THIS IS AN UNCANNY WORLD",
           "translatedText": "",
           "confidence": 95.9,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 16.7,
             "y": 53.65,
@@ -260,198 +61,16 @@
           }
         },
         {
-          "id": "p2-ocr14",
-          "type": "sfx",
-          "sourceText": "AY",
-          "translatedText": "",
-          "confidence": 75.6,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 55.94,
-            "y": 56.44,
-            "width": 6.11,
-            "height": 0.82
-          }
-        },
-        {
-          "id": "p2-ocr15",
+          "id": "p2-ocr4",
           "type": "other",
-          "sourceText": "aw",
+          "sourceText": "bal ‘THE DARKNESS IS AS A DEADLY",
           "translatedText": "",
-          "confidence": 74.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
+          "confidence": 83.6,
           "bounds": {
-            "x": 10,
-            "y": 60.55,
-            "width": 1.78,
-            "height": 0.82
-          }
-        },
-        {
-          "id": "p2-ocr16",
-          "type": "sfx",
-          "sourceText": "VA",
-          "translatedText": "",
-          "confidence": 56.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 71.59,
-            "y": 65.18,
-            "width": 23.71,
-            "height": 2.77
-          }
-        },
-        {
-          "id": "p2-ocr17",
-          "type": "other",
-          "sourceText": "Ve",
-          "translatedText": "",
-          "confidence": 82.6,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 64.2,
-            "y": 67.1,
-            "width": 8.72,
-            "height": 1.2
-          }
-        },
-        {
-          "id": "p2-ocr18",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 55.2,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 78.79,
-            "y": 69.62,
-            "width": 3.87,
-            "height": 2.32
-          }
-        },
-        {
-          "id": "p2-ocr19",
-          "type": "sfx",
-          "sourceText": "NN",
-          "translatedText": "",
-          "confidence": 42.5,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 26.08,
-            "y": 74.67,
-            "width": 5.5,
-            "height": 0.96
-          }
-        },
-        {
-          "id": "p2-ocr20",
-          "type": "sfx",
-          "sourceText": "OO\nIS\nAD",
-          "translatedText": "",
-          "confidence": 63.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 48.79,
-            "y": 79,
-            "width": 19.87,
-            "height": 3.89
-          }
-        },
-        {
-          "id": "p2-ocr21",
-          "type": "other",
-          "sourceText": "THE DARKNESS IS AS A DEADLY\nS SNAKE,",
-          "translatedText": "",
-          "confidence": 91.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 12.78,
-            "y": 79.09,
-            "width": 74.44,
-            "height": 1.6
-          }
-        },
-        {
-          "id": "p2-ocr22",
-          "type": "other",
-          "sourceText": "7 So ga",
-          "translatedText": "",
-          "confidence": 49.6,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 2.93,
-            "y": 86.54,
-            "width": 14.13,
-            "height": 0.85
-          }
-        },
-        {
-          "id": "p2-ocr23",
-          "type": "sfx",
-          "sourceText": "SF",
-          "translatedText": "",
-          "confidence": 55.7,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 70.12,
-            "y": 87.06,
-            "width": 14.42,
-            "height": 0.8
-          }
-        },
-        {
-          "id": "p2-ocr24",
-          "type": "sfx",
-          "sourceText": "SA",
-          "translatedText": "",
-          "confidence": 52.1,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 46.09,
-            "y": 88.22,
-            "width": 12.71,
-            "height": 0.91
-          }
-        },
-        {
-          "id": "p2-ocr25",
-          "type": "sfx",
-          "sourceText": "LL",
-          "translatedText": "",
-          "confidence": 54.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 0.63,
-            "y": 92.27,
-            "width": 13.08,
-            "height": 0.84
-          }
-        },
-        {
-          "id": "p2-ocr26",
-          "type": "other",
-          "sourceText": "jae:",
-          "translatedText": "",
-          "confidence": 50.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 0.11,
-            "y": 94.41,
-            "width": 4.23,
-            "height": 1.31
+            "x": 2.25,
+            "y": 78.55,
+            "width": 85.27,
+            "height": 1.51
           }
         }
       ]
@@ -461,467 +80,28 @@
       "regions": [
         {
           "id": "p3-ocr1",
-          "type": "sfx",
-          "sourceText": "BY",
+          "type": "other",
+          "sourceText": "ITIN OCKED. ITS PREY, CHANCE TO STRIKE.",
           "translatedText": "",
-          "confidence": 68.7,
-          "rotation": 0,
-          "detectionPass": "sparse0",
+          "confidence": 79.7,
           "bounds": {
-            "x": 4.11,
-            "y": 0,
-            "width": 1.67,
-            "height": 0.83
+            "x": 13.3,
+            "y": 43.22,
+            "width": 79.85,
+            "height": 3.72
           }
         },
         {
           "id": "p3-ocr2",
           "type": "other",
-          "sourceText": "Md",
-          "translatedText": "",
-          "confidence": 79,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 44.22,
-            "y": 12.38,
-            "width": 2.33,
-            "height": 0.69
-          }
-        },
-        {
-          "id": "p3-ocr3",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 66,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 77.57,
-            "y": 13.18,
-            "width": 7.87,
-            "height": 3.4
-          }
-        },
-        {
-          "id": "p3-ocr4",
-          "type": "other",
-          "sourceText": "gi IX",
-          "translatedText": "",
-          "confidence": 46.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 43.08,
-            "y": 17.08,
-            "width": 28.62,
-            "height": 2.62
-          }
-        },
-        {
-          "id": "p3-ocr5",
-          "type": "sfx",
-          "sourceText": "AC",
-          "translatedText": "",
-          "confidence": 44.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 39.42,
-            "y": 17.89,
-            "width": 10.93,
-            "height": 3.87
-          }
-        },
-        {
-          "id": "p3-ocr6",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 52.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 23.37,
-            "y": 19.49,
-            "width": 4.93,
-            "height": 2.06
-          }
-        },
-        {
-          "id": "p3-ocr7",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 45,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 57.56,
-            "y": 21.07,
-            "width": 2.67,
-            "height": 1.18
-          }
-        },
-        {
-          "id": "p3-ocr8",
-          "type": "sfx",
-          "sourceText": "SR",
-          "translatedText": "",
-          "confidence": 61.1,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 17.37,
-            "y": 22.16,
-            "width": 4.93,
-            "height": 1.96
-          }
-        },
-        {
-          "id": "p3-ocr9",
-          "type": "sfx",
-          "sourceText": "AS",
-          "translatedText": "",
-          "confidence": 55,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 54.73,
-            "y": 23.63,
-            "width": 9.87,
-            "height": 3.04
-          }
-        },
-        {
-          "id": "p3-ocr10",
-          "type": "sfx",
-          "sourceText": "NWS",
-          "translatedText": "",
-          "confidence": 71.3,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 81.88,
-            "y": 28.2,
-            "width": 17.47,
-            "height": 6.08
-          }
-        },
-        {
-          "id": "p3-ocr11",
-          "type": "sfx",
-          "sourceText": "TA",
-          "translatedText": "",
-          "confidence": 56.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 71.65,
-            "y": 28.24,
-            "width": 19.92,
-            "height": 2.76
-          }
-        },
-        {
-          "id": "p3-ocr12",
-          "type": "other",
-          "sourceText": "im. \\",
-          "translatedText": "",
-          "confidence": 43.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 59.25,
-            "y": 28.39,
-            "width": 5.72,
-            "height": 2.9
-          }
-        },
-        {
-          "id": "p3-ocr13",
-          "type": "other",
-          "sourceText": "Meld",
-          "translatedText": "",
-          "confidence": 62.4,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 5.22,
-            "y": 32.62,
-            "width": 4.23,
-            "height": 2.21
-          }
-        },
-        {
-          "id": "p3-ocr14",
-          "type": "sfx",
-          "sourceText": "VA",
-          "translatedText": "",
-          "confidence": 70.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 86.33,
-            "y": 35.33,
-            "width": 4,
-            "height": 1.5
-          }
-        },
-        {
-          "id": "p3-ocr15",
-          "type": "other",
-          "sourceText": "\\ Abeer",
-          "translatedText": "",
-          "confidence": 59.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 85.13,
-            "y": 38.2,
-            "width": 14.87,
-            "height": 2.18
-          }
-        },
-        {
-          "id": "p3-ocr16",
-          "type": "sfx",
-          "sourceText": "ES",
-          "translatedText": "",
-          "confidence": 58.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 67.89,
-            "y": 40.01,
-            "width": 3.56,
-            "height": 1.38
-          }
-        },
-        {
-          "id": "p3-ocr17",
-          "type": "other",
-          "sourceText": "Ct",
-          "translatedText": "",
-          "confidence": 89.7,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 3.78,
-            "y": 40.49,
-            "width": 4.56,
-            "height": 1.12
-          }
-        },
-        {
-          "id": "p3-ocr18",
-          "type": "other",
-          "sourceText": "en",
-          "translatedText": "",
-          "confidence": 86.8,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 28.89,
-            "y": 43.05,
-            "width": 5.44,
-            "height": 1.05
-          }
-        },
-        {
-          "id": "p3-ocr19",
-          "type": "other",
-          "sourceText": "ITS PREY,\nCHANCE TO STRIKE.",
-          "translatedText": "",
-          "confidence": 92.9,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 46.71,
-            "y": 43.22,
-            "width": 45.46,
-            "height": 3.72
-          }
-        },
-        {
-          "id": "p3-ocr20",
-          "type": "other",
-          "sourceText": "19",
-          "translatedText": "",
-          "confidence": 72.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 22.88,
-            "y": 44.37,
-            "width": 4.23,
-            "height": 2.41
-          }
-        },
-        {
-          "id": "p3-ocr21",
-          "type": "sfx",
-          "sourceText": "ITIN",
-          "translatedText": "",
-          "confidence": 76,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 15.16,
-            "y": 44.64,
-            "width": 8.68,
-            "height": 2.29
-          }
-        },
-        {
-          "id": "p3-ocr22",
-          "type": "other",
-          "sourceText": "‘dAlaALS OL SL! BOs ONIL",
-          "translatedText": "",
-          "confidence": 55.3,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 14.21,
-            "y": 45.75,
-            "width": 78.91,
-            "height": 1.05
-          }
-        },
-        {
-          "id": "p3-ocr23",
-          "type": "other",
-          "sourceText": "iif}",
-          "translatedText": "",
-          "confidence": 61,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 51.22,
-            "y": 59.84,
-            "width": 1.89,
-            "height": 0.82
-          }
-        },
-        {
-          "id": "p3-ocr24",
-          "type": "sfx",
-          "sourceText": "WY\nBE",
-          "translatedText": "",
-          "confidence": 57.6,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 69.91,
-            "y": 66.45,
-            "width": 19.19,
-            "height": 7.58
-          }
-        },
-        {
-          "id": "p3-ocr25",
-          "type": "sfx",
-          "sourceText": "LL",
-          "translatedText": "",
-          "confidence": 60.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 18.51,
-            "y": 73.79,
-            "width": 18.21,
-            "height": 2.92
-          }
-        },
-        {
-          "id": "p3-ocr26",
-          "type": "sfx",
-          "sourceText": "ON",
-          "translatedText": "",
-          "confidence": 42.6,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 18.61,
-            "y": 80.58,
-            "width": 8.68,
-            "height": 1.58
-          }
-        },
-        {
-          "id": "p3-ocr27",
-          "type": "sfx",
-          "sourceText": "AR",
-          "translatedText": "",
-          "confidence": 73.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 12.03,
-            "y": 85.94,
-            "width": 3.6,
-            "height": 1.32
-          }
-        },
-        {
-          "id": "p3-ocr28",
-          "type": "sfx",
-          "sourceText": "AN",
-          "translatedText": "",
-          "confidence": 92.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 47.93,
-            "y": 87.62,
-            "width": 8.8,
-            "height": 3.08
-          }
-        },
-        {
-          "id": "p3-ocr29",
-          "type": "other",
           "sourceText": "mp.) 6",
           "translatedText": "",
           "confidence": 66.7,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 22.71,
             "y": 95.16,
             "width": 14.02,
             "height": 1.33
-          }
-        },
-        {
-          "id": "p3-ocr30",
-          "type": "sfx",
-          "sourceText": "CEA",
-          "translatedText": "",
-          "confidence": 55.6,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 68.23,
-            "y": 95.53,
-            "width": 12.1,
-            "height": 1.46
-          }
-        },
-        {
-          "id": "p3-ocr31",
-          "type": "sfx",
-          "sourceText": "VA",
-          "translatedText": "",
-          "confidence": 55.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 12.78,
-            "y": 97.13,
-            "width": 4,
-            "height": 1.48
           }
         }
       ]
@@ -932,181 +112,40 @@
         {
           "id": "p4-ocr1",
           "type": "other",
-          "sourceText": "AND THE TOP PREDATORS,\nOFTEN CAMOUFLAGE AS\nTHE MOST INNOCENT BEINGS,",
+          "sourceText": "\"HE TOP PREDATO",
           "translatedText": "",
-          "confidence": 96.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 89,
           "bounds": {
-            "x": 15.5,
-            "y": 10.21,
-            "width": 68.66,
-            "height": 4.28
+            "x": 32.51,
+            "y": 10.16,
+            "width": 40.87,
+            "height": 1.51
           }
         },
         {
           "id": "p4-ocr2",
           "type": "other",
-          "sourceText": "wor .",
+          "sourceText": "THE MOST INNOCENT BEINGS, OFTEN CAMOUFLAGE A",
           "translatedText": "",
-          "confidence": 45.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 87.8,
           "bounds": {
-            "x": 14.8,
-            "y": 31.13,
-            "width": 26.62,
-            "height": 3.5
+            "x": 12.75,
+            "y": 11.27,
+            "width": 71.61,
+            "height": 4.13
           }
         },
         {
           "id": "p4-ocr3",
-          "type": "sfx",
-          "sourceText": "IN",
-          "translatedText": "",
-          "confidence": 87.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 59.56,
-            "y": 36.22,
-            "width": 2.44,
-            "height": 0.79
-          }
-        },
-        {
-          "id": "p4-ocr4",
           "type": "other",
-          "sourceText": "‘ame",
-          "translatedText": "",
-          "confidence": 51.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 65.9,
-            "y": 40.15,
-            "width": 27.09,
-            "height": 3.47
-          }
-        },
-        {
-          "id": "p4-ocr5",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 69.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 13.47,
-            "y": 40.57,
-            "width": 3.73,
-            "height": 1.19
-          }
-        },
-        {
-          "id": "p4-ocr6",
-          "type": "sfx",
-          "sourceText": "VN",
-          "translatedText": "",
-          "confidence": 65.7,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 62.31,
-            "y": 63.65,
-            "width": 5.6,
-            "height": 2.06
-          }
-        },
-        {
-          "id": "p4-ocr7",
-          "type": "other",
-          "sourceText": "IN A fi",
-          "translatedText": "",
-          "confidence": 58.7,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 37.71,
-            "y": 64.06,
-            "width": 14.02,
-            "height": 1.59
-          }
-        },
-        {
-          "id": "p4-ocr8",
-          "type": "sfx",
           "sourceText": "ANS",
           "translatedText": "",
           "confidence": 81.8,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
-            "x": 22.11,
-            "y": 69.11,
-            "width": 7.46,
-            "height": 1.19
-          }
-        },
-        {
-          "id": "p4-ocr9",
-          "type": "sfx",
-          "sourceText": "LN",
-          "translatedText": "",
-          "confidence": 77.3,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 59.56,
-            "y": 74.25,
-            "width": 2.22,
-            "height": 0.69
-          }
-        },
-        {
-          "id": "p4-ocr10",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 60.8,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 70.39,
-            "y": 79.07,
-            "width": 8.56,
-            "height": 3.04
-          }
-        },
-        {
-          "id": "p4-ocr11",
-          "type": "other",
-          "sourceText": "Lee,",
-          "translatedText": "",
-          "confidence": 42.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 45.92,
-            "y": 88.12,
-            "width": 34.16,
-            "height": 2.36
-          }
-        },
-        {
-          "id": "p4-ocr12",
-          "type": "other",
-          "sourceText": "idMeé ge. com",
-          "translatedText": "",
-          "confidence": 67.1,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 12,
-            "y": 97.61,
-            "width": 31.33,
-            "height": 2.25
+            "x": 22.22,
+            "y": 69.15,
+            "width": 7.22,
+            "height": 1.12
           }
         }
       ]
@@ -1119,534 +158,66 @@
           "type": "other",
           "sourceText": "DEALING A LETHAL STRIKE\nWHEN LEAST EXPECTED.",
           "translatedText": "",
-          "confidence": 96.2,
-          "rotation": 0,
-          "detectionPass": "sparse0",
+          "confidence": 95.6,
           "bounds": {
             "x": 19.38,
             "y": 4.29,
             "width": 61.24,
             "height": 1.55
           }
-        },
-        {
-          "id": "p5-ocr2",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 42.6,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 84.55,
-            "y": 8.07,
-            "width": 7.46,
-            "height": 3.73
-          }
-        },
-        {
-          "id": "p5-ocr3",
-          "type": "sfx",
-          "sourceText": "CKGC",
-          "translatedText": "",
-          "confidence": 69.2,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 75.18,
-            "y": 28.92,
-            "width": 9.87,
-            "height": 4.1
-          }
-        },
-        {
-          "id": "p5-ocr4",
-          "type": "other",
-          "sourceText": "Ay",
-          "translatedText": "",
-          "confidence": 90.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 89.56,
-            "y": 31.81,
-            "width": 4.44,
-            "height": 0.79
-          }
-        },
-        {
-          "id": "p5-ocr5",
-          "type": "other",
-          "sourceText": "My",
-          "translatedText": "",
-          "confidence": 72.6,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 91.56,
-            "y": 32.68,
-            "width": 6.67,
-            "height": 1.38
-          }
-        },
-        {
-          "id": "p5-ocr6",
-          "type": "sfx",
-          "sourceText": "WS",
-          "translatedText": "",
-          "confidence": 50.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 75.71,
-            "y": 32.71,
-            "width": 8.8,
-            "height": 1.24
-          }
-        },
-        {
-          "id": "p5-ocr7",
-          "type": "sfx",
-          "sourceText": "LZ",
-          "translatedText": "",
-          "confidence": 64.5,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 32.67,
-            "y": 38.06,
-            "width": 4.44,
-            "height": 1.95
-          }
-        },
-        {
-          "id": "p5-ocr8",
-          "type": "sfx",
-          "sourceText": "NS",
-          "translatedText": "",
-          "confidence": 79.1,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 6.33,
-            "y": 39.65,
-            "width": 1.56,
-            "height": 0.64
-          }
-        },
-        {
-          "id": "p5-ocr9",
-          "type": "sfx",
-          "sourceText": "CZ",
-          "translatedText": "",
-          "confidence": 58.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 0.96,
-            "y": 46.99,
-            "width": 10.76,
-            "height": 1.45
-          }
-        },
-        {
-          "id": "p5-ocr10",
-          "type": "other",
-          "sourceText": "Gy",
-          "translatedText": "",
-          "confidence": 87.2,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 48.67,
-            "y": 47.6,
-            "width": 4.78,
-            "height": 0.68
-          }
-        },
-        {
-          "id": "p5-ocr11",
-          "type": "sfx",
-          "sourceText": "SS\nUE!",
-          "translatedText": "",
-          "confidence": 68.5,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 34.04,
-            "y": 47.61,
-            "width": 16.13,
-            "height": 3.87
-          }
-        },
-        {
-          "id": "p5-ocr12",
-          "type": "sfx",
-          "sourceText": "BS",
-          "translatedText": "",
-          "confidence": 79.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 47.67,
-            "y": 48,
-            "width": 4.78,
-            "height": 0.8
-          }
-        },
-        {
-          "id": "p5-ocr13",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 56.3,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 43.89,
-            "y": 59.13,
-            "width": 3.67,
-            "height": 0.82
-          }
-        },
-        {
-          "id": "p5-ocr14",
-          "type": "other",
-          "sourceText": "\"oat?",
-          "translatedText": "",
-          "confidence": 57.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 53.03,
-            "y": 86.29,
-            "width": 5.72,
-            "height": 1.88
-          }
-        },
-        {
-          "id": "p5-ocr15",
-          "type": "other",
-          "sourceText": "ae VM",
-          "translatedText": "",
-          "confidence": 60.2,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 0,
-            "y": 87.46,
-            "width": 5.89,
-            "height": 1.35
-          }
-        },
-        {
-          "id": "p5-ocr16",
-          "type": "sfx",
-          "sourceText": "AG",
-          "translatedText": "",
-          "confidence": 84.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 15.75,
-            "y": 88.27,
-            "width": 10.39,
-            "height": 1.99
-          }
         }
       ]
     },
     {
       "page": 6,
-      "regions": [
-        {
-          "id": "p6-ocr1",
-          "type": "sfx",
-          "sourceText": "ON",
-          "translatedText": "",
-          "confidence": 88.6,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 62.29,
-            "y": 11.41,
-            "width": 5.74,
-            "height": 1.34
-          }
-        },
-        {
-          "id": "p6-ocr2",
-          "type": "sfx",
-          "sourceText": "THR,",
-          "translatedText": "",
-          "confidence": 68.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 73,
-            "y": 31.35,
-            "width": 4.78,
-            "height": 0.69
-          }
-        },
-        {
-          "id": "p6-ocr3",
-          "type": "other",
-          "sourceText": "rahe",
-          "translatedText": "",
-          "confidence": 42.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 47.48,
-            "y": 96.34,
-            "width": 18.37,
-            "height": 3.66
-          }
-        }
-      ]
+      "regions": []
     },
     {
       "page": 7,
       "regions": [
         {
-          "id": "p7-ocr1",
-          "type": "other",
-          "sourceText": "K LZ",
-          "translatedText": "",
-          "confidence": 82.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 33.29,
-            "y": 2.92,
-            "width": 9.42,
-            "height": 1.44
-          }
-        },
-        {
-          "id": "p7-ocr2",
-          "type": "other",
-          "sourceText": "\\ aie",
-          "translatedText": "",
-          "confidence": 51.2,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 13.9,
-            "y": 14.08,
-            "width": 6.1,
-            "height": 2.79
-          }
-        },
-        {
-          "id": "p7-ocr3",
+          "id": "p7-loose-0-1",
           "type": "sfx",
           "sourceText": "VAMPIRES,\nWEREWOLVES,",
           "translatedText": "",
           "confidence": 95.9,
-          "rotation": 0,
-          "detectionPass": "sparse0",
+          "orientationAngle": 0,
+          "detectionPass": "sparse-loose",
           "bounds": {
-            "x": 79.76,
-            "y": 31.3,
-            "width": 7.82,
-            "height": 16.05
+            "x": 79.83,
+            "y": 31.57,
+            "width": 7.68,
+            "height": 15.51
           }
         },
         {
-          "id": "p7-ocr4",
-          "type": "sfx",
-          "sourceText": "CYBORGS,\nWEREWOLVES,\nGHOSTS,",
-          "translatedText": "",
-          "confidence": 92,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 75.02,
-            "y": 37.69,
-            "width": 13.07,
-            "height": 19.28
-          }
-        },
-        {
-          "id": "p7-ocr5",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 56.6,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 46.84,
-            "y": 43.04,
-            "width": 10.76,
-            "height": 3.68
-          }
-        },
-        {
-          "id": "p7-ocr6",
+          "id": "p7-loose-0-2",
           "type": "other",
           "sourceText": "GHOSTS, Ye",
           "translatedText": "",
           "confidence": 68.9,
-          "rotation": 0,
-          "detectionPass": "sparse0",
+          "orientationAngle": 0,
+          "detectionPass": "sparse-loose",
           "bounds": {
-            "x": 69.11,
-            "y": 44.68,
-            "width": 11.66,
-            "height": 26.08
+            "x": 69,
+            "y": 44.22,
+            "width": 11.88,
+            "height": 27.01
           }
         },
         {
-          "id": "p7-ocr7",
+          "id": "p7-loose-0-3",
           "type": "sfx",
-          "sourceText": "PUPPETS...",
+          "sourceText": "CYBORGS,\nPUPPETS...",
           "translatedText": "",
-          "confidence": 95.9,
-          "rotation": 270,
-          "detectionPass": "rot270",
+          "confidence": 90.6,
+          "orientationAngle": 0,
+          "detectionPass": "sparse-loose",
           "bounds": {
-            "x": 79.96,
-            "y": 56.11,
-            "width": 3.2,
-            "height": 6.23
-          }
-        },
-        {
-          "id": "p7-ocr8",
-          "type": "other",
-          "sourceText": "—zZz\nLT",
-          "translatedText": "",
-          "confidence": 50.3,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 43.29,
-            "y": 71.65,
-            "width": 6.97,
-            "height": 12.5
-          }
-        },
-        {
-          "id": "p7-ocr9",
-          "type": "other",
-          "sourceText": "aD AN",
-          "translatedText": "",
-          "confidence": 67.7,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 45.7,
-            "y": 71.77,
-            "width": 10.48,
-            "height": 1.81
-          }
-        },
-        {
-          "id": "p7-ocr10",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 63.6,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 52.03,
-            "y": 75.78,
-            "width": 6.72,
-            "height": 3.64
-          }
-        },
-        {
-          "id": "p7-ocr11",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 44.2,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 0,
-            "y": 79.14,
-            "width": 3.78,
-            "height": 2.49
-          }
-        },
-        {
-          "id": "p7-ocr12",
-          "type": "sfx",
-          "sourceText": "NZ",
-          "translatedText": "",
-          "confidence": 43.5,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 0,
-            "y": 83.54,
-            "width": 22.75,
-            "height": 3.44
-          }
-        },
-        {
-          "id": "p7-ocr13",
-          "type": "sfx",
-          "sourceText": "LB\nYS",
-          "translatedText": "",
-          "confidence": 43.7,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 14.8,
-            "y": 88.17,
-            "width": 13.07,
-            "height": 11.83
-          }
-        },
-        {
-          "id": "p7-ocr14",
-          "type": "other",
-          "sourceText": "basi",
-          "translatedText": "",
-          "confidence": 38.9,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 69.35,
-            "y": 95.82,
-            "width": 14.96,
-            "height": 3.06
-          }
-        },
-        {
-          "id": "p7-ocr15",
-          "type": "sfx",
-          "sourceText": "KS",
-          "translatedText": "",
-          "confidence": 59,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 1.19,
-            "y": 96.94,
-            "width": 4.4,
-            "height": 1.25
-          }
-        },
-        {
-          "id": "p7-ocr16",
-          "type": "other",
-          "sourceText": "hy yi",
-          "translatedText": "",
-          "confidence": 52.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 3.68,
-            "y": 97.38,
-            "width": 15.19,
-            "height": 2.62
+            "x": 79.95,
+            "y": 49.5,
+            "width": 7.32,
+            "height": 13.49
           }
         }
       ]
@@ -1656,117 +227,23 @@
       "regions": [
         {
           "id": "p8-ocr1",
-          "type": "sfx",
-          "sourceText": "ES\nSS",
+          "type": "other",
+          "sourceText": "EVERY HORROR\nELEMENT THAT\nYOU COULD\nTHINK OF,\nFLOWS THROUGH\nTHIS DARK WORLD\nAS IF ITS [AZ\nBLOODSTREAM.",
           "translatedText": "",
-          "confidence": 60.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
+          "confidence": 88.5,
           "bounds": {
-            "x": 0,
-            "y": 0,
-            "width": 17.6,
-            "height": 4.76
+            "x": 59.84,
+            "y": 10.27,
+            "width": 32.98,
+            "height": 5.97
           }
         },
         {
           "id": "p8-ocr2",
           "type": "other",
-          "sourceText": "® w ph",
-          "translatedText": "",
-          "confidence": 48.9,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 33.05,
-            "y": 1.73,
-            "width": 37.45,
-            "height": 2.32
-          }
-        },
-        {
-          "id": "p8-ocr3",
-          "type": "other",
-          "sourceText": "jt",
-          "translatedText": "",
-          "confidence": 93.5,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 11.44,
-            "y": 5.61,
-            "width": 2.22,
-            "height": 0.53
-          }
-        },
-        {
-          "id": "p8-ocr4",
-          "type": "other",
-          "sourceText": "EVERY HORROR\nELEMENT THAT\nYOU COULD\nTHINK OF,\nFLOWS THROUGH\nTHIS DARK WORLD\nAS IF ITS\nBLOODSTREAM.",
-          "translatedText": "",
-          "confidence": 95.5,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 59.96,
-            "y": 10.27,
-            "width": 28.97,
-            "height": 5.97
-          }
-        },
-        {
-          "id": "p8-ocr5",
-          "type": "sfx",
-          "sourceText": "ZN",
-          "translatedText": "",
-          "confidence": 45.7,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 17.07,
-            "y": 16.82,
-            "width": 8.31,
-            "height": 0.61
-          }
-        },
-        {
-          "id": "p8-ocr6",
-          "type": "other",
-          "sourceText": "ff",
-          "translatedText": "",
-          "confidence": 82.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 30.56,
-            "y": 18.09,
-            "width": 2.56,
-            "height": 0.86
-          }
-        },
-        {
-          "id": "p8-ocr7",
-          "type": "other",
-          "sourceText": "> & SD",
-          "translatedText": "",
-          "confidence": 44.2,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 49.99,
-            "y": 26.18,
-            "width": 31.68,
-            "height": 1.75
-          }
-        },
-        {
-          "id": "p8-ocr8",
-          "type": "other",
           "sourceText": "AS AN APPRENTICE\nAT A PHARMACY\nIN JUST ANOTHER TOWN IN THIS WORLD,",
           "translatedText": "",
-          "confidence": 95.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 95.4,
           "bounds": {
             "x": 5.33,
             "y": 32.37,
@@ -1775,73 +252,24 @@
           }
         },
         {
-          "id": "p8-ocr9",
+          "id": "p8-ocr3",
           "type": "other",
-          "sourceText": "id ae",
+          "sourceText": "RATCH",
           "translatedText": "",
-          "confidence": 54.6,
-          "rotation": 180,
-          "detectionPass": "rot180",
+          "confidence": 92.8,
           "bounds": {
-            "x": 38.25,
-            "y": 41.03,
-            "width": 34.51,
-            "height": 2.71
+            "x": 62.67,
+            "y": 47.32,
+            "width": 11.66,
+            "height": 0.7
           }
         },
         {
-          "id": "p8-ocr10",
-          "type": "sfx",
-          "sourceText": "TCH\nCRATCH,",
-          "translatedText": "",
-          "confidence": 86.5,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 63.76,
-            "y": 47.23,
-            "width": 15.03,
-            "height": 1.59
-          }
-        },
-        {
-          "id": "p8-ocr11",
-          "type": "other",
-          "sourceText": "ff",
-          "translatedText": "",
-          "confidence": 80.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 4,
-            "y": 57.34,
-            "width": 3.11,
-            "height": 0.85
-          }
-        },
-        {
-          "id": "p8-ocr12",
-          "type": "other",
-          "sourceText": "Fe\nQW\nWE",
-          "translatedText": "",
-          "confidence": 64.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 52.41,
-            "y": 58.47,
-            "width": 8.96,
-            "height": 13.21
-          }
-        },
-        {
-          "id": "p8-ocr13",
+          "id": "p8-ocr4",
           "type": "other",
           "sourceText": "IT HAVE TO KEEP CALM\nAT ALL TIMES.",
           "translatedText": "",
           "confidence": 93.4,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 40.66,
             "y": 58.73,
@@ -1850,73 +278,11 @@
           }
         },
         {
-          "id": "p8-ocr14",
-          "type": "sfx",
-          "sourceText": "NHN",
-          "translatedText": "",
-          "confidence": 90.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 74.78,
-            "y": 60.76,
-            "width": 9.66,
-            "height": 0.7
-          }
-        },
-        {
-          "id": "p8-ocr15",
-          "type": "sfx",
-          "sourceText": "KV\nWY",
-          "translatedText": "",
-          "confidence": 54.7,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 47.41,
-            "y": 68.2,
-            "width": 10.51,
-            "height": 2.88
-          }
-        },
-        {
-          "id": "p8-ocr16",
-          "type": "other",
-          "sourceText": "dom ~\nKS",
-          "translatedText": "",
-          "confidence": 67.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 10.36,
-            "y": 71.79,
-            "width": 38.16,
-            "height": 5.56
-          }
-        },
-        {
-          "id": "p8-ocr17",
-          "type": "other",
-          "sourceText": "Ow\nON",
-          "translatedText": "",
-          "confidence": 69.2,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 23.96,
-            "y": 74.24,
-            "width": 17.3,
-            "height": 8.24
-          }
-        },
-        {
-          "id": "p8-ocr18",
+          "id": "p8-ocr5",
           "type": "other",
           "sourceText": "SINCE EVEN THE SLIGHTEST\nTRACE OF FEAR",
           "translatedText": "",
-          "confidence": 96.5,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 96.2,
           "bounds": {
             "x": 3.39,
             "y": 80.96,
@@ -1925,48 +291,18 @@
           }
         },
         {
-          "id": "p8-ocr19",
+          "id": "p8-loose-0-1",
           "type": "sfx",
-          "sourceText": "NWA",
+          "sourceText": "CRATCH,",
           "translatedText": "",
-          "confidence": 58.1,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 82.9,
+          "orientationAngle": 0,
+          "detectionPass": "sparse-loose",
           "bounds": {
-            "x": 31.41,
-            "y": 89.71,
-            "width": 13.08,
-            "height": 1.62
-          }
-        },
-        {
-          "id": "p8-ocr20",
-          "type": "sfx",
-          "sourceText": "AA,",
-          "translatedText": "",
-          "confidence": 55.7,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 53.37,
-            "y": 90.44,
-            "width": 8.93,
-            "height": 3.14
-          }
-        },
-        {
-          "id": "p8-ocr21",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 74.2,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 40.93,
-            "y": 98.58,
-            "width": 3.47,
-            "height": 1.1
+            "x": 63.9,
+            "y": 48,
+            "width": 14.76,
+            "height": 0.75
           }
         }
       ]
@@ -1976,27 +312,10 @@
       "regions": [
         {
           "id": "p9-ocr1",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 52.8,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 35.64,
-            "y": 0,
-            "width": 5.6,
-            "height": 2.83
-          }
-        },
-        {
-          "id": "p9-ocr2",
           "type": "other",
           "sourceText": "WILL GET YOU SWALLOWED\nuP BY THE DARKNESS\nOF THIS WORLD.",
           "translatedText": "",
           "confidence": 95.8,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 44.66,
             "y": 2.15,
@@ -2005,88 +324,11 @@
           }
         },
         {
-          "id": "p9-ocr3",
-          "type": "sfx",
-          "sourceText": "NO",
-          "translatedText": "",
-          "confidence": 48.8,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 42.67,
-            "y": 21.46,
-            "width": 14.67,
-            "height": 2.09
-          }
-        },
-        {
-          "id": "p9-ocr4",
-          "type": "sfx",
-          "sourceText": "ON",
-          "translatedText": "",
-          "confidence": 63.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 82.33,
-            "y": 24.66,
-            "width": 2.33,
-            "height": 1.35
-          }
-        },
-        {
-          "id": "p9-ocr5",
-          "type": "other",
-          "sourceText": "Vee =",
-          "translatedText": "",
-          "confidence": 61.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 48.37,
-            "y": 25.2,
-            "width": 5.48,
-            "height": 3.25
-          }
-        },
-        {
-          "id": "p9-ocr6",
-          "type": "sfx",
-          "sourceText": "HN",
-          "translatedText": "",
-          "confidence": 77.3,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 43.11,
-            "y": 27.23,
-            "width": 1.89,
-            "height": 0.53
-          }
-        },
-        {
-          "id": "p9-ocr7",
-          "type": "other",
-          "sourceText": "VE\noN\n2090",
-          "translatedText": "",
-          "confidence": 66.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 20.03,
-            "y": 40,
-            "width": 18.17,
-            "height": 13.16
-          }
-        },
-        {
-          "id": "p9-ocr8",
+          "id": "p9-ocr2",
           "type": "other",
           "sourceText": "THIS IS WHAT I SPECULATE\nAFTER BEING IN THIS WORLD\nFOR 2 YEARS.",
           "translatedText": "",
-          "confidence": 95.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 95.5,
           "bounds": {
             "x": 4.97,
             "y": 40.18,
@@ -2095,78 +337,16 @@
           }
         },
         {
-          "id": "p9-ocr9",
-          "type": "other",
-          "sourceText": "cot >",
-          "translatedText": "",
-          "confidence": 39.3,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 77,
-            "y": 48.86,
-            "width": 4.11,
-            "height": 3.8
-          }
-        },
-        {
-          "id": "p9-ocr10",
-          "type": "other",
-          "sourceText": "ip",
-          "translatedText": "",
-          "confidence": 72.1,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 92.82,
-            "y": 56.04,
-            "width": 7.18,
-            "height": 1.09
-          }
-        },
-        {
-          "id": "p9-ocr11",
+          "id": "p9-ocr3",
           "type": "other",
           "sourceText": "AND I HAVE ONLY DONE ONE THING\nTHESE PAST 2 YEARG...",
           "translatedText": "",
           "confidence": 95,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 12.43,
             "y": 79.47,
             "width": 75.02,
             "height": 2.73
-          }
-        },
-        {
-          "id": "p9-ocr12",
-          "type": "sfx",
-          "sourceText": "YO",
-          "translatedText": "",
-          "confidence": 71,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 0,
-            "y": 88.34,
-            "width": 4.9,
-            "height": 0.56
-          }
-        },
-        {
-          "id": "p9-ocr13",
-          "type": "other",
-          "sourceText": "Lain",
-          "translatedText": "",
-          "confidence": 45.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 82.25,
-            "y": 92.2,
-            "width": 10.95,
-            "height": 0.79
           }
         }
       ]
@@ -2176,72 +356,10 @@
       "regions": [
         {
           "id": "p10-ocr1",
-          "type": "sfx",
-          "sourceText": "CNN",
-          "translatedText": "",
-          "confidence": 67.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 15.01,
-            "y": 0,
-            "width": 34.1,
-            "height": 6.82
-          }
-        },
-        {
-          "id": "p10-ocr2",
-          "type": "other",
-          "sourceText": "Muh |",
-          "translatedText": "",
-          "confidence": 39.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 24.44,
-            "y": 18.03,
-            "width": 7.56,
-            "height": 1.66
-          }
-        },
-        {
-          "id": "p10-ocr3",
-          "type": "other",
-          "sourceText": "wea?",
-          "translatedText": "",
-          "confidence": 42.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 79.89,
-            "y": 19.07,
-            "width": 6.89,
-            "height": 1.05
-          }
-        },
-        {
-          "id": "p10-ocr4",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 71.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 6.11,
-            "y": 44.47,
-            "width": 1.22,
-            "height": 1.12
-          }
-        },
-        {
-          "id": "p10-ocr5",
           "type": "other",
           "sourceText": "LIN EN! IT’S TIME.\nGO HANG THE LIGHT OUTSIDE\nAND GET READY TO OPEN FOR\nBUSINESS.",
           "translatedText": "",
           "confidence": 91.9,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 20.08,
             "y": 51.3,
@@ -2250,63 +368,16 @@
           }
         },
         {
-          "id": "p10-ocr6",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 64.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 65.43,
-            "y": 66.96,
-            "width": 7.58,
-            "height": 3.24
-          }
-        },
-        {
-          "id": "p10-ocr7",
-          "type": "sfx",
-          "sourceText": "PR",
-          "translatedText": "",
-          "confidence": 42.6,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 31.68,
-            "y": 68.92,
-            "width": 11.98,
-            "height": 2.61
-          }
-        },
-        {
-          "id": "p10-ocr8",
-          "type": "sfx",
+          "id": "p10-ocr2",
+          "type": "other",
           "sourceText": "DING",
           "translatedText": "",
-          "confidence": 90.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 89.5,
           "bounds": {
-            "x": 9.08,
-            "y": 89.18,
-            "width": 15.28,
-            "height": 2.17
-          }
-        },
-        {
-          "id": "p10-ocr9",
-          "type": "other",
-          "sourceText": "7 bai",
-          "translatedText": "",
-          "confidence": 43.1,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 60.25,
-            "y": 94.1,
-            "width": 30.27,
-            "height": 5.9
+            "x": 9.36,
+            "y": 89.25,
+            "width": 14.72,
+            "height": 2.03
           }
         }
       ]
@@ -2319,13 +390,11 @@
           "type": "other",
           "sourceText": "You have received a quest from\nyour teacher, Bloodsaw Maniac:\nOpen for business, hang the Soul\nLamp at the door.",
           "translatedText": "",
-          "confidence": 93.2,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 92.8,
           "bounds": {
-            "x": 38.48,
+            "x": 38.6,
             "y": 4.71,
-            "width": 57.48,
+            "width": 57.36,
             "height": 4
           }
         },
@@ -2335,8 +404,6 @@
           "sourceText": "Quest completion rewards:\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
           "translatedText": "",
           "confidence": 86.9,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 5.73,
             "y": 10.48,
@@ -2347,41 +414,9 @@
         {
           "id": "p11-ocr3",
           "type": "other",
-          "sourceText": "We",
-          "translatedText": "",
-          "confidence": 80.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 54.67,
-            "y": 18.05,
-            "width": 5.44,
-            "height": 0.66
-          }
-        },
-        {
-          "id": "p11-ocr4",
-          "type": "other",
-          "sourceText": "Saal",
-          "translatedText": "",
-          "confidence": 43.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 9.74,
-            "y": 23.97,
-            "width": 8.96,
-            "height": 3.31
-          }
-        },
-        {
-          "id": "p11-ocr5",
-          "type": "other",
           "sourceText": "This i6...a system?\n[b'S been 2 years since |\nentered this world...\nFinally!",
           "translatedText": "",
-          "confidence": 90.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 85.6,
           "bounds": {
             "x": 65.4,
             "y": 25.54,
@@ -2390,213 +425,42 @@
           }
         },
         {
-          "id": "p11-ocr6",
-          "type": "sfx",
-          "sourceText": "AN:",
-          "translatedText": "",
-          "confidence": 43.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 4.36,
-            "y": 29.88,
-            "width": 11.73,
-            "height": 1.38
-          }
-        },
-        {
-          "id": "p11-ocr7",
+          "id": "p11-ocr4",
           "type": "other",
-          "sourceText": "Ic",
+          "sourceText": "No time to\nstudy this",
           "translatedText": "",
-          "confidence": 94,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 62.22,
-            "y": 30.39,
-            "width": 3.44,
-            "height": 0.59
-          }
-        },
-        {
-          "id": "p11-ocr8",
-          "type": "other",
-          "sourceText": "i ME Pr",
-          "translatedText": "",
-          "confidence": 39,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 6.45,
-            "y": 34.39,
-            "width": 11.42,
-            "height": 0.77
-          }
-        },
-        {
-          "id": "p11-ocr9",
-          "type": "sfx",
-          "sourceText": "SB",
-          "translatedText": "",
-          "confidence": 56.1,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 56.37,
-            "y": 40.02,
-            "width": 18.7,
-            "height": 2.37
-          }
-        },
-        {
-          "id": "p11-ocr10",
-          "type": "other",
-          "sourceText": "No time to\nstudy this\nPor now,",
-          "translatedText": "",
-          "confidence": 93.4,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 91.7,
           "bounds": {
             "x": 56.63,
-            "y": 52.73,
+            "y": 52.79,
             "width": 24.97,
-            "height": 3.39
+            "height": 2.23
           }
         },
         {
-          "id": "p11-ocr11",
-          "type": "sfx",
-          "sourceText": "ABA",
-          "translatedText": "",
-          "confidence": 68.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 36.64,
-            "y": 55.26,
-            "width": 10.27,
-            "height": 1.05
-          }
-        },
-        {
-          "id": "p11-ocr12",
-          "type": "sfx",
-          "sourceText": "LZ\nFY",
-          "translatedText": "",
-          "confidence": 56.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 38.41,
-            "y": 55.83,
-            "width": 12.96,
-            "height": 1.71
-          }
-        },
-        {
-          "id": "p11-ocr13",
-          "type": "sfx",
-          "sourceText": "GA",
-          "translatedText": "",
-          "confidence": 45.9,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 53.54,
-            "y": 62.94,
-            "width": 14.91,
-            "height": 0.87
-          }
-        },
-        {
-          "id": "p11-ocr14",
-          "type": "sfx",
-          "sourceText": "ER",
-          "translatedText": "",
-          "confidence": 45.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 41.78,
-            "y": 63.34,
-            "width": 3.22,
-            "height": 0.25
-          }
-        },
-        {
-          "id": "p11-ocr15",
+          "id": "p11-ocr5",
           "type": "other",
-          "sourceText": "wort",
+          "sourceText": "Ay Por now, LZ FY",
           "translatedText": "",
-          "confidence": 54.1,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 68.4,
           "bounds": {
-            "x": 83.14,
-            "y": 73.37,
-            "width": 10.84,
-            "height": 1.55
+            "x": 36.45,
+            "y": 54.98,
+            "width": 42.87,
+            "height": 2.56
           }
         },
         {
-          "id": "p11-ocr16",
-          "type": "sfx",
-          "sourceText": "ASS",
-          "translatedText": "",
-          "confidence": 48.4,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 82.34,
-            "y": 80.27,
-            "width": 3.87,
-            "height": 1.74
-          }
-        },
-        {
-          "id": "p11-ocr17",
+          "id": "p11-ocr6",
           "type": "other",
           "sourceText": "What 6 imperative is to\ncarry out teacher's order\nimmediately, on else...",
           "translatedText": "",
           "confidence": 86.4,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 19.61,
             "y": 81.44,
             "width": 57.12,
             "height": 3.76
-          }
-        },
-        {
-          "id": "p11-ocr18",
-          "type": "other",
-          "sourceText": "LI\nones",
-          "translatedText": "",
-          "confidence": 43.7,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 50.17,
-            "y": 81.88,
-            "width": 7.22,
-            "height": 11.7
-          }
-        },
-        {
-          "id": "p11-ocr19",
-          "type": "other",
-          "sourceText": "ay,",
-          "translatedText": "",
-          "confidence": 72.7,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 39.8,
-            "y": 94.02,
-            "width": 5.85,
-            "height": 1.23
           }
         }
       ]
@@ -2606,72 +470,23 @@
       "regions": [
         {
           "id": "p12-ocr1",
-          "type": "sfx",
-          "sourceText": "AN",
+          "type": "other",
+          "sourceText": "TEACHER,\nYOU'RE BACK.",
           "translatedText": "",
-          "confidence": 42.2,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 69.1,
           "bounds": {
-            "x": 72.45,
-            "y": 7.16,
-            "width": 12.1,
-            "height": 5.69
+            "x": 5.36,
+            "y": 24.43,
+            "width": 26.5,
+            "height": 2.54
           }
         },
         {
           "id": "p12-ocr2",
-          "type": "sfx",
-          "sourceText": "ND",
-          "translatedText": "",
-          "confidence": 63.2,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 53.47,
-            "y": 8.06,
-            "width": 19.07,
-            "height": 6.84
-          }
-        },
-        {
-          "id": "p12-ocr3",
-          "type": "sfx",
-          "sourceText": "TEACHER,\nYOU'RE BACK.",
-          "translatedText": "",
-          "confidence": 69.1,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 4.86,
-            "y": 24.34,
-            "width": 27.5,
-            "height": 2.73
-          }
-        },
-        {
-          "id": "p12-ocr4",
-          "type": "other",
-          "sourceText": "af",
-          "translatedText": "",
-          "confidence": 84.3,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 67.62,
-            "y": 37.2,
-            "width": 9.21,
-            "height": 2.65
-          }
-        },
-        {
-          "id": "p12-ocr5",
           "type": "other",
           "sourceText": "( will die\nPor sure.",
           "translatedText": "",
-          "confidence": 86.7,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 85.3,
           "bounds": {
             "x": 45.86,
             "y": 47.59,
@@ -2680,58 +495,24 @@
           }
         },
         {
-          "id": "p12-ocr6",
-          "type": "sfx",
-          "sourceText": "SS\nNS",
+          "id": "p12-ocr3",
+          "type": "other",
+          "sourceText": "Ss il Wd",
           "translatedText": "",
-          "confidence": 72.3,
-          "rotation": 90,
-          "detectionPass": "rot90",
+          "confidence": 68.1,
           "bounds": {
-            "x": 80.74,
-            "y": 93.36,
-            "width": 15.07,
-            "height": 3.44
+            "x": 42.84,
+            "y": 92.53,
+            "width": 56.65,
+            "height": 5.38
           }
         },
         {
-          "id": "p12-ocr7",
-          "type": "sfx",
-          "sourceText": "YZ",
-          "translatedText": "",
-          "confidence": 72.2,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 60.92,
-            "y": 93.88,
-            "width": 8.93,
-            "height": 2.79
-          }
-        },
-        {
-          "id": "p12-ocr8",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 79.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 43.86,
-            "y": 96.14,
-            "width": 10.39,
-            "height": 1.62
-          }
-        },
-        {
-          "id": "p12-ocr9",
+          "id": "p12-ocr4",
           "type": "other",
           "sourceText": "IP this was bePore,",
           "translatedText": "",
-          "confidence": 84.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 82.3,
           "bounds": {
             "x": 62.12,
             "y": 98.29,
@@ -2747,376 +528,27 @@
         {
           "id": "p13-ocr1",
           "type": "other",
-          "sourceText": "DPODaDIY WOUIG",
+          "sourceText": "on the spot. Bot now, I'M already",
           "translatedText": "",
-          "confidence": 41.2,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 80.4,
           "bounds": {
-            "x": 53,
-            "y": 0,
-            "width": 23.67,
-            "height": 0.89
+            "x": 45.68,
+            "y": 0.04,
+            "width": 54.32,
+            "height": 2.4
           }
         },
         {
           "id": "p13-ocr2",
           "type": "other",
-          "sourceText": "on the Spot. But now, I'm already\nused to it all\nWS",
+          "sourceText": "used to it all.",
           "translatedText": "",
-          "confidence": 91.2,
-          "rotation": 0,
-          "detectionPass": "sparse0",
+          "confidence": 85.5,
           "bounds": {
-            "x": 45.68,
-            "y": 0.73,
-            "width": 54.32,
-            "height": 7.93
-          }
-        },
-        {
-          "id": "p13-ocr3",
-          "type": "other",
-          "sourceText": "gee y",
-          "translatedText": "",
-          "confidence": 40.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 85.44,
-            "y": 10.88,
-            "width": 6.35,
-            "height": 9.01
-          }
-        },
-        {
-          "id": "p13-ocr4",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 45.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 40,
-            "y": 14.13,
-            "width": 3.89,
-            "height": 0.63
-          }
-        },
-        {
-          "id": "p13-ocr5",
-          "type": "sfx",
-          "sourceText": "AS",
-          "translatedText": "",
-          "confidence": 49.2,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 63.23,
-            "y": 31.3,
-            "width": 7.09,
-            "height": 1.07
-          }
-        },
-        {
-          "id": "p13-ocr6",
-          "type": "sfx",
-          "sourceText": "ZA",
-          "translatedText": "",
-          "confidence": 59.7,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 30.9,
-            "y": 33.5,
-            "width": 6.53,
-            "height": 3.51
-          }
-        },
-        {
-          "id": "p13-ocr7",
-          "type": "other",
-          "sourceText": "D wos",
-          "translatedText": "",
-          "confidence": 57.3,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 86.19,
-            "y": 33.71,
-            "width": 4.73,
-            "height": 7.75
-          }
-        },
-        {
-          "id": "p13-ocr8",
-          "type": "other",
-          "sourceText": "hi ==",
-          "translatedText": "",
-          "confidence": 44,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 55.78,
-            "y": 47.87,
-            "width": 4.11,
-            "height": 3.21
-          }
-        },
-        {
-          "id": "p13-ocr9",
-          "type": "sfx",
-          "sourceText": "MW",
-          "translatedText": "",
-          "confidence": 52.8,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 77.81,
-            "y": 50.26,
-            "width": 11.49,
-            "height": 3.99
-          }
-        },
-        {
-          "id": "p13-ocr10",
-          "type": "other",
-          "sourceText": "Af",
-          "translatedText": "",
-          "confidence": 93.7,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 53.07,
-            "y": 53.54,
-            "width": 9.3,
-            "height": 3.47
-          }
-        },
-        {
-          "id": "p13-ocr11",
-          "type": "sfx",
-          "sourceText": "SN",
-          "translatedText": "",
-          "confidence": 42.9,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 55.67,
-            "y": 57.29,
-            "width": 4.67,
-            "height": 1.9
-          }
-        },
-        {
-          "id": "p13-ocr12",
-          "type": "sfx",
-          "sourceText": "GN",
-          "translatedText": "",
-          "confidence": 89,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 5.44,
-            "y": 58.4,
-            "width": 2.22,
-            "height": 0.99
-          }
-        },
-        {
-          "id": "p13-ocr13",
-          "type": "other",
-          "sourceText": "— ‘We",
-          "translatedText": "",
-          "confidence": 86.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 73.22,
-            "y": 58.89,
-            "width": 2.78,
-            "height": 2.24
-          }
-        },
-        {
-          "id": "p13-ocr14",
-          "type": "sfx",
-          "sourceText": "EZ",
-          "translatedText": "",
-          "confidence": 46.2,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 29.89,
-            "y": 59.89,
-            "width": 1.89,
-            "height": 1.96
-          }
-        },
-        {
-          "id": "p13-ocr15",
-          "type": "other",
-          "sourceText": "jizz”,\nABA",
-          "translatedText": "",
-          "confidence": 49,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 31,
-            "y": 60.81,
-            "width": 5.33,
-            "height": 4.83
-          }
-        },
-        {
-          "id": "p13-ocr16",
-          "type": "sfx",
-          "sourceText": "TZ.",
-          "translatedText": "",
-          "confidence": 61.5,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 66.89,
-            "y": 64.64,
-            "width": 3.11,
-            "height": 2.17
-          }
-        },
-        {
-          "id": "p13-ocr17",
-          "type": "other",
-          "sourceText": "it",
-          "translatedText": "",
-          "confidence": 87.9,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 80.22,
-            "y": 65.65,
-            "width": 2.11,
-            "height": 0.89
-          }
-        },
-        {
-          "id": "p13-ocr18",
-          "type": "sfx",
-          "sourceText": "WS",
-          "translatedText": "",
-          "confidence": 75.7,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 44.49,
-            "y": 68.21,
-            "width": 8.68,
-            "height": 2.02
-          }
-        },
-        {
-          "id": "p13-ocr19",
-          "type": "sfx",
-          "sourceText": "ORIG",
-          "translatedText": "",
-          "confidence": 43.9,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 81.5,
-            "y": 68.35,
-            "width": 15.89,
-            "height": 3.08
-          }
-        },
-        {
-          "id": "p13-ocr20",
-          "type": "sfx",
-          "sourceText": "OR",
-          "translatedText": "",
-          "confidence": 60.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 83.81,
-            "y": 71.61,
-            "width": 16.19,
-            "height": 4.27
-          }
-        },
-        {
-          "id": "p13-ocr21",
-          "type": "sfx",
-          "sourceText": "BE\nAES,",
-          "translatedText": "",
-          "confidence": 47.2,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 36.7,
-            "y": 78.37,
-            "width": 15.6,
-            "height": 4.02
-          }
-        },
-        {
-          "id": "p13-ocr22",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 69.2,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 17.67,
-            "y": 83.57,
-            "width": 1.78,
-            "height": 1.11
-          }
-        },
-        {
-          "id": "p13-ocr23",
-          "type": "other",
-          "sourceText": "if",
-          "translatedText": "",
-          "confidence": 73.8,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 47.44,
-            "y": 85.56,
-            "width": 5.22,
-            "height": 3.28
-          }
-        },
-        {
-          "id": "p13-ocr24",
-          "type": "sfx",
-          "sourceText": "AS",
-          "translatedText": "",
-          "confidence": 92.9,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 67.03,
-            "y": 92.85,
-            "width": 16.38,
-            "height": 3.6
-          }
-        },
-        {
-          "id": "p13-ocr25",
-          "type": "sfx",
-          "sourceText": "WIAA",
-          "translatedText": "",
-          "confidence": 67.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 45.52,
-            "y": 98.55,
-            "width": 15.4,
-            "height": 1.45
+            "x": 62.37,
+            "y": 2.4,
+            "width": 22.14,
+            "height": 0.96
           }
         }
       ]
@@ -3126,297 +558,10 @@
       "regions": [
         {
           "id": "p14-ocr1",
-          "type": "sfx",
-          "sourceText": "WN",
-          "translatedText": "",
-          "confidence": 75,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 3.33,
-            "y": 0,
-            "width": 3.67,
-            "height": 0.56
-          }
-        },
-        {
-          "id": "p14-ocr2",
-          "type": "sfx",
-          "sourceText": "EN",
-          "translatedText": "",
-          "confidence": 73,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 75.27,
-            "y": 3.41,
-            "width": 7.47,
-            "height": 1.93
-          }
-        },
-        {
-          "id": "p14-ocr3",
           "type": "other",
-          "sourceText": "|. Se",
+          "sourceText": "Z years ago, it was\nteacher who Saved me\nand let me learn medical\nSkilIS Prom him.",
           "translatedText": "",
-          "confidence": 52,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 72.33,
-            "y": 8.14,
-            "width": 12.57,
-            "height": 6.54
-          }
-        },
-        {
-          "id": "p14-ocr4",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 84.1,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 51.67,
-            "y": 11.99,
-            "width": 1.33,
-            "height": 0.66
-          }
-        },
-        {
-          "id": "p14-ocr5",
-          "type": "other",
-          "sourceText": "Mag,",
-          "translatedText": "",
-          "confidence": 39.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 51.17,
-            "y": 12.27,
-            "width": 21.55,
-            "height": 2.56
-          }
-        },
-        {
-          "id": "p14-ocr6",
-          "type": "sfx",
-          "sourceText": "EN",
-          "translatedText": "",
-          "confidence": 75.1,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 28.22,
-            "y": 16.33,
-            "width": 1.67,
-            "height": 0.53
-          }
-        },
-        {
-          "id": "p14-ocr7",
-          "type": "sfx",
-          "sourceText": "ZZ,",
-          "translatedText": "",
-          "confidence": 49.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 24.11,
-            "y": 16.52,
-            "width": 4.44,
-            "height": 0.54
-          }
-        },
-        {
-          "id": "p14-ocr8",
-          "type": "sfx",
-          "sourceText": "WW,",
-          "translatedText": "",
-          "confidence": 46.2,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 53.02,
-            "y": 19.41,
-            "width": 6.97,
-            "height": 1.66
-          }
-        },
-        {
-          "id": "p14-ocr9",
-          "type": "sfx",
-          "sourceText": "UA",
-          "translatedText": "",
-          "confidence": 42.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 47.23,
-            "y": 22.27,
-            "width": 16.87,
-            "height": 3.68
-          }
-        },
-        {
-          "id": "p14-ocr10",
-          "type": "sfx",
-          "sourceText": "IN",
-          "translatedText": "",
-          "confidence": 67.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 1.73,
-            "y": 23.55,
-            "width": 5.87,
-            "height": 1.27
-          }
-        },
-        {
-          "id": "p14-ocr11",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 59.3,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 64.44,
-            "y": 24.8,
-            "width": 2.56,
-            "height": 0.7
-          }
-        },
-        {
-          "id": "p14-ocr12",
-          "type": "other",
-          "sourceText": "th",
-          "translatedText": "",
-          "confidence": 78.6,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 19.09,
-            "y": 25.1,
-            "width": 8.72,
-            "height": 2.23
-          }
-        },
-        {
-          "id": "p14-ocr13",
-          "type": "sfx",
-          "sourceText": "ING",
-          "translatedText": "",
-          "confidence": 49.1,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 86.22,
-            "y": 27.07,
-            "width": 4.56,
-            "height": 0.35
-          }
-        },
-        {
-          "id": "p14-ocr14",
-          "type": "other",
-          "sourceText": "ena.",
-          "translatedText": "",
-          "confidence": 39.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 90.78,
-            "y": 27.89,
-            "width": 3.22,
-            "height": 4.22
-          }
-        },
-        {
-          "id": "p14-ocr15",
-          "type": "sfx",
-          "sourceText": "WA",
-          "translatedText": "",
-          "confidence": 64.1,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 53.41,
-            "y": 36.51,
-            "width": 22.73,
-            "height": 2.48
-          }
-        },
-        {
-          "id": "p14-ocr16",
-          "type": "sfx",
-          "sourceText": "RS",
-          "translatedText": "",
-          "confidence": 58.2,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 92.21,
-            "y": 59.18,
-            "width": 5.47,
-            "height": 1.2
-          }
-        },
-        {
-          "id": "p14-ocr17",
-          "type": "other",
-          "sourceText": "ZZ;\nN 6",
-          "translatedText": "",
-          "confidence": 62.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 58.4,
-            "y": 59.2,
-            "width": 13.32,
-            "height": 4.78
-          }
-        },
-        {
-          "id": "p14-ocr18",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 95.1,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 95.38,
-            "y": 59.53,
-            "width": 4.62,
-            "height": 0.95
-          }
-        },
-        {
-          "id": "p14-ocr19",
-          "type": "other",
-          "sourceText": "ZY\noo =\nct Si\nNS",
-          "translatedText": "",
-          "confidence": 61.4,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 51.13,
-            "y": 62.03,
-            "width": 18.29,
-            "height": 13.97
-          }
-        },
-        {
-          "id": "p14-ocr20",
-          "type": "other",
-          "sourceText": "Z years ago, it\nteacher who Saved me\nand let me learn medical\nSkilIS Prom him.",
-          "translatedText": "",
-          "confidence": 89.5,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 90.8,
           "bounds": {
             "x": 50.96,
             "y": 62.13,
@@ -3425,258 +570,16 @@
           }
         },
         {
-          "id": "p14-ocr21",
+          "id": "p14-ocr2",
           "type": "other",
-          "sourceText": "KF\nRSS\nD2 vy\nas",
+          "sourceText": "Although the days LAA\nare monotonous,\nthe overall Situation",
           "translatedText": "",
-          "confidence": 63.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
+          "confidence": 80.4,
           "bounds": {
-            "x": 69.12,
-            "y": 62.14,
-            "width": 14.44,
-            "height": 10.64
-          }
-        },
-        {
-          "id": "p14-ocr22",
-          "type": "sfx",
-          "sourceText": "LEE",
-          "translatedText": "",
-          "confidence": 62.5,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 41.36,
-            "y": 65.02,
-            "width": 9.17,
-            "height": 0.49
-          }
-        },
-        {
-          "id": "p14-ocr23",
-          "type": "sfx",
-          "sourceText": "BZ",
-          "translatedText": "",
-          "confidence": 60.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 47.54,
-            "y": 65.84,
-            "width": 5.26,
-            "height": 0.39
-          }
-        },
-        {
-          "id": "p14-ocr24",
-          "type": "other",
-          "sourceText": "ODT\nSS\nSan a",
-          "translatedText": "",
-          "confidence": 73.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 71.23,
-            "y": 71.3,
-            "width": 10.2,
-            "height": 5.26
-          }
-        },
-        {
-          "id": "p14-ocr25",
-          "type": "sfx",
-          "sourceText": "LAA\nEA",
-          "translatedText": "",
-          "confidence": 62.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 91.38,
-            "y": 73.29,
-            "width": 8.62,
-            "height": 0.89
-          }
-        },
-        {
-          "id": "p14-ocr26",
-          "type": "other",
-          "sourceText": "Although the days\nare monotonous,\nthe overall Situation\nis not bad.",
-          "translatedText": "",
-          "confidence": 84.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 54.74,
-            "y": 73.47,
-            "width": 32.62,
-            "height": 3.06
-          }
-        },
-        {
-          "id": "p14-ocr27",
-          "type": "sfx",
-          "sourceText": "AN",
-          "translatedText": "",
-          "confidence": 49.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 39.11,
-            "y": 75.31,
-            "width": 2.22,
-            "height": 0.39
-          }
-        },
-        {
-          "id": "p14-ocr28",
-          "type": "sfx",
-          "sourceText": "ZA",
-          "translatedText": "",
-          "confidence": 72.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 43.71,
-            "y": 75.9,
-            "width": 6.48,
-            "height": 0.47
-          }
-        },
-        {
-          "id": "p14-ocr29",
-          "type": "sfx",
-          "sourceText": "RS",
-          "translatedText": "",
-          "confidence": 42.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 61.66,
-            "y": 77.29,
-            "width": 6.8,
-            "height": 1.53
-          }
-        },
-        {
-          "id": "p14-ocr30",
-          "type": "sfx",
-          "sourceText": "YY",
-          "translatedText": "",
-          "confidence": 89.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 44.52,
-            "y": 88.98,
-            "width": 15.52,
-            "height": 2.18
-          }
-        },
-        {
-          "id": "p14-ocr31",
-          "type": "sfx",
-          "sourceText": "SA",
-          "translatedText": "",
-          "confidence": 56.9,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 62.22,
-            "y": 91.04,
-            "width": 1.78,
-            "height": 0.53
-          }
-        },
-        {
-          "id": "p14-ocr32",
-          "type": "sfx",
-          "sourceText": "SN",
-          "translatedText": "",
-          "confidence": 81.4,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 59.27,
-            "y": 91.37,
-            "width": 3.47,
-            "height": 0.76
-          }
-        },
-        {
-          "id": "p14-ocr33",
-          "type": "sfx",
-          "sourceText": "SERS",
-          "translatedText": "",
-          "confidence": 47.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 12.63,
-            "y": 93.33,
-            "width": 8.19,
-            "height": 0.56
-          }
-        },
-        {
-          "id": "p14-ocr34",
-          "type": "sfx",
-          "sourceText": "NX",
-          "translatedText": "",
-          "confidence": 71.3,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 26.07,
-            "y": 93.94,
-            "width": 5.87,
-            "height": 0.77
-          }
-        },
-        {
-          "id": "p14-ocr35",
-          "type": "sfx",
-          "sourceText": "WA",
-          "translatedText": "",
-          "confidence": 64,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 25.62,
-            "y": 94.39,
-            "width": 5.87,
-            "height": 0.47
-          }
-        },
-        {
-          "id": "p14-ocr36",
-          "type": "other",
-          "sourceText": "Z J",
-          "translatedText": "",
-          "confidence": 75.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 46.45,
-            "y": 95.56,
-            "width": 6.1,
-            "height": 1.68
-          }
-        },
-        {
-          "id": "p14-ocr37",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 64.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 55,
-            "y": 97.66,
-            "width": 3.78,
-            "height": 0.35
+            "x": 54.35,
+            "y": 73.22,
+            "width": 45.65,
+            "height": 2.54
           }
         }
       ]
@@ -3686,407 +589,56 @@
       "regions": [
         {
           "id": "p15-ocr1",
-          "type": "sfx",
-          "sourceText": "AN",
+          "type": "other",
+          "sourceText": "SEAR “aire ead con onsidered =, anes ing able Pld is",
           "translatedText": "",
-          "confidence": 63.9,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 67.3,
           "bounds": {
-            "x": 12.56,
-            "y": 2.1,
-            "width": 7.33,
-            "height": 1.41
+            "x": 41.11,
+            "y": 22.76,
+            "width": 58.89,
+            "height": 3.33
           }
         },
         {
           "id": "p15-ocr2",
           "type": "other",
-          "sourceText": "y 4",
+          "sourceText": "n this wo",
           "translatedText": "",
-          "confidence": 78.5,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 71.5,
           "bounds": {
-            "x": 51.48,
-            "y": 3.51,
-            "width": 30.27,
-            "height": 3.18
+            "x": 76.15,
+            "y": 23.91,
+            "width": 14.37,
+            "height": 0.73
           }
         },
         {
           "id": "p15-ocr3",
           "type": "other",
-          "sourceText": "‘OF 4",
+          "sourceText": "a Miracle.",
           "translatedText": "",
-          "confidence": 44.5,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 95.5,
           "bounds": {
-            "x": 79.29,
-            "y": 7.92,
-            "width": 20.71,
-            "height": 2.92
+            "x": 72.22,
+            "y": 25.89,
+            "width": 15.78,
+            "height": 0.73
           }
         },
         {
-          "id": "p15-ocr4",
-          "type": "other",
-          "sourceText": "yr",
-          "translatedText": "",
-          "confidence": 82.9,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 79.59,
-            "y": 8.23,
-            "width": 7.59,
-            "height": 4.09
-          }
-        },
-        {
-          "id": "p15-ocr5",
-          "type": "other",
-          "sourceText": "“fy ~",
-          "translatedText": "",
-          "confidence": 51.7,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 13.39,
-            "y": 11.14,
-            "width": 25.32,
-            "height": 2.69
-          }
-        },
-        {
-          "id": "p15-ocr6",
-          "type": "other",
-          "sourceText": "po",
-          "translatedText": "",
-          "confidence": 76.1,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 35.89,
-            "y": 14.94,
-            "width": 5.67,
-            "height": 0.78
-          }
-        },
-        {
-          "id": "p15-ocr7",
-          "type": "other",
-          "sourceText": "J) es",
-          "translatedText": "",
-          "confidence": 41.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 52.4,
-            "y": 15.01,
-            "width": 17.43,
-            "height": 2.57
-          }
-        },
-        {
-          "id": "p15-ocr8",
-          "type": "sfx",
-          "sourceText": "AB",
-          "translatedText": "",
-          "confidence": 85.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 67.31,
-            "y": 18.56,
-            "width": 6.93,
-            "height": 2.95
-          }
-        },
-        {
-          "id": "p15-ocr9",
-          "type": "sfx",
-          "sourceText": "GY",
-          "translatedText": "",
-          "confidence": 69.1,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 64.84,
-            "y": 19.48,
-            "width": 7.2,
-            "height": 2.09
-          }
-        },
-        {
-          "id": "p15-ocr10",
-          "type": "other",
-          "sourceText": "APter all, being a\nthis we\nlready considered",
-          "translatedText": "",
-          "confidence": 81.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 65.12,
-            "y": 22.35,
-            "width": 31.09,
-            "height": 3.68
-          }
-        },
-        {
-          "id": "p15-ocr11",
-          "type": "sfx",
-          "sourceText": "SSS",
-          "translatedText": "",
-          "confidence": 49,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 42.08,
-            "y": 24.71,
-            "width": 15.28,
-            "height": 0.44
-          }
-        },
-        {
-          "id": "p15-ocr12",
-          "type": "sfx",
-          "sourceText": "GF;",
-          "translatedText": "",
-          "confidence": 44.6,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 51,
-            "y": 26.2,
-            "width": 12.22,
-            "height": 2.19
-          }
-        },
-        {
-          "id": "p15-ocr13",
-          "type": "sfx",
-          "sourceText": "VY",
-          "translatedText": "",
-          "confidence": 45.5,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 35.09,
-            "y": 26.88,
-            "width": 7.7,
-            "height": 1.19
-          }
-        },
-        {
-          "id": "p15-ocr14",
-          "type": "sfx",
-          "sourceText": "TZ",
-          "translatedText": "",
-          "confidence": 49,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 88.11,
-            "y": 27.48,
-            "width": 11.89,
-            "height": 2.9
-          }
-        },
-        {
-          "id": "p15-ocr15",
-          "type": "sfx",
-          "sourceText": "ZA",
-          "translatedText": "",
-          "confidence": 56.1,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 85.56,
-            "y": 27.77,
-            "width": 8,
-            "height": 2.78
-          }
-        },
-        {
-          "id": "p15-ocr16",
-          "type": "other",
-          "sourceText": "Smal",
-          "translatedText": "",
-          "confidence": 47.8,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 83.42,
-            "y": 35.61,
-            "width": 8.83,
-            "height": 0.89
-          }
-        },
-        {
-          "id": "p15-ocr17",
-          "type": "sfx",
-          "sourceText": "WS",
-          "translatedText": "",
-          "confidence": 54,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 0,
-            "y": 40.63,
-            "width": 4.77,
-            "height": 1.41
-          }
-        },
-        {
-          "id": "p15-ocr18",
-          "type": "sfx",
-          "sourceText": "ZG\nZS",
-          "translatedText": "",
-          "confidence": 54.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 62.23,
-            "y": 52.81,
-            "width": 9.2,
-            "height": 3.5
-          }
-        },
-        {
-          "id": "p15-ocr19",
-          "type": "other",
-          "sourceText": "Yer)\nVW",
-          "translatedText": "",
-          "confidence": 52.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 57.77,
-            "y": 54.87,
-            "width": 19.79,
-            "height": 3.56
-          }
-        },
-        {
-          "id": "p15-ocr20",
-          "type": "sfx",
-          "sourceText": "BZ",
-          "translatedText": "",
-          "confidence": 63,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 10.46,
-            "y": 56.37,
-            "width": 11.86,
-            "height": 2.06
-          }
-        },
-        {
-          "id": "p15-ocr21",
-          "type": "other",
-          "sourceText": "Mf x >",
-          "translatedText": "",
-          "confidence": 45.9,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 40.25,
-            "y": 57.02,
-            "width": 22.73,
-            "height": 1.28
-          }
-        },
-        {
-          "id": "p15-ocr22",
-          "type": "other",
-          "sourceText": "ey.",
-          "translatedText": "",
-          "confidence": 75.9,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 13.4,
-            "y": 63.93,
-            "width": 13.31,
-            "height": 1.37
-          }
-        },
-        {
-          "id": "p15-ocr23",
-          "type": "other",
+          "id": "p15-loose-180-1",
+          "type": "narration",
           "sourceText": "arse",
           "translatedText": "",
           "confidence": 78.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
+          "orientationAngle": 180,
+          "detectionPass": "rotated-loose",
           "bounds": {
-            "x": 67.16,
-            "y": 66.75,
-            "width": 10.13,
-            "height": 1.78
-          }
-        },
-        {
-          "id": "p15-ocr24",
-          "type": "sfx",
-          "sourceText": "FO",
-          "translatedText": "",
-          "confidence": 70.1,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 31.66,
-            "y": 67.23,
-            "width": 2.8,
-            "height": 1.69
-          }
-        },
-        {
-          "id": "p15-ocr25",
-          "type": "sfx",
-          "sourceText": "CZ",
-          "translatedText": "",
-          "confidence": 56.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 24.27,
-            "y": 71.1,
-            "width": 12.8,
-            "height": 3.73
-          }
-        },
-        {
-          "id": "p15-ocr26",
-          "type": "sfx",
-          "sourceText": "WW",
-          "translatedText": "",
-          "confidence": 67.9,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 5.97,
-            "y": 72.43,
-            "width": 17.84,
-            "height": 4.57
-          }
-        },
-        {
-          "id": "p15-ocr27",
-          "type": "sfx",
-          "sourceText": "FA",
-          "translatedText": "",
-          "confidence": 58.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 72.68,
-            "y": 75.4,
-            "width": 11.98,
-            "height": 1.81
+            "x": 67.06,
+            "y": 66.71,
+            "width": 10.32,
+            "height": 1.84
           }
         }
       ]
@@ -4095,168 +647,18 @@
       "page": 16,
       "regions": [
         {
-          "id": "p16-ocr1",
+          "id": "p16-loose-315-1",
           "type": "sfx",
-          "sourceText": "WE",
+          "sourceText": "IN PSS",
           "translatedText": "",
-          "confidence": 79.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 48.8,
+          "orientationAngle": 315,
+          "detectionPass": "rotated-loose",
           "bounds": {
-            "x": 0,
-            "y": 1.15,
-            "width": 30.06,
-            "height": 6.54
-          }
-        },
-        {
-          "id": "p16-ocr2",
-          "type": "sfx",
-          "sourceText": "EE,",
-          "translatedText": "",
-          "confidence": 71.5,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 1.77,
-            "y": 14.46,
-            "width": 19.68,
-            "height": 4.79
-          }
-        },
-        {
-          "id": "p16-ocr3",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 73.2,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 56.78,
-            "y": 18.17,
-            "width": 2.78,
-            "height": 1.22
-          }
-        },
-        {
-          "id": "p16-ocr4",
-          "type": "sfx",
-          "sourceText": "YY",
-          "translatedText": "",
-          "confidence": 47.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 60.52,
-            "y": 19.8,
-            "width": 5.74,
-            "height": 2.6
-          }
-        },
-        {
-          "id": "p16-ocr5",
-          "type": "other",
-          "sourceText": "Wi, |",
-          "translatedText": "",
-          "confidence": 74,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 66.26,
-            "y": 31.4,
-            "width": 14.25,
-            "height": 2.63
-          }
-        },
-        {
-          "id": "p16-ocr6",
-          "type": "sfx",
-          "sourceText": "AK",
-          "translatedText": "",
-          "confidence": 54.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 66.3,
-            "y": 38.5,
-            "width": 22.73,
-            "height": 7.88
-          }
-        },
-        {
-          "id": "p16-ocr7",
-          "type": "sfx",
-          "sourceText": "NY",
-          "translatedText": "",
-          "confidence": 42.1,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 32.83,
-            "y": 69.75,
-            "width": 18,
-            "height": 4.79
-          }
-        },
-        {
-          "id": "p16-ocr8",
-          "type": "sfx",
-          "sourceText": "SF",
-          "translatedText": "",
-          "confidence": 66.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 41.41,
-            "y": 74.39,
-            "width": 19.07,
-            "height": 12.93
-          }
-        },
-        {
-          "id": "p16-ocr9",
-          "type": "other",
-          "sourceText": "eat = .~",
-          "translatedText": "",
-          "confidence": 43.7,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 76.21,
-            "y": 87.97,
-            "width": 14.81,
-            "height": 11.55
-          }
-        },
-        {
-          "id": "p16-ocr10",
-          "type": "other",
-          "sourceText": "| Za",
-          "translatedText": "",
-          "confidence": 77.9,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 7.79,
-            "y": 89.48,
-            "width": 19.08,
-            "height": 4.64
-          }
-        },
-        {
-          "id": "p16-ocr11",
-          "type": "other",
-          "sourceText": "Jaa %",
-          "translatedText": "",
-          "confidence": 52.7,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 5.13,
-            "y": 95.97,
-            "width": 42.52,
-            "height": 4.03
+            "x": 18.1,
+            "y": 77.7,
+            "width": 15.48,
+            "height": 3.63
           }
         }
       ]
@@ -4267,251 +669,35 @@
         {
           "id": "p17-ocr1",
           "type": "other",
-          "sourceText": "Mj) /",
+          "sourceText": "‘ay Mj) /",
           "translatedText": "",
-          "confidence": 57,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 60.5,
           "bounds": {
-            "x": 74.42,
-            "y": 2.37,
-            "width": 16.61,
-            "height": 1.75
+            "x": 0,
+            "y": 0,
+            "width": 93.27,
+            "height": 4.26
           }
         },
         {
           "id": "p17-ocr2",
-          "type": "sfx",
-          "sourceText": "CE",
+          "type": "other",
+          "sourceText": "BLOODSAW PHARMACY",
           "translatedText": "",
-          "confidence": 84.4,
-          "rotation": 90,
-          "detectionPass": "rot90",
+          "confidence": 89.3,
           "bounds": {
-            "x": 19.99,
-            "y": 5.98,
-            "width": 14.8,
-            "height": 5.05
+            "x": 28.64,
+            "y": 58.77,
+            "width": 36.28,
+            "height": 0.45
           }
         },
         {
           "id": "p17-ocr3",
           "type": "other",
-          "sourceText": "= Wy",
-          "translatedText": "",
-          "confidence": 81.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 78.67,
-            "y": 32.96,
-            "width": 3.22,
-            "height": 1.64
-          }
-        },
-        {
-          "id": "p17-ocr4",
-          "type": "other",
-          "sourceText": "Blea =",
-          "translatedText": "",
-          "confidence": 40.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 78.35,
-            "y": 33.64,
-            "width": 18.96,
-            "height": 0.94
-          }
-        },
-        {
-          "id": "p17-ocr5",
-          "type": "sfx",
-          "sourceText": "DISH",
-          "translatedText": "",
-          "confidence": 43.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 68.62,
-            "y": 33.82,
-            "width": 10.76,
-            "height": 1.01
-          }
-        },
-        {
-          "id": "p17-ocr6",
-          "type": "sfx",
-          "sourceText": "KS",
-          "translatedText": "",
-          "confidence": 56.3,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 93.78,
-            "y": 35.5,
-            "width": 3.44,
-            "height": 0.59
-          }
-        },
-        {
-          "id": "p17-ocr7",
-          "type": "sfx",
-          "sourceText": "LL",
-          "translatedText": "",
-          "confidence": 45.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 64.74,
-            "y": 36.29,
-            "width": 10.51,
-            "height": 0.63
-          }
-        },
-        {
-          "id": "p17-ocr8",
-          "type": "sfx",
-          "sourceText": "LP",
-          "translatedText": "",
-          "confidence": 42.3,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 69.7,
-            "y": 42.5,
-            "width": 26.27,
-            "height": 5.93
-          }
-        },
-        {
-          "id": "p17-ocr9",
-          "type": "other",
-          "sourceText": "if\nHe,\nby",
-          "translatedText": "",
-          "confidence": 77.1,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 50.2,
-            "y": 51.82,
-            "width": 16.49,
-            "height": 4.7
-          }
-        },
-        {
-          "id": "p17-ocr10",
-          "type": "other",
-          "sourceText": "Bees",
-          "translatedText": "",
-          "confidence": 44.7,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 82.56,
-            "y": 52.13,
-            "width": 3,
-            "height": 0.8
-          }
-        },
-        {
-          "id": "p17-ocr11",
-          "type": "sfx",
-          "sourceText": "AA",
-          "translatedText": "",
-          "confidence": 52.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 36.99,
-            "y": 53.85,
-            "width": 9.9,
-            "height": 1.17
-          }
-        },
-        {
-          "id": "p17-ocr12",
-          "type": "sfx",
-          "sourceText": "JAN",
-          "translatedText": "",
-          "confidence": 56.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 33.76,
-            "y": 53.91,
-            "width": 2.93,
-            "height": 0.63
-          }
-        },
-        {
-          "id": "p17-ocr13",
-          "type": "sfx",
-          "sourceText": "GP NA",
-          "translatedText": "",
-          "confidence": 56.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 11.64,
-            "y": 54.11,
-            "width": 22.61,
-            "height": 0.89
-          }
-        },
-        {
-          "id": "p17-ocr14",
-          "type": "sfx",
-          "sourceText": "EP",
-          "translatedText": "",
-          "confidence": 48.6,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 37.03,
-            "y": 55.19,
-            "width": 23.83,
-            "height": 1.43
-          }
-        },
-        {
-          "id": "p17-ocr15",
-          "type": "sfx",
-          "sourceText": "ZA",
-          "translatedText": "",
-          "confidence": 75.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 0.29,
-            "y": 57.28,
-            "width": 8.19,
-            "height": 0.82
-          }
-        },
-        {
-          "id": "p17-ocr16",
-          "type": "sfx",
-          "sourceText": "BLOODSAW PHARMACY",
-          "translatedText": "",
-          "confidence": 93.7,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 27.72,
-            "y": 58.77,
-            "width": 37.89,
-            "height": 0.49
-          }
-        },
-        {
-          "id": "p17-ocr17",
-          "type": "other",
           "sourceText": "DING! You have received\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
           "translatedText": "",
           "confidence": 91,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 29.35,
             "y": 67.07,
@@ -4520,43 +706,11 @@
           }
         },
         {
-          "id": "p17-ocr18",
-          "type": "sfx",
-          "sourceText": "TAA",
-          "translatedText": "",
-          "confidence": 45.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 63.37,
-            "y": 75.48,
-            "width": 3.6,
-            "height": 1.03
-          }
-        },
-        {
-          "id": "p17-ocr19",
-          "type": "other",
-          "sourceText": "aiid",
-          "translatedText": "",
-          "confidence": 45.4,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 26.94,
-            "y": 75.56,
-            "width": 10.13,
-            "height": 1.16
-          }
-        },
-        {
-          "id": "p17-ocr20",
+          "id": "p17-ocr4",
           "type": "other",
           "sourceText": "That counts as\nMission complete?\nThat was easy.",
           "translatedText": "",
           "confidence": 90.1,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 65.49,
             "y": 77.85,
@@ -4565,108 +719,31 @@
           }
         },
         {
-          "id": "p17-ocr21",
-          "type": "sfx",
-          "sourceText": "YOUNG\nFELLOW,",
-          "translatedText": "",
-          "confidence": 92.1,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 66.78,
-            "y": 88.63,
-            "width": 12.22,
-            "height": 1.66
-          }
-        },
-        {
-          "id": "p17-ocr22",
-          "type": "sfx",
-          "sourceText": "WA",
-          "translatedText": "",
-          "confidence": 55.5,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 47.66,
-            "y": 91.22,
-            "width": 5.13,
-            "height": 1.01
-          }
-        },
-        {
-          "id": "p17-ocr23",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 49.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 40,
-            "y": 93.5,
-            "width": 2,
-            "height": 0.7
-          }
-        },
-        {
-          "id": "p17-ocr24",
+          "id": "p17-ocr5",
           "type": "other",
-          "sourceText": "iff!",
+          "sourceText": "YOUNG",
           "translatedText": "",
-          "confidence": 76.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
+          "confidence": 95.4,
           "bounds": {
-            "x": 61.67,
-            "y": 93.84,
-            "width": 4.11,
-            "height": 0.9
+            "x": 68.72,
+            "y": 88.73,
+            "width": 10.01,
+            "height": 0.63
           }
         },
         {
-          "id": "p17-ocr25",
+          "id": "p17-loose-270-1",
           "type": "sfx",
           "sourceText": "SASS",
           "translatedText": "",
           "confidence": 81.9,
-          "rotation": 270,
-          "detectionPass": "rot270",
+          "orientationAngle": 270,
+          "detectionPass": "rotated-loose",
           "bounds": {
-            "x": 90.71,
-            "y": 94.73,
-            "width": 3.47,
-            "height": 1.74
-          }
-        },
-        {
-          "id": "p17-ocr26",
-          "type": "sfx",
-          "sourceText": "WY",
-          "translatedText": "",
-          "confidence": 67.6,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 94.17,
-            "y": 95.27,
-            "width": 5.83,
-            "height": 1.22
-          }
-        },
-        {
-          "id": "p17-ocr27",
-          "type": "sfx",
-          "sourceText": "WS",
-          "translatedText": "",
-          "confidence": 53.2,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 91.44,
-            "y": 95.68,
-            "width": 3.67,
-            "height": 0.98
+            "x": 90.77,
+            "y": 94.74,
+            "width": 3.35,
+            "height": 1.71
           }
         }
       ]
@@ -4676,237 +753,23 @@
       "regions": [
         {
           "id": "p18-ocr1",
-          "type": "sfx",
-          "sourceText": "SS",
+          "type": "other",
+          "sourceText": "MORNING,",
           "translatedText": "",
-          "confidence": 71.2,
-          "rotation": 90,
-          "detectionPass": "rot90",
+          "confidence": 83.1,
           "bounds": {
-            "x": 0.88,
-            "y": 3.17,
-            "width": 4.13,
-            "height": 1.35
+            "x": 4.14,
+            "y": 12.38,
+            "width": 14.84,
+            "height": 0.91
           }
         },
         {
           "id": "p18-ocr2",
-          "type": "sfx",
-          "sourceText": "AN",
-          "translatedText": "",
-          "confidence": 52.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 60,
-            "y": 4.61,
-            "width": 1.89,
-            "height": 0.39
-          }
-        },
-        {
-          "id": "p18-ocr3",
-          "type": "sfx",
-          "sourceText": "NA",
-          "translatedText": "",
-          "confidence": 83.9,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 22.26,
-            "y": 6.38,
-            "width": 6.48,
-            "height": 1.06
-          }
-        },
-        {
-          "id": "p18-ocr4",
-          "type": "sfx",
-          "sourceText": "VA",
-          "translatedText": "",
-          "confidence": 56.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 83.64,
-            "y": 6.64,
-            "width": 5.5,
-            "height": 1.66
-          }
-        },
-        {
-          "id": "p18-ocr5",
-          "type": "sfx",
-          "sourceText": "RS",
-          "translatedText": "",
-          "confidence": 74.7,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 23.11,
-            "y": 7.21,
-            "width": 12.34,
-            "height": 1.44
-          }
-        },
-        {
-          "id": "p18-ocr6",
           "type": "other",
-          "sourceText": "hy\nZz",
+          "sourceText": "DO ov HAVE ANY\nTRASH YOU CAN\nGIVE TO THIS OLD\nWOMAN?",
           "translatedText": "",
-          "confidence": 74.9,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 53.34,
-            "y": 7.95,
-            "width": 15.55,
-            "height": 2.36
-          }
-        },
-        {
-          "id": "p18-ocr7",
-          "type": "sfx",
-          "sourceText": "SAY",
-          "translatedText": "",
-          "confidence": 52.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 30.33,
-            "y": 8.04,
-            "width": 29.33,
-            "height": 2.72
-          }
-        },
-        {
-          "id": "p18-ocr8",
-          "type": "other",
-          "sourceText": "4004",
-          "translatedText": "",
-          "confidence": 85.9,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 7.67,
-            "y": 11.31,
-            "width": 7.78,
-            "height": 0.81
-          }
-        },
-        {
-          "id": "p18-ocr9",
-          "type": "other",
-          "sourceText": "Sv",
-          "translatedText": "",
-          "confidence": 78.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 12.89,
-            "y": 11.31,
-            "width": 4.11,
-            "height": 1.93
-          }
-        },
-        {
-          "id": "p18-ocr10",
-          "type": "sfx",
-          "sourceText": "MORNING,",
-          "translatedText": "",
-          "confidence": 83.1,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 3.86,
-            "y": 12.35,
-            "width": 15.4,
-            "height": 0.97
-          }
-        },
-        {
-          "id": "p18-ocr11",
-          "type": "other",
-          "sourceText": "wa",
-          "translatedText": "",
-          "confidence": 72.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 85.33,
-            "y": 13.27,
-            "width": 4.89,
-            "height": 0.81
-          }
-        },
-        {
-          "id": "p18-ocr12",
-          "type": "sfx",
-          "sourceText": "NY",
-          "translatedText": "",
-          "confidence": 77.6,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 75.18,
-            "y": 13.51,
-            "width": 10.63,
-            "height": 2.72
-          }
-        },
-        {
-          "id": "p18-ocr13",
-          "type": "other",
-          "sourceText": "al",
-          "translatedText": "",
-          "confidence": 94.5,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 85.07,
-            "y": 13.81,
-            "width": 9.42,
-            "height": 2.6
-          }
-        },
-        {
-          "id": "p18-ocr14",
-          "type": "sfx",
-          "sourceText": "SS SE\nWN\nNJ",
-          "translatedText": "",
-          "confidence": 61.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 75.46,
-            "y": 14.72,
-            "width": 13.2,
-            "height": 10.61
-          }
-        },
-        {
-          "id": "p18-ocr15",
-          "type": "sfx",
-          "sourceText": "SWS",
-          "translatedText": "",
-          "confidence": 55.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 94.38,
-            "y": 14.95,
-            "width": 5.62,
-            "height": 4.22
-          }
-        },
-        {
-          "id": "p18-ocr16",
-          "type": "other",
-          "sourceText": "DO HAVE ANY\nTRASH YOU CAN\nGIVE TO THIS OLD\nWOMAN?",
-          "translatedText": "",
-          "confidence": 87.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 83.3,
           "bounds": {
             "x": 20.08,
             "y": 20.35,
@@ -4915,243 +778,68 @@
           }
         },
         {
-          "id": "p18-ocr17",
+          "id": "p18-ocr3",
           "type": "other",
-          "sourceText": "oe SS",
+          "sourceText": "You have received an optional\nquest from Human Skin\nScavenger:\nGive “useless trash” to the",
           "translatedText": "",
-          "confidence": 48.4,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 95.64,
-            "y": 26.27,
-            "width": 4.36,
-            "height": 4.95
-          }
-        },
-        {
-          "id": "p18-ocr18",
-          "type": "sfx",
-          "sourceText": "NY",
-          "translatedText": "",
-          "confidence": 78.5,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 73.89,
-            "y": 27.37,
-            "width": 3.67,
-            "height": 0.63
-          }
-        },
-        {
-          "id": "p18-ocr19",
-          "type": "sfx",
-          "sourceText": "IS\nSS",
-          "translatedText": "",
-          "confidence": 75.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 71.51,
-            "y": 38.59,
-            "width": 4.53,
-            "height": 1.52
-          }
-        },
-        {
-          "id": "p18-ocr20",
-          "type": "other",
-          "sourceText": "then",
-          "translatedText": "",
-          "confidence": 50.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 31.67,
-            "y": 39.36,
-            "width": 2.22,
-            "height": 1.72
-          }
-        },
-        {
-          "id": "p18-ocr21",
-          "type": "other",
-          "sourceText": "vw?»",
-          "translatedText": "",
-          "confidence": 50.7,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 63.57,
-            "y": 40.32,
-            "width": 11.42,
-            "height": 1.55
-          }
-        },
-        {
-          "id": "p18-ocr22",
-          "type": "sfx",
-          "sourceText": "EEE",
-          "translatedText": "",
-          "confidence": 57.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 89.27,
-            "y": 44.21,
-            "width": 10.73,
-            "height": 0.69
-          }
-        },
-        {
-          "id": "p18-ocr23",
-          "type": "sfx",
-          "sourceText": "LS",
-          "translatedText": "",
-          "confidence": 67.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 4.67,
-            "y": 48.85,
-            "width": 2.78,
-            "height": 0.26
-          }
-        },
-        {
-          "id": "p18-ocr24",
-          "type": "other",
-          "sourceText": "You have received an optional\nquest from Human Skin\nScavenger:\nGive “useless trash” to the\numan Skin Scavenger",
-          "translatedText": "",
-          "confidence": 94.8,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 95.6,
           "bounds": {
             "x": 13.58,
-            "y": 49.37,
+            "y": 49.45,
             "width": 50.17,
-            "height": 6.39
+            "height": 4.85
           }
         },
         {
-          "id": "p18-ocr25",
-          "type": "sfx",
-          "sourceText": "NS",
+          "id": "p18-ocr4",
+          "type": "other",
+          "sourceText": "NS uman Skin Scavenger eS",
           "translatedText": "",
-          "confidence": 43.4,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 56.3,
           "bounds": {
             "x": 0,
-            "y": 54.46,
-            "width": 8.05,
-            "height": 1.53
+            "y": 54.36,
+            "width": 65.35,
+            "height": 2.36
           }
         },
         {
-          "id": "p18-ocr26",
+          "id": "p18-ocr5",
           "type": "other",
-          "sourceText": "Optional quest completion rewards:\nHuman Skin Scavenger’s\nfavorability +10,\nSkull coin +20\nHuman Skin Scavenger’s reward x1",
+          "sourceText": "Optional quest completion rewards:\nHuman Skin Scavenger’s\n“ey favorability +10,\nSkull coin +20\nHuman Skin Scavenger’s reward x1",
           "translatedText": "",
-          "confidence": 90.6,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 81.3,
           "bounds": {
-            "x": 42.74,
+            "x": 11.96,
             "y": 57.62,
-            "width": 48.41,
+            "width": 80.09,
             "height": 5.23
           }
         },
         {
-          "id": "p18-ocr27",
+          "id": "p18-ocr6",
           "type": "other",
-          "sourceText": "— te,\n5 Uys\nOZ+ Wiad",
+          "sourceText": "WAIT.",
           "translatedText": "",
-          "confidence": 42.6,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 31.36,
-            "y": 60.5,
-            "width": 68.64,
-            "height": 5.43
-          }
-        },
-        {
-          "id": "p18-ocr28",
-          "type": "other",
-          "sourceText": "‘O01",
-          "translatedText": "",
-          "confidence": 51.7,
-          "rotation": 180,
-          "detectionPass": "rot180",
+          "confidence": 94.8,
           "bounds": {
             "x": 7.85,
-            "y": 68.72,
+            "y": 70.62,
             "width": 9.3,
-            "height": 0.89
+            "height": 0.76
           }
         },
         {
-          "id": "p18-ocr29",
-          "type": "sfx",
-          "sourceText": "PLEASE\nWAIT.",
-          "translatedText": "",
-          "confidence": 88.3,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 5.71,
-            "y": 69.55,
-            "width": 13.69,
-            "height": 1.94
-          }
-        },
-        {
-          "id": "p18-ocr30",
+          "id": "p18-ocr7",
           "type": "other",
-          "sourceText": "[t's\nthe Scavenger!\nGotta get rid of her\nquickly.",
+          "sourceText": "the Scavenger!\nGotta get rid of her\nquickly.",
           "translatedText": "",
-          "confidence": 91.3,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 95.7,
           "bounds": {
             "x": 65.24,
-            "y": 71.92,
+            "y": 72.94,
             "width": 30.62,
-            "height": 4
-          }
-        },
-        {
-          "id": "p18-ocr31",
-          "type": "other",
-          "sourceText": "ao\nyp VY =—",
-          "translatedText": "",
-          "confidence": 61.3,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 77.89,
-            "y": 73.07,
-            "width": 10.33,
-            "height": 5.44
-          }
-        },
-        {
-          "id": "p18-ocr32",
-          "type": "other",
-          "sourceText": "| Daa",
-          "translatedText": "",
-          "confidence": 53.9,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 9.28,
-            "y": 94.21,
-            "width": 9.78,
-            "height": 1.58
+            "height": 2.92
           }
         }
       ]
@@ -5161,102 +849,23 @@
       "regions": [
         {
           "id": "p19-ocr1",
-          "type": "sfx",
-          "sourceText": "AY",
+          "type": "other",
+          "sourceText": "THANK",
           "translatedText": "",
-          "confidence": 90.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
+          "confidence": 74.9,
           "bounds": {
-            "x": 60.82,
-            "y": 3.13,
-            "width": 6.13,
-            "height": 2.72
+            "x": 16.2,
+            "y": 52.16,
+            "width": 8.72,
+            "height": 0.73
           }
         },
         {
           "id": "p19-ocr2",
           "type": "other",
-          "sourceText": "A fez",
-          "translatedText": "",
-          "confidence": 57.9,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 23.07,
-            "y": 35.61,
-            "width": 32.98,
-            "height": 2.92
-          }
-        },
-        {
-          "id": "p19-ocr3",
-          "type": "sfx",
-          "sourceText": "THANK\nFELLO",
-          "translatedText": "",
-          "confidence": 76.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 15.57,
-            "y": 51.94,
-            "width": 9.53,
-            "height": 3.35
-          }
-        },
-        {
-          "id": "p19-ocr4",
-          "type": "sfx",
-          "sourceText": "SNAOK NOK",
-          "translatedText": "",
-          "confidence": 66.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 13.1,
-            "y": 53.11,
-            "width": 14.91,
-            "height": 0.81
-          }
-        },
-        {
-          "id": "p19-ocr5",
-          "type": "other",
-          "sourceText": "aAeY NOA\nm7 a5",
-          "translatedText": "",
-          "confidence": 54.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 24.56,
-            "y": 53.51,
-            "width": 50.76,
-            "height": 8.38
-          }
-        },
-        {
-          "id": "p19-ocr6",
-          "type": "other",
-          "sourceText": "Hing",
-          "translatedText": "",
-          "confidence": 50.2,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 75.34,
-            "y": 54.05,
-            "width": 19.32,
-            "height": 5.26
-          }
-        },
-        {
-          "id": "p19-ocr7",
-          "type": "other",
           "sourceText": "DING! You have received\nthe request reward:\nHuman Skin Scavenger’s\nfavorability +10,",
           "translatedText": "",
           "confidence": 90.9,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 12.21,
             "y": 60.14,
@@ -5265,168 +874,31 @@
           }
         },
         {
-          "id": "p19-ocr8",
+          "id": "p19-ocr3",
           "type": "other",
-          "sourceText": "C7",
+          "sourceText": "Se, ib STAB Ey”",
           "translatedText": "",
-          "confidence": 90.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
+          "confidence": 65.3,
           "bounds": {
-            "x": 65.11,
-            "y": 81.7,
-            "width": 2.89,
-            "height": 1.2
+            "x": 10.35,
+            "y": 85.88,
+            "width": 66.19,
+            "height": 3.77
           }
         },
         {
-          "id": "p19-ocr9",
-          "type": "other",
-          "sourceText": "4 SA",
-          "translatedText": "",
-          "confidence": 77.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 67.86,
-            "y": 82.9,
-            "width": 12.72,
-            "height": 0.94
-          }
-        },
-        {
-          "id": "p19-ocr10",
+          "id": "p19-loose-180-1",
           "type": "sfx",
-          "sourceText": "GZ",
+          "sourceText": "SNAOK NOK",
           "translatedText": "",
-          "confidence": 64.6,
-          "rotation": 90,
-          "detectionPass": "rot90",
+          "confidence": 66.5,
+          "orientationAngle": 180,
+          "detectionPass": "rotated-loose",
           "bounds": {
-            "x": 82.63,
-            "y": 83.79,
-            "width": 3.07,
-            "height": 0.99
-          }
-        },
-        {
-          "id": "p19-ocr11",
-          "type": "other",
-          "sourceText": "Zz \\\\",
-          "translatedText": "",
-          "confidence": 53.1,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 16.82,
-            "y": 84.05,
-            "width": 21.91,
-            "height": 1.96
-          }
-        },
-        {
-          "id": "p19-ocr12",
-          "type": "other",
-          "sourceText": "ib",
-          "translatedText": "",
-          "confidence": 74.9,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 38.33,
-            "y": 86.91,
-            "width": 4,
-            "height": 2.01
-          }
-        },
-        {
-          "id": "p19-ocr13",
-          "type": "other",
-          "sourceText": "ih \\\\",
-          "translatedText": "",
-          "confidence": 54.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 24.56,
-            "y": 86.99,
-            "width": 2.11,
-            "height": 0.6
-          }
-        },
-        {
-          "id": "p19-ocr14",
-          "type": "other",
-          "sourceText": "Joel",
-          "translatedText": "",
-          "confidence": 50.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 11.44,
-            "y": 87.54,
-            "width": 5.44,
-            "height": 0.94
-          }
-        },
-        {
-          "id": "p19-ocr15",
-          "type": "sfx",
-          "sourceText": "STAB",
-          "translatedText": "",
-          "confidence": 84.2,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 51.24,
-            "y": 87.89,
-            "width": 16.62,
-            "height": 1.69
-          }
-        },
-        {
-          "id": "p19-ocr16",
-          "type": "sfx",
-          "sourceText": "ANS",
-          "translatedText": "",
-          "confidence": 87.4,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 30.93,
-            "y": 88.8,
-            "width": 4.8,
-            "height": 1.98
-          }
-        },
-        {
-          "id": "p19-ocr17",
-          "type": "sfx",
-          "sourceText": "AS\nSX",
-          "translatedText": "",
-          "confidence": 63,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 16.09,
-            "y": 90.64,
-            "width": 18.93,
-            "height": 4.65
-          }
-        },
-        {
-          "id": "p19-ocr18",
-          "type": "other",
-          "sourceText": "2 oa x Paw",
-          "translatedText": "",
-          "confidence": 40.8,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 32.75,
-            "y": 93.01,
-            "width": 28.62,
-            "height": 0.7
+            "x": 13.24,
+            "y": 53.13,
+            "width": 14.64,
+            "height": 0.79
           }
         }
       ]
@@ -5437,191 +909,61 @@
         {
           "id": "p20-ocr1",
           "type": "other",
-          "sourceText": "YOV\nARE KIND-HEARTED,\nHERE, HERE, HERE,",
+          "sourceText": "ARE KIND-HEARTED,\nHERE, HERE, HERE,",
           "translatedText": "",
-          "confidence": 88.2,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 91.3,
           "bounds": {
-            "x": 5.73,
-            "y": 1.79,
-            "width": 44.99,
-            "height": 3.74
+            "x": 5.84,
+            "y": 3.01,
+            "width": 44.87,
+            "height": 2.45
           }
         },
         {
           "id": "p20-ocr2",
-          "type": "sfx",
-          "sourceText": "YNOK",
+          "type": "other",
+          "sourceText": "YOUR REWARD,",
           "translatedText": "",
-          "confidence": 68,
-          "rotation": 180,
-          "detectionPass": "rot180",
+          "confidence": 90,
           "bounds": {
-            "x": 26.67,
-            "y": 10.14,
-            "width": 12.22,
-            "height": 1.1
+            "x": 26.25,
+            "y": 10.18,
+            "width": 34.39,
+            "height": 1.03
           }
         },
         {
           "id": "p20-ocr3",
-          "type": "sfx",
-          "sourceText": "IN",
-          "translatedText": "",
-          "confidence": 73.9,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 42.76,
-            "y": 12.7,
-            "width": 10.93,
-            "height": 2.41
-          }
-        },
-        {
-          "id": "p20-ocr4",
-          "type": "sfx",
+          "type": "other",
           "sourceText": "GLUB",
           "translatedText": "",
           "confidence": 92.8,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
-            "x": 43.19,
-            "y": 15.89,
-            "width": 15.28,
-            "height": 1.45
-          }
-        },
-        {
-          "id": "p20-ocr5",
-          "type": "sfx",
-          "sourceText": "NO",
-          "translatedText": "",
-          "confidence": 74.1,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 62.9,
-            "y": 20.79,
-            "width": 9.53,
+            "x": 43.47,
+            "y": 15.94,
+            "width": 14.72,
             "height": 1.36
           }
         },
         {
-          "id": "p20-ocr6",
-          "type": "sfx",
-          "sourceText": "TA",
-          "translatedText": "",
-          "confidence": 46.3,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 37.32,
-            "y": 24.59,
-            "width": 5.13,
-            "height": 1.2
-          }
-        },
-        {
-          "id": "p20-ocr7",
+          "id": "p20-ocr4",
           "type": "other",
-          "sourceText": "DING! You can choose to accept the\nHuman Skin Scavenger’s reward, or to\nreject it. If you reject it:\nHuman Skin Scavenger’s favorability -50",
+          "sourceText": "DING! You can choose to accept the\nHuman Skin Scavenger’s reward, or to\nal reject it. If you reject it:\nBS Human Skin Scavenger’s favorability -50",
           "translatedText": "",
-          "confidence": 91.8,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 70.8,
           "bounds": {
-            "x": 12.73,
+            "x": 0,
             "y": 34.19,
-            "width": 80.09,
+            "width": 93.26,
             "height": 4.51
           }
         },
         {
-          "id": "p20-ocr8",
-          "type": "other",
-          "sourceText": "we le",
-          "translatedText": "",
-          "confidence": 56,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 3.33,
-            "y": 34.57,
-            "width": 3.33,
-            "height": 0.9
-          }
-        },
-        {
-          "id": "p20-ocr9",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 72.3,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 0.99,
-            "y": 37.31,
-            "width": 9.9,
-            "height": 0.89
-          }
-        },
-        {
-          "id": "p20-ocr10",
-          "type": "sfx",
-          "sourceText": "DN",
-          "translatedText": "",
-          "confidence": 72.4,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 34.39,
-            "y": 46.17,
-            "width": 6.11,
-            "height": 0.94
-          }
-        },
-        {
-          "id": "p20-ocr11",
-          "type": "sfx",
-          "sourceText": "XG",
-          "translatedText": "",
-          "confidence": 50.9,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 50.61,
-            "y": 47.08,
-            "width": 8.68,
-            "height": 0.54
-          }
-        },
-        {
-          "id": "p20-ocr12",
-          "type": "sfx",
-          "sourceText": "PR",
-          "translatedText": "",
-          "confidence": 53.7,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 6.67,
-            "y": 60.76,
-            "width": 3.56,
-            "height": 0.41
-          }
-        },
-        {
-          "id": "p20-ocr13",
+          "id": "p20-ocr5",
           "type": "other",
           "sourceText": "ACloud",
           "translatedText": "",
-          "confidence": 85.6,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 91.4,
           "bounds": {
             "x": 0.41,
             "y": 61.56,
@@ -5630,63 +972,16 @@
           }
         },
         {
-          "id": "p20-ocr14",
+          "id": "p20-ocr6",
           "type": "other",
           "sourceText": "I WILL TAKE\nTHAT, THANK\nYOU",
           "translatedText": "",
           "confidence": 93.1,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 69.78,
             "y": 62.93,
             "width": 27.32,
             "height": 2.56
-          }
-        },
-        {
-          "id": "p20-ocr15",
-          "type": "other",
-          "sourceText": "| Fal\nEN\nYY",
-          "translatedText": "",
-          "confidence": 64.3,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 28.05,
-            "y": 71.2,
-            "width": 33.45,
-            "height": 6.76
-          }
-        },
-        {
-          "id": "p20-ocr16",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 53.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 58.44,
-            "y": 83.47,
-            "width": 2.67,
-            "height": 0.92
-          }
-        },
-        {
-          "id": "p20-ocr17",
-          "type": "other",
-          "sourceText": "‘YO",
-          "translatedText": "",
-          "confidence": 80.8,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 16.56,
-            "y": 85.24,
-            "width": 7.11,
-            "height": 1.05
           }
         }
       ]
@@ -5697,56 +992,22 @@
         {
           "id": "p21-ocr1",
           "type": "other",
-          "sourceText": "DING! You have received the\nHuman Skin Scavenger’s reward:\nTailor Shop Owner’s eyeball x1,\nPork Butcher Owner's eyeball x1,\nHuman Skin\nfavorahility +20 DING!\nST",
+          "sourceText": "DING! You have received the\nHuman Skin Scavenger’s reward:\nTailor Shop Owner's eyeball x1,\nPork Butcher Owner's eyeball x1,\nHuman Skin Scavenger’s\nfavorahility +20 DING!",
           "translatedText": "",
-          "confidence": 83.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 85,
           "bounds": {
-            "x": 0,
-            "y": 7.63,
-            "width": 71.87,
-            "height": 13.99
+            "x": 7.41,
+            "y": 7.95,
+            "width": 52.18,
+            "height": 8.18
           }
         },
         {
           "id": "p21-ocr2",
           "type": "other",
-          "sourceText": "Wr",
-          "translatedText": "",
-          "confidence": 78.3,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 43.22,
-            "y": 22.91,
-            "width": 7.44,
-            "height": 1.02
-          }
-        },
-        {
-          "id": "p21-ocr3",
-          "type": "other",
-          "sourceText": "Phew —\nthat was\nClose.",
-          "translatedText": "",
-          "confidence": 89.5,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 67.45,
-            "y": 26.05,
-            "width": 19.32,
-            "height": 4.37
-          }
-        },
-        {
-          "id": "p21-ocr4",
-          "type": "other",
           "sourceText": "| MODE",
           "translatedText": "",
           "confidence": 63.1,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 27.96,
             "y": 37.99,
@@ -5755,73 +1016,24 @@
           }
         },
         {
-          "id": "p21-ocr5",
+          "id": "p21-ocr3",
           "type": "other",
-          "sourceText": "[| have heard\nProm Teacher\nthere is a Tailor Shop\nand a Butcher Shop\nacross the road.",
+          "sourceText": "Prom Teacher\nthere is a Tailor Shop\nand a Butcher Shop\nacross the road.",
           "translatedText": "",
-          "confidence": 91.4,
-          "rotation": 0,
-          "detectionPass": "base0",
+          "confidence": 95,
           "bounds": {
             "x": 1.57,
-            "y": 50.57,
+            "y": 51.89,
             "width": 38.75,
-            "height": 6.52
+            "height": 5.12
           }
         },
         {
-          "id": "p21-ocr6",
-          "type": "sfx",
-          "sourceText": "BZ",
-          "translatedText": "",
-          "confidence": 76.2,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 26.13,
-            "y": 58.12,
-            "width": 5.07,
-            "height": 2.37
-          }
-        },
-        {
-          "id": "p21-ocr7",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 75.3,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 10.26,
-            "y": 58.18,
-            "width": 6.27,
-            "height": 2.79
-          }
-        },
-        {
-          "id": "p21-ocr8",
-          "type": "sfx",
-          "sourceText": "CATS HT",
-          "translatedText": "",
-          "confidence": 31.9,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 26.14,
-            "y": 81.18,
-            "width": 18.94,
-            "height": 0.8
-          }
-        },
-        {
-          "id": "p21-ocr9",
+          "id": "p21-ocr4",
           "type": "other",
           "sourceText": "NI I",
           "translatedText": "",
           "confidence": 75.2,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 19.63,
             "y": 81.22,
@@ -5830,18 +1042,33 @@
           }
         },
         {
-          "id": "p21-ocr10",
-          "type": "sfx",
-          "sourceText": "OA",
+          "id": "p21-loose-0-1",
+          "type": "other",
+          "sourceText": "Phew —\nthat was\nClose.",
           "translatedText": "",
-          "confidence": 53.5,
-          "rotation": 270,
-          "detectionPass": "rot270",
+          "confidence": 89.5,
+          "orientationAngle": 0,
+          "detectionPass": "sparse-loose",
           "bounds": {
-            "x": 66.52,
-            "y": 98.17,
-            "width": 3.07,
-            "height": 1.83
+            "x": 67.27,
+            "y": 25.98,
+            "width": 19.68,
+            "height": 4.53
+          }
+        },
+        {
+          "id": "p21-loose-180-2",
+          "type": "narration",
+          "sourceText": "drey |",
+          "translatedText": "",
+          "confidence": 61.6,
+          "orientationAngle": 180,
+          "detectionPass": "rotated-loose",
+          "bounds": {
+            "x": 10.4,
+            "y": 50.88,
+            "width": 10.2,
+            "height": 0.91
           }
         }
       ]
@@ -5854,9 +1081,7 @@
           "type": "other",
           "sourceText": "The Tailor Shop\nStitches human Skin, the\nButcher Shop Sells human\nFlesh. And what the Human\nSkin Scavenger just\ngave me...",
           "translatedText": "",
-          "confidence": 91.4,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 90.8,
           "bounds": {
             "x": 43.51,
             "y": 2.37,
@@ -5867,116 +1092,9 @@
         {
           "id": "p22-ocr2",
           "type": "other",
-          "sourceText": "wees",
-          "translatedText": "",
-          "confidence": 42.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 28.33,
-            "y": 15.46,
-            "width": 6.11,
-            "height": 0.61
-          }
-        },
-        {
-          "id": "p22-ocr3",
-          "type": "sfx",
-          "sourceText": "ASS,",
-          "translatedText": "",
-          "confidence": 49.7,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 15.78,
-            "y": 15.79,
-            "width": 2.22,
-            "height": 1.67
-          }
-        },
-        {
-          "id": "p22-ocr4",
-          "type": "sfx",
-          "sourceText": "ZA",
-          "translatedText": "",
-          "confidence": 49.2,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 39.78,
-            "y": 16.01,
-            "width": 1.11,
-            "height": 1.35
-          }
-        },
-        {
-          "id": "p22-ocr5",
-          "type": "other",
-          "sourceText": "We\nUNS",
-          "translatedText": "",
-          "confidence": 62.5,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 43.43,
-            "y": 19.62,
-            "width": 16.37,
-            "height": 2.9
-          }
-        },
-        {
-          "id": "p22-ocr6",
-          "type": "sfx",
-          "sourceText": "WS",
-          "translatedText": "",
-          "confidence": 69.9,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 12.02,
-            "y": 20.76,
-            "width": 14.18,
-            "height": 0.64
-          }
-        },
-        {
-          "id": "p22-ocr7",
-          "type": "sfx",
-          "sourceText": "XS",
-          "translatedText": "",
-          "confidence": 60.1,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 18,
-            "y": 23.09,
-            "width": 3.56,
-            "height": 0.41
-          }
-        },
-        {
-          "id": "p22-ocr8",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 70.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
-          "bounds": {
-            "x": 39.67,
-            "y": 26.03,
-            "width": 4.78,
-            "height": 0.73
-          }
-        },
-        {
-          "id": "p22-ocr9",
-          "type": "other",
           "sourceText": "are the eyeballs\nFrom the two owners.",
           "translatedText": "",
-          "confidence": 93.3,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 92.7,
           "bounds": {
             "x": 1.74,
             "y": 33.47,
@@ -5985,78 +1103,16 @@
           }
         },
         {
-          "id": "p22-ocr10",
+          "id": "p22-ocr3",
           "type": "other",
           "sourceText": "There i6 another\nrule in this world...",
           "translatedText": "",
           "confidence": 81.3,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 55.68,
             "y": 45.77,
             "width": 42.87,
             "height": 2.9
-          }
-        },
-        {
-          "id": "p22-ocr11",
-          "type": "other",
-          "sourceText": "ZA\nLEE\n$149 Ul =",
-          "translatedText": "",
-          "confidence": 66.3,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 38.12,
-            "y": 47.25,
-            "width": 42.87,
-            "height": 4.6
-          }
-        },
-        {
-          "id": "p22-ocr12",
-          "type": "sfx",
-          "sourceText": "SS",
-          "translatedText": "",
-          "confidence": 89.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 74.37,
-            "y": 51.33,
-            "width": 3.6,
-            "height": 2.08
-          }
-        },
-        {
-          "id": "p22-ocr13",
-          "type": "sfx",
-          "sourceText": "YY",
-          "translatedText": "",
-          "confidence": 47.2,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 69.44,
-            "y": 52.13,
-            "width": 2.56,
-            "height": 0.64
-          }
-        },
-        {
-          "id": "p22-ocr14",
-          "type": "sfx",
-          "sourceText": "SE",
-          "translatedText": "",
-          "confidence": 46.8,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 19.67,
-            "y": 75.3,
-            "width": 0.56,
-            "height": 1.95
           }
         }
       ]
@@ -6067,131 +1123,22 @@
         {
           "id": "p23-ocr1",
           "type": "other",
-          "sourceText": "BB\nAURORA ANIMATIONS\n(HOSTED ON 272i APP)",
+          "sourceText": "AURORA ANIMATIONS\n(HOSTED ON 2H APP)\nCL/ + SENNRYOU",
           "translatedText": "",
-          "confidence": 81.8,
-          "rotation": 0,
-          "detectionPass": "enh0",
+          "confidence": 82.3,
           "bounds": {
-            "x": 11.83,
-            "y": 13.02,
-            "width": 68.66,
-            "height": 9.62
+            "x": 25.8,
+            "y": 18.4,
+            "width": 54.3,
+            "height": 8.36
           }
         },
         {
           "id": "p23-ocr2",
           "type": "other",
-          "sourceText": "AURORA ANIMATIONS\n(HOSTED ON 272i APP)\nTL € cL/RD: SENNRYOU\nRP, PR, TS: BARA CHOU",
-          "translatedText": "",
-          "confidence": 89.3,
-          "rotation": 0,
-          "detectionPass": "sparse0",
-          "bounds": {
-            "x": 13.09,
-            "y": 18.22,
-            "width": 67.37,
-            "height": 11.71
-          }
-        },
-        {
-          "id": "p23-ocr3",
-          "type": "other",
-          "sourceText": "NOHD Valid ‘ad ‘da |\nNOAANNAS 42/70 3 11",
-          "translatedText": "",
-          "confidence": 64.9,
-          "rotation": 180,
-          "detectionPass": "rot180",
-          "bounds": {
-            "x": 2.68,
-            "y": 24.21,
-            "width": 66.31,
-            "height": 8.94
-          }
-        },
-        {
-          "id": "p23-ocr4",
-          "type": "sfx",
-          "sourceText": "LE",
-          "translatedText": "",
-          "confidence": 45.4,
-          "rotation": 0,
-          "detectionPass": "base0",
-          "bounds": {
-            "x": 65.42,
-            "y": 28.1,
-            "width": 12.71,
-            "height": 3.81
-          }
-        },
-        {
-          "id": "p23-ocr5",
-          "type": "sfx",
-          "sourceText": "ET",
-          "translatedText": "",
-          "confidence": 47.4,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 79.44,
-            "y": 40.67,
-            "width": 6.67,
-            "height": 11.81
-          }
-        },
-        {
-          "id": "p23-ocr6",
-          "type": "sfx",
-          "sourceText": "JT\nNG",
-          "translatedText": "",
-          "confidence": 52.6,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 66.18,
-            "y": 65.02,
-            "width": 9.87,
-            "height": 6.88
-          }
-        },
-        {
-          "id": "p23-ocr7",
-          "type": "other",
-          "sourceText": "S8ag",
-          "translatedText": "",
-          "confidence": 39.8,
-          "rotation": 270,
-          "detectionPass": "rot270",
-          "bounds": {
-            "x": 17.67,
-            "y": 67.08,
-            "width": 3.11,
-            "height": 4.25
-          }
-        },
-        {
-          "id": "p23-ocr8",
-          "type": "other",
-          "sourceText": "| SOS",
-          "translatedText": "",
-          "confidence": 62.5,
-          "rotation": 90,
-          "detectionPass": "rot90",
-          "bounds": {
-            "x": 74.86,
-            "y": 70.8,
-            "width": 4.6,
-            "height": 4.45
-          }
-        },
-        {
-          "id": "p23-ocr9",
-          "type": "other",
           "sourceText": "DISCORD INVITE CODE:\nBCZdChPruld\nKO-FILCOM/BARACHOU",
           "translatedText": "",
           "confidence": 75.2,
-          "rotation": 0,
-          "detectionPass": "base0",
           "bounds": {
             "x": 62.06,
             "y": 89.84,
@@ -6200,21 +1147,56 @@
           }
         },
         {
-          "id": "p23-ocr10",
-          "type": "other",
+          "id": "p23-loose-180-1",
+          "type": "narration",
           "sourceText": "Dine",
           "translatedText": "",
           "confidence": 72,
-          "rotation": 180,
-          "detectionPass": "rot180",
+          "orientationAngle": 180,
+          "detectionPass": "rotated-loose",
           "bounds": {
-            "x": 37.09,
-            "y": 93.22,
-            "width": 20.49,
-            "height": 4.7
+            "x": 36.89,
+            "y": 93.13,
+            "width": 20.88,
+            "height": 4.87
+          }
+        },
+        {
+          "id": "p23-loose-180-2",
+          "type": "narration",
+          "sourceText": "NOHD Valid ‘ad ‘da |",
+          "translatedText": "",
+          "confidence": 70.5,
+          "orientationAngle": 180,
+          "detectionPass": "rotated-loose",
+          "bounds": {
+            "x": 2.26,
+            "y": 27.02,
+            "width": 61.92,
+            "height": 6.06
           }
         }
       ]
     }
-  ]
+  ],
+  "looseAngleOcr": {
+    "enabled": true,
+    "angles": [
+      0,
+      45,
+      90,
+      135,
+      180,
+      225,
+      270,
+      315
+    ],
+    "addedRegions": 12,
+    "addedByAngle": {
+      "0": 5,
+      "180": 5,
+      "270": 1,
+      "315": 1
+    }
+  }
 }
