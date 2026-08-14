@@ -38,10 +38,11 @@ jobs:
           wait_200 site "$SITE"
           wait_200 data "$DATA"
           wait_200 ocr "$OCR"
-          wait_200 app "${SITE}app.js?v=16"
-          wait_200 ocr_ui "${SITE}ocr-ui.js?v=16"
-          wait_200 typer_ui "${SITE}typer-ui.js?v=16"
-          wait_200 redraw_ui "${SITE}redraw-ui.js?v=16"
+          wait_200 app "${SITE}app.js?v=17"
+          wait_200 ocr_ui "${SITE}ocr-ui.js?v=17"
+          wait_200 typer_ui "${SITE}typer-ui.js?v=17"
+          wait_200 redraw_ui "${SITE}redraw-ui.js?v=17"
+          wait_200 translate_ui "${SITE}translate-ui.js?v=17"
 
           curl -L -sS --max-time 25 "$DATA" -o /tmp/chapter.json
           node -e "const d=require('/tmp/chapter.json'); if(d.chapterId!=='$UUID'||d.pages.length!==23) process.exit(1); console.log('DATA_OK',d.mangaTitle,d.pages.length)"
@@ -49,17 +50,21 @@ jobs:
           curl -L -sS --max-time 25 "$OCR" -o /tmp/ocr.json
           node -e "const d=require('/tmp/ocr.json'); if(d.chapterId!=='$UUID'||d.totalRegions<1||d.pages.length!==23) process.exit(1); console.log('OCR_OK',d.engine,d.totalRegions,d.pages.length)"
 
-          curl -L -sS --max-time 25 "${SITE}app.js?v=16" -o /tmp/app.js
-          curl -L -sS --max-time 25 "${SITE}ocr-ui.js?v=16" -o /tmp/ocr-ui.js
-          curl -L -sS --max-time 25 "${SITE}typer-ui.js?v=16" -o /tmp/typer-ui.js
-          curl -L -sS --max-time 25 "${SITE}redraw-ui.js?v=16" -o /tmp/redraw-ui.js
+          curl -L -sS --max-time 25 "${SITE}app.js?v=17" -o /tmp/app.js
+          curl -L -sS --max-time 25 "${SITE}ocr-ui.js?v=17" -o /tmp/ocr-ui.js
+          curl -L -sS --max-time 25 "${SITE}typer-ui.js?v=17" -o /tmp/typer-ui.js
+          curl -L -sS --max-time 25 "${SITE}redraw-ui.js?v=17" -o /tmp/redraw-ui.js
+          curl -L -sS --max-time 25 "${SITE}translate-ui.js?v=17" -o /tmp/translate-ui.js
           node --check /tmp/app.js
           node --check /tmp/ocr-ui.js
           node --check /tmp/typer-ui.js
           node --check /tmp/redraw-ui.js
+          node --check /tmp/translate-ui.js
           grep -q 'mangaBridgeTyper' /tmp/typer-ui.js
           grep -q 'mangaBridgeRedraw' /tmp/redraw-ui.js
-          echo 'JS_OK app + ocr-ui + typer-ui + redraw-ui'
+          grep -q 'mangaBridgeTranslate' /tmp/translate-ui.js
+          grep -q 'MANGABRIDGE_SNIPPET_V1' /tmp/translate-ui.js
+          echo 'JS_OK app + ocr-ui + typer-ui + redraw-ui + translate-ui'
 
           CODE=$(curl -L -sS -o /tmp/page1 -w '%{http_code}' --max-time 30 -H 'Referer: https://zeckofc143-hub.github.io/manga-bridge./' "$IMAGE" || true)
           SIZE=$(wc -c </tmp/page1 2>/dev/null || echo 0)
