@@ -8,6 +8,7 @@ on:
     paths:
       - "scripts/ocr-chapter.mjs"
       - "scripts/ocr-paddle-layer.py"
+      - "scripts/ocr-cleanup.py"
       - ".github/workflows/cache-chapter.yml"
 
 permissions:
@@ -68,6 +69,9 @@ jobs:
       - name: Detect clean base text regions
         run: node scripts/ocr-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
 
+      - name: Remove watermark fragments before visual matching
+        run: python scripts/ocr-cleanup.py "${{ steps.chapter.outputs.uuid }}" pre
+
       - name: Install PaddleOCR CPU
         shell: bash
         run: |
@@ -79,6 +83,9 @@ jobs:
         env:
           PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK: "True"
         run: python scripts/ocr-paddle-layer.py "${{ steps.chapter.outputs.uuid }}"
+
+      - name: Final dedupe and watermark cleanup
+        run: python scripts/ocr-cleanup.py "${{ steps.chapter.outputs.uuid }}" post
 
       - name: Commit cached chapter and OCR
         shell: bash
@@ -95,7 +102,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Cache and all-visible-text OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
+          git commit -m "Cache and cleaned all-visible-text OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
@@ -109,7 +116,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com detector de **todo texto visível**: texto comum, vertical/inclinado, texto solto e SFX estilizado. Volte ao MangaBridge e toque em **Verificar novamente**.`
+              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com detector de **todo texto visível**, agrupamento de linhas, deduplicação e filtro de marcas-d’água. Volte ao MangaBridge e toque em **Verificar novamente**.`
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
