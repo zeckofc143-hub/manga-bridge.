@@ -1,34 +1,21 @@
 {
-  "schema": "manga-bridge-ocr/v2",
+  "schema": "manga-bridge-ocr/v3",
   "chapterId": "51429dea-7169-4913-b5d6-a4ee00329eb7",
   "sourceLanguage": "en",
   "engine": "tesseract",
   "tesseractLanguage": "eng",
-  "generatedAt": "2026-08-14T02:29:32.189Z",
+  "generatedAt": "2026-08-14T02:34:46.766Z",
   "filtering": {
     "rawLines": 912,
-    "keptLines": 189,
-    "mergedRegions": 56
+    "joinedLines": 420,
+    "keptLines": 203,
+    "mergedRegions": 79
   },
-  "totalRegions": 56,
+  "totalRegions": 79,
   "pages": [
     {
       "page": 1,
-      "regions": [
-        {
-          "id": "p1-ocr1",
-          "type": "other",
-          "sourceText": "PeavBun Ivanslations",
-          "translatedText": "",
-          "confidence": 47.3,
-          "bounds": {
-            "x": 25.64,
-            "y": 37.32,
-            "width": 66.35,
-            "height": 31.44
-          }
-        }
-      ]
+      "regions": []
     },
     {
       "page": 2,
@@ -49,44 +36,31 @@
         {
           "id": "p2-ocr2",
           "type": "other",
-          "sourceText": "Se BBA) Bi Ee — FR ee ac",
+          "sourceText": "AD\nBin IBA\nSe BBA) Bi Ee — FR ee ac",
           "translatedText": "",
-          "confidence": 42.7,
+          "confidence": 57.2,
           "bounds": {
             "x": 18.57,
-            "y": 33.41,
+            "y": 26.21,
             "width": 60.74,
-            "height": 1.27
+            "height": 9.12
           }
         },
         {
           "id": "p2-ocr3",
           "type": "other",
-          "sourceText": "Wan:",
+          "sourceText": "Wan:\nITE :\nmoa: BIE",
           "translatedText": "",
-          "confidence": 88.9,
+          "confidence": 64.7,
           "bounds": {
-            "x": 29.74,
-            "y": 38.16,
-            "width": 10.63,
-            "height": 0.8
+            "x": 28.96,
+            "y": 37.77,
+            "width": 22.98,
+            "height": 5.44
           }
         },
         {
           "id": "p2-ocr4",
-          "type": "other",
-          "sourceText": "moa: BIE",
-          "translatedText": "",
-          "confidence": 45.3,
-          "bounds": {
-            "x": 29.07,
-            "y": 42,
-            "width": 22.86,
-            "height": 0.82
-          }
-        },
-        {
-          "id": "p2-ocr5",
           "type": "other",
           "sourceText": "THIS IS AN UNCANNY WORLD",
           "translatedText": "",
@@ -99,16 +73,16 @@
           }
         },
         {
-          "id": "p2-ocr6",
+          "id": "p2-ocr5",
           "type": "other",
-          "sourceText": "bal ‘THE DARKNESS IS AS A DEADLY\nSN",
+          "sourceText": "bal ‘THE DARKNESS IS AS A DEADLY\nSN KE,",
           "translatedText": "",
-          "confidence": 89.7,
+          "confidence": 73.9,
           "bounds": {
             "x": 0.64,
             "y": 78.44,
             "width": 88.49,
-            "height": 2.32
+            "height": 2.37
           }
         }
       ]
@@ -132,66 +106,40 @@
         {
           "id": "p3-ocr2",
           "type": "other",
-          "sourceText": "\\ Abeer",
+          "sourceText": "dp Uf BZ ia",
           "translatedText": "",
-          "confidence": 59.2,
+          "confidence": 45.7,
           "bounds": {
-            "x": 84.84,
-            "y": 38.12,
-            "width": 15.16,
-            "height": 2.33
+            "x": 50.52,
+            "y": 20.28,
+            "width": 39.97,
+            "height": 7.43
           }
         },
         {
           "id": "p3-ocr3",
           "type": "other",
-          "sourceText": "22\nOCKED.",
+          "sourceText": "Que \\ Abeer\nITIN OCKED. ITS PREY, CHANCE TO STRIKE.",
           "translatedText": "",
-          "confidence": 70.8,
+          "confidence": 70.2,
           "bounds": {
-            "x": 24.7,
-            "y": 42.94,
-            "width": 16.38,
-            "height": 2.61
+            "x": 11.34,
+            "y": 37.47,
+            "width": 88.66,
+            "height": 10.11
           }
         },
         {
           "id": "p3-ocr4",
           "type": "other",
-          "sourceText": "ITS PREY,\nCHANCE TO STRIKE.",
+          "sourceText": "CS i ay\nif ee eo” po\nmp.) 6",
           "translatedText": "",
-          "confidence": 92.9,
+          "confidence": 49.9,
           "bounds": {
-            "x": 45.86,
-            "y": 43.08,
-            "width": 47.18,
-            "height": 3.99
-          }
-        },
-        {
-          "id": "p3-ocr5",
-          "type": "other",
-          "sourceText": "ITIN",
-          "translatedText": "",
-          "confidence": 76,
-          "bounds": {
-            "x": 15.16,
-            "y": 44.64,
-            "width": 8.68,
-            "height": 2.29
-          }
-        },
-        {
-          "id": "p3-ocr6",
-          "type": "other",
-          "sourceText": "mp.) 6",
-          "translatedText": "",
-          "confidence": 66.7,
-          "bounds": {
-            "x": 22.45,
-            "y": 95.11,
-            "width": 14.54,
-            "height": 1.42
+            "x": 0,
+            "y": 85.37,
+            "width": 63.84,
+            "height": 12.05
           }
         }
       ]
@@ -202,18 +150,57 @@
         {
           "id": "p4-ocr1",
           "type": "other",
-          "sourceText": "\"HE TOP PREDATO\nOFTEN CAMOUFLAGE A\nTHE MOST INNOCENT BEINGS,",
+          "sourceText": "\"HE TOP PREDATO",
           "translatedText": "",
-          "confidence": 88.2,
+          "confidence": 89,
           "bounds": {
-            "x": 11.4,
-            "y": 9.75,
-            "width": 74.31,
-            "height": 5.93
+            "x": 31.74,
+            "y": 10.11,
+            "width": 42.41,
+            "height": 1.62
           }
         },
         {
           "id": "p4-ocr2",
+          "type": "other",
+          "sourceText": "THE MOST INNOCENT BEINGS, OFTEN CAMOUFLAGE A",
+          "translatedText": "",
+          "confidence": 87.8,
+          "bounds": {
+            "x": 11.4,
+            "y": 11.12,
+            "width": 74.31,
+            "height": 4.43
+          }
+        },
+        {
+          "id": "p4-ocr3",
+          "type": "other",
+          "sourceText": "ab. af Re",
+          "translatedText": "",
+          "confidence": 49.2,
+          "bounds": {
+            "x": 51.93,
+            "y": 31.25,
+            "width": 8.92,
+            "height": 2.37
+          }
+        },
+        {
+          "id": "p4-ocr4",
+          "type": "other",
+          "sourceText": "Sat WX Woe",
+          "translatedText": "",
+          "confidence": 39.5,
+          "bounds": {
+            "x": 27.54,
+            "y": 63.47,
+            "width": 41.92,
+            "height": 2.09
+          }
+        },
+        {
+          "id": "p4-ocr5",
           "type": "other",
           "sourceText": "ANS",
           "translatedText": "",
@@ -226,16 +213,16 @@
           }
         },
         {
-          "id": "p4-ocr3",
+          "id": "p4-ocr6",
           "type": "other",
-          "sourceText": "idMeé ge. com",
+          "sourceText": "ty) fay. NY Mie i, veh idMeé ge. com",
           "translatedText": "",
-          "confidence": 67.1,
+          "confidence": 49.7,
           "bounds": {
-            "x": 11.41,
-            "y": 97.53,
-            "width": 32.51,
-            "height": 2.41
+            "x": 0,
+            "y": 94.75,
+            "width": 62.77,
+            "height": 5.25
           }
         }
       ]
@@ -272,13 +259,13 @@
         {
           "id": "p8-ocr1",
           "type": "other",
-          "sourceText": "EVERY HORROR\nELEMENT THAT\nYOU COULD\nTHINK OF,\nFLOWS THROUGH\nTHIS DARK WORLD\nAS IF ITS\nBLOODSTREAM.",
+          "sourceText": "EVERY HORROR\nELEMENT THAT\nYOU COULD\nTHINK OF,\nFLOWS THROUGH\nTHIS DARK WORLD\nAS IF ITS [AZ\nBLOODSTREAM.",
           "translatedText": "",
-          "confidence": 95.5,
+          "confidence": 88.5,
           "bounds": {
-            "x": 59.41,
+            "x": 59.22,
             "y": 10.05,
-            "width": 30.07,
+            "width": 34.22,
             "height": 6.4
           }
         },
@@ -333,6 +320,19 @@
             "width": 58.91,
             "height": 1.48
           }
+        },
+        {
+          "id": "p8-ocr6",
+          "type": "other",
+          "sourceText": "dea ip",
+          "translatedText": "",
+          "confidence": 49.2,
+          "bounds": {
+            "x": 12.29,
+            "y": 96.82,
+            "width": 40.09,
+            "height": 3.18
+          }
         }
       ]
     },
@@ -386,6 +386,19 @@
         {
           "id": "p10-ocr1",
           "type": "other",
+          "sourceText": "CNN Fe",
+          "translatedText": "",
+          "confidence": 51.7,
+          "bounds": {
+            "x": 12.42,
+            "y": 0,
+            "width": 87.58,
+            "height": 9.9
+          }
+        },
+        {
+          "id": "p10-ocr2",
+          "type": "other",
           "sourceText": "LIN EN! IT’S TIME.\nGO HANG THE LIGHT OUTSIDE\nAND GET READY TO OPEN FOR\nBUSINESS.",
           "translatedText": "",
           "confidence": 91.9,
@@ -397,7 +410,7 @@
           }
         },
         {
-          "id": "p10-ocr2",
+          "id": "p10-ocr3",
           "type": "other",
           "sourceText": "DING",
           "translatedText": "",
@@ -417,14 +430,66 @@
         {
           "id": "p11-ocr1",
           "type": "other",
-          "sourceText": "You have received a quest from\nyour teacher, Bloodsaw Maniac:\nOpen for business, hang the Soul\nLamp at the door.\nQuest completion rewards:\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb\nThis i6...a system?\n[b'S been 2 years since |\nentered this world...\nFinally!\nIc\nNo time to\nstudy this\nPor now,\nWhat 6 imperative is to\ncarry out teacher's order\nimmediately, on else...",
+          "sourceText": "You have received a quest from\nyour teacher, Bloodsaw Maniac:\nOpen for business, hang the Soul\nLamp at the door.",
           "translatedText": "",
-          "confidence": 89.2,
+          "confidence": 92.8,
           "bounds": {
-            "x": 2.71,
-            "y": 0,
-            "width": 97.29,
-            "height": 93.01
+            "x": 37.52,
+            "y": 4.56,
+            "width": 59.52,
+            "height": 4.29
+          }
+        },
+        {
+          "id": "p11-ocr2",
+          "type": "other",
+          "sourceText": "Quest completion rewards:\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
+          "translatedText": "",
+          "confidence": 86.9,
+          "bounds": {
+            "x": 4.73,
+            "y": 10.32,
+            "width": 54.76,
+            "height": 4.83
+          }
+        },
+        {
+          "id": "p11-ocr3",
+          "type": "other",
+          "sourceText": "This i6...a system?\n[b'S been 2 years since |\nentered this world...\nFinally!",
+          "translatedText": "",
+          "confidence": 85.6,
+          "bounds": {
+            "x": 64.78,
+            "y": 25.44,
+            "width": 34.22,
+            "height": 2.88
+          }
+        },
+        {
+          "id": "p11-ocr4",
+          "type": "other",
+          "sourceText": "No time to\nstudy this\nAy Por now, LZ FY",
+          "translatedText": "",
+          "confidence": 76.2,
+          "bounds": {
+            "x": 35.51,
+            "y": 52.46,
+            "width": 47.54,
+            "height": 5.39
+          }
+        },
+        {
+          "id": "p11-ocr5",
+          "type": "other",
+          "sourceText": "What 6 imperative is to\ncarry out teacher's order\nimmediately, on else...",
+          "translatedText": "",
+          "confidence": 86.4,
+          "bounds": {
+            "x": 18.53,
+            "y": 81.3,
+            "width": 59.28,
+            "height": 4.03
           }
         }
       ]
@@ -461,6 +526,19 @@
         {
           "id": "p12-ocr3",
           "type": "other",
+          "sourceText": "Ss il Wd",
+          "translatedText": "",
+          "confidence": 68.1,
+          "bounds": {
+            "x": 41.77,
+            "y": 92.34,
+            "width": 58.23,
+            "height": 5.77
+          }
+        },
+        {
+          "id": "p12-ocr4",
+          "type": "other",
           "sourceText": "IP this was bePore,",
           "translatedText": "",
           "confidence": 82.3,
@@ -488,6 +566,19 @@
             "width": 55.36,
             "height": 3.61
           }
+        },
+        {
+          "id": "p13-ocr2",
+          "type": "other",
+          "sourceText": "ApS if",
+          "translatedText": "",
+          "confidence": 45,
+          "bounds": {
+            "x": 61.16,
+            "y": 53.63,
+            "width": 25.91,
+            "height": 5.49
+          }
         }
       ]
     },
@@ -497,9 +588,35 @@
         {
           "id": "p14-ocr1",
           "type": "other",
-          "sourceText": "Z years ago, it\nteacher who Saved me\nand let me learn medical\nSkilIS Prom him.",
+          "sourceText": "[A AM NN",
           "translatedText": "",
-          "confidence": 89.5,
+          "confidence": 39.7,
+          "bounds": {
+            "x": 27.21,
+            "y": 18.42,
+            "width": 56.59,
+            "height": 2.81
+          }
+        },
+        {
+          "id": "p14-ocr2",
+          "type": "other",
+          "sourceText": "Va ly,",
+          "translatedText": "",
+          "confidence": 46.9,
+          "bounds": {
+            "x": 50.54,
+            "y": 57.85,
+            "width": 49.46,
+            "height": 3.82
+          }
+        },
+        {
+          "id": "p14-ocr3",
+          "type": "other",
+          "sourceText": "Z years ago, it was\nteacher who Saved me\nand let me learn medical\nSkilIS Prom him.",
+          "translatedText": "",
+          "confidence": 90.8,
           "bounds": {
             "x": 50.04,
             "y": 61.99,
@@ -508,29 +625,16 @@
           }
         },
         {
-          "id": "p14-ocr2",
+          "id": "p14-ocr4",
           "type": "other",
-          "sourceText": "was",
+          "sourceText": "Although the days LAA\nare monotonous,\nthe overall Situation\nis not bad.",
           "translatedText": "",
-          "confidence": 96,
+          "confidence": 81.2,
           "bounds": {
-            "x": 90.31,
-            "y": 62.33,
-            "width": 7.94,
-            "height": 0.61
-          }
-        },
-        {
-          "id": "p14-ocr3",
-          "type": "other",
-          "sourceText": "Although the days\nare monotonous,\nthe overall Situation\nis not bad.",
-          "translatedText": "",
-          "confidence": 84.2,
-          "bounds": {
-            "x": 54.13,
-            "y": 73.36,
-            "width": 33.86,
-            "height": 3.28
+            "x": 53.47,
+            "y": 73.06,
+            "width": 46.53,
+            "height": 3.61
           }
         }
       ]
@@ -541,31 +645,18 @@
         {
           "id": "p15-ocr1",
           "type": "other",
-          "sourceText": "=, anes ing able\nSEAR “aire ead con onsidered\na Miracle.",
+          "sourceText": "SEAR “aire ead con onsidered =, anes ing able Pld is\nby VY GF; Li; IN",
           "translatedText": "",
-          "confidence": 74.7,
+          "confidence": 53.4,
           "bounds": {
-            "x": 40.13,
-            "y": 22.58,
-            "width": 58.3,
-            "height": 4.35
+            "x": 10.48,
+            "y": 22.08,
+            "width": 89.52,
+            "height": 10.35
           }
         },
         {
           "id": "p15-ocr2",
-          "type": "other",
-          "sourceText": "Pld is",
-          "translatedText": "",
-          "confidence": 73.2,
-          "bounds": {
-            "x": 89.93,
-            "y": 23.75,
-            "width": 8.92,
-            "height": 1.25
-          }
-        },
-        {
-          "id": "p15-ocr3",
           "type": "other",
           "sourceText": "n this wo",
           "translatedText": "",
@@ -576,18 +667,84 @@
             "width": 14.91,
             "height": 0.75
           }
+        },
+        {
+          "id": "p15-ocr3",
+          "type": "other",
+          "sourceText": "a Miracle.",
+          "translatedText": "",
+          "confidence": 95.5,
+          "bounds": {
+            "x": 71.92,
+            "y": 25.88,
+            "width": 16.38,
+            "height": 0.75
+          }
         }
       ]
     },
     {
       "page": 16,
-      "regions": []
+      "regions": [
+        {
+          "id": "p16-ocr1",
+          "type": "other",
+          "sourceText": "“wl AK",
+          "translatedText": "",
+          "confidence": 43.7,
+          "bounds": {
+            "x": 21.38,
+            "y": 38.5,
+            "width": 69.79,
+            "height": 7.88
+          }
+        }
+      ]
     },
     {
       "page": 17,
       "regions": [
         {
           "id": "p17-ocr1",
+          "type": "other",
+          "sourceText": "‘ay Mj) /",
+          "translatedText": "",
+          "confidence": 60.5,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 95.08,
+            "height": 4.43
+          }
+        },
+        {
+          "id": "p17-ocr2",
+          "type": "other",
+          "sourceText": "DISH Blea =",
+          "translatedText": "",
+          "confidence": 41.8,
+          "bounds": {
+            "x": 67.73,
+            "y": 33.59,
+            "width": 30.43,
+            "height": 1.27
+          }
+        },
+        {
+          "id": "p17-ocr3",
+          "type": "other",
+          "sourceText": "al we EP",
+          "translatedText": "",
+          "confidence": 39.6,
+          "bounds": {
+            "x": 6.46,
+            "y": 54.87,
+            "width": 55.86,
+            "height": 1.78
+          }
+        },
+        {
+          "id": "p17-ocr4",
           "type": "other",
           "sourceText": "BLOODSAW PHARMACY",
           "translatedText": "",
@@ -600,7 +757,7 @@
           }
         },
         {
-          "id": "p17-ocr2",
+          "id": "p17-ocr5",
           "type": "other",
           "sourceText": "DING! You have received\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
           "translatedText": "",
@@ -613,7 +770,7 @@
           }
         },
         {
-          "id": "p17-ocr3",
+          "id": "p17-ocr6",
           "type": "other",
           "sourceText": "That counts as\nMission complete?\nThat was easy.",
           "translatedText": "",
@@ -626,7 +783,7 @@
           }
         },
         {
-          "id": "p17-ocr4",
+          "id": "p17-ocr7",
           "type": "other",
           "sourceText": "YOUNG\nFELLOW,",
           "translatedText": "",
@@ -672,14 +829,66 @@
         {
           "id": "p18-ocr3",
           "type": "other",
-          "sourceText": "You have received an optional\nquest from Human Skin\nScavenger:\nGive “useless trash” to the\numan Skin Scavenger\nOptional quest completion rewards:\nHuman Skin Scavenger’s\nfavorability +10,\nSkull coin +20\nHuman Skin Scavenger’s reward x1\nPLEASE\nWAIT.\n[t's\nthe Scavenger!\nGotta get rid of her\nquickly.",
+          "sourceText": "You have received an optional\nquest from Human Skin\nScavenger:\nGive “useless trash” to the",
           "translatedText": "",
-          "confidence": 91.8,
+          "confidence": 95.6,
           "bounds": {
-            "x": 1.9,
-            "y": 47.11,
-            "width": 97.53,
-            "height": 31.19
+            "x": 12.63,
+            "y": 49.28,
+            "width": 52.07,
+            "height": 5.19
+          }
+        },
+        {
+          "id": "p18-ocr4",
+          "type": "other",
+          "sourceText": "NS uman Skin Scavenger eS",
+          "translatedText": "",
+          "confidence": 56.3,
+          "bounds": {
+            "x": 0,
+            "y": 54.27,
+            "width": 66.62,
+            "height": 2.53
+          }
+        },
+        {
+          "id": "p18-ocr5",
+          "type": "other",
+          "sourceText": "Optional quest completion rewards:\nHuman Skin Scavenger’s\n“ey favorability +10,\nSkull coin +20\nHuman Skin Scavenger’s reward x1",
+          "translatedText": "",
+          "confidence": 81.3,
+          "bounds": {
+            "x": 10.44,
+            "y": 57.43,
+            "width": 83.11,
+            "height": 5.6
+          }
+        },
+        {
+          "id": "p18-ocr6",
+          "type": "other",
+          "sourceText": "PLEASE\nWAIT.",
+          "translatedText": "",
+          "confidence": 88.3,
+          "bounds": {
+            "x": 5.71,
+            "y": 69.55,
+            "width": 13.69,
+            "height": 1.94
+          }
+        },
+        {
+          "id": "p18-ocr7",
+          "type": "other",
+          "sourceText": "[t's\nthe Scavenger!\nGotta get rid of her\nquickly.",
+          "translatedText": "",
+          "confidence": 91.3,
+          "bounds": {
+            "x": 64.67,
+            "y": 71.78,
+            "width": 31.78,
+            "height": 4.29
           }
         }
       ]
@@ -690,14 +899,40 @@
         {
           "id": "p19-ocr1",
           "type": "other",
-          "sourceText": "THANK\nFELLO\nDING! You have received\nthe request reward:\nHuman Skin Scavenger’s\nfavorability +10,\nSTAB\nmad",
+          "sourceText": "THANK\nFELLO AN",
           "translatedText": "",
-          "confidence": 83.4,
+          "confidence": 66.3,
           "bounds": {
-            "x": 10.99,
-            "y": 48.05,
-            "width": 58.79,
-            "height": 50.02
+            "x": 14.37,
+            "y": 51.9,
+            "width": 35.81,
+            "height": 3.85
+          }
+        },
+        {
+          "id": "p19-ocr2",
+          "type": "other",
+          "sourceText": "DING! You have received\nthe request reward:\nHuman Skin Scavenger’s\nfavorability +10,",
+          "translatedText": "",
+          "confidence": 90.9,
+          "bounds": {
+            "x": 11.24,
+            "y": 59.91,
+            "width": 53.41,
+            "height": 6.85
+          }
+        },
+        {
+          "id": "p19-ocr3",
+          "type": "other",
+          "sourceText": "Se, ib STAB Ey”",
+          "translatedText": "",
+          "confidence": 65.3,
+          "bounds": {
+            "x": 9.1,
+            "y": 85.74,
+            "width": 68.69,
+            "height": 4.04
           }
         }
       ]
@@ -708,14 +943,66 @@
         {
           "id": "p20-ocr1",
           "type": "other",
-          "sourceText": "YOV\nARE KIND-HEARTED,\nHERE, HERE, HERE,\nTHIS VP)\nYOUR REWARD,\nGLUB\nDING! You can choose to accept the\nHuman Skin Scavenger’s reward, or to\nreject it. If you reject it:\nHuman Skin Scavenger’s favorability -50\nACloud\nI WILL TAKE\nTHAT, THANK\nYOU\nO*K,",
+          "sourceText": "YOV\nARE KIND-HEARTED,\nHERE, HERE, HERE,\nTHIS VP)\nYOUR REWARD,",
           "translatedText": "",
-          "confidence": 85.9,
+          "confidence": 79,
+          "bounds": {
+            "x": 4.48,
+            "y": 1.08,
+            "width": 57.81,
+            "height": 10.99
+          }
+        },
+        {
+          "id": "p20-ocr2",
+          "type": "other",
+          "sourceText": "GLUB",
+          "translatedText": "",
+          "confidence": 92.8,
+          "bounds": {
+            "x": 43.19,
+            "y": 15.89,
+            "width": 15.28,
+            "height": 1.45
+          }
+        },
+        {
+          "id": "p20-ocr3",
+          "type": "other",
+          "sourceText": "DING! You can choose to accept the\nHuman Skin Scavenger’s reward, or to\nal reject it. If you reject it:\nBS Human Skin Scavenger’s favorability -50",
+          "translatedText": "",
+          "confidence": 70.8,
           "bounds": {
             "x": 0,
-            "y": 0,
-            "width": 100,
-            "height": 94.78
+            "y": 34.03,
+            "width": 95.06,
+            "height": 4.83
+          }
+        },
+        {
+          "id": "p20-ocr4",
+          "type": "other",
+          "sourceText": "CQ PR\nACloud",
+          "translatedText": "",
+          "confidence": 72,
+          "bounds": {
+            "x": 0,
+            "y": 60.62,
+            "width": 17.72,
+            "height": 1.71
+          }
+        },
+        {
+          "id": "p20-ocr5",
+          "type": "other",
+          "sourceText": "I WILL TAKE\nTHAT, THANK\nYOU",
+          "translatedText": "",
+          "confidence": 93.1,
+          "bounds": {
+            "x": 69.27,
+            "y": 62.84,
+            "width": 28.36,
+            "height": 2.74
           }
         }
       ]
@@ -827,18 +1114,31 @@
         {
           "id": "p23-ocr1",
           "type": "other",
-          "sourceText": "AURORA ANIMATIONS\n(HOSTED ON 2H APP)\n+ SENNRYOU\nCL/\nRP, PR, T: A CHOU",
+          "sourceText": "AURORA ANIMATIONS\n(HOSTED ON 2H APP)\nCL/ + SENNRYOU",
           "translatedText": "",
-          "confidence": 82.4,
+          "confidence": 82.3,
           "bounds": {
-            "x": 11.82,
-            "y": 17.69,
-            "width": 69.91,
-            "height": 13.94
+            "x": 24.77,
+            "y": 18.11,
+            "width": 56.34,
+            "height": 8.96
           }
         },
         {
           "id": "p23-ocr2",
+          "type": "other",
+          "sourceText": "RP, PR, T: A CHOU LE ZF",
+          "translatedText": "",
+          "confidence": 54.2,
+          "bounds": {
+            "x": 11.87,
+            "y": 26.79,
+            "width": 68.81,
+            "height": 8.29
+          }
+        },
+        {
+          "id": "p23-ocr3",
           "type": "other",
           "sourceText": "DISCORD INVITE CODE:\nBCZdChPruld\nKO-FILCOM/BARACHOU",
           "translatedText": "",
