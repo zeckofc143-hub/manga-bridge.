@@ -203,7 +203,7 @@ function renderChapter() {
       regions.push(makeRegion(p.page));
       persistDraft();
       renderPageRegions(p.page);
-      setStatus(`Balão adicionado na página ${p.page}.`, 'ok');
+      setStatus(`Região adicionada na página ${p.page}.`, 'ok');
     });
 
     els.reader.appendChild(node);
@@ -229,7 +229,7 @@ function renderPageRegions(page) {
 
   editor.innerHTML = '';
   overlay.innerHTML = '';
-  stateLabel.textContent = `${regions.length} ${regions.length === 1 ? 'balão' : 'balões'}`;
+  stateLabel.textContent = `${regions.length} ${regions.length === 1 ? 'região' : 'regiões'}`;
 
   regions.forEach((region, index) => {
     const rect = document.createElement('div');
@@ -245,7 +245,7 @@ function renderPageRegions(page) {
     regionCard.className = 'region-card';
     regionCard.innerHTML = `
       <div class="region-head">
-        <div class="region-title">Balão ${index + 1} <span class="muted">${escapeHtml(region.id)}</span></div>
+        <div class="region-title">Região ${index + 1} <span class="muted">${escapeHtml(region.id)}</span></div>
         <button class="danger remove-region" type="button">Remover</button>
       </div>
       <div class="region-grid">
@@ -261,11 +261,11 @@ function renderPageRegions(page) {
         </div>
         <div class="field wide">
           <label>Texto original</label>
-          <textarea data-field="sourceText" placeholder="Texto detectado no balão">${escapeHtml(region.sourceText)}</textarea>
+          <textarea data-field="sourceText" placeholder="Texto detectado nesta região">${escapeHtml(region.sourceText)}</textarea>
         </div>
         <div class="field wide">
           <label>Tradução PT-BR</label>
-          <textarea data-field="translatedText" placeholder="Tradução deste balão">${escapeHtml(region.translatedText)}</textarea>
+          <textarea data-field="translatedText" placeholder="Tradução desta região">${escapeHtml(region.translatedText)}</textarea>
         </div>
         <div class="field"><label>X %</label><input data-bound="x" type="number" min="0" max="100" step="0.1" value="${region.bounds.x}" /></div>
         <div class="field"><label>Y %</label><input data-bound="y" type="number" min="0" max="100" step="0.1" value="${region.bounds.y}" /></div>
@@ -277,7 +277,7 @@ function renderPageRegions(page) {
       regions.splice(index, 1);
       persistDraft();
       renderPageRegions(page);
-      setStatus(`Balão removido da página ${page}.`);
+      setStatus(`Região removida da página ${page}.`);
     });
 
     regionCard.querySelectorAll('[data-field]').forEach((input) => {
@@ -324,7 +324,7 @@ function buildTask() {
   return {
     schema: 'manga-bridge-task/v2',
     createdAt: new Date().toISOString(),
-    purpose: 'Estruturar texto por balões/regiões para tradução PT-BR e posterior typesetting.',
+    purpose: 'Estruturar regiões de texto para tradução PT-BR e posterior typesetting.',
     chapter: {
       chapterId: c.chapterId,
       mangaId: c.mangaId,
@@ -426,7 +426,7 @@ function normalizeTranslation(payload, requireAny = true) {
   }
 
   if (requireAny && ![...map.values()].some((regions) => regions.length)) {
-    throw new Error('Nenhum balão/região válido encontrado.');
+    throw new Error('Nenhuma região válida encontrada.');
   }
   return map;
 }
@@ -439,7 +439,7 @@ async function importTranslation(file) {
     persistDraft();
     renderAllRegions();
     const total = [...state.regions.values()].reduce((sum, regions) => sum + regions.length, 0);
-    setStatus(`${total} balão(ões) importado(s).`, 'ok');
+    setStatus(`${total} região(ões) importada(s).`, 'ok');
   } catch (error) {
     setStatus(`Falha ao importar: ${error.message}`, 'error');
   } finally {
@@ -452,7 +452,7 @@ function clearTranslations() {
   const key = draftKey();
   if (key) localStorage.removeItem(key);
   renderAllRegions();
-  setStatus('Balões removidos.');
+  setStatus('Regiões removidas.');
 }
 
 function exportTranslations() {
