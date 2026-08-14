@@ -33,10 +33,7 @@ function extractChapterId(value) {
   return match[0];
 }
 
-async function fetchJson(url) {
-  const response = await fetch(url, {
-    headers: { Accept: 'application/json' },
-  });
+async function parseJsonResponse(response) {
   if (!response.ok) {
     let detail = '';
     try {
@@ -46,6 +43,39 @@ async function fetchJson(url) {
     throw new Error(`${response.status} ${response.statusText}${detail ? ` — ${detail}` : ''}`);
   }
   return response.json();
+}
+
+async function fetchJson(url) {
+  const attempts = [
+    {
+      label: 'direto',
+      url,
+      init: { headers: { Accept: 'application/json' } },
+    },
+    {
+      label: 'proxy CORS',
+      url: `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
+      init: { headers: { Accept: 'application/json' } },
+    },
+    {
+      label: 'proxy alternativo',
+      url: `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+      init: { headers: { Accept: 'application/json' } },
+    },
+  ];
+
+  const errors = [];
+  for (const attempt of attempts) {
+    try {
+      const response = await fetch(attempt.url, attempt.init);
+      return await parseJsonResponse(response);
+    } catch (error) {
+      console.warn(`Falha no acesso ${attempt.label}:`, error);
+      errors.push(`${attempt.label}: ${error.message}`);
+    }
+  }
+
+  throw new Error(`não foi possível acessar o MangaDex (${errors.join(' | ')})`);
 }
 
 function pickTitle(attributes = {}) {
@@ -154,7 +184,7 @@ function renderChapter() {
     image.src = page.imageUrl;
     image.alt = `${chapter.mangaTitle} — página ${page.page}`;
     image.addEventListener('error', () => {
-      node.querySelector('.page-state').textContent = 'imagem indisponível';
+      card.querySelector('.page-state').textContent = 'imagem indisponível';
     });
     els.reader.appendChild(node);
   }
