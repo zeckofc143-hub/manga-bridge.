@@ -39,6 +39,34 @@ function letterCount(text) {
   return (String(text).match(/[\p{L}]/gu) || []).length;
 }
 
+function boxWidth(box) {
+  return Math.max(1, box.right - box.left);
+}
+
+function boxHeight(box) {
+  return Math.max(1, box.bottom - box.top);
+}
+
+function horizontalOverlap(a, b) {
+  const overlap = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left));
+  return overlap / Math.max(1, Math.min(boxWidth(a), boxWidth(b)));
+}
+
+function verticalOverlap(a, b) {
+  const overlap = Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
+  return overlap / Math.max(1, Math.min(boxHeight(a), boxHeight(b)));
+}
+
+function horizontalGap(a, b) {
+  if (a.right < b.left) return b.left - a.right;
+  if (b.right < a.left) return a.left - b.right;
+  return 0;
+}
+
+function heightSimilarity(a, b) {
+  return Math.min(boxHeight(a), boxHeight(b)) / Math.max(boxHeight(a), boxHeight(b));
+}
+
 function isUsefulLine(line) {
   const text = line.text.trim();
   const compact = text.replace(/\s+/g, '');
@@ -47,39 +75,125 @@ function isUsefulLine(line) {
   const ratio = compact.length ? alnum / compact.length : 0;
 
   if (!text || alnum < 2) return false;
-  if (ratio < 0.45) return false;
-  if (line.confidence < 42) return false;
+  if (ratio < 0.48) return false;
+  if (line.confidence < 38) return false;
 
-  // Tesseract costuma inventar muitos fragmentos de 2–3 letras na arte.
-  // Só mantemos esses fragmentos quando a confiança é realmente alta.
-  if (letters <= 2 && compact.length <= 3 && line.confidence < 82) return false;
-  if (compact.length <= 4 && line.confidence < 62) return false;
+  // Fragmentos minúsculos na arte são a maior fonte de falso positivo.
+  if (letters <= 2 && compact.length <= 3 && line.confidence < 88) return false;
+  if (compact.length <= 4 && line.confidence < 58) return false;
 
   return true;
 }
 
-function horizontalOverlap(a, b) {
-  const overlap = Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left));
-  const smaller = Math.max(1, Math.min(a.right - a.left, b.right - b.left));
-  return overlap / smaller;
+function canJoinSameRow(a, b, pageWidth) {
+  const similarity = heightSimilarity(a, b);
+  if (similarity < 0.42) return false;
+
+  const overlapY = verticalOverlap(a, b);
+  const centerYA = (a.top + a.bottom) / 2;
+  const centerYB = (b.top + b.bottom) / 2;
+  const centerYDistance = Math.abs(centerYA - centerYB);
+  const maxHeight = Math.max(boxHeight(a), boxHeight(b));
+
+  if (overlapY < 0.30 && centerYDistance > maxHeight * 0.72) return false;
+
+  const gapX = horizontalGap(a, b);
+  const maxGap = Math.max(pageWidth * 0.055, maxHeight * 5.5);
+  return gapX <= maxGap;
 }
 
-function canMerge(a, b, pageWidth, pageHeight) {
-  const gap = b.top - a.bottom;
-  const maxHeight = Math.max(1, a.bottom - a.top, b.bottom - b.top);
-  const centerA = (a.left + a.right) / 2;
-  const centerB = (b.left + b.right) / 2;
-  const centerDistance = Math.abs(centerA - centerB);
+function mergeTwoSameRow(a, b) {
+  const ordered = a.left <= b.left ? [a, b] : [b, a];
+  const totalWeight = (a.weight || 1) + (b.weight || 1);
 
-  if (gap < -maxHeight * 0.35) return false;
-  if (gap > Math.max(maxHeight * 2.2, pageHeight * 0.018)) return false;
-
-  const overlap = horizontalOverlap(a, b);
-  const centered = centerDistance <= pageWidth * 0.10;
-  return overlap >= 0.28 || centered;
+  return {
+    left: Math.min(a.left, b.left),
+    top: Math.min(a.top, b.top),
+    right: Math.max(a.right, b.right),
+    bottom: Math.max(a.bottom, b.bottom),
+    confidence: ((a.confidence * (a.weight || 1)) + (b.confidence * (b.weight || 1))) / totalWeight,
+    weight: totalWeight,
+    text: `${ordered[0].text} ${ordered[1].text}`.replace(/\s+/g, ' ').trim(),
+    block: a.block === b.block ? a.block : null,
+    par: a.block === b.block && a.par === b.par ? a.par : null,
+  };
 }
 
-function mergeLines(lines, pageWidth, pageHeight) {
+function mergeSameRowFragments(lines, pageWidth) {
+  let current = [...lines].sort((a, b) => a.top - b.top || a.left - b.left);
+  let changed = true;
+  let guard = 0;
+
+  while (changed && guard < 8) {
+    changed = false;
+    guard += 1;
+    const used = new Set();
+    const next = [];
+
+    for (let i = 0; i < current.length; i += 1) {
+      if (used.has(i)) continue;
+      let merged = current[i];
+      used.add(i);
+
+      while (true) {
+        let bestIndex = -1;
+        let bestGap = Infinity;
+        for (let j = 0; j < current.length; j += 1) {
+          if (used.has(j)) continue;
+          const candidate = current[j];
+          if (!canJoinSameRow(merged, candidate, pageWidth)) continue;
+          const gap = horizontalGap(merged, candidate);
+          if (gap < bestGap) {
+            bestGap = gap;
+            bestIndex = j;
+          }
+        }
+        if (bestIndex < 0) break;
+        merged = mergeTwoSameRow(merged, current[bestIndex]);
+        used.add(bestIndex);
+        changed = true;
+      }
+
+      next.push(merged);
+    }
+
+    current = next.sort((a, b) => a.top - b.top || a.left - b.left);
+  }
+
+  return current;
+}
+
+function canMergeVertical(cluster, line, pageWidth, pageHeight) {
+  const last = cluster.lines[cluster.lines.length - 1];
+  const lastHeight = boxHeight(last);
+  const lineHeight = boxHeight(line);
+  const maxHeight = Math.max(lastHeight, lineHeight);
+  const gap = line.top - last.bottom;
+
+  // Só olhamos para a linha imediatamente anterior do bloco. Isso impede
+  // uma caixa grande de ir "pescando" texto distante pelo resto da página.
+  if (gap < -maxHeight * 0.28) return false;
+  if (gap > Math.max(maxHeight * 1.9, pageHeight * 0.013)) return false;
+  if (heightSimilarity(last, line) < 0.38) return false;
+
+  const overlap = horizontalOverlap(last, line);
+  const centerLast = (last.left + last.right) / 2;
+  const centerLine = (line.left + line.right) / 2;
+  const centerDistance = Math.abs(centerLast - centerLine);
+  const sameTesseractGroup = last.block != null && last.block === line.block && last.par != null && last.par === line.par;
+
+  if (overlap < 0.12 && centerDistance > pageWidth * (sameTesseractGroup ? 0.22 : 0.15)) return false;
+
+  const proposedTop = Math.min(cluster.top, line.top);
+  const proposedBottom = Math.max(cluster.bottom, line.bottom);
+  const proposedHeight = proposedBottom - proposedTop;
+  const maxClusterHeight = pageHeight * (sameTesseractGroup ? 0.24 : 0.18);
+  if (proposedHeight > maxClusterHeight) return false;
+
+  return true;
+}
+
+function mergeVerticalLines(lines, pageWidth, pageHeight) {
   const sorted = [...lines].sort((a, b) => a.top - b.top || a.left - b.left);
   const clusters = [];
 
@@ -88,8 +202,9 @@ function mergeLines(lines, pageWidth, pageHeight) {
     let bestDistance = Infinity;
 
     for (const cluster of clusters) {
-      if (!canMerge(cluster, line, pageWidth, pageHeight)) continue;
-      const distance = Math.max(0, line.top - cluster.bottom);
+      if (!canMergeVertical(cluster, line, pageWidth, pageHeight)) continue;
+      const last = cluster.lines[cluster.lines.length - 1];
+      const distance = Math.max(0, line.top - last.bottom);
       if (distance < bestDistance) {
         best = cluster;
         bestDistance = distance;
@@ -102,8 +217,8 @@ function mergeLines(lines, pageWidth, pageHeight) {
         top: line.top,
         right: line.right,
         bottom: line.bottom,
-        confidenceSum: line.confidence,
-        confidenceCount: 1,
+        confidenceSum: line.confidence * (line.weight || 1),
+        confidenceWeight: line.weight || 1,
         lines: [line],
       });
       continue;
@@ -113,8 +228,8 @@ function mergeLines(lines, pageWidth, pageHeight) {
     best.top = Math.min(best.top, line.top);
     best.right = Math.max(best.right, line.right);
     best.bottom = Math.max(best.bottom, line.bottom);
-    best.confidenceSum += line.confidence;
-    best.confidenceCount += 1;
+    best.confidenceSum += line.confidence * (line.weight || 1);
+    best.confidenceWeight += line.weight || 1;
     best.lines.push(line);
   }
 
@@ -123,7 +238,7 @@ function mergeLines(lines, pageWidth, pageHeight) {
 
 function parseTsv(tsv, pageNumber) {
   const rows = tsv.split(/\r?\n/).filter(Boolean);
-  if (rows.length < 2) return { regions: [], rawLineCount: 0, keptLineCount: 0 };
+  if (rows.length < 2) return { regions: [], rawLineCount: 0, keptLineCount: 0, joinedLineCount: 0 };
 
   let pageWidth = 0;
   let pageHeight = 0;
@@ -165,6 +280,8 @@ function parseTsv(tsv, pageNumber) {
         confSum: 0,
         confCount: 0,
         words: [],
+        block,
+        par,
       });
     }
 
@@ -178,7 +295,7 @@ function parseTsv(tsv, pageNumber) {
     g.words.push({ word, text });
   }
 
-  if (!pageWidth || !pageHeight) return { regions: [], rawLineCount: 0, keptLineCount: 0 };
+  if (!pageWidth || !pageHeight) return { regions: [], rawLineCount: 0, keptLineCount: 0, joinedLineCount: 0 };
 
   const rawLines = [...lineGroups.values()].map((g) => ({
     left: g.left,
@@ -186,20 +303,37 @@ function parseTsv(tsv, pageNumber) {
     right: g.right,
     bottom: g.bottom,
     confidence: g.confSum / Math.max(1, g.confCount),
+    weight: 1,
+    block: g.block,
+    par: g.par,
     text: g.words.sort((a, b) => a.word - b.word).map((w) => w.text).join(' ').trim(),
   }));
 
-  const usefulLines = rawLines.filter(isUsefulLine);
-  const clusters = mergeLines(usefulLines, pageWidth, pageHeight);
+  const prefiltered = rawLines.filter((line) => {
+    const compact = line.text.replace(/\s+/g, '');
+    return alphaNumericCount(compact) >= 2 && line.confidence >= 28;
+  });
+  const joinedLines = mergeSameRowFragments(prefiltered, pageWidth);
+  const usefulLines = joinedLines.filter(isUsefulLine);
+  const clusters = mergeVerticalLines(usefulLines, pageWidth, pageHeight);
   const regions = [];
 
   for (const cluster of clusters) {
     cluster.lines.sort((a, b) => a.top - b.top || a.left - b.left);
     const sourceText = cluster.lines.map((line) => line.text).filter(Boolean).join('\n').trim();
-    const confidence = cluster.confidenceSum / Math.max(1, cluster.confidenceCount);
+    const confidence = cluster.confidenceSum / Math.max(1, cluster.confidenceWeight);
+    const letters = letterCount(sourceText);
+    const regionHeightRatio = (cluster.bottom - cluster.top) / pageHeight;
+    const regionWidthRatio = (cluster.right - cluster.left) / pageWidth;
 
     if (!sourceText || alphaNumericCount(sourceText) < 3) continue;
     if (sourceText.replace(/\s+/g, '').length <= 4 && confidence < 70) continue;
+
+    // Uma frase curtíssima ocupando uma área enorme é quase sempre arte/logo
+    // interpretado como texto. Evita casos como o falso positivo da capa.
+    if (regionHeightRatio > 0.16 && letters < 35) continue;
+    if (regionHeightRatio > 0.28) continue;
+    if (regionWidthRatio > 0.94 && regionHeightRatio > 0.14) continue;
 
     const padX = Math.max(2, (cluster.right - cluster.left) * 0.05);
     const padY = Math.max(2, (cluster.bottom - cluster.top) * 0.10);
@@ -231,12 +365,14 @@ function parseTsv(tsv, pageNumber) {
     regions,
     rawLineCount: rawLines.length,
     keptLineCount: usefulLines.length,
+    joinedLineCount: joinedLines.length,
   };
 }
 
 const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), 'mangabridge-ocr-'));
 const pages = [];
 let rawLinesTotal = 0;
+let joinedLinesTotal = 0;
 let keptLinesTotal = 0;
 
 for (const page of chapter.pages) {
@@ -260,8 +396,9 @@ for (const page of chapter.pages) {
     });
     const parsed = parseTsv(stdout, page.page);
     rawLinesTotal += parsed.rawLineCount;
+    joinedLinesTotal += parsed.joinedLineCount;
     keptLinesTotal += parsed.keptLineCount;
-    console.log(`${parsed.regions.length} regiões limpas (${parsed.keptLineCount}/${parsed.rawLineCount} linhas mantidas)`);
+    console.log(`${parsed.regions.length} regiões (${parsed.rawLineCount} brutas -> ${parsed.joinedLineCount} linhas unidas -> ${parsed.keptLineCount} úteis)`);
     pages.push({ page: page.page, regions: parsed.regions });
   } catch (error) {
     console.log(`falhou: ${error.message}`);
@@ -271,7 +408,7 @@ for (const page of chapter.pages) {
 
 const totalRegions = pages.reduce((sum, p) => sum + p.regions.length, 0);
 const output = {
-  schema: 'manga-bridge-ocr/v2',
+  schema: 'manga-bridge-ocr/v3',
   chapterId,
   sourceLanguage: chapter.sourceLanguage || null,
   engine: 'tesseract',
@@ -279,6 +416,7 @@ const output = {
   generatedAt: new Date().toISOString(),
   filtering: {
     rawLines: rawLinesTotal,
+    joinedLines: joinedLinesTotal,
     keptLines: keptLinesTotal,
     mergedRegions: totalRegions,
   },
@@ -287,4 +425,4 @@ const output = {
 };
 
 await fs.writeFile(outputPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
-console.log(`OCR limpo concluído: ${totalRegions} regiões em ${chapter.pages.length} páginas -> ${outputPath}`);
+console.log(`OCR v3 concluído: ${totalRegions} regiões em ${chapter.pages.length} páginas -> ${outputPath}`);
