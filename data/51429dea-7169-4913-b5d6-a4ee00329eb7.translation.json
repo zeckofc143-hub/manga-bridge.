@@ -1,0 +1,16 @@
+{
+  "schema": "manga-bridge-snippet-translations/v1",
+  "chapterId": "51429dea-7169-4913-b5d6-a4ee00329eb7",
+  "targetLanguage": "pt-BR",
+  "pages": [
+    {
+      "page": 2,
+      "regions": [
+        {
+          "id": "p2-ocr3",
+          "translatedText": "ESTE É UM MUNDO ESTRANHO."
+        }
+      ]
+    }
+  ]
+}
