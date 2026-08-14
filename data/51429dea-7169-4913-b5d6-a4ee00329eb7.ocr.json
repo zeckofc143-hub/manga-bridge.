@@ -1,18 +1,18 @@
 {
-  "schema": "manga-bridge-ocr/v4",
+  "schema": "manga-bridge-ocr/v5",
   "chapterId": "51429dea-7169-4913-b5d6-a4ee00329eb7",
   "sourceLanguage": "en",
   "engine": "tesseract",
   "tesseractLanguage": "eng",
-  "generatedAt": "2026-08-14T02:42:44.029Z",
+  "generatedAt": "2026-08-14T02:50:55.046Z",
   "filtering": {
     "rawLines": 912,
     "joinedLines": 420,
     "keptLines": 203,
     "prunedEdgeLines": 18,
-    "mergedRegions": 67
+    "mergedRegions": 70
   },
-  "totalRegions": 67,
+  "totalRegions": 70,
   "pages": [
     {
       "page": 1,
@@ -174,7 +174,36 @@
     },
     {
       "page": 7,
-      "regions": []
+      "regions": [
+        {
+          "id": "p7-rot270-1",
+          "type": "narration",
+          "sourceText": "VAMPIRES,\nWEREWOLVES,\nGHOSTS,",
+          "translatedText": "",
+          "confidence": 95.8,
+          "orientation": "rotated-270",
+          "bounds": {
+            "x": 76.11,
+            "y": 32.64,
+            "width": 11,
+            "height": 18.05
+          }
+        },
+        {
+          "id": "p7-rot270-2",
+          "type": "sfx",
+          "sourceText": "CYBORGS,\nPUPPETS...",
+          "translatedText": "",
+          "confidence": 92.4,
+          "orientation": "rotated-270",
+          "bounds": {
+            "x": 80.33,
+            "y": 50.43,
+            "width": 6.67,
+            "height": 11.63
+          }
+        }
+      ]
     },
     {
       "page": 8,
@@ -734,6 +763,20 @@
             "width": 30.62,
             "height": 2.92
           }
+        },
+        {
+          "id": "p18-rot90-1",
+          "type": "narration",
+          "sourceText": "co ocr",
+          "translatedText": "",
+          "confidence": 66.3,
+          "orientation": "rotated-90",
+          "bounds": {
+            "x": 68.78,
+            "y": 73.02,
+            "width": 3.11,
+            "height": 1.72
+          }
         }
       ]
     },
@@ -996,5 +1039,13 @@
         }
       ]
     }
-  ]
+  ],
+  "rotatedOcr": {
+    "enabled": true,
+    "angles": [
+      90,
+      270
+    ],
+    "addedRegions": 3
+  }
 }
