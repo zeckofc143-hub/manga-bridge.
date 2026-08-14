@@ -4,7 +4,7 @@
   "sourceLanguage": "en",
   "engine": "tesseract",
   "tesseractLanguage": "eng",
-  "generatedAt": "2026-08-14T02:28:32.842Z",
+  "generatedAt": "2026-08-14T02:29:32.189Z",
   "filtering": {
     "rawLines": 912,
     "keptLines": 189,
