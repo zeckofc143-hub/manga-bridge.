@@ -1,0 +1,47 @@
+name: Probe polygon text detector
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/probe-paddle-text.py"
+      - ".github/workflows/probe-paddle-text.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PaddleOCR CPU
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+          python -m pip install "paddleocr[all]"
+
+      - name: Detect polygons on problem pages
+        env:
+          PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK: "True"
+        run: python scripts/probe-paddle-text.py
+
+      - name: Upload probe JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: paddle-text-probe
+          path: |
+            paddle-probe-summary.json
+            paddle-probe/*.json
+          if-no-files-found: warn
