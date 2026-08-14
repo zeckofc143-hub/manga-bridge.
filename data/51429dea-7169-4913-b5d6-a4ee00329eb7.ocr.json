@@ -1,17 +1,18 @@
 {
-  "schema": "manga-bridge-ocr/v3",
+  "schema": "manga-bridge-ocr/v4",
   "chapterId": "51429dea-7169-4913-b5d6-a4ee00329eb7",
   "sourceLanguage": "en",
   "engine": "tesseract",
   "tesseractLanguage": "eng",
-  "generatedAt": "2026-08-14T02:34:46.766Z",
+  "generatedAt": "2026-08-14T02:42:44.029Z",
   "filtering": {
     "rawLines": 912,
     "joinedLines": 420,
     "keptLines": 203,
-    "mergedRegions": 79
+    "prunedEdgeLines": 18,
+    "mergedRegions": 67
   },
-  "totalRegions": 79,
+  "totalRegions": 67,
   "pages": [
     {
       "page": 1,
@@ -28,61 +29,48 @@
           "confidence": 73.1,
           "bounds": {
             "x": 10.11,
-            "y": 20.32,
+            "y": 20.36,
             "width": 4.78,
-            "height": 1.31
+            "height": 1.22
           }
         },
         {
           "id": "p2-ocr2",
           "type": "other",
-          "sourceText": "AD\nBin IBA\nSe BBA) Bi Ee — FR ee ac",
+          "sourceText": "Wan:",
           "translatedText": "",
-          "confidence": 57.2,
+          "confidence": 88.9,
           "bounds": {
-            "x": 18.57,
-            "y": 26.21,
-            "width": 60.74,
-            "height": 9.12
+            "x": 29.93,
+            "y": 38.18,
+            "width": 10.25,
+            "height": 0.74
           }
         },
         {
           "id": "p2-ocr3",
           "type": "other",
-          "sourceText": "Wan:\nITE :\nmoa: BIE",
+          "sourceText": "THIS IS AN UNCANNY WORLD",
           "translatedText": "",
-          "confidence": 64.7,
+          "confidence": 95.9,
           "bounds": {
-            "x": 28.96,
-            "y": 37.77,
-            "width": 22.98,
-            "height": 5.44
+            "x": 16.7,
+            "y": 53.65,
+            "width": 65.72,
+            "height": 0.64
           }
         },
         {
           "id": "p2-ocr4",
           "type": "other",
-          "sourceText": "THIS IS AN UNCANNY WORLD",
+          "sourceText": "bal ‘THE DARKNESS IS AS A DEADLY",
           "translatedText": "",
-          "confidence": 95.9,
+          "confidence": 83.6,
           "bounds": {
-            "x": 15.46,
-            "y": 53.63,
-            "width": 68.2,
-            "height": 0.68
-          }
-        },
-        {
-          "id": "p2-ocr5",
-          "type": "other",
-          "sourceText": "bal ‘THE DARKNESS IS AS A DEADLY\nSN KE,",
-          "translatedText": "",
-          "confidence": 73.9,
-          "bounds": {
-            "x": 0.64,
-            "y": 78.44,
-            "width": 88.49,
-            "height": 2.37
+            "x": 2.25,
+            "y": 78.55,
+            "width": 85.27,
+            "height": 1.51
           }
         }
       ]
@@ -93,53 +81,27 @@
         {
           "id": "p3-ocr1",
           "type": "other",
-          "sourceText": "bar 54)",
+          "sourceText": "ITIN OCKED. ITS PREY, CHANCE TO STRIKE.",
           "translatedText": "",
-          "confidence": 51.7,
+          "confidence": 79.7,
           "bounds": {
-            "x": 0.99,
-            "y": 0,
-            "width": 5.13,
-            "height": 0.72
+            "x": 13.3,
+            "y": 43.22,
+            "width": 79.85,
+            "height": 3.72
           }
         },
         {
           "id": "p3-ocr2",
           "type": "other",
-          "sourceText": "dp Uf BZ ia",
+          "sourceText": "mp.) 6",
           "translatedText": "",
-          "confidence": 45.7,
+          "confidence": 66.7,
           "bounds": {
-            "x": 50.52,
-            "y": 20.28,
-            "width": 39.97,
-            "height": 7.43
-          }
-        },
-        {
-          "id": "p3-ocr3",
-          "type": "other",
-          "sourceText": "Que \\ Abeer\nITIN OCKED. ITS PREY, CHANCE TO STRIKE.",
-          "translatedText": "",
-          "confidence": 70.2,
-          "bounds": {
-            "x": 11.34,
-            "y": 37.47,
-            "width": 88.66,
-            "height": 10.11
-          }
-        },
-        {
-          "id": "p3-ocr4",
-          "type": "other",
-          "sourceText": "CS i ay\nif ee eo” po\nmp.) 6",
-          "translatedText": "",
-          "confidence": 49.9,
-          "bounds": {
-            "x": 0,
-            "y": 85.37,
-            "width": 63.84,
-            "height": 12.05
+            "x": 22.71,
+            "y": 95.16,
+            "width": 14.02,
+            "height": 1.33
           }
         }
       ]
@@ -154,10 +116,10 @@
           "translatedText": "",
           "confidence": 89,
           "bounds": {
-            "x": 31.74,
-            "y": 10.11,
-            "width": 42.41,
-            "height": 1.62
+            "x": 32.51,
+            "y": 10.16,
+            "width": 40.87,
+            "height": 1.51
           }
         },
         {
@@ -167,62 +129,23 @@
           "translatedText": "",
           "confidence": 87.8,
           "bounds": {
-            "x": 11.4,
-            "y": 11.12,
-            "width": 74.31,
-            "height": 4.43
+            "x": 12.75,
+            "y": 11.27,
+            "width": 71.61,
+            "height": 4.13
           }
         },
         {
           "id": "p4-ocr3",
           "type": "other",
-          "sourceText": "ab. af Re",
-          "translatedText": "",
-          "confidence": 49.2,
-          "bounds": {
-            "x": 51.93,
-            "y": 31.25,
-            "width": 8.92,
-            "height": 2.37
-          }
-        },
-        {
-          "id": "p4-ocr4",
-          "type": "other",
-          "sourceText": "Sat WX Woe",
-          "translatedText": "",
-          "confidence": 39.5,
-          "bounds": {
-            "x": 27.54,
-            "y": 63.47,
-            "width": 41.92,
-            "height": 2.09
-          }
-        },
-        {
-          "id": "p4-ocr5",
-          "type": "other",
           "sourceText": "ANS",
           "translatedText": "",
           "confidence": 81.8,
           "bounds": {
-            "x": 22.11,
-            "y": 69.11,
-            "width": 7.46,
-            "height": 1.19
-          }
-        },
-        {
-          "id": "p4-ocr6",
-          "type": "other",
-          "sourceText": "ty) fay. NY Mie i, veh idMeé ge. com",
-          "translatedText": "",
-          "confidence": 49.7,
-          "bounds": {
-            "x": 0,
-            "y": 94.75,
-            "width": 62.77,
-            "height": 5.25
+            "x": 22.22,
+            "y": 69.15,
+            "width": 7.22,
+            "height": 1.12
           }
         }
       ]
@@ -237,10 +160,10 @@
           "translatedText": "",
           "confidence": 95.6,
           "bounds": {
-            "x": 18.22,
-            "y": 4.24,
-            "width": 63.56,
-            "height": 1.66
+            "x": 19.38,
+            "y": 4.29,
+            "width": 61.24,
+            "height": 1.55
           }
         }
       ]
@@ -263,10 +186,10 @@
           "translatedText": "",
           "confidence": 88.5,
           "bounds": {
-            "x": 59.22,
-            "y": 10.05,
-            "width": 34.22,
-            "height": 6.4
+            "x": 59.84,
+            "y": 10.27,
+            "width": 32.98,
+            "height": 5.97
           }
         },
         {
@@ -276,23 +199,23 @@
           "translatedText": "",
           "confidence": 95.4,
           "bounds": {
-            "x": 4.15,
-            "y": 32.3,
-            "width": 65.14,
-            "height": 2.16
+            "x": 5.33,
+            "y": 32.37,
+            "width": 62.78,
+            "height": 2.01
           }
         },
         {
           "id": "p8-ocr3",
           "type": "other",
-          "sourceText": "RATCH\nSCRATCH",
+          "sourceText": "RATCH",
           "translatedText": "",
-          "confidence": 83.4,
+          "confidence": 92.8,
           "bounds": {
-            "x": 62.24,
-            "y": 47.23,
-            "width": 16.62,
-            "height": 1.59
+            "x": 62.67,
+            "y": 47.32,
+            "width": 11.66,
+            "height": 0.7
           }
         },
         {
@@ -302,10 +225,10 @@
           "translatedText": "",
           "confidence": 93.4,
           "bounds": {
-            "x": 39.7,
-            "y": 58.67,
-            "width": 53.04,
-            "height": 1.66
+            "x": 40.66,
+            "y": 58.73,
+            "width": 51.12,
+            "height": 1.55
           }
         },
         {
@@ -315,23 +238,10 @@
           "translatedText": "",
           "confidence": 96.2,
           "bounds": {
-            "x": 2.32,
-            "y": 80.91,
-            "width": 58.91,
-            "height": 1.48
-          }
-        },
-        {
-          "id": "p8-ocr6",
-          "type": "other",
-          "sourceText": "dea ip",
-          "translatedText": "",
-          "confidence": 49.2,
-          "bounds": {
-            "x": 12.29,
-            "y": 96.82,
-            "width": 40.09,
-            "height": 3.18
+            "x": 3.39,
+            "y": 80.96,
+            "width": 56.77,
+            "height": 1.38
           }
         }
       ]
@@ -346,10 +256,10 @@
           "translatedText": "",
           "confidence": 95.8,
           "bounds": {
-            "x": 43.69,
-            "y": 2.02,
-            "width": 53.29,
-            "height": 3.79
+            "x": 44.66,
+            "y": 2.15,
+            "width": 51.35,
+            "height": 3.54
           }
         },
         {
@@ -359,10 +269,10 @@
           "translatedText": "",
           "confidence": 95.5,
           "bounds": {
-            "x": 3.99,
-            "y": 40.06,
-            "width": 54.02,
-            "height": 3.71
+            "x": 4.97,
+            "y": 40.18,
+            "width": 52.06,
+            "height": 3.47
           }
         },
         {
@@ -372,10 +282,10 @@
           "translatedText": "",
           "confidence": 95,
           "bounds": {
-            "x": 11.02,
-            "y": 79.37,
-            "width": 77.86,
-            "height": 2.92
+            "x": 12.43,
+            "y": 79.47,
+            "width": 75.02,
+            "height": 2.73
           }
         }
       ]
@@ -386,40 +296,27 @@
         {
           "id": "p10-ocr1",
           "type": "other",
-          "sourceText": "CNN Fe",
+          "sourceText": "LIN EN! IT’S TIME.\nGO HANG THE LIGHT OUTSIDE\nAND GET READY TO OPEN FOR\nBUSINESS.",
           "translatedText": "",
-          "confidence": 51.7,
+          "confidence": 91.9,
           "bounds": {
-            "x": 12.42,
-            "y": 0,
-            "width": 87.58,
-            "height": 9.9
+            "x": 20.08,
+            "y": 51.3,
+            "width": 52.29,
+            "height": 5.87
           }
         },
         {
           "id": "p10-ocr2",
           "type": "other",
-          "sourceText": "LIN EN! IT’S TIME.\nGO HANG THE LIGHT OUTSIDE\nAND GET READY TO OPEN FOR\nBUSINESS.",
-          "translatedText": "",
-          "confidence": 91.9,
-          "bounds": {
-            "x": 19.09,
-            "y": 51.09,
-            "width": 54.27,
-            "height": 6.28
-          }
-        },
-        {
-          "id": "p10-ocr3",
-          "type": "other",
           "sourceText": "DING",
           "translatedText": "",
           "confidence": 89.5,
           "bounds": {
-            "x": 9.08,
-            "y": 89.18,
-            "width": 15.28,
-            "height": 2.17
+            "x": 9.36,
+            "y": 89.25,
+            "width": 14.72,
+            "height": 2.03
           }
         }
       ]
@@ -434,10 +331,10 @@
           "translatedText": "",
           "confidence": 92.8,
           "bounds": {
-            "x": 37.52,
-            "y": 4.56,
-            "width": 59.52,
-            "height": 4.29
+            "x": 38.6,
+            "y": 4.71,
+            "width": 57.36,
+            "height": 4
           }
         },
         {
@@ -447,10 +344,10 @@
           "translatedText": "",
           "confidence": 86.9,
           "bounds": {
-            "x": 4.73,
-            "y": 10.32,
-            "width": 54.76,
-            "height": 4.83
+            "x": 5.73,
+            "y": 10.48,
+            "width": 52.76,
+            "height": 4.51
           }
         },
         {
@@ -460,36 +357,49 @@
           "translatedText": "",
           "confidence": 85.6,
           "bounds": {
-            "x": 64.78,
-            "y": 25.44,
-            "width": 34.22,
-            "height": 2.88
+            "x": 65.4,
+            "y": 25.54,
+            "width": 32.98,
+            "height": 2.69
           }
         },
         {
           "id": "p11-ocr4",
           "type": "other",
-          "sourceText": "No time to\nstudy this\nAy Por now, LZ FY",
+          "sourceText": "No time to\nstudy this",
           "translatedText": "",
-          "confidence": 76.2,
+          "confidence": 91.7,
           "bounds": {
-            "x": 35.51,
-            "y": 52.46,
-            "width": 47.54,
-            "height": 5.39
+            "x": 56.63,
+            "y": 52.79,
+            "width": 24.97,
+            "height": 2.23
           }
         },
         {
           "id": "p11-ocr5",
           "type": "other",
+          "sourceText": "Ay Por now, LZ FY",
+          "translatedText": "",
+          "confidence": 68.4,
+          "bounds": {
+            "x": 36.45,
+            "y": 54.98,
+            "width": 42.87,
+            "height": 2.56
+          }
+        },
+        {
+          "id": "p11-ocr6",
+          "type": "other",
           "sourceText": "What 6 imperative is to\ncarry out teacher's order\nimmediately, on else...",
           "translatedText": "",
           "confidence": 86.4,
           "bounds": {
-            "x": 18.53,
-            "y": 81.3,
-            "width": 59.28,
-            "height": 4.03
+            "x": 19.61,
+            "y": 81.44,
+            "width": 57.12,
+            "height": 3.76
           }
         }
       ]
@@ -504,10 +414,10 @@
           "translatedText": "",
           "confidence": 69.1,
           "bounds": {
-            "x": 4.86,
-            "y": 24.34,
-            "width": 27.5,
-            "height": 2.73
+            "x": 5.36,
+            "y": 24.43,
+            "width": 26.5,
+            "height": 2.54
           }
         },
         {
@@ -517,10 +427,10 @@
           "translatedText": "",
           "confidence": 85.3,
           "bounds": {
-            "x": 45.24,
-            "y": 47.41,
-            "width": 33.73,
-            "height": 5.65
+            "x": 45.86,
+            "y": 47.59,
+            "width": 32.51,
+            "height": 5.27
           }
         },
         {
@@ -530,10 +440,10 @@
           "translatedText": "",
           "confidence": 68.1,
           "bounds": {
-            "x": 41.77,
-            "y": 92.34,
-            "width": 58.23,
-            "height": 5.77
+            "x": 42.84,
+            "y": 92.53,
+            "width": 56.65,
+            "height": 5.38
           }
         },
         {
@@ -543,10 +453,10 @@
           "translatedText": "",
           "confidence": 82.3,
           "bounds": {
-            "x": 61.54,
-            "y": 98.23,
-            "width": 32.14,
-            "height": 1.77
+            "x": 62.12,
+            "y": 98.29,
+            "width": 30.98,
+            "height": 1.71
           }
         }
       ]
@@ -557,27 +467,27 @@
         {
           "id": "p13-ocr1",
           "type": "other",
-          "sourceText": "on the spot. Bot now, I'M already\nused to it all.",
+          "sourceText": "on the spot. Bot now, I'M already",
           "translatedText": "",
-          "confidence": 82.9,
+          "confidence": 80.4,
           "bounds": {
-            "x": 44.64,
-            "y": 0,
-            "width": 55.36,
-            "height": 3.61
+            "x": 45.68,
+            "y": 0.04,
+            "width": 54.32,
+            "height": 2.4
           }
         },
         {
           "id": "p13-ocr2",
           "type": "other",
-          "sourceText": "ApS if",
+          "sourceText": "used to it all.",
           "translatedText": "",
-          "confidence": 45,
+          "confidence": 85.5,
           "bounds": {
-            "x": 61.16,
-            "y": 53.63,
-            "width": 25.91,
-            "height": 5.49
+            "x": 62.37,
+            "y": 2.4,
+            "width": 22.14,
+            "height": 0.96
           }
         }
       ]
@@ -588,53 +498,27 @@
         {
           "id": "p14-ocr1",
           "type": "other",
-          "sourceText": "[A AM NN",
+          "sourceText": "Z years ago, it was\nteacher who Saved me\nand let me learn medical\nSkilIS Prom him.",
           "translatedText": "",
-          "confidence": 39.7,
+          "confidence": 90.8,
           "bounds": {
-            "x": 27.21,
-            "y": 18.42,
-            "width": 56.59,
-            "height": 2.81
+            "x": 50.96,
+            "y": 62.13,
+            "width": 48.64,
+            "height": 3.72
           }
         },
         {
           "id": "p14-ocr2",
           "type": "other",
-          "sourceText": "Va ly,",
+          "sourceText": "Although the days LAA\nare monotonous,\nthe overall Situation",
           "translatedText": "",
-          "confidence": 46.9,
+          "confidence": 80.4,
           "bounds": {
-            "x": 50.54,
-            "y": 57.85,
-            "width": 49.46,
-            "height": 3.82
-          }
-        },
-        {
-          "id": "p14-ocr3",
-          "type": "other",
-          "sourceText": "Z years ago, it was\nteacher who Saved me\nand let me learn medical\nSkilIS Prom him.",
-          "translatedText": "",
-          "confidence": 90.8,
-          "bounds": {
-            "x": 50.04,
-            "y": 61.99,
-            "width": 49.96,
-            "height": 3.98
-          }
-        },
-        {
-          "id": "p14-ocr4",
-          "type": "other",
-          "sourceText": "Although the days LAA\nare monotonous,\nthe overall Situation\nis not bad.",
-          "translatedText": "",
-          "confidence": 81.2,
-          "bounds": {
-            "x": 53.47,
-            "y": 73.06,
-            "width": 46.53,
-            "height": 3.61
+            "x": 54.35,
+            "y": 73.22,
+            "width": 45.65,
+            "height": 2.54
           }
         }
       ]
@@ -645,14 +529,14 @@
         {
           "id": "p15-ocr1",
           "type": "other",
-          "sourceText": "SEAR “aire ead con onsidered =, anes ing able Pld is\nby VY GF; Li; IN",
+          "sourceText": "SEAR “aire ead con onsidered =, anes ing able Pld is",
           "translatedText": "",
-          "confidence": 53.4,
+          "confidence": 67.3,
           "bounds": {
-            "x": 10.48,
-            "y": 22.08,
-            "width": 89.52,
-            "height": 10.35
+            "x": 41.11,
+            "y": 22.76,
+            "width": 58.89,
+            "height": 3.33
           }
         },
         {
@@ -662,10 +546,10 @@
           "translatedText": "",
           "confidence": 71.5,
           "bounds": {
-            "x": 75.88,
-            "y": 23.89,
-            "width": 14.91,
-            "height": 0.75
+            "x": 76.15,
+            "y": 23.91,
+            "width": 14.37,
+            "height": 0.73
           }
         },
         {
@@ -675,31 +559,17 @@
           "translatedText": "",
           "confidence": 95.5,
           "bounds": {
-            "x": 71.92,
-            "y": 25.88,
-            "width": 16.38,
-            "height": 0.75
+            "x": 72.22,
+            "y": 25.89,
+            "width": 15.78,
+            "height": 0.73
           }
         }
       ]
     },
     {
       "page": 16,
-      "regions": [
-        {
-          "id": "p16-ocr1",
-          "type": "other",
-          "sourceText": "“wl AK",
-          "translatedText": "",
-          "confidence": 43.7,
-          "bounds": {
-            "x": 21.38,
-            "y": 38.5,
-            "width": 69.79,
-            "height": 7.88
-          }
-        }
-      ]
+      "regions": []
     },
     {
       "page": 17,
@@ -713,86 +583,60 @@
           "bounds": {
             "x": 0,
             "y": 0,
-            "width": 95.08,
-            "height": 4.43
+            "width": 93.27,
+            "height": 4.26
           }
         },
         {
           "id": "p17-ocr2",
           "type": "other",
-          "sourceText": "DISH Blea =",
+          "sourceText": "BLOODSAW PHARMACY",
           "translatedText": "",
-          "confidence": 41.8,
+          "confidence": 89.3,
           "bounds": {
-            "x": 67.73,
-            "y": 33.59,
-            "width": 30.43,
-            "height": 1.27
+            "x": 28.64,
+            "y": 58.77,
+            "width": 36.28,
+            "height": 0.45
           }
         },
         {
           "id": "p17-ocr3",
           "type": "other",
-          "sourceText": "al we EP",
+          "sourceText": "DING! You have received\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
           "translatedText": "",
-          "confidence": 39.6,
+          "confidence": 91,
           "bounds": {
-            "x": 6.46,
-            "y": 54.87,
-            "width": 55.86,
-            "height": 1.78
+            "x": 29.35,
+            "y": 67.07,
+            "width": 46.64,
+            "height": 4
           }
         },
         {
           "id": "p17-ocr4",
           "type": "other",
-          "sourceText": "BLOODSAW PHARMACY",
+          "sourceText": "That counts as\nMission complete?\nThat was easy.",
           "translatedText": "",
-          "confidence": 89.3,
+          "confidence": 90.1,
           "bounds": {
-            "x": 27.96,
-            "y": 58.77,
-            "width": 37.64,
-            "height": 0.45
+            "x": 65.49,
+            "y": 77.85,
+            "width": 33.57,
+            "height": 2.6
           }
         },
         {
           "id": "p17-ocr5",
           "type": "other",
-          "sourceText": "DING! You have received\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
+          "sourceText": "YOUNG",
           "translatedText": "",
-          "confidence": 91,
+          "confidence": 95.4,
           "bounds": {
-            "x": 28.47,
-            "y": 66.93,
-            "width": 48.4,
-            "height": 4.29
-          }
-        },
-        {
-          "id": "p17-ocr6",
-          "type": "other",
-          "sourceText": "That counts as\nMission complete?\nThat was easy.",
-          "translatedText": "",
-          "confidence": 90.1,
-          "bounds": {
-            "x": 64.86,
-            "y": 77.76,
-            "width": 34.83,
-            "height": 2.79
-          }
-        },
-        {
-          "id": "p17-ocr7",
-          "type": "other",
-          "sourceText": "YOUNG\nFELLOW,",
-          "translatedText": "",
-          "confidence": 88.7,
-          "bounds": {
-            "x": 66.78,
-            "y": 88.63,
-            "width": 12.22,
-            "height": 1.66
+            "x": 68.72,
+            "y": 88.73,
+            "width": 10.01,
+            "height": 0.63
           }
         }
       ]
@@ -807,10 +651,10 @@
           "translatedText": "",
           "confidence": 83.1,
           "bounds": {
-            "x": 3.86,
-            "y": 12.35,
-            "width": 15.4,
-            "height": 0.97
+            "x": 4.14,
+            "y": 12.38,
+            "width": 14.84,
+            "height": 0.91
           }
         },
         {
@@ -820,10 +664,10 @@
           "translatedText": "",
           "confidence": 83.3,
           "bounds": {
-            "x": 19.47,
-            "y": 20.18,
-            "width": 33.61,
-            "height": 4.94
+            "x": 20.08,
+            "y": 20.35,
+            "width": 32.39,
+            "height": 4.61
           }
         },
         {
@@ -833,10 +677,10 @@
           "translatedText": "",
           "confidence": 95.6,
           "bounds": {
-            "x": 12.63,
-            "y": 49.28,
-            "width": 52.07,
-            "height": 5.19
+            "x": 13.58,
+            "y": 49.45,
+            "width": 50.17,
+            "height": 4.85
           }
         },
         {
@@ -847,9 +691,9 @@
           "confidence": 56.3,
           "bounds": {
             "x": 0,
-            "y": 54.27,
-            "width": 66.62,
-            "height": 2.53
+            "y": 54.36,
+            "width": 65.35,
+            "height": 2.36
           }
         },
         {
@@ -859,36 +703,36 @@
           "translatedText": "",
           "confidence": 81.3,
           "bounds": {
-            "x": 10.44,
-            "y": 57.43,
-            "width": 83.11,
-            "height": 5.6
+            "x": 11.96,
+            "y": 57.62,
+            "width": 80.09,
+            "height": 5.23
           }
         },
         {
           "id": "p18-ocr6",
           "type": "other",
-          "sourceText": "PLEASE\nWAIT.",
+          "sourceText": "WAIT.",
           "translatedText": "",
-          "confidence": 88.3,
+          "confidence": 94.8,
           "bounds": {
-            "x": 5.71,
-            "y": 69.55,
-            "width": 13.69,
-            "height": 1.94
+            "x": 7.85,
+            "y": 70.62,
+            "width": 9.3,
+            "height": 0.76
           }
         },
         {
           "id": "p18-ocr7",
           "type": "other",
-          "sourceText": "[t's\nthe Scavenger!\nGotta get rid of her\nquickly.",
+          "sourceText": "the Scavenger!\nGotta get rid of her\nquickly.",
           "translatedText": "",
-          "confidence": 91.3,
+          "confidence": 95.7,
           "bounds": {
-            "x": 64.67,
-            "y": 71.78,
-            "width": 31.78,
-            "height": 4.29
+            "x": 65.24,
+            "y": 72.94,
+            "width": 30.62,
+            "height": 2.92
           }
         }
       ]
@@ -899,14 +743,14 @@
         {
           "id": "p19-ocr1",
           "type": "other",
-          "sourceText": "THANK\nFELLO AN",
+          "sourceText": "THANK",
           "translatedText": "",
-          "confidence": 66.3,
+          "confidence": 74.9,
           "bounds": {
-            "x": 14.37,
-            "y": 51.9,
-            "width": 35.81,
-            "height": 3.85
+            "x": 16.2,
+            "y": 52.16,
+            "width": 8.72,
+            "height": 0.73
           }
         },
         {
@@ -916,10 +760,10 @@
           "translatedText": "",
           "confidence": 90.9,
           "bounds": {
-            "x": 11.24,
-            "y": 59.91,
-            "width": 53.41,
-            "height": 6.85
+            "x": 12.21,
+            "y": 60.14,
+            "width": 51.47,
+            "height": 6.39
           }
         },
         {
@@ -929,10 +773,10 @@
           "translatedText": "",
           "confidence": 65.3,
           "bounds": {
-            "x": 9.1,
-            "y": 85.74,
-            "width": 68.69,
-            "height": 4.04
+            "x": 10.35,
+            "y": 85.88,
+            "width": 66.19,
+            "height": 3.77
           }
         }
       ]
@@ -943,66 +787,79 @@
         {
           "id": "p20-ocr1",
           "type": "other",
-          "sourceText": "YOV\nARE KIND-HEARTED,\nHERE, HERE, HERE,\nTHIS VP)\nYOUR REWARD,",
+          "sourceText": "ARE KIND-HEARTED,\nHERE, HERE, HERE,",
           "translatedText": "",
-          "confidence": 79,
+          "confidence": 91.3,
           "bounds": {
-            "x": 4.48,
-            "y": 1.08,
-            "width": 57.81,
-            "height": 10.99
+            "x": 5.84,
+            "y": 3.01,
+            "width": 44.87,
+            "height": 2.45
           }
         },
         {
           "id": "p20-ocr2",
           "type": "other",
-          "sourceText": "GLUB",
+          "sourceText": "YOUR REWARD,",
           "translatedText": "",
-          "confidence": 92.8,
+          "confidence": 90,
           "bounds": {
-            "x": 43.19,
-            "y": 15.89,
-            "width": 15.28,
-            "height": 1.45
+            "x": 26.25,
+            "y": 10.18,
+            "width": 34.39,
+            "height": 1.03
           }
         },
         {
           "id": "p20-ocr3",
+          "type": "other",
+          "sourceText": "GLUB",
+          "translatedText": "",
+          "confidence": 92.8,
+          "bounds": {
+            "x": 43.47,
+            "y": 15.94,
+            "width": 14.72,
+            "height": 1.36
+          }
+        },
+        {
+          "id": "p20-ocr4",
           "type": "other",
           "sourceText": "DING! You can choose to accept the\nHuman Skin Scavenger’s reward, or to\nal reject it. If you reject it:\nBS Human Skin Scavenger’s favorability -50",
           "translatedText": "",
           "confidence": 70.8,
           "bounds": {
             "x": 0,
-            "y": 34.03,
-            "width": 95.06,
-            "height": 4.83
-          }
-        },
-        {
-          "id": "p20-ocr4",
-          "type": "other",
-          "sourceText": "CQ PR\nACloud",
-          "translatedText": "",
-          "confidence": 72,
-          "bounds": {
-            "x": 0,
-            "y": 60.62,
-            "width": 17.72,
-            "height": 1.71
+            "y": 34.19,
+            "width": 93.26,
+            "height": 4.51
           }
         },
         {
           "id": "p20-ocr5",
           "type": "other",
+          "sourceText": "ACloud",
+          "translatedText": "",
+          "confidence": 91.4,
+          "bounds": {
+            "x": 0.41,
+            "y": 61.56,
+            "width": 16.96,
+            "height": 0.66
+          }
+        },
+        {
+          "id": "p20-ocr6",
+          "type": "other",
           "sourceText": "I WILL TAKE\nTHAT, THANK\nYOU",
           "translatedText": "",
           "confidence": 93.1,
           "bounds": {
-            "x": 69.27,
-            "y": 62.84,
-            "width": 28.36,
-            "height": 2.74
+            "x": 69.78,
+            "y": 62.93,
+            "width": 27.32,
+            "height": 2.56
           }
         }
       ]
@@ -1017,10 +874,10 @@
           "translatedText": "",
           "confidence": 85,
           "bounds": {
-            "x": 6.43,
-            "y": 7.65,
-            "width": 54.14,
-            "height": 8.77
+            "x": 7.41,
+            "y": 7.95,
+            "width": 52.18,
+            "height": 8.18
           }
         },
         {
@@ -1030,23 +887,23 @@
           "translatedText": "",
           "confidence": 63.1,
           "bounds": {
-            "x": 27.49,
-            "y": 37.83,
-            "width": 25.79,
-            "height": 4.68
+            "x": 27.96,
+            "y": 37.99,
+            "width": 24.85,
+            "height": 4.37
           }
         },
         {
           "id": "p21-ocr3",
           "type": "other",
-          "sourceText": "[| have heard\nProm Teacher\nthere is a Tailor Shop\nand a Butcher Shop\nacross the road.",
+          "sourceText": "Prom Teacher\nthere is a Tailor Shop\nand a Butcher Shop\nacross the road.",
           "translatedText": "",
-          "confidence": 91.4,
+          "confidence": 95,
           "bounds": {
-            "x": 0.84,
-            "y": 50.33,
-            "width": 40.21,
-            "height": 6.99
+            "x": 1.57,
+            "y": 51.89,
+            "width": 38.75,
+            "height": 5.12
           }
         },
         {
@@ -1056,10 +913,10 @@
           "translatedText": "",
           "confidence": 75.2,
           "bounds": {
-            "x": 19.45,
-            "y": 81.21,
-            "width": 9.66,
-            "height": 0.8
+            "x": 19.63,
+            "y": 81.22,
+            "width": 9.3,
+            "height": 0.79
           }
         }
       ]
@@ -1074,10 +931,10 @@
           "translatedText": "",
           "confidence": 90.8,
           "bounds": {
-            "x": 42.45,
-            "y": 2.03,
-            "width": 57.55,
-            "height": 10.2
+            "x": 43.51,
+            "y": 2.37,
+            "width": 56.42,
+            "height": 9.52
           }
         },
         {
@@ -1087,10 +944,10 @@
           "translatedText": "",
           "confidence": 92.7,
           "bounds": {
-            "x": 0.74,
-            "y": 33.35,
-            "width": 54.51,
-            "height": 3.35
+            "x": 1.74,
+            "y": 33.47,
+            "width": 52.53,
+            "height": 3.13
           }
         },
         {
@@ -1100,10 +957,10 @@
           "translatedText": "",
           "confidence": 81.3,
           "bounds": {
-            "x": 54.87,
-            "y": 45.66,
-            "width": 44.49,
-            "height": 3.11
+            "x": 55.68,
+            "y": 45.77,
+            "width": 42.87,
+            "height": 2.9
           }
         }
       ]
@@ -1118,36 +975,23 @@
           "translatedText": "",
           "confidence": 82.3,
           "bounds": {
-            "x": 24.77,
-            "y": 18.11,
-            "width": 56.34,
-            "height": 8.96
+            "x": 25.8,
+            "y": 18.4,
+            "width": 54.3,
+            "height": 8.36
           }
         },
         {
           "id": "p23-ocr2",
           "type": "other",
-          "sourceText": "RP, PR, T: A CHOU LE ZF",
-          "translatedText": "",
-          "confidence": 54.2,
-          "bounds": {
-            "x": 11.87,
-            "y": 26.79,
-            "width": 68.81,
-            "height": 8.29
-          }
-        },
-        {
-          "id": "p23-ocr3",
-          "type": "other",
           "sourceText": "DISCORD INVITE CODE:\nBCZdChPruld\nKO-FILCOM/BARACHOU",
           "translatedText": "",
           "confidence": 75.2,
           "bounds": {
-            "x": 61.51,
-            "y": 89.64,
-            "width": 30.43,
-            "height": 6.22
+            "x": 62.06,
+            "y": 89.84,
+            "width": 29.33,
+            "height": 5.8
           }
         }
       ]
