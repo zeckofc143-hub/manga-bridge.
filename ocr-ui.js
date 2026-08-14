@@ -1,5 +1,6 @@
 const OCR_POLL_MS = 150;
 const OCR_POLL_TRIES = 100;
+const reloadOcrBtn = document.querySelector('#reloadOcrBtn');
 
 function hasAnyRegions() {
   return [...state.regions.values()].some((regions) => Array.isArray(regions) && regions.length > 0);
@@ -9,9 +10,9 @@ function countRegions() {
   return [...state.regions.values()].reduce((sum, regions) => sum + (Array.isArray(regions) ? regions.length : 0), 0);
 }
 
-async function loadAutomaticOcr() {
+async function loadAutomaticOcr(force = false) {
   if (!state.chapter) return false;
-  if (hasAnyRegions()) return true;
+  if (!force && hasAnyRegions()) return true;
 
   const chapterId = state.chapter.chapterId;
   try {
@@ -32,7 +33,12 @@ async function loadAutomaticOcr() {
     renderAllRegions();
     persistDraft();
     const total = countRegions();
-    setStatus(`OCR automático carregado: ${total} regiões detectadas em ${state.chapter.pages.length} páginas.`, 'ok');
+    const filter = ocr.filtering;
+    if (filter) {
+      setStatus(`OCR filtrado carregado: ${total} regiões • ${filter.rawLines} linhas brutas → ${filter.keptLines} úteis.`, 'ok');
+    } else {
+      setStatus(`OCR automático carregado: ${total} regiões detectadas em ${state.chapter.pages.length} páginas.`, 'ok');
+    }
     return true;
   } catch (error) {
     console.error('Falha ao carregar OCR automático:', error);
@@ -66,6 +72,20 @@ els.input.addEventListener('keydown', (event) => {
 
 window.addEventListener('focus', () => {
   waitForChapterThenOcr();
+});
+
+reloadOcrBtn?.addEventListener('click', async () => {
+  if (!state.chapter) {
+    setStatus('Carregue um capítulo primeiro.', 'error');
+    return;
+  }
+
+  state.regions.clear();
+  const key = draftKey();
+  if (key) localStorage.removeItem(key);
+  renderAllRegions();
+  setStatus('Baixando OCR filtrado mais recente…');
+  await loadAutomaticOcr(true);
 });
 
 window.mangaBridgeLoadOcr = loadAutomaticOcr;
