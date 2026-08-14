@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b0d12" />
   <title>MangaBridge</title>
-  <link rel="stylesheet" href="./style.css?v=5" />
+  <link rel="stylesheet" href="./style.css?v=6" />
 </head>
 <body>
   <header class="topbar">
@@ -13,7 +13,7 @@
       <div class="logo">MB</div>
       <div>
         <strong>MangaBridge</strong>
-        <span>MangaDex → GitHub → ChatGPT → PT-BR</span>
+        <span>MangaDex → GitHub OCR → ChatGPT → PT-BR</span>
       </div>
     </div>
     <div class="badge">sem API de IA</div>
@@ -23,7 +23,7 @@
     <section class="hero card">
       <p class="eyebrow">TRADUÇÃO ASSISTIDA</p>
       <h1>Carregue um capítulo do MangaDex</h1>
-      <p class="muted">Cole o link do capítulo ou apenas o UUID. O GitHub prepara as páginas e o MangaBridge organiza o trabalho por balões.</p>
+      <p class="muted">Cole o link do capítulo ou apenas o UUID. O GitHub prepara as páginas, detecta o texto por OCR e o MangaBridge organiza tudo por balões/regiões.</p>
 
       <div class="load-row">
         <input id="chapterInput" type="text" autocomplete="off" placeholder="https://mangadex.org/chapter/UUID" />
@@ -35,7 +35,7 @@
         <a id="requestBtn" class="button-link primary-link" target="_blank" rel="noopener">Preparar pelo GitHub</a>
         <button id="checkCacheBtn" class="ghost">Verificar novamente</button>
       </div>
-      <p id="requestHint" class="tiny muted hidden">Ao abrir o GitHub, toque em <strong>Submit new issue</strong>. O Action prepara o capítulo e fecha a solicitação sozinho.</p>
+      <p id="requestHint" class="tiny muted hidden">Ao abrir o GitHub, toque em <strong>Submit new issue</strong>. O Action prepara o capítulo, executa OCR e fecha a solicitação sozinho.</p>
     </section>
 
     <section id="chapterCard" class="card hidden">
@@ -59,7 +59,7 @@
         <button id="clearTranslationBtn" class="ghost">Limpar balões</button>
         <button id="exportTranslationBtn" class="ghost">Exportar JSON v2</button>
       </div>
-      <p class="tiny muted">Editor v2: cada página pode ter vários balões com texto original, tradução, tipo e posição em porcentagem.</p>
+      <p class="tiny muted">Editor v2 + OCR: cada página pode ter vários balões com texto original, tradução, tipo e posição em porcentagem.</p>
     </section>
 
     <section id="reader" class="reader"></section>
@@ -84,6 +84,7 @@
     </article>
   </template>
 
-  <script src="./app.js?v=5"></script>
+  <script src="./app.js?v=6"></script>
+  <script src="./ocr-ui.js?v=6"></script>
 </body>
 </html>
