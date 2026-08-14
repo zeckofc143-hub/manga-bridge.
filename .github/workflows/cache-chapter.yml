@@ -7,7 +7,6 @@ on:
     branches: ["main"]
     paths:
       - "scripts/ocr-chapter.mjs"
-      - "scripts/ocr-loose-angle.mjs"
       - "scripts/ocr-paddle-layer.py"
       - ".github/workflows/cache-chapter.yml"
 
@@ -17,7 +16,7 @@ permissions:
 
 concurrency:
   group: manga-bridge-cache
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   cache:
@@ -59,7 +58,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            imagemagick \
             tesseract-ocr \
             tesseract-ocr-eng \
             tesseract-ocr-jpn \
@@ -67,11 +65,8 @@ jobs:
             tesseract-ocr-chi-sim \
             tesseract-ocr-chi-tra
 
-      - name: Detect clean horizontal text regions
+      - name: Detect clean base text regions
         run: node scripts/ocr-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
-
-      - name: Add loose and angled text regions
-        run: node scripts/ocr-loose-angle.mjs "${{ steps.chapter.outputs.uuid }}"
 
       - name: Install PaddleOCR CPU
         shell: bash
@@ -80,7 +75,7 @@ jobs:
           python -m pip install paddlepaddle==3.2.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
           python -m pip install "paddleocr[all]"
 
-      - name: Detect and correct stylized text with PaddleOCR
+      - name: Detect, add and correct all visible text with PaddleOCR
         env:
           PADDLE_PDX_DISABLE_MODEL_SOURCE_CHECK: "True"
         run: python scripts/ocr-paddle-layer.py "${{ steps.chapter.outputs.uuid }}"
@@ -100,7 +95,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Cache and three-layer OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
+          git commit -m "Cache and all-visible-text OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
@@ -114,7 +109,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com OCR em três camadas: texto normal, texto solto/angulado e detector visual PaddleOCR para texto estilizado/SFX. Volte ao MangaBridge e toque em **Verificar novamente**.`
+              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com detector de **todo texto visível**: texto comum, vertical/inclinado, texto solto e SFX estilizado. Volte ao MangaBridge e toque em **Verificar novamente**.`
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
