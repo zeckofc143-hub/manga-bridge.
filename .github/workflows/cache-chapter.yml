@@ -7,6 +7,7 @@ on:
     branches: ["main"]
     paths:
       - "scripts/ocr-chapter.mjs"
+      - "scripts/ocr-rotated.mjs"
       - ".github/workflows/cache-chapter.yml"
 
 permissions:
@@ -51,11 +52,12 @@ jobs:
       - name: Fetch chapter from MangaDex
         run: node scripts/cache-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
 
-      - name: Install OCR languages
+      - name: Install OCR languages and image rotation tools
         shell: bash
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+            imagemagick \
             tesseract-ocr \
             tesseract-ocr-eng \
             tesseract-ocr-jpn \
@@ -63,8 +65,11 @@ jobs:
             tesseract-ocr-chi-sim \
             tesseract-ocr-chi-tra
 
-      - name: Detect text regions with Tesseract
+      - name: Detect horizontal text regions with Tesseract
         run: node scripts/ocr-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
+
+      - name: Detect rotated text without changing existing bubbles
+        run: node scripts/ocr-rotated.mjs "${{ steps.chapter.outputs.uuid }}"
 
       - name: Commit cached chapter and OCR
         shell: bash
@@ -95,7 +100,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com OCR filtrado. Volte ao MangaBridge e toque em **Verificar novamente**.`
+              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com OCR horizontal + rotacionado. Volte ao MangaBridge e toque em **Verificar novamente**.`
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
