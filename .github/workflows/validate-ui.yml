@@ -1,0 +1,24 @@
+name: Validate MangaBridge UI
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: node --check app.js
+      - name: Verify v2 UI hooks
+        run: |
+          grep -q 'manga-bridge-task/v2' app.js
+          grep -q 'manga-bridge-translation/v2' app.js
+          grep -q 'regions-overlay' index.html
+          grep -q 'add-region' index.html
