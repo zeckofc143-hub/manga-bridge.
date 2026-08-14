@@ -34,16 +34,33 @@ jobs:
       - name: Fetch chapter from MangaDex
         run: node scripts/cache-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
 
-      - name: Commit cached chapter
+      - name: Install OCR languages
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            tesseract-ocr \
+            tesseract-ocr-eng \
+            tesseract-ocr-jpn \
+            tesseract-ocr-kor \
+            tesseract-ocr-chi-sim \
+            tesseract-ocr-chi-tra
+
+      - name: Detect text regions with Tesseract
+        run: node scripts/ocr-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
+
+      - name: Commit cached chapter and OCR
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "data/${{ steps.chapter.outputs.uuid }}.json"
+          git add \
+            "data/${{ steps.chapter.outputs.uuid }}.json" \
+            "data/${{ steps.chapter.outputs.uuid }}.ocr.json"
           if git diff --cached --quiet; then
-            echo "Cache já estava atualizado."
+            echo "Cache e OCR já estavam atualizados."
           else
-            git commit -m "Cache MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
+            git commit -m "Cache and OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
             git push
           fi
 
@@ -55,7 +72,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado. Volte ao MangaBridge e toque em **Verificar novamente**.`
+              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com OCR automático. Volte ao MangaBridge e toque em **Verificar novamente**.`
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
