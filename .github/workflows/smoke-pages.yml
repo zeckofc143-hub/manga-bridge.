@@ -13,7 +13,7 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify live site, chapter, OCR, JavaScript and first image
+      - name: Verify live site, chapter, OCR, translation, JavaScript and first image
         shell: bash
         run: |
           set -e
@@ -21,6 +21,7 @@ jobs:
           UUID='51429dea-7169-4913-b5d6-a4ee00329eb7'
           DATA="${SITE}data/${UUID}.json"
           OCR="${SITE}data/${UUID}.ocr.json"
+          TRANSLATION="${SITE}data/${UUID}.translation.json"
           IMAGE='https://cmdxd98sb0x3yprd.mangadex.network/data/1ec2d035196aec17521017ecf2f9ebe4/1-5c5dc473b828c896640b99fc963bbcacc15408d2e8de5367879d2adc1eb644bf.png'
 
           wait_200() {
@@ -38,11 +39,12 @@ jobs:
           wait_200 site "$SITE"
           wait_200 data "$DATA"
           wait_200 ocr "$OCR"
-          wait_200 app "${SITE}app.js?v=17"
-          wait_200 ocr_ui "${SITE}ocr-ui.js?v=17"
-          wait_200 typer_ui "${SITE}typer-ui.js?v=17"
-          wait_200 redraw_ui "${SITE}redraw-ui.js?v=17"
-          wait_200 translate_ui "${SITE}translate-ui.js?v=17"
+          wait_200 translation "$TRANSLATION"
+          wait_200 app "${SITE}app.js?v=18"
+          wait_200 ocr_ui "${SITE}ocr-ui.js?v=18"
+          wait_200 typer_ui "${SITE}typer-ui.js?v=18"
+          wait_200 redraw_ui "${SITE}redraw-ui.js?v=18"
+          wait_200 translate_ui "${SITE}translate-ui.js?v=18"
 
           curl -L -sS --max-time 25 "$DATA" -o /tmp/chapter.json
           node -e "const d=require('/tmp/chapter.json'); if(d.chapterId!=='$UUID'||d.pages.length!==23) process.exit(1); console.log('DATA_OK',d.mangaTitle,d.pages.length)"
@@ -50,11 +52,14 @@ jobs:
           curl -L -sS --max-time 25 "$OCR" -o /tmp/ocr.json
           node -e "const d=require('/tmp/ocr.json'); if(d.chapterId!=='$UUID'||d.totalRegions<1||d.pages.length!==23) process.exit(1); console.log('OCR_OK',d.engine,d.totalRegions,d.pages.length)"
 
-          curl -L -sS --max-time 25 "${SITE}app.js?v=17" -o /tmp/app.js
-          curl -L -sS --max-time 25 "${SITE}ocr-ui.js?v=17" -o /tmp/ocr-ui.js
-          curl -L -sS --max-time 25 "${SITE}typer-ui.js?v=17" -o /tmp/typer-ui.js
-          curl -L -sS --max-time 25 "${SITE}redraw-ui.js?v=17" -o /tmp/redraw-ui.js
-          curl -L -sS --max-time 25 "${SITE}translate-ui.js?v=17" -o /tmp/translate-ui.js
+          curl -L -sS --max-time 25 "$TRANSLATION" -o /tmp/translation.json
+          node -e "const d=require('/tmp/translation.json'); const p=d.pages?.find(x=>x.page===2); const r=p?.regions?.find(x=>x.id==='p2-ocr3'); if(d.chapterId!=='$UUID'||!r?.translatedText) process.exit(1); console.log('TRANSLATION_OK',r.id,r.translatedText)"
+
+          curl -L -sS --max-time 25 "${SITE}app.js?v=18" -o /tmp/app.js
+          curl -L -sS --max-time 25 "${SITE}ocr-ui.js?v=18" -o /tmp/ocr-ui.js
+          curl -L -sS --max-time 25 "${SITE}typer-ui.js?v=18" -o /tmp/typer-ui.js
+          curl -L -sS --max-time 25 "${SITE}redraw-ui.js?v=18" -o /tmp/redraw-ui.js
+          curl -L -sS --max-time 25 "${SITE}translate-ui.js?v=18" -o /tmp/translate-ui.js
           node --check /tmp/app.js
           node --check /tmp/ocr-ui.js
           node --check /tmp/typer-ui.js
@@ -64,6 +69,7 @@ jobs:
           grep -q 'mangaBridgeRedraw' /tmp/redraw-ui.js
           grep -q 'mangaBridgeTranslate' /tmp/translate-ui.js
           grep -q 'MANGABRIDGE_SNIPPET_V1' /tmp/translate-ui.js
+          grep -q 'showCleanTranslatedPreview' /tmp/translate-ui.js
           echo 'JS_OK app + ocr-ui + typer-ui + redraw-ui + translate-ui'
 
           CODE=$(curl -L -sS -o /tmp/page1 -w '%{http_code}' --max-time 30 -H 'Referer: https://zeckofc143-hub.github.io/manga-bridge./' "$IMAGE" || true)
