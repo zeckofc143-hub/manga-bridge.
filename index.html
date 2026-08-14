@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#0b0d12" />
   <title>MangaBridge</title>
-  <link rel="stylesheet" href="./style.css?v=15" />
+  <link rel="stylesheet" href="./style.css?v=16" />
 </head>
 <body>
   <header class="topbar">
@@ -60,7 +60,7 @@
         <button id="clearTranslationBtn" class="ghost">Limpar regiões</button>
         <button id="exportTranslationBtn" class="ghost">Exportar JSON v2</button>
       </div>
-      <p class="tiny muted">Editor v2 + OCR completo: cada região guarda texto original, tradução, tipo e posição. O typer manual permite pré-visualizar e ajustar a tradução diretamente sobre a página.</p>
+      <p class="tiny muted">Editor v2 + OCR completo + typer + redraw manual. Cada região pode ser limpa com preenchimento, blur ou clone direcional e depois receber a tradução por cima.</p>
     </section>
 
     <section id="reader" class="reader"></section>
@@ -85,8 +85,9 @@
     </article>
   </template>
 
-  <script src="./app.js?v=15"></script>
-  <script src="./ocr-ui.js?v=15"></script>
-  <script src="./typer-ui.js?v=15"></script>
+  <script src="./app.js?v=16"></script>
+  <script src="./ocr-ui.js?v=16"></script>
+  <script src="./typer-ui.js?v=16"></script>
+  <script src="./redraw-ui.js?v=16"></script>
 </body>
 </html>
