@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b0d12" />
+  <title>MangaBridge</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">MB</div>
+      <div>
+        <strong>MangaBridge</strong>
+        <span>MangaDex → ChatGPT → PT-BR</span>
+      </div>
+    </div>
+    <div class="badge">sem API de IA</div>
+  </header>
+
+  <main class="shell">
+    <section class="hero card">
+      <p class="eyebrow">TRADUÇÃO ASSISTIDA</p>
+      <h1>Carregue um capítulo do MangaDex</h1>
+      <p class="muted">Cole o link do capítulo ou apenas o UUID. O site busca as páginas, monta uma tarefa para o ChatGPT e recebe a tradução de volta por JSON.</p>
+
+      <div class="load-row">
+        <input id="chapterInput" type="text" autocomplete="off" placeholder="https://mangadex.org/chapter/UUID" />
+        <button id="loadBtn" class="primary">Carregar capítulo</button>
+      </div>
+      <p id="status" class="status">Pronto.</p>
+    </section>
+
+    <section id="chapterCard" class="card hidden">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">CAPÍTULO</p>
+          <h2 id="mangaTitle">—</h2>
+          <p id="chapterMeta" class="muted">—</p>
+        </div>
+        <div class="actions">
+          <button id="downloadTaskBtn">Baixar tarefa JSON</button>
+          <button id="copyTaskBtn">Copiar tarefa</button>
+        </div>
+      </div>
+
+      <div class="translation-tools">
+        <label class="file-btn">
+          Importar tradução JSON
+          <input id="translationFile" type="file" accept="application/json,.json" />
+        </label>
+        <button id="clearTranslationBtn" class="ghost">Limpar tradução</button>
+        <button id="exportTranslationBtn" class="ghost">Exportar tradução atual</button>
+      </div>
+      <p class="tiny muted">Use apenas conteúdo que você criou, possui ou tem permissão para traduzir.</p>
+    </section>
+
+    <section id="reader" class="reader"></section>
+  </main>
+
+  <template id="pageTemplate">
+    <article class="page-card card">
+      <div class="page-head">
+        <span class="page-number"></span>
+        <span class="page-state">original</span>
+      </div>
+      <img class="page-image" loading="lazy" alt="Página do capítulo" />
+      <div class="translation-box hidden">
+        <strong>Tradução</strong>
+        <div class="translation-content"></div>
+      </div>
+    </article>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
