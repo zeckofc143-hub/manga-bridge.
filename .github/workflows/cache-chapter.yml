@@ -1,0 +1,65 @@
+name: Cache requested MangaDex chapter
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  cache:
+    if: startsWith(github.event.issue.title, 'MangaBridge:')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract UUID
+        id: chapter
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        shell: bash
+        run: |
+          UUID=$(printf '%s\n%s' "$ISSUE_TITLE" "$ISSUE_BODY" | grep -Eio '[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}' | head -1 || true)
+          if [ -z "$UUID" ]; then
+            echo "Nenhum UUID válido encontrado."
+            exit 1
+          fi
+          echo "uuid=$UUID" >> "$GITHUB_OUTPUT"
+          echo "UUID=$UUID"
+
+      - name: Fetch chapter from MangaDex
+        run: node scripts/cache-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
+
+      - name: Commit cached chapter
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "data/${{ steps.chapter.outputs.uuid }}.json"
+          if git diff --cached --quiet; then
+            echo "Cache já estava atualizado."
+          else
+            git commit -m "Cache MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
+            git push
+          fi
+
+      - name: Mark request complete
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado. Volte ao MangaBridge e toque em **Verificar novamente**.`
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
