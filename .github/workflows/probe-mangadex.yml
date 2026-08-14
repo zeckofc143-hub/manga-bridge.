@@ -1,0 +1,44 @@
+name: Probe MangaDex connectivity
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test chapter API and CORS proxy candidates
+        shell: bash
+        run: |
+          set +e
+          UUID="51429dea-7169-4913-b5d6-a4ee00329eb7"
+          TARGET="https://api.mangadex.org/chapter/${UUID}?includes%5B%5D=manga"
+          ATHOME="https://api.mangadex.org/at-home/server/${UUID}"
+          ORIGIN="https://zeckofc143-hub.github.io"
+
+          probe() {
+            NAME="$1"
+            URL="$2"
+            echo "===== $NAME ====="
+            curl -L --max-time 25 -sS -D /tmp/h -o /tmp/b \
+              -H "Origin: $ORIGIN" \
+              -H "Accept: application/json" \
+              -w "HTTP=%{http_code} CONTENT_TYPE=%{content_type} TIME=%{time_total}\n" \
+              "$URL"
+            echo "CORS=$(grep -i '^access-control-allow-origin:' /tmp/h | tail -1 | tr -d '\r' || true)"
+            echo "SIZE=$(wc -c < /tmp/b 2>/dev/null || echo 0)"
+            head -c 220 /tmp/b 2>/dev/null | tr '\n' ' '; echo
+            echo
+          }
+
+          probe "direct chapter" "$TARGET"
+          probe "direct at-home" "$ATHOME"
+          probe "corsproxy chapter" "https://corsproxy.io/?url=$(python3 -c 'import urllib.parse,os; print(urllib.parse.quote(os.environ["T"], safe=""))' T="$TARGET" 2>/dev/null || python3 -c "import urllib.parse; print(urllib.parse.quote('$TARGET', safe=''))")"
+          probe "allorigins chapter" "https://api.allorigins.win/raw?url=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$TARGET', safe=''))")"
+          probe "codetabs chapter" "https://api.codetabs.com/v1/proxy?quest=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$TARGET', safe=''))")"
+          probe "isomorphic-git chapter" "https://cors.isomorphic-git.org/$TARGET"
