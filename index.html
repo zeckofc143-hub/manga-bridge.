@@ -13,7 +13,7 @@
       <div class="logo">MB</div>
       <div>
         <strong>MangaBridge</strong>
-        <span>MangaDex → ChatGPT → PT-BR</span>
+        <span>MangaDex → GitHub → ChatGPT → PT-BR</span>
       </div>
     </div>
     <div class="badge">sem API de IA</div>
@@ -23,13 +23,19 @@
     <section class="hero card">
       <p class="eyebrow">TRADUÇÃO ASSISTIDA</p>
       <h1>Carregue um capítulo do MangaDex</h1>
-      <p class="muted">Cole o link do capítulo ou apenas o UUID. O site busca as páginas, monta uma tarefa para o ChatGPT e recebe a tradução de volta por JSON.</p>
+      <p class="muted">Cole o link do capítulo ou apenas o UUID. O GitHub prepara as páginas sem API de IA e o site monta a tarefa para o ChatGPT.</p>
 
       <div class="load-row">
         <input id="chapterInput" type="text" autocomplete="off" placeholder="https://mangadex.org/chapter/UUID" />
         <button id="loadBtn" class="primary">Carregar capítulo</button>
       </div>
       <p id="status" class="status">Pronto.</p>
+
+      <div id="requestActions" class="request-actions hidden">
+        <a id="requestBtn" class="button-link primary-link" target="_blank" rel="noopener">Preparar pelo GitHub</a>
+        <button id="checkCacheBtn" class="ghost">Verificar novamente</button>
+      </div>
+      <p id="requestHint" class="tiny muted hidden">Ao abrir o GitHub, toque em <strong>Submit new issue</strong>. O Action prepara o capítulo e fecha a solicitação sozinho.</p>
     </section>
 
     <section id="chapterCard" class="card hidden">
