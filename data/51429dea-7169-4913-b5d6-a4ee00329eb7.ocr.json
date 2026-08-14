@@ -1,22 +1,87 @@
 {
-  "schema": "manga-bridge-ocr/v6",
+  "schema": "manga-bridge-ocr/v7",
   "chapterId": "51429dea-7169-4913-b5d6-a4ee00329eb7",
   "sourceLanguage": "en",
   "engine": "tesseract",
   "tesseractLanguage": "eng",
-  "generatedAt": "2026-08-14T03:02:51.665Z",
+  "generatedAt": "2026-08-14T03:23:32.306Z",
   "filtering": {
     "rawLines": 912,
     "joinedLines": 420,
     "keptLines": 203,
     "prunedEdgeLines": 18,
-    "mergedRegions": 79
+    "mergedRegions": 162
   },
-  "totalRegions": 79,
+  "totalRegions": 162,
   "pages": [
     {
       "page": 1,
-      "regions": []
+      "regions": [
+        {
+          "sourceText": "BROUGHT TO YOU BY",
+          "translatedText": "",
+          "confidence": 92.6,
+          "type": "sfx",
+          "bounds": {
+            "x": 27.85,
+            "y": 17.55,
+            "width": 18.2,
+            "height": 18.25
+          },
+          "polygon": [
+            [
+              377,
+              58
+            ],
+            [
+              608,
+              60
+            ],
+            [
+              608,
+              109
+            ],
+            [
+              377,
+              106
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p1-paddle1"
+        },
+        {
+          "sourceText": "PearBun Translations",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 25.82,
+            "y": 33.94,
+            "width": 65.62,
+            "height": 40.43
+          },
+          "polygon": [
+            [
+              366,
+              113
+            ],
+            [
+              1198,
+              120
+            ],
+            [
+              1198,
+              226
+            ],
+            [
+              365,
+              220
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p1-paddle2"
+        }
+      ]
     },
     {
       "page": 2,
@@ -37,41 +102,428 @@
         {
           "id": "p2-ocr2",
           "type": "other",
-          "sourceText": "Wan:",
+          "sourceText": "出品：番茄漫画",
           "translatedText": "",
-          "confidence": 88.9,
+          "confidence": 100.0,
           "bounds": {
             "x": 29.93,
             "y": 38.18,
             "width": 10.25,
             "height": 0.74
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p2-ocr3",
           "type": "other",
-          "sourceText": "THIS IS AN UNCANNY WORLD",
+          "sourceText": "THIS IS AN UNCANNY WORLD.",
           "translatedText": "",
-          "confidence": 95.9,
+          "confidence": 98.4,
           "bounds": {
             "x": 16.7,
             "y": 53.65,
             "width": 65.72,
             "height": 0.64
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p2-ocr4",
           "type": "other",
-          "sourceText": "bal ‘THE DARKNESS IS AS A DEADLY",
+          "sourceText": "THE DARKNESS IS AS A DEADLY",
           "translatedText": "",
-          "confidence": 83.6,
+          "confidence": 99.3,
           "bounds": {
             "x": 2.25,
             "y": 78.55,
             "width": 85.27,
             "height": 1.51
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "诡异药剂师",
+          "translatedText": "",
+          "confidence": 99.5,
+          "type": "other",
+          "bounds": {
+            "x": 13.78,
+            "y": 23.45,
+            "width": 70.0,
+            "height": 3.78
+          },
+          "polygon": [
+            [
+              139,
+              1211
+            ],
+            [
+              739,
+              1211
+            ],
+            [
+              739,
+              1384
+            ],
+            [
+              139,
+              1384
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle1"
+        },
+        {
+          "sourceText": "我的病人皆为恐怖",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 17.64,
+            "y": 26.63,
+            "width": 61.72,
+            "height": 1.66
+          },
+          "polygon": [
+            [
+              172,
+              1374
+            ],
+            [
+              700,
+              1368
+            ],
+            [
+              701,
+              1439
+            ],
+            [
+              173,
+              1444
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle2"
+        },
+        {
+          "sourceText": "MANHUA.com",
+          "translatedText": "",
+          "confidence": 99.0,
+          "type": "other",
+          "bounds": {
+            "x": 64.81,
+            "y": 29.42,
+            "width": 35.19,
+            "height": 0.96
+          },
+          "polygon": [
+            [
+              591,
+              1509
+            ],
+            [
+              899,
+              1509
+            ],
+            [
+              899,
+              1553
+            ],
+            [
+              591,
+              1553
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle3"
+        },
+        {
+          "sourceText": "改编自番茄小说作者一条咸鱼c",
+          "translatedText": "",
+          "confidence": 99.8,
+          "type": "other",
+          "bounds": {
+            "x": 19.49,
+            "y": 33.47,
+            "width": 58.92,
+            "height": 0.85
+          },
+          "polygon": [
+            [
+              188,
+              1716
+            ],
+            [
+              693,
+              1716
+            ],
+            [
+              693,
+              1755
+            ],
+            [
+              188,
+              1755
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle4"
+        },
+        {
+          "sourceText": "《诡异药剂师：我的病人皆为恐怖》",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 16.23,
+            "y": 34.52,
+            "width": 65.1,
+            "height": 0.85
+          },
+          "polygon": [
+            [
+              160,
+              1770
+            ],
+            [
+              718,
+              1770
+            ],
+            [
+              718,
+              1809
+            ],
+            [
+              160,
+              1809
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle5"
+        },
+        {
+          "sourceText": "制作：",
+          "translatedText": "",
+          "confidence": 99.9,
+          "type": "other",
+          "bounds": {
+            "x": 28.82,
+            "y": 39.3,
+            "width": 12.25,
+            "height": 1.03
+          },
+          "polygon": [
+            [
+              262,
+              2015
+            ],
+            [
+              367,
+              2015
+            ],
+            [
+              367,
+              2062
+            ],
+            [
+              262,
+              2062
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle6"
+        },
+        {
+          "sourceText": "水光动漫",
+          "translatedText": "",
+          "confidence": 82.7,
+          "type": "other",
+          "bounds": {
+            "x": 46.99,
+            "y": 39.61,
+            "width": 14.47,
+            "height": 0.7
+          },
+          "polygon": [
+            [
+              426,
+              2030
+            ],
+            [
+              550,
+              2030
+            ],
+            [
+              550,
+              2062
+            ],
+            [
+              426,
+              2062
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle7"
+        },
+        {
+          "sourceText": "编辑：糖糖",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 28.67,
+            "y": 40.63,
+            "width": 23.33,
+            "height": 0.96
+          },
+          "polygon": [
+            [
+              263,
+              2083
+            ],
+            [
+              463,
+              2083
+            ],
+            [
+              463,
+              2127
+            ],
+            [
+              263,
+              2127
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle8"
+        },
+        {
+          "sourceText": "责编：豆花",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 28.67,
+            "y": 41.9,
+            "width": 23.33,
+            "height": 0.98
+          },
+          "polygon": [
+            [
+              263,
+              2148
+            ],
+            [
+              463,
+              2148
+            ],
+            [
+              463,
+              2193
+            ],
+            [
+              263,
+              2193
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle9"
+        },
+        {
+          "sourceText": "CROAK",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 36.02,
+            "y": 58.19,
+            "width": 8.4,
+            "height": 0.59
+          },
+          "polygon": [
+            [
+              326,
+              2981
+            ],
+            [
+              398,
+              2981
+            ],
+            [
+              398,
+              3008
+            ],
+            [
+              326,
+              3008
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle10"
+        },
+        {
+          "sourceText": "VENOMOUS SNAKE,",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 27.61,
+            "y": 79.88,
+            "width": 44.33,
+            "height": 0.79
+          },
+          "polygon": [
+            [
+              258,
+              4092
+            ],
+            [
+              638,
+              4093
+            ],
+            [
+              638,
+              4128
+            ],
+            [
+              258,
+              4127
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle11"
+        },
+        {
+          "sourceText": "H1SS",
+          "translatedText": "",
+          "confidence": 63.3,
+          "type": "sfx",
+          "bounds": {
+            "x": 75.48,
+            "y": 94.11,
+            "width": 7.93,
+            "height": 5.34
+          },
+          "polygon": [
+            [
+              691,
+              4833
+            ],
+            [
+              749,
+              4835
+            ],
+            [
+              738,
+              5077
+            ],
+            [
+              681,
+              5075
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p2-paddle12"
         }
       ]
     },
@@ -81,15 +533,16 @@
         {
           "id": "p3-ocr1",
           "type": "other",
-          "sourceText": "ITIN OCKED. ITS PREY, CHANCE TO STRIKE.",
+          "sourceText": "LOCKED ONTO ITS PREY,\nWAITING FOR ITS CHANCE TO STRIKE.",
           "translatedText": "",
-          "confidence": 79.7,
+          "confidence": 99.3,
           "bounds": {
             "x": 13.3,
             "y": 43.22,
             "width": 79.85,
             "height": 3.72
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p3-ocr2",
@@ -103,6 +556,166 @@
             "width": 14.02,
             "height": 1.33
           }
+        },
+        {
+          "sourceText": "S-S-S-5-",
+          "translatedText": "",
+          "confidence": 89.3,
+          "type": "sfx",
+          "bounds": {
+            "x": 12.28,
+            "y": 16.36,
+            "width": 25.43,
+            "height": 9.18
+          },
+          "polygon": [
+            [
+              116,
+              705
+            ],
+            [
+              258,
+              512
+            ],
+            [
+              334,
+              567
+            ],
+            [
+              193,
+              761
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p3-paddle1"
+        },
+        {
+          "sourceText": "JA.com",
+          "translatedText": "",
+          "confidence": 98.5,
+          "type": "other",
+          "bounds": {
+            "x": 26.78,
+            "y": 38.98,
+            "width": 18.43,
+            "height": 1.66
+          },
+          "polygon": [
+            [
+              246,
+              1187
+            ],
+            [
+              403,
+              1190
+            ],
+            [
+              402,
+              1232
+            ],
+            [
+              245,
+              1229
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p3-paddle2"
+        },
+        {
+          "sourceText": "Acloud",
+          "translatedText": "",
+          "confidence": 92.7,
+          "type": "other",
+          "bounds": {
+            "x": 0.0,
+            "y": 40.31,
+            "width": 19.01,
+            "height": 1.55
+          },
+          "polygon": [
+            [
+              2,
+              1230
+            ],
+            [
+              166,
+              1227
+            ],
+            [
+              167,
+              1266
+            ],
+            [
+              3,
+              1269
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p3-paddle3"
+        },
+        {
+          "sourceText": "ge.com",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 25.12,
+            "y": 40.39,
+            "width": 18.43,
+            "height": 1.73
+          },
+          "polygon": [
+            [
+              230,
+              1235
+            ],
+            [
+              387,
+              1230
+            ],
+            [
+              388,
+              1272
+            ],
+            [
+              231,
+              1277
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p3-paddle4"
+        },
+        {
+          "sourceText": "SPLITOPEN",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 59.26,
+            "y": 59.37,
+            "width": 12.48,
+            "height": 5.16
+          },
+          "polygon": [
+            [
+              572,
+              1812
+            ],
+            [
+              643,
+              1931
+            ],
+            [
+              608,
+              1952
+            ],
+            [
+              536,
+              1833
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p3-paddle5"
         }
       ]
     },
@@ -111,29 +724,31 @@
       "regions": [
         {
           "id": "p4-ocr1",
-          "type": "other",
-          "sourceText": "\"HE TOP PREDATO",
+          "type": "sfx",
+          "sourceText": "AND THE TOP PREDATORS,",
           "translatedText": "",
-          "confidence": 89,
+          "confidence": 100.0,
           "bounds": {
             "x": 32.51,
             "y": 10.16,
             "width": 40.87,
             "height": 1.51
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p4-ocr2",
-          "type": "other",
-          "sourceText": "THE MOST INNOCENT BEINGS, OFTEN CAMOUFLAGE A",
+          "type": "sfx",
+          "sourceText": "OFTEN CAMOUFLAGE AS\nTHE MOST INNOCENT BEINGS,",
           "translatedText": "",
-          "confidence": 87.8,
+          "confidence": 100.0,
           "bounds": {
             "x": 12.75,
             "y": 11.27,
             "width": 71.61,
             "height": 4.13
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p4-ocr3",
@@ -147,6 +762,102 @@
             "width": 7.22,
             "height": 1.12
           }
+        },
+        {
+          "sourceText": "TWIGSENCIRCLING",
+          "translatedText": "",
+          "confidence": 99.6,
+          "type": "sfx",
+          "bounds": {
+            "x": 3.93,
+            "y": 30.54,
+            "width": 31.03,
+            "height": 5.83
+          },
+          "polygon": [
+            [
+              42,
+              1047
+            ],
+            [
+              285,
+              937
+            ],
+            [
+              308,
+              986
+            ],
+            [
+              64,
+              1095
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p4-paddle1"
+        },
+        {
+          "sourceText": "VINES GROWING",
+          "translatedText": "",
+          "confidence": 96.8,
+          "type": "sfx",
+          "bounds": {
+            "x": 10.66,
+            "y": 44.05,
+            "width": 28.12,
+            "height": 5.61
+          },
+          "polygon": [
+            [
+              102,
+              1447
+            ],
+            [
+              318,
+              1347
+            ],
+            [
+              343,
+              1399
+            ],
+            [
+              127,
+              1499
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p4-paddle2"
+        },
+        {
+          "sourceText": "TREEDEVOURS",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 55.46,
+            "y": 77.62,
+            "width": 27.53,
+            "height": 9.63
+          },
+          "polygon": [
+            [
+              505,
+              2589
+            ],
+            [
+              687,
+              2373
+            ],
+            [
+              741,
+              2418
+            ],
+            [
+              559,
+              2634
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p4-paddle3"
         }
       ]
     },
@@ -155,70 +866,635 @@
       "regions": [
         {
           "id": "p5-ocr1",
-          "type": "other",
+          "type": "sfx",
           "sourceText": "DEALING A LETHAL STRIKE\nWHEN LEAST EXPECTED.",
           "translatedText": "",
-          "confidence": 95.6,
+          "confidence": 99.8,
           "bounds": {
             "x": 19.38,
             "y": 4.29,
             "width": 61.24,
             "height": 1.55
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "CROOAK",
+          "translatedText": "",
+          "confidence": 99.3,
+          "type": "sfx",
+          "bounds": {
+            "x": 38.98,
+            "y": 7.24,
+            "width": 61.02,
+            "height": 7.44
+          },
+          "polygon": [
+            [
+              364,
+              551
+            ],
+            [
+              830,
+              391
+            ],
+            [
+              892,
+              571
+            ],
+            [
+              425,
+              731
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p5-paddle1"
+        },
+        {
+          "sourceText": "CROOOAK",
+          "translatedText": "",
+          "confidence": 99.7,
+          "type": "sfx",
+          "bounds": {
+            "x": 71.97,
+            "y": 28.27,
+            "width": 15.28,
+            "height": 8.53
+          },
+          "polygon": [
+            [
+              651,
+              1471
+            ],
+            [
+              782,
+              1471
+            ],
+            [
+              782,
+              1861
+            ],
+            [
+              651,
+              1861
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p5-paddle2"
+        },
+        {
+          "sourceText": "BLENDS INTO THE TREE",
+          "translatedText": "",
+          "confidence": 98.8,
+          "type": "sfx",
+          "bounds": {
+            "x": 40.2,
+            "y": 39.92,
+            "width": 28.93,
+            "height": 12.34
+          },
+          "polygon": [
+            [
+              368,
+              2617
+            ],
+            [
+              538,
+              2078
+            ],
+            [
+              616,
+              2103
+            ],
+            [
+              447,
+              2642
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p5-paddle3"
+        },
+        {
+          "sourceText": "FUSE",
+          "translatedText": "",
+          "confidence": 99.9,
+          "type": "sfx",
+          "bounds": {
+            "x": 23.98,
+            "y": 82.39,
+            "width": 19.72,
+            "height": 4.9
+          },
+          "polygon": [
+            [
+              220,
+              4270
+            ],
+            [
+              305,
+              4232
+            ],
+            [
+              389,
+              4417
+            ],
+            [
+              303,
+              4456
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p5-paddle4"
+        },
+        {
+          "sourceText": "COLMANIUA.com",
+          "translatedText": "",
+          "confidence": 84.3,
+          "type": "other",
+          "bounds": {
+            "x": 54.22,
+            "y": 91.71,
+            "width": 45.78,
+            "height": 1.27
+          },
+          "polygon": [
+            [
+              499,
+              4699
+            ],
+            [
+              900,
+              4704
+            ],
+            [
+              900,
+              4757
+            ],
+            [
+              498,
+              4751
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p5-paddle5"
+        },
+        {
+          "sourceText": "Aclouamerye.com",
+          "translatedText": "",
+          "confidence": 76.9,
+          "type": "other",
+          "bounds": {
+            "x": 55.04,
+            "y": 92.66,
+            "width": 44.96,
+            "height": 0.94
+          },
+          "polygon": [
+            [
+              505,
+              4747
+            ],
+            [
+              892,
+              4751
+            ],
+            [
+              892,
+              4790
+            ],
+            [
+              505,
+              4786
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p5-paddle6"
+        },
+        {
+          "sourceText": "HSSS",
+          "translatedText": "",
+          "confidence": 98.3,
+          "type": "sfx",
+          "bounds": {
+            "x": 40.9,
+            "y": 93.01,
+            "width": 41.53,
+            "height": 6.93
+          },
+          "polygon": [
+            [
+              377,
+              4906
+            ],
+            [
+              642,
+              4781
+            ],
+            [
+              733,
+              4973
+            ],
+            [
+              467,
+              5098
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p5-paddle7"
         }
       ]
     },
     {
       "page": 6,
-      "regions": []
+      "regions": [
+        {
+          "sourceText": "CLOSE",
+          "translatedText": "",
+          "confidence": 89.2,
+          "type": "sfx",
+          "bounds": {
+            "x": 54.53,
+            "y": 9.52,
+            "width": 19.72,
+            "height": 4.87
+          },
+          "polygon": [
+            [
+              495,
+              343
+            ],
+            [
+              635,
+              297
+            ],
+            [
+              664,
+              382
+            ],
+            [
+              524,
+              429
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p6-paddle1"
+        },
+        {
+          "sourceText": "EYES",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 57.35,
+            "y": 12.89,
+            "width": 17.85,
+            "height": 4.54
+          },
+          "polygon": [
+            [
+              520,
+              434
+            ],
+            [
+              649,
+              399
+            ],
+            [
+              673,
+              487
+            ],
+            [
+              544,
+              522
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p6-paddle2"
+        },
+        {
+          "sourceText": "WHISSH",
+          "translatedText": "",
+          "confidence": 99.9,
+          "type": "sfx",
+          "bounds": {
+            "x": 36.96,
+            "y": 21.68,
+            "width": 53.2,
+            "height": 17.52
+          },
+          "polygon": [
+            [
+              344,
+              1006
+            ],
+            [
+              611,
+              687
+            ],
+            [
+              800,
+              843
+            ],
+            [
+              533,
+              1162
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p6-paddle3"
+        },
+        {
+          "sourceText": "CROAK",
+          "translatedText": "",
+          "confidence": 99.9,
+          "type": "sfx",
+          "bounds": {
+            "x": 5.0,
+            "y": 54.89,
+            "width": 14.12,
+            "height": 1.84
+          },
+          "polygon": [
+            [
+              49,
+              1670
+            ],
+            [
+              169,
+              1673
+            ],
+            [
+              168,
+              1720
+            ],
+            [
+              48,
+              1717
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p6-paddle4"
+        },
+        {
+          "sourceText": "SPITS OUT MIMIC FROG...",
+          "translatedText": "",
+          "confidence": 95.2,
+          "type": "sfx",
+          "bounds": {
+            "x": 76.26,
+            "y": 55.76,
+            "width": 17.15,
+            "height": 17.48
+          },
+          "polygon": [
+            [
+              751,
+              1722
+            ],
+            [
+              837,
+              2185
+            ],
+            [
+              776,
+              2196
+            ],
+            [
+              690,
+              1733
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p6-paddle5"
+        }
+      ]
     },
     {
       "page": 7,
       "regions": [
         {
-          "id": "p7-loose-0-1",
-          "type": "sfx",
-          "sourceText": "VAMPIRES,\nWEREWOLVES,",
+          "sourceText": "THWAP",
           "translatedText": "",
-          "confidence": 95.9,
-          "orientationAngle": 0,
-          "detectionPass": "sparse-loose",
+          "confidence": 100.0,
+          "type": "sfx",
           "bounds": {
-            "x": 79.83,
-            "y": 31.57,
-            "width": 7.68,
-            "height": 15.51
-          }
+            "x": 74.39,
+            "y": 4.64,
+            "width": 20.77,
+            "height": 4.43
+          },
+          "polygon": [
+            [
+              696,
+              148
+            ],
+            [
+              852,
+              198
+            ],
+            [
+              829,
+              268
+            ],
+            [
+              674,
+              217
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p7-paddle1"
         },
         {
-          "id": "p7-loose-0-2",
+          "sourceText": "VAMPIRES,",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 83.44,
+            "y": 32.13,
+            "width": 4.56,
+            "height": 6.57
+          },
+          "polygon": [
+            [
+              756,
+              986
+            ],
+            [
+              791,
+              987
+            ],
+            [
+              787,
+              1164
+            ],
+            [
+              752,
+              1163
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p7-paddle2"
+        },
+        {
+          "sourceText": "WEREWOLVES,",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 79.56,
+            "y": 37.95,
+            "width": 3.89,
+            "height": 8.52
+          },
+          "polygon": [
+            [
+              719,
+              1166
+            ],
+            [
+              750,
+              1167
+            ],
+            [
+              748,
+              1397
+            ],
+            [
+              717,
+              1397
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p7-paddle3"
+        },
+        {
+          "sourceText": "AclounMerge.com",
+          "translatedText": "",
+          "confidence": 91.6,
           "type": "other",
-          "sourceText": "GHOSTS, Ye",
-          "translatedText": "",
-          "confidence": 68.9,
-          "orientationAngle": 0,
-          "detectionPass": "sparse-loose",
           "bounds": {
-            "x": 69,
-            "y": 44.22,
-            "width": 11.88,
-            "height": 27.01
-          }
+            "x": 0.0,
+            "y": 45.64,
+            "width": 43.96,
+            "height": 1.48
+          },
+          "polygon": [
+            [
+              2,
+              1388
+            ],
+            [
+              386,
+              1391
+            ],
+            [
+              386,
+              1428
+            ],
+            [
+              2,
+              1425
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p7-paddle4"
         },
         {
-          "id": "p7-loose-0-3",
-          "type": "sfx",
-          "sourceText": "CYBORGS,\nPUPPETS...",
+          "sourceText": "GHOSTS,",
           "translatedText": "",
-          "confidence": 90.6,
-          "orientationAngle": 0,
-          "detectionPass": "sparse-loose",
+          "confidence": 100.0,
+          "type": "sfx",
           "bounds": {
-            "x": 79.95,
-            "y": 49.5,
-            "width": 7.32,
-            "height": 13.49
-          }
+            "x": 75.67,
+            "y": 45.66,
+            "width": 3.67,
+            "height": 5.35
+          },
+          "polygon": [
+            [
+              682,
+              1395
+            ],
+            [
+              713,
+              1395
+            ],
+            [
+              713,
+              1540
+            ],
+            [
+              682,
+              1540
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p7-paddle5"
+        },
+        {
+          "sourceText": "CYBORGS,",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 83.33,
+            "y": 49.91,
+            "width": 4.33,
+            "height": 6.68
+          },
+          "polygon": [
+            [
+              753,
+              1526
+            ],
+            [
+              788,
+              1526
+            ],
+            [
+              785,
+              1707
+            ],
+            [
+              751,
+              1706
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p7-paddle6"
+        },
+        {
+          "sourceText": "PUPPETS...",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 79.22,
+            "y": 55.9,
+            "width": 4.22,
+            "height": 6.64
+          },
+          "polygon": [
+            [
+              716,
+              1708
+            ],
+            [
+              750,
+              1708
+            ],
+            [
+              748,
+              1888
+            ],
+            [
+              714,
+              1887
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p7-paddle7"
         }
       ]
     },
@@ -227,55 +1503,59 @@
       "regions": [
         {
           "id": "p8-ocr1",
-          "type": "other",
-          "sourceText": "EVERY HORROR\nELEMENT THAT\nYOU COULD\nTHINK OF,\nFLOWS THROUGH\nTHIS DARK WORLD\nAS IF ITS [AZ\nBLOODSTREAM.",
+          "type": "sfx",
+          "sourceText": "EVERY HORROR\nELEMENT THAT\nYOU COULD\nTHINK OF,\nFLOWS THROUGH\nTHIS DARK WORLD\nAS IF ITS\nBLOODSTREAM.",
           "translatedText": "",
-          "confidence": 88.5,
+          "confidence": 99.4,
           "bounds": {
             "x": 59.84,
             "y": 10.27,
             "width": 32.98,
             "height": 5.97
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p8-ocr2",
           "type": "other",
           "sourceText": "AS AN APPRENTICE\nAT A PHARMACY\nIN JUST ANOTHER TOWN IN THIS WORLD,",
           "translatedText": "",
-          "confidence": 95.4,
+          "confidence": 99.8,
           "bounds": {
             "x": 5.33,
             "y": 32.37,
             "width": 62.78,
             "height": 2.01
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p8-ocr3",
-          "type": "other",
-          "sourceText": "RATCH",
+          "type": "sfx",
+          "sourceText": "SCRATCH",
           "translatedText": "",
-          "confidence": 92.8,
+          "confidence": 100.0,
           "bounds": {
             "x": 62.67,
             "y": 47.32,
             "width": 11.66,
             "height": 0.7
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p8-ocr4",
           "type": "other",
-          "sourceText": "IT HAVE TO KEEP CALM\nAT ALL TIMES.",
+          "sourceText": "I HAVE TO KEEP CALM\nAT ALL TIMES.",
           "translatedText": "",
-          "confidence": 93.4,
+          "confidence": 98.6,
           "bounds": {
             "x": 40.66,
             "y": 58.73,
             "width": 51.12,
             "height": 1.55
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p8-ocr5",
@@ -291,19 +1571,132 @@
           }
         },
         {
-          "id": "p8-loose-0-1",
-          "type": "sfx",
-          "sourceText": "CRATCH,",
+          "sourceText": "SCRATCH",
           "translatedText": "",
-          "confidence": 82.9,
-          "orientationAngle": 0,
-          "detectionPass": "sparse-loose",
+          "confidence": 100.0,
+          "type": "sfx",
           "bounds": {
-            "x": 63.9,
-            "y": 48,
-            "width": 14.76,
-            "height": 0.75
-          }
+            "x": 60.32,
+            "y": 47.79,
+            "width": 19.13,
+            "height": 1.18
+          },
+          "polygon": [
+            [
+              547,
+              2454
+            ],
+            [
+              710,
+              2450
+            ],
+            [
+              711,
+              2499
+            ],
+            [
+              548,
+              2504
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p8-paddle1"
+        },
+        {
+          "sourceText": "AclauaMerge.com",
+          "translatedText": "",
+          "confidence": 82.7,
+          "type": "other",
+          "bounds": {
+            "x": 54.72,
+            "y": 61.65,
+            "width": 44.33,
+            "height": 0.61
+          },
+          "polygon": [
+            [
+              502,
+              3158
+            ],
+            [
+              882,
+              3159
+            ],
+            [
+              882,
+              3186
+            ],
+            [
+              502,
+              3185
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p8-paddle2"
+        },
+        {
+          "sourceText": "THWAP",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 11.75,
+            "y": 73.6,
+            "width": 19.83,
+            "height": 2.1
+          },
+          "polygon": [
+            [
+              123,
+              3774
+            ],
+            [
+              280,
+              3805
+            ],
+            [
+              267,
+              3870
+            ],
+            [
+              110,
+              3839
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p8-paddle3"
+        },
+        {
+          "sourceText": "THWAP",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 18.2,
+            "y": 74.9,
+            "width": 19.6,
+            "height": 2.17
+          },
+          "polygon": [
+            [
+              181,
+              3841
+            ],
+            [
+              336,
+              3874
+            ],
+            [
+              322,
+              3940
+            ],
+            [
+              168,
+              3908
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p8-paddle4"
         }
       ]
     },
@@ -312,29 +1705,31 @@
       "regions": [
         {
           "id": "p9-ocr1",
-          "type": "other",
-          "sourceText": "WILL GET YOU SWALLOWED\nuP BY THE DARKNESS\nOF THIS WORLD.",
+          "type": "sfx",
+          "sourceText": "WILL GET YOU SWALLOWED\nUP BY THE DARKNESS\nOF THIS WORLD.",
           "translatedText": "",
-          "confidence": 95.8,
+          "confidence": 99.7,
           "bounds": {
             "x": 44.66,
             "y": 2.15,
             "width": 51.35,
             "height": 3.54
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p9-ocr2",
           "type": "other",
           "sourceText": "THIS IS WHAT I SPECULATE\nAFTER BEING IN THIS WORLD\nFOR 2 YEARS.",
           "translatedText": "",
-          "confidence": 95.5,
+          "confidence": 98.5,
           "bounds": {
             "x": 4.97,
             "y": 40.18,
             "width": 52.06,
             "height": 3.47
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p9-ocr3",
@@ -348,6 +1743,70 @@
             "width": 75.02,
             "height": 2.73
           }
+        },
+        {
+          "sourceText": "wet",
+          "translatedText": "",
+          "confidence": 78.2,
+          "type": "other",
+          "bounds": {
+            "x": 51.06,
+            "y": 66.9,
+            "width": 11.32,
+            "height": 2.07
+          },
+          "polygon": [
+            [
+              462,
+              2046
+            ],
+            [
+              554,
+              2035
+            ],
+            [
+              559,
+              2080
+            ],
+            [
+              468,
+              2091
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p9-paddle1"
+        },
+        {
+          "sourceText": "SURVIVE",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 31.53,
+            "y": 94.64,
+            "width": 15.17,
+            "height": 2.4
+          },
+          "polygon": [
+            [
+              287,
+              2912
+            ],
+            [
+              408,
+              2878
+            ],
+            [
+              417,
+              2908
+            ],
+            [
+              295,
+              2943
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p9-paddle2"
         }
       ]
     },
@@ -357,28 +1816,94 @@
         {
           "id": "p10-ocr1",
           "type": "other",
-          "sourceText": "LIN EN! IT’S TIME.\nGO HANG THE LIGHT OUTSIDE\nAND GET READY TO OPEN FOR\nBUSINESS.",
+          "sourceText": "LIN ENI IT'S TIME.\nGO HANG THE LIGHT OUTSIDE\nAND GET READY TO OPEN FOR\nBUSINESS.",
           "translatedText": "",
-          "confidence": 91.9,
+          "confidence": 99.5,
           "bounds": {
             "x": 20.08,
             "y": 51.3,
             "width": 52.29,
             "height": 5.87
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p10-ocr2",
-          "type": "other",
+          "type": "sfx",
           "sourceText": "DING",
           "translatedText": "",
-          "confidence": 89.5,
+          "confidence": 100.0,
           "bounds": {
             "x": 9.36,
             "y": 89.25,
             "width": 14.72,
             "height": 2.03
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "BABAM!",
+          "translatedText": "",
+          "confidence": 99.5,
+          "type": "sfx",
+          "bounds": {
+            "x": 10.93,
+            "y": 0.0,
+            "width": 54.48,
+            "height": 7.4
+          },
+          "polygon": [
+            [
+              110,
+              0
+            ],
+            [
+              567,
+              0
+            ],
+            [
+              577,
+              190
+            ],
+            [
+              120,
+              212
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p10-paddle1"
+        },
+        {
+          "sourceText": "COMING!",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 6.5,
+            "y": 79.37,
+            "width": 16.22,
+            "height": 1.4
+          },
+          "polygon": [
+            [
+              62,
+              2414
+            ],
+            [
+              200,
+              2412
+            ],
+            [
+              201,
+              2448
+            ],
+            [
+              63,
+              2450
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p10-paddle2"
         }
       ]
     },
@@ -390,52 +1915,56 @@
           "type": "other",
           "sourceText": "You have received a quest from\nyour teacher, Bloodsaw Maniac:\nOpen for business, hang the Soul\nLamp at the door.",
           "translatedText": "",
-          "confidence": 92.8,
+          "confidence": 99.8,
           "bounds": {
             "x": 38.6,
             "y": 4.71,
             "width": 57.36,
             "height": 4
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p11-ocr2",
           "type": "other",
-          "sourceText": "Quest completion rewards:\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
+          "sourceText": "Quest completion rewards:\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mL",
           "translatedText": "",
-          "confidence": 86.9,
+          "confidence": 99.7,
           "bounds": {
             "x": 5.73,
             "y": 10.48,
             "width": 52.76,
             "height": 4.51
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p11-ocr3",
           "type": "other",
-          "sourceText": "This i6...a system?\n[b'S been 2 years since |\nentered this world...\nFinally!",
+          "sourceText": "This is...a system?\nIt's been 2 years since 1\nentered this world...\nFinally!",
           "translatedText": "",
-          "confidence": 85.6,
+          "confidence": 99.3,
           "bounds": {
             "x": 65.4,
             "y": 25.54,
             "width": 32.98,
             "height": 2.69
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p11-ocr4",
           "type": "other",
           "sourceText": "No time to\nstudy this",
           "translatedText": "",
-          "confidence": 91.7,
+          "confidence": 97.1,
           "bounds": {
             "x": 56.63,
             "y": 52.79,
             "width": 24.97,
             "height": 2.23
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p11-ocr5",
@@ -453,15 +1982,80 @@
         {
           "id": "p11-ocr6",
           "type": "other",
-          "sourceText": "What 6 imperative is to\ncarry out teacher's order\nimmediately, on else...",
+          "sourceText": "What's imperative is to\ncarry out teacher's order\nimmediately, or else...",
           "translatedText": "",
-          "confidence": 86.4,
+          "confidence": 99.2,
           "bounds": {
             "x": 19.61,
             "y": 81.44,
             "width": 57.12,
             "height": 3.76
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "CLICK",
+          "translatedText": "",
+          "confidence": 92.7,
+          "type": "sfx",
+          "bounds": {
+            "x": 0.0,
+            "y": 56.8,
+            "width": 26.76,
+            "height": 6.48
+          },
+          "polygon": [
+            [
+              0,
+              2966
+            ],
+            [
+              185,
+              2926
+            ],
+            [
+              235,
+              3182
+            ],
+            [
+              29,
+              3222
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p11-paddle1"
+        },
+        {
+          "sourceText": "SCREECH",
+          "translatedText": "",
+          "confidence": 97.9,
+          "type": "sfx",
+          "bounds": {
+            "x": 2.28,
+            "y": 70.88,
+            "width": 35.0,
+            "height": 5.12
+          },
+          "polygon": [
+            [
+              28,
+              3695
+            ],
+            [
+              292,
+              3643
+            ],
+            [
+              328,
+              3825
+            ],
+            [
+              64,
+              3877
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p11-paddle2"
         }
       ]
     },
@@ -470,29 +2064,31 @@
       "regions": [
         {
           "id": "p12-ocr1",
-          "type": "other",
+          "type": "sfx",
           "sourceText": "TEACHER,\nYOU'RE BACK.",
           "translatedText": "",
-          "confidence": 69.1,
+          "confidence": 99.8,
           "bounds": {
             "x": 5.36,
             "y": 24.43,
             "width": 26.5,
             "height": 2.54
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p12-ocr2",
           "type": "other",
-          "sourceText": "( will die\nPor sure.",
+          "sourceText": "I will die\nfor sure.",
           "translatedText": "",
-          "confidence": 85.3,
+          "confidence": 96.6,
           "bounds": {
             "x": 45.86,
             "y": 47.59,
             "width": 32.51,
             "height": 5.27
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p12-ocr3",
@@ -510,15 +2106,48 @@
         {
           "id": "p12-ocr4",
           "type": "other",
-          "sourceText": "IP this was bePore,",
+          "sourceText": "If this was before,",
           "translatedText": "",
-          "confidence": 82.3,
+          "confidence": 97.7,
           "bounds": {
             "x": 62.12,
             "y": 98.29,
             "width": 30.98,
             "height": 1.71
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "SCREECH",
+          "translatedText": "",
+          "confidence": 96.6,
+          "type": "sfx",
+          "bounds": {
+            "x": 47.77,
+            "y": 5.9,
+            "width": 42.47,
+            "height": 10.4
+          },
+          "polygon": [
+            [
+              439,
+              265
+            ],
+            [
+              756,
+              196
+            ],
+            [
+              803,
+              409
+            ],
+            [
+              486,
+              478
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p12-paddle1"
         }
       ]
     },
@@ -528,28 +2157,126 @@
         {
           "id": "p13-ocr1",
           "type": "other",
-          "sourceText": "on the spot. Bot now, I'M already",
+          "sourceText": "I probably would have Fainted\non the spot. But now, I'm already",
           "translatedText": "",
-          "confidence": 80.4,
+          "confidence": 98.2,
           "bounds": {
             "x": 45.68,
             "y": 0.04,
             "width": 54.32,
             "height": 2.4
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p13-ocr2",
           "type": "other",
           "sourceText": "used to it all.",
           "translatedText": "",
-          "confidence": 85.5,
+          "confidence": 99.9,
           "bounds": {
             "x": 62.37,
             "y": 2.4,
             "width": 22.14,
             "height": 0.96
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "DRIP",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 78.73,
+            "y": 67.71,
+            "width": 20.65,
+            "height": 4.46
+          },
+          "polygon": [
+            [
+              713,
+              2078
+            ],
+            [
+              881,
+              2063
+            ],
+            [
+              890,
+              2169
+            ],
+            [
+              722,
+              2184
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p13-paddle1"
+        },
+        {
+          "sourceText": "DRIP",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 80.87,
+            "y": 71.29,
+            "width": 19.13,
+            "height": 4.69
+          },
+          "polygon": [
+            [
+              732,
+              2191
+            ],
+            [
+              898,
+              2172
+            ],
+            [
+              900,
+              2280
+            ],
+            [
+              744,
+              2299
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p13-paddle2"
+        },
+        {
+          "sourceText": "AMANHUA.COM",
+          "translatedText": "",
+          "confidence": 98.4,
+          "type": "sfx",
+          "bounds": {
+            "x": 8.11,
+            "y": 96.69,
+            "width": 37.22,
+            "height": 2.14
+          },
+          "polygon": [
+            [
+              82,
+              2939
+            ],
+            [
+              400,
+              2949
+            ],
+            [
+              399,
+              2997
+            ],
+            [
+              81,
+              2988
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p13-paddle3"
         }
       ]
     },
@@ -559,28 +2286,94 @@
         {
           "id": "p14-ocr1",
           "type": "other",
-          "sourceText": "Z years ago, it was\nteacher who Saved me\nand let me learn medical\nSkilIS Prom him.",
+          "sourceText": "2 years ago, it was\nteacher who saved me\nand let Me learn Medical\nskills from him.",
           "translatedText": "",
-          "confidence": 90.8,
+          "confidence": 98.8,
           "bounds": {
             "x": 50.96,
             "y": 62.13,
             "width": 48.64,
             "height": 3.72
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p14-ocr2",
           "type": "other",
-          "sourceText": "Although the days LAA\nare monotonous,\nthe overall Situation",
+          "sourceText": "Although the days\nare monotonous,\nthe overall situation",
           "translatedText": "",
-          "confidence": 80.4,
+          "confidence": 99.2,
           "bounds": {
             "x": 54.35,
             "y": 73.22,
             "width": 45.65,
             "height": 2.54
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "SWISH",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 49.69,
+            "y": 36.24,
+            "width": 41.18,
+            "height": 12.49
+          },
+          "polygon": [
+            [
+              456,
+              1938
+            ],
+            [
+              709,
+              1890
+            ],
+            [
+              809,
+              2413
+            ],
+            [
+              557,
+              2461
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p14-paddle1"
+        },
+        {
+          "sourceText": "is not bad.",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 62.02,
+            "y": 75.76,
+            "width": 17.85,
+            "height": 0.68
+          },
+          "polygon": [
+            [
+              562,
+              3881
+            ],
+            [
+              715,
+              3881
+            ],
+            [
+              715,
+              3912
+            ],
+            [
+              562,
+              3912
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p14-paddle2"
         }
       ]
     },
@@ -590,56 +2383,140 @@
         {
           "id": "p15-ocr1",
           "type": "other",
-          "sourceText": "SEAR “aire ead con onsidered =, anes ing able Pld is",
+          "sourceText": "After all, being able\nalready considered",
           "translatedText": "",
-          "confidence": 67.3,
+          "confidence": 98.7,
           "bounds": {
             "x": 41.11,
             "y": 22.76,
             "width": 58.89,
             "height": 3.33
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p15-ocr2",
           "type": "other",
-          "sourceText": "n this wo",
+          "sourceText": "to survive in this world is",
           "translatedText": "",
-          "confidence": 71.5,
+          "confidence": 99.0,
           "bounds": {
             "x": 76.15,
             "y": 23.91,
             "width": 14.37,
             "height": 0.73
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p15-ocr3",
           "type": "other",
           "sourceText": "a Miracle.",
           "translatedText": "",
-          "confidence": 95.5,
+          "confidence": 99.0,
           "bounds": {
             "x": 72.22,
             "y": 25.89,
             "width": 15.78,
             "height": 0.73
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
-          "id": "p15-loose-180-1",
-          "type": "narration",
-          "sourceText": "arse",
+          "sourceText": "SQVEAK",
           "translatedText": "",
-          "confidence": 78.4,
-          "orientationAngle": 180,
-          "detectionPass": "rotated-loose",
+          "confidence": 91.9,
+          "type": "sfx",
           "bounds": {
-            "x": 67.06,
-            "y": 66.71,
-            "width": 10.32,
-            "height": 1.84
-          }
+            "x": 36.05,
+            "y": 0.0,
+            "width": 21.35,
+            "height": 4.56
+          },
+          "polygon": [
+            [
+              329,
+              80
+            ],
+            [
+              452,
+              0
+            ],
+            [
+              512,
+              79
+            ],
+            [
+              389,
+              165
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p15-paddle1"
+        },
+        {
+          "sourceText": "DRIP",
+          "translatedText": "",
+          "confidence": 99.1,
+          "type": "sfx",
+          "bounds": {
+            "x": 64.64,
+            "y": 66.05,
+            "width": 15.05,
+            "height": 3.04
+          },
+          "polygon": [
+            [
+              585,
+              2558
+            ],
+            [
+              701,
+              2540
+            ],
+            [
+              714,
+              2627
+            ],
+            [
+              599,
+              2644
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p15-paddle2"
+        },
+        {
+          "sourceText": "WHOOSH",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 0.0,
+            "y": 69.55,
+            "width": 43.71,
+            "height": 8.88
+          },
+          "polygon": [
+            [
+              8,
+              2814
+            ],
+            [
+              309,
+              2686
+            ],
+            [
+              384,
+              2862
+            ],
+            [
+              84,
+              2990
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p15-paddle3"
         }
       ]
     },
@@ -647,19 +2524,228 @@
       "page": 16,
       "regions": [
         {
-          "id": "p16-loose-315-1",
-          "type": "sfx",
-          "sourceText": "IN PSS",
+          "sourceText": "YEE",
           "translatedText": "",
-          "confidence": 48.8,
-          "orientationAngle": 315,
-          "detectionPass": "rotated-loose",
+          "confidence": 100.0,
+          "type": "sfx",
           "bounds": {
-            "x": 18.1,
-            "y": 77.7,
-            "width": 15.48,
-            "height": 3.63
-          }
+            "x": 0.0,
+            "y": 0.57,
+            "width": 35.76,
+            "height": 8.32
+          },
+          "polygon": [
+            [
+              0,
+              75
+            ],
+            [
+              284,
+              39
+            ],
+            [
+              314,
+              288
+            ],
+            [
+              13,
+              324
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p16-paddle1"
+        },
+        {
+          "sourceText": "DISPEL",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 63.42,
+            "y": 10.31,
+            "width": 24.38,
+            "height": 3.18
+          },
+          "polygon": [
+            [
+              576,
+              431
+            ],
+            [
+              773,
+              402
+            ],
+            [
+              785,
+              482
+            ],
+            [
+              588,
+              511
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p16-paddle2"
+        },
+        {
+          "sourceText": "EEK",
+          "translatedText": "",
+          "confidence": 99.9,
+          "type": "sfx",
+          "bounds": {
+            "x": 0.0,
+            "y": 12.42,
+            "width": 34.17,
+            "height": 8.06
+          },
+          "polygon": [
+            [
+              0,
+              501
+            ],
+            [
+              293,
+              493
+            ],
+            [
+              300,
+              761
+            ],
+            [
+              0,
+              769
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p16-paddle3"
+        },
+        {
+          "sourceText": "ANHUALEom",
+          "translatedText": "",
+          "confidence": 88.2,
+          "type": "other",
+          "bounds": {
+            "x": 69.48,
+            "y": 13.99,
+            "width": 30.52,
+            "height": 1.66
+          },
+          "polygon": [
+            [
+              634,
+              540
+            ],
+            [
+              900,
+              548
+            ],
+            [
+              900,
+              597
+            ],
+            [
+              632,
+              589
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p16-paddle4"
+        },
+        {
+          "sourceText": "Mergercom",
+          "translatedText": "",
+          "confidence": 95.3,
+          "type": "other",
+          "bounds": {
+            "x": 70.64,
+            "y": 15.29,
+            "width": 29.17,
+            "height": 1.28
+          },
+          "polygon": [
+            [
+              642,
+              589
+            ],
+            [
+              892,
+              591
+            ],
+            [
+              892,
+              633
+            ],
+            [
+              642,
+              631
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p16-paddle5"
+        },
+        {
+          "sourceText": "ARK",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 61.28,
+            "y": 36.5,
+            "width": 38.72,
+            "height": 11.07
+          },
+          "polygon": [
+            [
+              572,
+              1423
+            ],
+            [
+              900,
+              1434
+            ],
+            [
+              900,
+              1802
+            ],
+            [
+              560,
+              1791
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p16-paddle6"
+        },
+        {
+          "sourceText": "HSOOM",
+          "translatedText": "",
+          "confidence": 97.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 28.56,
+            "y": 55.08,
+            "width": 60.67,
+            "height": 13.2
+          },
+          "polygon": [
+            [
+              270,
+              2310
+            ],
+            [
+              667,
+              2140
+            ],
+            [
+              790,
+              2422
+            ],
+            [
+              392,
+              2592
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p16-paddle7"
         }
       ]
     },
@@ -681,70 +2767,219 @@
         },
         {
           "id": "p17-ocr2",
-          "type": "other",
+          "type": "sfx",
           "sourceText": "BLOODSAW PHARMACY",
           "translatedText": "",
-          "confidence": 89.3,
+          "confidence": 98.7,
           "bounds": {
             "x": 28.64,
             "y": 58.77,
             "width": 36.28,
             "height": 0.45
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p17-ocr3",
           "type": "other",
-          "sourceText": "DING! You have received\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mb",
+          "sourceText": "DING! You have received\nSkull coin x10,\nbasic experience x5,\npure human blood x100 mL",
           "translatedText": "",
-          "confidence": 91,
+          "confidence": 99.1,
           "bounds": {
             "x": 29.35,
             "y": 67.07,
             "width": 46.64,
             "height": 4
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p17-ocr4",
           "type": "other",
           "sourceText": "That counts as\nMission complete?\nThat was easy.",
           "translatedText": "",
-          "confidence": 90.1,
+          "confidence": 100.0,
           "bounds": {
             "x": 65.49,
             "y": 77.85,
             "width": 33.57,
             "height": 2.6
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p17-ocr5",
-          "type": "other",
+          "type": "sfx",
           "sourceText": "YOUNG",
           "translatedText": "",
-          "confidence": 95.4,
+          "confidence": 99.9,
           "bounds": {
             "x": 68.72,
             "y": 88.73,
             "width": 10.01,
             "height": 0.63
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
-          "id": "p17-loose-270-1",
-          "type": "sfx",
-          "sourceText": "SASS",
+          "sourceText": "HOWL",
           "translatedText": "",
-          "confidence": 81.9,
-          "orientationAngle": 270,
-          "detectionPass": "rotated-loose",
+          "confidence": 92.0,
+          "type": "sfx",
           "bounds": {
-            "x": 90.77,
-            "y": 94.74,
-            "width": 3.35,
-            "height": 1.71
-          }
+            "x": 0.0,
+            "y": 4.2,
+            "width": 51.59,
+            "height": 9.43
+          },
+          "polygon": [
+            [
+              0,
+              318
+            ],
+            [
+              389,
+              241
+            ],
+            [
+              453,
+              594
+            ],
+            [
+              24,
+              672
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p17-paddle1"
+        },
+        {
+          "sourceText": "COSAMANHUA.Com",
+          "translatedText": "",
+          "confidence": 89.8,
+          "type": "other",
+          "bounds": {
+            "x": 53.87,
+            "y": 29.23,
+            "width": 46.12,
+            "height": 1.27
+          },
+          "polygon": [
+            [
+              495,
+              1500
+            ],
+            [
+              900,
+              1505
+            ],
+            [
+              900,
+              1558
+            ],
+            [
+              495,
+              1552
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p17-paddle2"
+        },
+        {
+          "sourceText": "DISPEL--",
+          "translatedText": "",
+          "confidence": 95.1,
+          "type": "sfx",
+          "bounds": {
+            "x": 66.71,
+            "y": 33.18,
+            "width": 31.03,
+            "height": 1.9
+          },
+          "polygon": [
+            [
+              607,
+              1734
+            ],
+            [
+              866,
+              1704
+            ],
+            [
+              873,
+              1762
+            ],
+            [
+              613,
+              1791
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p17-paddle3"
+        },
+        {
+          "sourceText": "WHOSH",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 60.25,
+            "y": 40.56,
+            "width": 39.75,
+            "height": 9.23
+          },
+          "polygon": [
+            [
+              551,
+              2312
+            ],
+            [
+              799,
+              2102
+            ],
+            [
+              900,
+              2314
+            ],
+            [
+              730,
+              2524
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p17-paddle4"
+        },
+        {
+          "sourceText": "FELLOW...",
+          "translatedText": "",
+          "confidence": 94.8,
+          "type": "sfx",
+          "bounds": {
+            "x": 66.21,
+            "y": 89.42,
+            "width": 14.7,
+            "height": 0.9
+          },
+          "polygon": [
+            [
+              601,
+              4581
+            ],
+            [
+              725,
+              4585
+            ],
+            [
+              724,
+              4622
+            ],
+            [
+              599,
+              4618
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p17-paddle5"
         }
       ]
     },
@@ -753,29 +2988,31 @@
       "regions": [
         {
           "id": "p18-ocr1",
-          "type": "other",
-          "sourceText": "MORNING,",
+          "type": "sfx",
+          "sourceText": "MORNING.",
           "translatedText": "",
-          "confidence": 83.1,
+          "confidence": 99.8,
           "bounds": {
             "x": 4.14,
             "y": 12.38,
             "width": 14.84,
             "height": 0.91
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p18-ocr2",
-          "type": "other",
-          "sourceText": "DO ov HAVE ANY\nTRASH YOU CAN\nGIVE TO THIS OLD\nWOMAN?",
+          "type": "sfx",
+          "sourceText": "DO YOU HAVE ANY\nUSELESS TRASH YOU CAN\nGIVE TO THIS OLD\nWOMAN?",
           "translatedText": "",
-          "confidence": 83.3,
+          "confidence": 99.4,
           "bounds": {
             "x": 20.08,
             "y": 20.35,
             "width": 32.39,
             "height": 4.61
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p18-ocr3",
@@ -793,54 +3030,218 @@
         {
           "id": "p18-ocr4",
           "type": "other",
-          "sourceText": "NS uman Skin Scavenger eS",
+          "sourceText": "Human Skin Scavenger",
           "translatedText": "",
-          "confidence": 56.3,
+          "confidence": 100.0,
           "bounds": {
             "x": 0,
             "y": 54.36,
             "width": 65.35,
             "height": 2.36
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p18-ocr5",
           "type": "other",
-          "sourceText": "Optional quest completion rewards:\nHuman Skin Scavenger’s\n“ey favorability +10,\nSkull coin +20\nHuman Skin Scavenger’s reward x1",
+          "sourceText": "Optional quest completion rewards:\nHuman Skin Scavenger’s\nfavorability +10,\nSkull coin +20\nHuman Skin Scavenger’s reward x1",
           "translatedText": "",
-          "confidence": 81.3,
+          "confidence": 99.7,
           "bounds": {
             "x": 11.96,
             "y": 57.62,
             "width": 80.09,
             "height": 5.23
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p18-ocr6",
-          "type": "other",
+          "type": "sfx",
           "sourceText": "WAIT.",
           "translatedText": "",
-          "confidence": 94.8,
+          "confidence": 99.9,
           "bounds": {
             "x": 7.85,
             "y": 70.62,
             "width": 9.3,
             "height": 0.76
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p18-ocr7",
           "type": "other",
           "sourceText": "the Scavenger!\nGotta get rid of her\nquickly.",
           "translatedText": "",
-          "confidence": 95.7,
+          "confidence": 99.6,
           "bounds": {
             "x": 65.24,
             "y": 72.94,
             "width": 30.62,
             "height": 2.92
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "GOOD",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 7.01,
+            "y": 11.15,
+            "width": 8.87,
+            "height": 1.11
+          },
+          "polygon": [
+            [
+              65,
+              430
+            ],
+            [
+              141,
+              430
+            ],
+            [
+              141,
+              468
+            ],
+            [
+              65,
+              468
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p18-paddle1"
+        },
+        {
+          "sourceText": "PLEASE",
+          "translatedText": "",
+          "confidence": 97.1,
+          "type": "sfx",
+          "bounds": {
+            "x": 5.33,
+            "y": 69.5,
+            "width": 14.23,
+            "height": 1.02
+          },
+          "polygon": [
+            [
+              51,
+              2668
+            ],
+            [
+              173,
+              2668
+            ],
+            [
+              173,
+              2703
+            ],
+            [
+              51,
+              2703
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p18-paddle2"
+        },
+        {
+          "sourceText": "It's",
+          "translatedText": "",
+          "confidence": 95.3,
+          "type": "other",
+          "bounds": {
+            "x": 77.41,
+            "y": 71.95,
+            "width": 5.95,
+            "height": 0.93
+          },
+          "polygon": [
+            [
+              698,
+              2762
+            ],
+            [
+              749,
+              2762
+            ],
+            [
+              749,
+              2794
+            ],
+            [
+              698,
+              2794
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p18-paddle3"
+        },
+        {
+          "sourceText": "FOR",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 55.48,
+            "y": 89.15,
+            "width": 7.93,
+            "height": 1.02
+          },
+          "polygon": [
+            [
+              501,
+              3422
+            ],
+            [
+              569,
+              3422
+            ],
+            [
+              569,
+              3457
+            ],
+            [
+              501,
+              3457
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p18-paddle4"
+        },
+        {
+          "sourceText": "YOU!",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 54.66,
+            "y": 89.98,
+            "width": 9.8,
+            "height": 1.17
+          },
+          "polygon": [
+            [
+              494,
+              3457
+            ],
+            [
+              577,
+              3454
+            ],
+            [
+              578,
+              3491
+            ],
+            [
+              495,
+              3494
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p18-paddle5"
         }
       ]
     },
@@ -849,29 +3250,31 @@
       "regions": [
         {
           "id": "p19-ocr1",
-          "type": "other",
+          "type": "sfx",
           "sourceText": "THANK",
           "translatedText": "",
-          "confidence": 74.9,
+          "confidence": 100.0,
           "bounds": {
             "x": 16.2,
             "y": 52.16,
             "width": 8.72,
             "height": 0.73
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p19-ocr2",
           "type": "other",
-          "sourceText": "DING! You have received\nthe request reward:\nHuman Skin Scavenger’s\nfavorability +10,",
+          "sourceText": "DING! You have received\nthe request reward:\nHuman Skin Scavenger's\nfavorability +10,",
           "translatedText": "",
-          "confidence": 90.9,
+          "confidence": 99.5,
           "bounds": {
             "x": 12.21,
             "y": 60.14,
             "width": 51.47,
             "height": 6.39
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p19-ocr3",
@@ -887,19 +3290,196 @@
           }
         },
         {
-          "id": "p19-loose-180-1",
-          "type": "sfx",
-          "sourceText": "SNAOK NOK",
+          "sourceText": "AH-H-H",
           "translatedText": "",
-          "confidence": 66.5,
-          "orientationAngle": 180,
-          "detectionPass": "rotated-loose",
+          "confidence": 99.8,
+          "type": "sfx",
           "bounds": {
-            "x": 13.24,
-            "y": 53.13,
-            "width": 14.64,
-            "height": 0.79
-          }
+            "x": 47.76,
+            "y": 15.25,
+            "width": 28.82,
+            "height": 9.69
+          },
+          "polygon": [
+            [
+              436,
+              648
+            ],
+            [
+              613,
+              605
+            ],
+            [
+              683,
+              894
+            ],
+            [
+              506,
+              937
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p19-paddle1"
+        },
+        {
+          "sourceText": "YOU, YOUNG",
+          "translatedText": "",
+          "confidence": 99.9,
+          "type": "sfx",
+          "bounds": {
+            "x": 12.98,
+            "y": 53.03,
+            "width": 14.93,
+            "height": 0.91
+          },
+          "polygon": [
+            [
+              120,
+              2036
+            ],
+            [
+              248,
+              2036
+            ],
+            [
+              248,
+              2067
+            ],
+            [
+              120,
+              2067
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p19-paddle2"
+        },
+        {
+          "sourceText": "FELLOW.",
+          "translatedText": "",
+          "confidence": 99.8,
+          "type": "sfx",
+          "bounds": {
+            "x": 14.96,
+            "y": 53.91,
+            "width": 10.85,
+            "height": 0.99
+          },
+          "polygon": [
+            [
+              138,
+              2070
+            ],
+            [
+              230,
+              2072
+            ],
+            [
+              229,
+              2104
+            ],
+            [
+              137,
+              2102
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p19-paddle3"
+        },
+        {
+          "sourceText": "COCMANHUA.Com",
+          "translatedText": "",
+          "confidence": 83.5,
+          "type": "other",
+          "bounds": {
+            "x": 0.0,
+            "y": 55.76,
+            "width": 45.44,
+            "height": 1.49
+          },
+          "polygon": [
+            [
+              0,
+              2142
+            ],
+            [
+              399,
+              2146
+            ],
+            [
+              398,
+              2193
+            ],
+            [
+              0,
+              2189
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p19-paddle4"
+        },
+        {
+          "sourceText": "AcloudMergo.com",
+          "translatedText": "",
+          "confidence": 94.6,
+          "type": "other",
+          "bounds": {
+            "x": 0.0,
+            "y": 56.89,
+            "width": 42.59,
+            "height": 1.34
+          },
+          "polygon": [
+            [
+              1,
+              2185
+            ],
+            [
+              374,
+              2190
+            ],
+            [
+              373,
+              2231
+            ],
+            [
+              1,
+              2226
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p19-paddle5"
+        },
+        {
+          "sourceText": "Skull coin +20!",
+          "translatedText": "",
+          "confidence": 99.8,
+          "type": "other",
+          "bounds": {
+            "x": 12.14,
+            "y": 66.13,
+            "width": 31.38,
+            "height": 1.61
+          },
+          "polygon": [
+            [
+              116,
+              2540
+            ],
+            [
+              385,
+              2540
+            ],
+            [
+              385,
+              2595
+            ],
+            [
+              116,
+              2595
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p19-paddle6"
         }
       ]
     },
@@ -908,55 +3488,59 @@
       "regions": [
         {
           "id": "p20-ocr1",
-          "type": "other",
-          "sourceText": "ARE KIND-HEARTED,\nHERE, HERE, HERE,",
+          "type": "sfx",
+          "sourceText": "ARE KIND-HEARTED.\nHERE, HERE, HERE,",
           "translatedText": "",
-          "confidence": 91.3,
+          "confidence": 99.9,
           "bounds": {
             "x": 5.84,
             "y": 3.01,
             "width": 44.87,
             "height": 2.45
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p20-ocr2",
-          "type": "other",
-          "sourceText": "YOUR REWARD,",
+          "type": "sfx",
+          "sourceText": "YOUR REWARD.",
           "translatedText": "",
-          "confidence": 90,
+          "confidence": 100.0,
           "bounds": {
             "x": 26.25,
             "y": 10.18,
             "width": 34.39,
             "height": 1.03
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p20-ocr3",
-          "type": "other",
-          "sourceText": "GLUB",
+          "type": "sfx",
+          "sourceText": "GLUB GLUB",
           "translatedText": "",
-          "confidence": 92.8,
+          "confidence": 99.9,
           "bounds": {
             "x": 43.47,
             "y": 15.94,
             "width": 14.72,
             "height": 1.36
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p20-ocr4",
           "type": "other",
-          "sourceText": "DING! You can choose to accept the\nHuman Skin Scavenger’s reward, or to\nal reject it. If you reject it:\nBS Human Skin Scavenger’s favorability -50",
+          "sourceText": "DING! You can choose to accept the\nHuman Skin Scavenger’s reward, or to\nreject it. If you reject it:\nHuman Skin Scavenger’s favorability -50",
           "translatedText": "",
-          "confidence": 70.8,
+          "confidence": 99.5,
           "bounds": {
             "x": 0,
             "y": 34.19,
             "width": 93.26,
             "height": 4.51
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p20-ocr5",
@@ -973,16 +3557,177 @@
         },
         {
           "id": "p20-ocr6",
-          "type": "other",
-          "sourceText": "I WILL TAKE\nTHAT, THANK\nYOU",
+          "type": "sfx",
+          "sourceText": "I WILL TAKE\nTHAT, THANK\nYOU.",
           "translatedText": "",
-          "confidence": 93.1,
+          "confidence": 99.1,
           "bounds": {
             "x": 69.78,
             "y": 62.93,
             "width": 27.32,
             "height": 2.56
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "YOU",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "sfx",
+          "bounds": {
+            "x": 23.21,
+            "y": 1.71,
+            "width": 10.03,
+            "height": 1.23
+          },
+          "polygon": [
+            [
+              211,
+              91
+            ],
+            [
+              297,
+              91
+            ],
+            [
+              297,
+              147
+            ],
+            [
+              211,
+              147
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p20-paddle1"
+        },
+        {
+          "sourceText": "THIS IS",
+          "translatedText": "",
+          "confidence": 92.5,
+          "type": "sfx",
+          "bounds": {
+            "x": 34.35,
+            "y": 8.74,
+            "width": 18.08,
+            "height": 1.31
+          },
+          "polygon": [
+            [
+              313,
+              451
+            ],
+            [
+              468,
+              451
+            ],
+            [
+              468,
+              511
+            ],
+            [
+              313,
+              511
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p20-paddle2"
+        },
+        {
+          "sourceText": "OK,",
+          "translatedText": "",
+          "confidence": 99.7,
+          "type": "other",
+          "bounds": {
+            "x": 15.45,
+            "y": 84.99,
+            "width": 9.1,
+            "height": 1.62
+          },
+          "polygon": [
+            [
+              141,
+              4356
+            ],
+            [
+              219,
+              4356
+            ],
+            [
+              219,
+              4430
+            ],
+            [
+              141,
+              4430
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p20-paddle3"
+        },
+        {
+          "sourceText": "OK!",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 15.22,
+            "y": 86.11,
+            "width": 9.33,
+            "height": 1.49
+          },
+          "polygon": [
+            [
+              139,
+              4413
+            ],
+            [
+              219,
+              4413
+            ],
+            [
+              219,
+              4481
+            ],
+            [
+              139,
+              4481
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p20-paddle4"
+        },
+        {
+          "sourceText": "LEAVES...",
+          "translatedText": "",
+          "confidence": 99.7,
+          "type": "sfx",
+          "bounds": {
+            "x": 40.83,
+            "y": 91.51,
+            "width": 26.02,
+            "height": 1.36
+          },
+          "polygon": [
+            [
+              373,
+              4689
+            ],
+            [
+              596,
+              4689
+            ],
+            [
+              596,
+              4751
+            ],
+            [
+              373,
+              4751
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p20-paddle5"
         }
       ]
     },
@@ -992,41 +3737,44 @@
         {
           "id": "p21-ocr1",
           "type": "other",
-          "sourceText": "DING! You have received the\nHuman Skin Scavenger’s reward:\nTailor Shop Owner's eyeball x1,\nPork Butcher Owner's eyeball x1,\nHuman Skin Scavenger’s\nfavorahility +20 DING!",
+          "sourceText": "DING! You have received the\nHuman Skin Scavenger’s reward:\nTailor Shop Owner’s eyeball x1,\nPork Butcher Owner’s eyeball x1,\nHuman Skin Scavenger’s\nfavorability +20 DING!",
           "translatedText": "",
-          "confidence": 85,
+          "confidence": 98.7,
           "bounds": {
             "x": 7.41,
             "y": 7.95,
             "width": 52.18,
             "height": 8.18
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p21-ocr2",
-          "type": "other",
-          "sourceText": "| MODE",
+          "type": "sfx",
+          "sourceText": "CLOSE",
           "translatedText": "",
-          "confidence": 63.1,
+          "confidence": 100.0,
           "bounds": {
             "x": 27.96,
             "y": 37.99,
             "width": 24.85,
             "height": 4.37
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p21-ocr3",
           "type": "other",
-          "sourceText": "Prom Teacher\nthere is a Tailor Shop\nand a Butcher Shop\nacross the road.",
+          "sourceText": "from Teacher before,\nthere is a Tailor Shop\nand a Butcher Shop\nacross the road.",
           "translatedText": "",
-          "confidence": 95,
+          "confidence": 99.9,
           "bounds": {
             "x": 1.57,
             "y": 51.89,
             "width": 38.75,
             "height": 5.12
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p21-ocr4",
@@ -1042,34 +3790,132 @@
           }
         },
         {
-          "id": "p21-loose-0-1",
-          "type": "other",
-          "sourceText": "Phew —\nthat was\nClose.",
+          "sourceText": "Phew -",
           "translatedText": "",
-          "confidence": 89.5,
-          "orientationAngle": 0,
-          "detectionPass": "sparse-loose",
+          "confidence": 88.9,
+          "type": "other",
           "bounds": {
-            "x": 67.27,
+            "x": 68.36,
             "y": 25.98,
-            "width": 19.68,
-            "height": 4.53
-          }
+            "width": 17.38,
+            "height": 1.47
+          },
+          "polygon": [
+            [
+              619,
+              895
+            ],
+            [
+              768,
+              897
+            ],
+            [
+              767,
+              940
+            ],
+            [
+              619,
+              938
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p21-paddle1"
         },
         {
-          "id": "p21-loose-180-2",
-          "type": "narration",
-          "sourceText": "drey |",
+          "sourceText": "that was",
           "translatedText": "",
-          "confidence": 61.6,
-          "orientationAngle": 180,
-          "detectionPass": "rotated-loose",
+          "confidence": 100.0,
+          "type": "other",
           "bounds": {
-            "x": 10.4,
-            "y": 50.88,
-            "width": 10.2,
-            "height": 0.91
-          }
+            "x": 67.08,
+            "y": 27.59,
+            "width": 19.95,
+            "height": 1.24
+          },
+          "polygon": [
+            [
+              608,
+              950
+            ],
+            [
+              779,
+              950
+            ],
+            [
+              779,
+              988
+            ],
+            [
+              608,
+              988
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p21-paddle2"
+        },
+        {
+          "sourceText": "close.",
+          "translatedText": "",
+          "confidence": 100.0,
+          "type": "other",
+          "bounds": {
+            "x": 70.35,
+            "y": 28.98,
+            "width": 13.18,
+            "height": 1.4
+          },
+          "polygon": [
+            [
+              636,
+              998
+            ],
+            [
+              749,
+              998
+            ],
+            [
+              749,
+              1041
+            ],
+            [
+              636,
+              1041
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p21-paddle3"
+        },
+        {
+          "sourceText": "I have heard",
+          "translatedText": "",
+          "confidence": 97.4,
+          "type": "other",
+          "bounds": {
+            "x": 9.46,
+            "y": 50.74,
+            "width": 22.75,
+            "height": 1.14
+          },
+          "polygon": [
+            [
+              90,
+              1745
+            ],
+            [
+              285,
+              1745
+            ],
+            [
+              285,
+              1780
+            ],
+            [
+              90,
+              1780
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p21-paddle4"
         }
       ]
     },
@@ -1079,41 +3925,76 @@
         {
           "id": "p22-ocr1",
           "type": "other",
-          "sourceText": "The Tailor Shop\nStitches human Skin, the\nButcher Shop Sells human\nFlesh. And what the Human\nSkin Scavenger just\ngave me...",
+          "sourceText": "The Tailor Shop\nstitches human skin, the\nButcher Shop sells human\nFlesh. And what the Human\nSkin Scavenger just\ngave Me...",
           "translatedText": "",
-          "confidence": 90.8,
+          "confidence": 99.0,
           "bounds": {
             "x": 43.51,
             "y": 2.37,
             "width": 56.42,
             "height": 9.52
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p22-ocr2",
           "type": "other",
-          "sourceText": "are the eyeballs\nFrom the two owners.",
+          "sourceText": "are the eyeballs\nfrom the two owners.",
           "translatedText": "",
-          "confidence": 92.7,
+          "confidence": 99.2,
           "bounds": {
             "x": 1.74,
             "y": 33.47,
             "width": 52.53,
             "height": 3.13
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p22-ocr3",
           "type": "other",
-          "sourceText": "There i6 another\nrule in this world...",
+          "sourceText": "There is another\nrule in this world...",
           "translatedText": "",
-          "confidence": 81.3,
+          "confidence": 99.8,
           "bounds": {
             "x": 55.68,
             "y": 45.77,
             "width": 42.87,
             "height": 2.9
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
+        },
+        {
+          "sourceText": "NEVER TRY TO OFFEND THE WALKERS OF THE DARK",
+          "translatedText": "",
+          "confidence": 98.6,
+          "type": "other",
+          "bounds": {
+            "x": 11.39,
+            "y": 92.85,
+            "width": 81.67,
+            "height": 2.45
+          },
+          "polygon": [
+            [
+              120,
+              3193
+            ],
+            [
+              820,
+              3193
+            ],
+            [
+              820,
+              3268
+            ],
+            [
+              120,
+              3268
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p22-paddle1"
         }
       ]
     },
@@ -1122,81 +4003,105 @@
       "regions": [
         {
           "id": "p23-ocr1",
-          "type": "other",
-          "sourceText": "AURORA ANIMATIONS\n(HOSTED ON 2H APP)\nCL/ + SENNRYOU",
+          "type": "sfx",
+          "sourceText": "AURORA ANIMATIONS\n(HOSTED ON 番茄漫画 APP)\nTL ¢ CL/RD: SENNRYOU",
           "translatedText": "",
-          "confidence": 82.3,
+          "confidence": 97.0,
           "bounds": {
             "x": 25.8,
             "y": 18.4,
             "width": 54.3,
             "height": 8.36
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
           "id": "p23-ocr2",
           "type": "other",
-          "sourceText": "DISCORD INVITE CODE:\nBCZdChPruld\nKO-FILCOM/BARACHOU",
+          "sourceText": "DISCORD INVITE CODE:\nBCZdChPrLd\nKO-FI.COM/BARACHOU",
           "translatedText": "",
-          "confidence": 75.2,
+          "confidence": 99.4,
           "bounds": {
             "x": 62.06,
             "y": 89.84,
             "width": 29.33,
             "height": 5.8
-          }
+          },
+          "detectionEngine": "paddleocr-correction"
         },
         {
-          "id": "p23-loose-180-1",
-          "type": "narration",
-          "sourceText": "Dine",
+          "sourceText": "ORIGINAL WORK BY:",
           "translatedText": "",
-          "confidence": 72,
-          "orientationAngle": 180,
-          "detectionPass": "rotated-loose",
+          "confidence": 100.0,
+          "type": "sfx",
           "bounds": {
-            "x": 36.89,
-            "y": 93.13,
-            "width": 20.88,
-            "height": 4.87
-          }
+            "x": 35.31,
+            "y": 16.25,
+            "width": 38.27,
+            "height": 1.62
+          },
+          "polygon": [
+            [
+              326,
+              350
+            ],
+            [
+              654,
+              350
+            ],
+            [
+              654,
+              381
+            ],
+            [
+              326,
+              381
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p23-paddle1"
         },
         {
-          "id": "p23-loose-180-2",
-          "type": "narration",
-          "sourceText": "NOHD Valid ‘ad ‘da |",
+          "sourceText": "RP, PR, TS: BARA CHOU",
           "translatedText": "",
-          "confidence": 70.5,
-          "orientationAngle": 180,
-          "detectionPass": "rotated-loose",
+          "confidence": 97.5,
+          "type": "other",
           "bounds": {
-            "x": 2.26,
-            "y": 27.02,
-            "width": 61.92,
-            "height": 6.06
-          }
+            "x": 12.91,
+            "y": 27.22,
+            "width": 50.63,
+            "height": 2.4
+          },
+          "polygon": [
+            [
+              127,
+              591
+            ],
+            [
+              560,
+              586
+            ],
+            [
+              561,
+              627
+            ],
+            [
+              128,
+              632
+            ]
+          ],
+          "detectionEngine": "paddleocr",
+          "id": "p23-paddle2"
         }
       ]
     }
   ],
-  "looseAngleOcr": {
+  "paddleOcrLayer": {
     "enabled": true,
-    "angles": [
-      0,
-      45,
-      90,
-      135,
-      180,
-      225,
-      270,
-      315
-    ],
-    "addedRegions": 12,
-    "addedByAngle": {
-      "0": 5,
-      "180": 5,
-      "270": 1,
-      "315": 1
-    }
+    "language": "en",
+    "recognizedCandidates": 244,
+    "improvedExisting": 55,
+    "addedRegions": 95,
+    "skippedAsDuplicate": 2
   }
 }
