@@ -80,6 +80,21 @@ function payloadHasRegion(payload, page, regionId) {
   return Boolean(row && Array.isArray(row.regions) && row.regions.some((region) => String(region?.id) === String(regionId) && String(region?.translatedText || '').trim()));
 }
 
+function showCleanTranslatedPreview() {
+  window.mangaBridgeTyper?.showPreview?.(true);
+  window.mangaBridgeTyper?.showBoxes?.(false);
+  window.mangaBridgeRedraw?.showMasks?.(false);
+  window.mangaBridgeRedraw?.show?.(true);
+}
+
+function focusTranslatedRegion(pending) {
+  if (!pending || !state.chapter || pending.chapterId !== state.chapter.chapterId) return;
+  const card = document.querySelector(`.page-card[data-page="${pending.page}"]`);
+  if (!card) return;
+  const target = card.querySelector(`[data-region-id="${CSS.escape(String(pending.regionId))}"]`) || card;
+  target.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
+}
+
 async function syncPublishedTranslations(options = {}) {
   if (!state.chapter || snippetTranslationState.syncing) return false;
   const { quiet = false, poll = false } = options;
@@ -111,12 +126,15 @@ async function syncPublishedTranslations(options = {}) {
       writeTyperPrefs?.();
       persistDraft();
       renderAllRegions();
+      showCleanTranslatedPreview();
 
-      if (pending && pending.chapterId === state.chapter.chapterId && payloadHasRegion(payload, pending.page, pending.regionId)) {
+      const completedPending = pending && pending.chapterId === state.chapter.chapterId && payloadHasRegion(payload, pending.page, pending.regionId);
+      if (completedPending) {
         localStorage.removeItem(SNIPPET_PENDING_KEY);
+        setTimeout(() => focusTranslatedRegion(pending), 100);
       }
 
-      setStatus(`${changed} região(ões) sincronizada(s) do ChatGPT/GitHub.`, 'ok');
+      setStatus(`${changed} região(ões) sincronizada(s). Prévia limpa ativada: PT-BR + redraw ON, caixas OCR OFF.`, 'ok');
       return true;
     }
     return false;
