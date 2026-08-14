@@ -13,12 +13,14 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify live site, cached chapter and first image
+      - name: Verify live site, chapter, OCR and first image
         shell: bash
         run: |
           set -e
           SITE='https://zeckofc143-hub.github.io/manga-bridge./'
-          DATA="${SITE}data/51429dea-7169-4913-b5d6-a4ee00329eb7.json"
+          UUID='51429dea-7169-4913-b5d6-a4ee00329eb7'
+          DATA="${SITE}data/${UUID}.json"
+          OCR="${SITE}data/${UUID}.ocr.json"
           IMAGE='https://cmdxd98sb0x3yprd.mangadex.network/data/1ec2d035196aec17521017ecf2f9ebe4/1-5c5dc473b828c896640b99fc963bbcacc15408d2e8de5367879d2adc1eb644bf.png'
 
           wait_200() {
@@ -35,8 +37,13 @@ jobs:
 
           wait_200 site "$SITE"
           wait_200 data "$DATA"
+          wait_200 ocr "$OCR"
+
           curl -L -sS --max-time 25 "$DATA" -o /tmp/chapter.json
-          node -e "const d=require('/tmp/chapter.json'); if(d.chapterId!=='51429dea-7169-4913-b5d6-a4ee00329eb7'||d.pages.length!==23) process.exit(1); console.log('DATA_OK',d.mangaTitle,d.pages.length)"
+          node -e "const d=require('/tmp/chapter.json'); if(d.chapterId!=='$UUID'||d.pages.length!==23) process.exit(1); console.log('DATA_OK',d.mangaTitle,d.pages.length)"
+
+          curl -L -sS --max-time 25 "$OCR" -o /tmp/ocr.json
+          node -e "const d=require('/tmp/ocr.json'); if(d.chapterId!=='$UUID'||d.totalRegions<1||d.pages.length!==23) process.exit(1); console.log('OCR_OK',d.engine,d.totalRegions,d.pages.length)"
 
           CODE=$(curl -L -sS -o /tmp/page1 -w '%{http_code}' --max-time 30 -H 'Referer: https://zeckofc143-hub.github.io/manga-bridge./' "$IMAGE" || true)
           SIZE=$(wc -c </tmp/page1 2>/dev/null || echo 0)
