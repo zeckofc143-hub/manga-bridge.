@@ -7,8 +7,7 @@ on:
     branches: ["main"]
     paths:
       - "scripts/ocr-chapter.mjs"
-      - "scripts/ocr-rotated.mjs"
-      - "scripts/ocr-all-text.mjs"
+      - "scripts/ocr-loose-angle.mjs"
       - ".github/workflows/cache-chapter.yml"
 
 permissions:
@@ -66,8 +65,11 @@ jobs:
             tesseract-ocr-chi-sim \
             tesseract-ocr-chi-tra
 
-      - name: Detect all page text with multipass OCR
-        run: node scripts/ocr-all-text.mjs "${{ steps.chapter.outputs.uuid }}"
+      - name: Detect clean horizontal text regions
+        run: node scripts/ocr-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
+
+      - name: Add loose and angled text regions
+        run: node scripts/ocr-loose-angle.mjs "${{ steps.chapter.outputs.uuid }}"
 
       - name: Commit cached chapter and OCR
         shell: bash
@@ -84,7 +86,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Cache and all-text OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
+          git commit -m "Cache and layered OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
@@ -98,7 +100,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com OCR multipass para **todo texto**: horizontal, vertical/rotacionado, texto solto e SFX. Volte ao MangaBridge e toque em **Verificar novamente**.`
+              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado em duas camadas: OCR limpo + textos soltos/angulados (0°, 45°, 90°, 135°, 180°, 225°, 270° e 315°). Volte ao MangaBridge e toque em **Verificar novamente**.`
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
