@@ -8,6 +8,7 @@ on:
     paths:
       - "scripts/ocr-chapter.mjs"
       - "scripts/ocr-rotated.mjs"
+      - "scripts/ocr-all-text.mjs"
       - ".github/workflows/cache-chapter.yml"
 
 permissions:
@@ -52,7 +53,7 @@ jobs:
       - name: Fetch chapter from MangaDex
         run: node scripts/cache-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
 
-      - name: Install OCR languages and image rotation tools
+      - name: Install OCR languages and image tools
         shell: bash
         run: |
           sudo apt-get update
@@ -65,11 +66,8 @@ jobs:
             tesseract-ocr-chi-sim \
             tesseract-ocr-chi-tra
 
-      - name: Detect horizontal text regions with Tesseract
-        run: node scripts/ocr-chapter.mjs "${{ steps.chapter.outputs.uuid }}"
-
-      - name: Detect rotated text without changing existing bubbles
-        run: node scripts/ocr-rotated.mjs "${{ steps.chapter.outputs.uuid }}"
+      - name: Detect all page text with multipass OCR
+        run: node scripts/ocr-all-text.mjs "${{ steps.chapter.outputs.uuid }}"
 
       - name: Commit cached chapter and OCR
         shell: bash
@@ -86,7 +84,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "Cache and OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
+          git commit -m "Cache and all-text OCR MangaDex chapter ${{ steps.chapter.outputs.uuid }}"
           git fetch origin main
           git rebase origin/main
           git push origin HEAD:main
@@ -100,7 +98,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com OCR horizontal + rotacionado. Volte ao MangaBridge e toque em **Verificar novamente**.`
+              body: `✅ Capítulo \`${{ steps.chapter.outputs.uuid }}\` preparado com OCR multipass para **todo texto**: horizontal, vertical/rotacionado, texto solto e SFX. Volte ao MangaBridge e toque em **Verificar novamente**.`
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
