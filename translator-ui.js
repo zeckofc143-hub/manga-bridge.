@@ -23,7 +23,7 @@
       result.textContent='A tradução aparece aqui.';
       result.classList.add('empty');
       setBadge('PRONTO','neutral');
-      status.textContent='Palavra já criada → tradução real. Palavra nova → adaptação sonora marcada como proposta. Nada é fingido como cânone.';
+      status.textContent='Escreve uma palavra, conceito, nome ou frase.';
       details.textContent='';
       return;
     }
@@ -33,33 +33,37 @@
     result.classList.remove('empty');
 
     if(out.direct&&out.status==='canon'){
-      setBadge('CANÔNICO','canon');
-      status.textContent='Tradução registrada no léxico da língua.';
-      const item=out.items[0];
-      details.textContent=item.roman&&item.roman!==item.output?`Romanização técnica: ${item.roman}`:'';
-      return;
-    }
-
-    if(out.direct&&out.status==='session'){
-      setBadge('DEFINIDO','defined');
-      status.textContent='Forma definida para este conceito no projeto atual.';
+      setBadge('LÉXICO','canon');
+      status.textContent='Forma já definida na língua.';
       const item=out.items[0];
       details.textContent=item.roman&&item.roman!==item.output?`Forma fonológica: ${item.roman}`:'';
       return;
     }
 
-    if(out.status==='lexical-only'){
-      setBadge('LÉXICO','defined');
-      status.textContent='Todas as palavras reconhecidas existem no léxico, mas a frase completa não é certificada como gramatical sem morfemas/estrutura final.';
-      details.textContent='';
+    if(out.direct&&out.status==='defined'){
+      setBadge('DEFINIDO','defined');
+      status.textContent='Forma definida no projeto.';
+      const item=out.items[0];
+      details.textContent=item.roman&&item.roman!==item.output?`Forma fonológica: ${item.roman}`:'';
       return;
     }
 
-    setBadge('PROPOSTA','proposal');
-    const proposed=(out.items||[]).filter(x=>x.kind==='phonetic-adaptation').map(x=>x.input);
-    status.textContent=proposed.length===1
-      ? `“${proposed[0]}” ainda não possui palavra lexical definida. A saída é uma adaptação sonora válida para rascunho, não uma tradução canônica.`
-      : `${proposed.length} partes ainda não possuem forma lexical definida. A saída abaixo é rascunho palavra por palavra, não uma frase canônica.`;
+    if(out.status==='generated-word'){
+      setBadge('FORMADA','proposal');
+      status.textContent='Palavra formada automaticamente com o inventário e a fonotática da língua.';
+      details.textContent='A mesma entrada sempre produz a mesma forma; palavras já definidas no léxico têm prioridade.';
+      return;
+    }
+
+    if(out.status==='lexical-phrase'){
+      setBadge('LÉXICO','defined');
+      status.textContent='A frase usa apenas formas já registradas.';
+      details.textContent=out.warning||'';
+      return;
+    }
+
+    setBadge('FRASE','proposal');
+    status.textContent='Tradução automática usando o léxico existente e formação de palavras para o que ainda não estava registrado.';
     details.textContent=out.warning||'';
   }
 
