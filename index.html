@@ -3,135 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#070a0f">
+<meta name="theme-color" content="#08090c">
 <title>Tradutor — Cubos de Desera</title>
+<meta name="description" content="Tradutor do português para a língua universal de Cubos de Desera em ABC normal.">
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#070a0f;color:#f7f8fb}body{min-height:100vh;padding:18px;background:radial-gradient(circle at 50% -20%,#26304b 0,#101622 37%,#070a0f 72%)}
-.wrap{width:min(760px,100%);margin:0 auto;padding-top:clamp(12px,7vh,68px)}
-.brand{display:flex;align-items:center;gap:10px;margin:0 0 16px 3px;color:#9da8bc;font-size:12px;font-weight:900;letter-spacing:.19em}.mark{width:10px;height:10px;border:2px solid #dfe5f2;border-radius:3px;transform:rotate(45deg);box-shadow:0 0 18px rgba(220,230,255,.38)}
-.card{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(19,25,38,.97),rgba(10,14,22,.97));border:1px solid rgba(255,255,255,.085);border-radius:30px;padding:clamp(20px,5vw,36px);box-shadow:0 30px 90px rgba(0,0,0,.46)}.card:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-130px;top:-150px;background:rgba(103,126,181,.12);filter:blur(5px);pointer-events:none}
-h1{position:relative;margin:0;font-size:clamp(38px,9vw,68px);line-height:.92;letter-spacing:-.06em}.sub{position:relative;margin:13px 0 30px;color:#98a3b8;font-size:14px;line-height:1.55;max-width:560px}
-.label{display:flex;justify-content:space-between;align-items:center;margin:0 2px 9px;color:#aab4c7;font-size:11px;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
-.box{width:100%;min-height:132px;border:1px solid rgba(255,255,255,.09);border-radius:21px;background:#090d14;color:#fff;padding:18px;font:650 19px/1.55 Inter,system-ui;outline:none;resize:vertical;transition:.18s}.box:focus{border-color:#6d7b99;box-shadow:0 0 0 4px rgba(113,130,168,.11)}.box::placeholder{color:#4e586b}
-.actions{display:flex;gap:10px;margin:14px 0 20px}.primary,.secondary,.copy{border:0;font:850 14px Inter,system-ui;cursor:pointer}.primary{flex:1;border-radius:17px;padding:15px 18px;background:#f2f5fb;color:#0c1018}.secondary{border-radius:17px;padding:15px 17px;background:#1a2231;color:#c8d0df;border:1px solid rgba(255,255,255,.07)}.primary:active,.secondary:active,.copy:active{transform:scale(.99)}
-.outwrap{position:relative}.result{min-height:132px;border:1px solid rgba(255,255,255,.09);border-radius:21px;background:linear-gradient(180deg,#151d2c,#0c111a);padding:18px 66px 18px 18px;font-size:clamp(27px,7vw,42px);line-height:1.32;font-weight:900;letter-spacing:-.035em;word-break:break-word;white-space:pre-wrap}.result.empty{color:#4e586b;font-size:18px;font-weight:650;letter-spacing:0}.copy{position:absolute;right:12px;top:12px;border-radius:13px;padding:9px 11px;background:#202a3b;color:#dfe5ef;border:1px solid rgba(255,255,255,.08)}
-.status{min-height:19px;margin:10px 2px 0;color:#6f7b91;font-size:11px;line-height:1.5}.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.chip{border:1px solid rgba(255,255,255,.075);background:#0d131e;color:#8f9aaf;border-radius:999px;padding:8px 11px;font-size:11px;font-weight:800;cursor:pointer}.chip b{color:#edf1f8}.footer{text-align:center;color:#465064;font-size:10px;margin-top:13px}
-@media(max-width:560px){body{padding:13px}.wrap{padding-top:8px}.card{border-radius:24px;padding:20px 16px 18px}h1{font-size:47px}.sub{margin-bottom:24px}.box,.result{min-height:116px}.actions{position:sticky;bottom:8px;z-index:5}.primary{box-shadow:0 9px 25px rgba(0,0,0,.35)}}
+:root{color-scheme:dark;--bg:#08090c;--panel:#10131a;--panel2:#0b0e13;--line:#242a35;--text:#f7f8fb;--muted:#929baa;--soft:#c8ced8;--canon:#9be7b7;--defined:#9fc4ff;--proposal:#f0c889}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+body{min-height:100vh;padding:18px;background:radial-gradient(circle at 50% -15%,rgba(93,112,156,.18),transparent 38%),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),var(--bg);background-size:auto,34px 34px,34px 34px,auto}
+.shell{width:min(820px,100%);margin:0 auto;padding:clamp(16px,6vh,70px) 0 30px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0 3px 17px}.brand{display:flex;align-items:center;gap:10px;color:#aeb7c7;font-size:12px;font-weight:900;letter-spacing:.17em}.sigil{width:13px;height:13px;border:1px solid #dce3ef;transform:rotate(45deg);box-shadow:0 0 22px rgba(222,231,255,.25)}.version{color:#646d7d;font-size:11px;font-weight:800}
+.card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.085);border-radius:30px;background:linear-gradient(180deg,rgba(18,22,30,.97),rgba(10,12,17,.98));box-shadow:0 32px 90px rgba(0,0,0,.48)}
+.card:after{content:"";position:absolute;inset:auto -120px -180px auto;width:360px;height:360px;border-radius:50%;background:rgba(98,123,181,.07);pointer-events:none}.head{padding:clamp(22px,5vw,38px) clamp(18px,5vw,36px) 23px;border-bottom:1px solid rgba(255,255,255,.065)}
+h1{margin:0;font-size:clamp(40px,9vw,72px);line-height:.9;letter-spacing:-.065em}.sub{margin:15px 0 0;color:var(--muted);font-size:14px;line-height:1.55;max-width:620px}.sub strong{color:#e8ebf1}
+.work{padding:clamp(18px,4vw,30px)}.labelrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 2px 9px}.label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#a8b0bf}.count{font-size:11px;color:#687182}
+textarea{width:100%;min-height:132px;resize:vertical;border:1px solid var(--line);border-radius:20px;background:var(--panel2);color:var(--text);padding:18px;font:650 19px/1.55 Inter,system-ui;outline:none;transition:.18s border-color,.18s box-shadow}textarea:focus{border-color:#69758c;box-shadow:0 0 0 4px rgba(111,126,159,.10)}textarea::placeholder{color:#4d5666}
+.actions{display:flex;gap:10px;margin:13px 0 20px}.btn{border:0;border-radius:16px;padding:14px 17px;font:850 14px Inter,system-ui;cursor:pointer}.primary{flex:1;background:#f4f6fa;color:#0c1016}.secondary{background:#181d26;color:#bbc3d0;border:1px solid rgba(255,255,255,.07)}.btn:active{transform:scale(.99)}
+.output{position:relative;min-height:138px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,#141925,#0d1118);padding:18px 68px 18px 18px}.result{font-size:clamp(29px,7vw,46px);font-weight:950;line-height:1.28;letter-spacing:-.04em;word-break:break-word;white-space:pre-wrap}.result.empty{font-size:18px;font-weight:650;letter-spacing:0;color:#4f5969}.copy{position:absolute;right:12px;top:12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:#202633;color:#dce2eb;padding:8px 10px;font-weight:850;font-size:11px;cursor:pointer}
+.meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}.badge{border-radius:999px;padding:6px 9px;font-size:10px;font-weight:950;letter-spacing:.1em;border:1px solid transparent}.badge.neutral{color:#8e98a8;background:#161b23;border-color:#252c38}.badge.canon{color:var(--canon);background:rgba(76,180,113,.09);border-color:rgba(112,220,151,.19)}.badge.defined{color:var(--defined);background:rgba(92,137,214,.10);border-color:rgba(123,166,235,.18)}.badge.proposal{color:var(--proposal);background:rgba(201,151,69,.10);border-color:rgba(226,181,108,.19)}.status{color:#98a2b2;font-size:12px;line-height:1.5}.details{min-height:17px;margin-top:7px;color:#697385;font-size:11px;line-height:1.45}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{border:1px solid rgba(255,255,255,.07);background:#0c1016;color:#909aaa;border-radius:999px;padding:8px 11px;font-size:11px;font-weight:800;cursor:pointer}.chip b{color:#edf1f7}
+.note{margin-top:19px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);color:#667081;font-size:11px;line-height:1.55}.note strong{color:#aeb7c6}.footer{text-align:center;color:#485160;font-size:10px;margin-top:14px;letter-spacing:.08em}
+@media(max-width:560px){body{padding:12px}.shell{padding-top:8px}.top{margin-bottom:12px}.card{border-radius:24px}.head{padding:22px 17px 20px}.work{padding:16px}.actions{position:sticky;bottom:8px;z-index:4}.primary{box-shadow:0 10px 28px rgba(0,0,0,.36)}textarea{min-height:112px}.output{min-height:120px}.version{display:none}}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <div class="brand"><span class="mark"></span>CUBOS DE DESERA</div>
+<main class="shell">
+  <div class="top">
+    <div class="brand"><span class="sigil"></span>CUBOS DE DESERA</div>
+    <div class="version">LÍNGUA UNIVERSAL · V132</div>
+  </div>
+
   <section class="card">
-    <h1>Tradutor</h1>
-    <p class="sub">Português → língua de Cubos de Desera escrita no nosso ABC normal.</p>
+    <header class="head">
+      <h1>Tradutor</h1>
+      <p class="sub">Escreve um <strong>conceito, palavra ou nome</strong>. O resultado sai na língua de <strong>Cubos de Desera</strong> usando o nosso ABC normal.</p>
+    </header>
 
-    <div class="label"><span>Português</span><span id="count">0</span></div>
-    <textarea class="box" id="input" placeholder="Ex.: destino" autocomplete="off" autocapitalize="sentences" spellcheck="true"></textarea>
+    <div class="work">
+      <div class="labelrow"><span class="label">Português</span><span class="count" id="count">0</span></div>
+      <textarea id="input" placeholder="Ex.: destino" autocomplete="off" autocapitalize="sentences" spellcheck="true"></textarea>
 
-    <div class="actions">
-      <button class="secondary" id="clear" type="button">Limpar</button>
-      <button class="primary" id="translate" type="button">Traduzir</button>
-    </div>
+      <div class="actions">
+        <button class="btn secondary" id="clear" type="button">Limpar</button>
+        <button class="btn primary" id="translate" type="button">Traduzir</button>
+      </div>
 
-    <div class="label"><span>Língua de Desera — ABC</span></div>
-    <div class="outwrap">
-      <div class="result empty" id="result">A tradução aparece aqui.</div>
-      <button class="copy" id="copy" type="button">Copiar</button>
-    </div>
-    <div class="status" id="status">As palavras oficiais mantêm sua forma. O restante é formado de modo determinístico pelas letras da língua — nada aleatório.</div>
+      <div class="labelrow"><span class="label">Língua de Desera — ABC normal</span></div>
+      <div class="output">
+        <div class="result empty" id="result">A tradução aparece aqui.</div>
+        <button class="copy" id="copy" type="button">Copiar</button>
+      </div>
 
-    <div class="examples">
-      <button class="chip" data-word="destino">destino → <b>weran</b></button>
-      <button class="chip" data-word="vontade">vontade → <b>uran</b></button>
-      <button class="chip" data-word="identidade">identidade → <b>serang</b></button>
+      <div class="meta">
+        <span class="badge neutral" id="badge">PRONTO</span>
+        <span class="status" id="status"></span>
+      </div>
+      <div class="details" id="details"></div>
+
+      <div class="examples">
+        <button class="chip" data-word="destino">destino → <b>weran</b></button>
+        <button class="chip" data-word="presença">presença → <b>korun</b></button>
+        <button class="chip" data-word="vontade">vontade → <b>uran</b></button>
+        <button class="chip" data-word="identidade">identidade → <b>serang</b></button>
+      </div>
+
+      <div class="note"><strong>Regra do tradutor:</strong> palavra já criada usa o léxico real. Palavra ainda não criada recebe só uma adaptação sonora de rascunho — nunca é apresentada como tradução canônica. Frases também não são fingidas como gramaticais enquanto faltarem morfemas finais.</div>
     </div>
   </section>
-  <div class="footer">CUBOS DE DESERA · TRADUTOR DA LÍNGUA</div>
+  <div class="footer">CUBOS DE DESERA · FONOLOGIA + LÉXICO + TRADUÇÃO</div>
 </main>
-<script>
-// Formas já estabelecidas na língua.
-const official={
-  "destino":"weran","fado":"weran",
-  "presenca":"korun","presenca mental":"korevi","atencao":"tishen",
-  "despertar":"karen","consciencia":"leseri","memoria":"neran",
-  "querer":"vera","desejar":"vera","vontade":"uran",
-  "permanecer":"saren","continuar":"saren","identidade":"serang"
-};
-
-// 26 unidades de escrita simples retiradas do inventário romanizado da língua.
-// Cada letra portuguesa normalizada tem SEMPRE a mesma contraparte: não há hash nem sorteio.
-const sourceAlphabet='abcdefghijklmnopqrstuvwxyz';
-const deseraAlphabet=['a','e','è','i','ë','o','ò','u','y','w','l','r','m','n','f','v','s','z','h','j','p','b','t','d','k','g'];
-const letterMap=Object.fromEntries([...sourceAlphabet].map((c,i)=>[c,deseraAlphabet[i]]));
-
-const input=document.getElementById('input');
-const result=document.getElementById('result');
-const status=document.getElementById('status');
-const count=document.getElementById('count');
-const translateBtn=document.getElementById('translate');
-const clearBtn=document.getElementById('clear');
-const copyBtn=document.getElementById('copy');
-
-function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ç/g,'c').trim().replace(/\s+/g,' ')}
-
-function buildWord(word){
-  const key=norm(word).replace(/[^a-z]/g,'');
-  if(!key)return word;
-  return [...key].map(ch=>letterMap[ch]||ch).join('');
-}
-
-function translateWord(word){
-  const key=norm(word);
-  if(official[key])return {text:official[key],official:true};
-  return {text:buildWord(word),official:false};
-}
-
-function translateText(text){
-  const clean=text.trim();
-  if(!clean)return {text:'',regular:0,official:0};
-  const direct=official[norm(clean)];
-  if(direct)return {text:direct,regular:0,official:1};
-
-  let regular=0,off=0;
-  const parts=text.split(/(\s+|[,.!?;:()\-—"“”'’]+)/);
-  const translated=parts.map(part=>{
-    if(!part||/^\s+$/.test(part)||/^[,.!?;:()\-—"“”'’]+$/.test(part))return part;
-    const t=translateWord(part);
-    if(t.official)off++;else regular++;
-    return t.text;
-  }).join('');
-  return {text:translated,regular,official:off};
-}
-
-function run(){
-  const value=input.value;
-  count.textContent=value.length;
-  if(!value.trim()){
-    result.textContent='A tradução aparece aqui.';
-    result.classList.add('empty');
-    status.textContent='As palavras oficiais mantêm sua forma. O restante é formado de modo determinístico pelas letras da língua — nada aleatório.';
-    return;
-  }
-  const out=translateText(value);
-  result.textContent=out.text;
-  result.classList.remove('empty');
-  status.textContent=out.regular
-    ? `Traduzido. ${out.regular} palavra${out.regular===1?'':'s'} formada${out.regular===1?'':'s'} pelas correspondências fixas do alfabeto.`
-    : 'Tradução oficial encontrada.';
-}
-
-translateBtn.addEventListener('click',run);
-input.addEventListener('input',run);
-clearBtn.addEventListener('click',()=>{input.value='';run();input.focus()});
-copyBtn.addEventListener('click',async()=>{
-  const text=result.classList.contains('empty')?'':result.textContent;
-  if(!text)return;
-  try{await navigator.clipboard.writeText(text);copyBtn.textContent='Copiado';setTimeout(()=>copyBtn.textContent='Copiar',1000)}
-  catch{copyBtn.textContent='Selecione';setTimeout(()=>copyBtn.textContent='Copiar',1000)}
-});
-document.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>{input.value=btn.dataset.word;run();input.focus()}));
-run();
-</script>
+<script src="translator-core.js?v=6"></script>
+<script src="translator-ui.js?v=6"></script>
 </body>
 </html>
