@@ -13,15 +13,22 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify live translator
+      - name: Verify live translator files
         shell: bash
         run: |
           set -e
-          SITE='https://zeckofc143-hub.github.io/manga-bridge./?v=desera3'
-          for i in $(seq 1 12); do
-            CODE=$(curl -L -sS -o /tmp/site -w '%{http_code}' --max-time 25 "$SITE" || true)
-            echo "attempt=$i http=$CODE size=$(wc -c </tmp/site 2>/dev/null || echo 0)"
-            if [ "$CODE" = "200" ] && grep -q '"destino":"weran"' /tmp/site && grep -q 'function generateWord' /tmp/site; then
+          BASE='https://zeckofc143-hub.github.io/manga-bridge./'
+          for i in $(seq 1 15); do
+            CODE=$(curl -L -sS -o /tmp/site -w '%{http_code}' --max-time 25 "${BASE}?v=6" || true)
+            CORE=$(curl -L -sS -o /tmp/core -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=6" || true)
+            UI=$(curl -L -sS -o /tmp/ui -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=6" || true)
+            echo "attempt=$i site=$CODE core=$CORE ui=$UI"
+            if [ "$CODE" = "200" ] && [ "$CORE" = "200" ] && [ "$UI" = "200" ] \
+              && grep -q 'translator-core.js?v=6' /tmp/site \
+              && grep -q "pt:'destino'" /tmp/core \
+              && grep -q "simple:'weran'" /tmp/core \
+              && grep -q "simple:'korun'" /tmp/core \
+              && grep -q "status:'draft-phrase'" /tmp/core; then
               echo 'DESERA_TRANSLATOR_LIVE_OK'
               exit 0
             fi
