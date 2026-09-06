@@ -13,26 +13,50 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify live translator files
+      - name: Verify live translator behavior
         shell: bash
         run: |
           set -e
           BASE='https://zeckofc143-hub.github.io/manga-bridge./'
-          for i in $(seq 1 15); do
-            CODE=$(curl -L -sS -o /tmp/site -w '%{http_code}' --max-time 25 "${BASE}?v=6" || true)
-            CORE=$(curl -L -sS -o /tmp/core -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=6" || true)
-            UI=$(curl -L -sS -o /tmp/ui -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=6" || true)
-            echo "attempt=$i site=$CODE core=$CORE ui=$UI"
-            if [ "$CODE" = "200" ] && [ "$CORE" = "200" ] && [ "$UI" = "200" ] \
-              && grep -q 'translator-core.js?v=6' /tmp/site \
-              && grep -q "pt:'destino'" /tmp/core \
-              && grep -q "simple:'weran'" /tmp/core \
-              && grep -q "simple:'korun'" /tmp/core \
-              && grep -q "status:'draft-phrase'" /tmp/core; then
-              echo 'DESERA_TRANSLATOR_LIVE_OK'
-              exit 0
+          for i in $(seq 1 18); do
+            SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=7" || true)
+            CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=7" || true)
+            UI=$(curl -L -sS -o /tmp/translator-ui.js -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=7" || true)
+            echo "attempt=$i site=$SITE core=$CORE ui=$UI"
+
+            if [ "$SITE" = "200" ] && [ "$CORE" = "200" ] && [ "$UI" = "200" ] \
+              && grep -q 'translator-core.js?v=7' /tmp/site.html \
+              && grep -q 'translator-ui.js?v=7' /tmp/site.html; then
+              if node - <<'NODE'
+          const T=require('/tmp/translator-core.js');
+          const assert=require('node:assert/strict');
+
+          assert.equal(T.translate('destino').output,'weran');
+          assert.equal(T.translate('presença').output,'korun');
+          assert.equal(T.translate('vontade').output,'uran');
+          assert.equal(T.translate('identidade').output,'serang');
+
+          const a=T.translate('liberdade');
+          const b=T.translate('liberdade');
+          assert.ok(a.output);
+          assert.equal(a.output,b.output);
+          assert.equal(a.status,'generated-word');
+          assert.equal(T.validateNativeShape(a.output),true);
+          assert.notEqual(T.normalize(a.output),T.normalize('liberdade'));
+
+          const phrase=T.translate('eu gosto de liberdade?');
+          assert.ok(phrase.output.endsWith('?'));
+          assert.notEqual(phrase.output,'ë aòfza ja ënjëniënif?');
+          assert.equal(phrase.status,'generated-phrase');
+
+          console.log('LIVE_TRANSLATOR_LOGIC_OK',a.output,phrase.output);
+          NODE
+              then
+                echo 'DESERA_TRANSLATOR_LIVE_OK'
+                exit 0
+              fi
             fi
             sleep 5
           done
-          echo 'Live translator did not update in time'
+          echo 'Live translator did not pass behavior checks in time'
           exit 1
