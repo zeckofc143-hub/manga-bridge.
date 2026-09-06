@@ -20,14 +20,38 @@ jobs:
           node --check translator-ui.js
       - name: Run translator tests
         run: node tests/translator.test.js
+      - name: Probe real PT-BR reverse vocabulary
+        shell: bash
+        run: |
+          set -e
+          curl -L --fail --retry 3 --max-time 60 \
+            https://raw.githubusercontent.com/pythonprobr/palavras/master/palavras.txt \
+            -o /tmp/palavras.txt
+          test $(wc -c < /tmp/palavras.txt) -gt 1000000
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const assert=require('node:assert/strict');
+          const T=require('./translator-core.js');
+          const words=fs.readFileSync('/tmp/palavras.txt','utf8').split(/\r?\n/);
+
+          const liberdade=T.translate('liberdade').output;
+          const probe=T.findReverseMatches(words,[liberdade],20);
+          assert.ok((probe[T.normalizeDesera(liberdade)]||[]).includes('liberdade'));
+
+          const targets='sezhel rorrun tolrodu yavas taspen gisner'.split(' ');
+          const legacy=T.findReverseMatches(words,targets,20);
+          console.log('LEGACY_REVERSE_PROBE='+JSON.stringify(legacy));
+          console.log('PTBR_WORDS='+words.length);
+          console.log('REAL_REVERSE_LOOKUP_OK liberdade='+liberdade);
+          NODE
       - name: Verify page hooks
         shell: bash
         run: |
           set -e
           grep -q '<title>Tradutor — Cubos de Desera</title>' index.html
-          grep -q 'translator-core.js' index.html
-          grep -q 'translator-ui.js' index.html
+          grep -q 'translator-core.js?v=8' index.html
+          grep -q 'translator-ui.js?v=8' index.html
+          grep -q 'id="swap"' index.html
           grep -q 'id="input"' index.html
           grep -q 'id="result"' index.html
-          grep -q 'id="badge"' index.html
           echo 'DESERA_TRANSLATOR_UI_OK'
