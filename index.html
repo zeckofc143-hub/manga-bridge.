@@ -3,98 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0c0d10" />
-  <title>Tradutor — Língua de Cubos de Desera</title>
-  <meta name="description" content="Tradutor e dicionário da língua de Cubos de Desera para romanização em alfabeto latino." />
+  <meta name="theme-color" content="#0b0c10" />
+  <title>Tradutor — Cubos de Desera</title>
+  <meta name="description" content="Tradutor simples do português para a língua de Cubos de Desera em ABC normal." />
   <link rel="stylesheet" href="translator.css" />
 </head>
 <body>
-  <main class="shell">
-    <header class="hero">
-      <div class="eyebrow">CUBOS DE DESERA</div>
-      <h1>Tradutor da Língua</h1>
-      <p>Português → nome em ABC/romanização da língua criada para o mundo.</p>
-    </header>
+  <main class="page">
+    <section class="translator">
+      <div class="brand">CUBOS DE DESERA</div>
+      <h1>Tradutor</h1>
+      <p class="subtitle">Português → língua de Cubos de Desera em ABC normal</p>
 
-    <section class="translator card" aria-labelledby="translator-title">
-      <div class="section-head">
-        <div>
-          <span class="kicker">TRADUTOR</span>
-          <h2 id="translator-title">Digite um conceito</h2>
-        </div>
-        <button id="swapBtn" class="icon-btn" type="button" aria-label="Inverter tradução">⇄</button>
+      <label for="sourceInput">Escreva aqui</label>
+      <textarea id="sourceInput" rows="5" autocomplete="off" spellcheck="true" placeholder="Ex.: destino"></textarea>
+
+      <div class="arrow">↓</div>
+
+      <label for="resultOutput">Tradução</label>
+      <div class="output-wrap">
+        <textarea id="resultOutput" rows="5" readonly placeholder="weran"></textarea>
+        <button id="copyBtn" type="button">Copiar</button>
       </div>
 
-      <label class="field-label" for="sourceInput" id="sourceLabel">Português</label>
-      <div class="input-row">
-        <input id="sourceInput" autocomplete="off" autocapitalize="sentences" spellcheck="false" placeholder="Ex.: destino" />
-        <button id="translateBtn" class="primary-btn" type="button">Traduzir</button>
-      </div>
-
-      <div id="result" class="result hidden" aria-live="polite">
-        <div class="result-topline">
-          <span id="resultStatus" class="status-chip">CANÔNICO</span>
-          <button id="copyBtn" class="copy-btn" type="button">Copiar</button>
-        </div>
-        <div id="resultWord" class="result-word">weran</div>
-        <div class="result-grid">
-          <div>
-            <span class="meta-label">Romanização técnica</span>
-            <strong id="resultRoman">wëran</strong>
-          </div>
-          <div>
-            <span class="meta-label">IPA</span>
-            <strong id="resultIpa">/wəɾan/</strong>
-          </div>
-          <div>
-            <span class="meta-label">Significado</span>
-            <strong id="resultMeaning">Destino</strong>
-          </div>
-        </div>
-        <p id="resultNote" class="note"></p>
-      </div>
-
-      <div id="notFound" class="not-found hidden" aria-live="polite">
-        <strong>Ainda não existe tradução registrada para esse termo.</strong>
-        <p>O tradutor não inventa palavras automaticamente. Quando a língua ganhar uma forma oficial, ela pode ser adicionada ao dicionário.</p>
-      </div>
+      <p id="status" class="status">Digite algo para traduzir.</p>
     </section>
-
-    <section class="card">
-      <div class="section-head compact">
-        <div>
-          <span class="kicker">DICIONÁRIO ATUAL</span>
-          <h2>Palavras registradas</h2>
-        </div>
-        <span id="wordCount" class="counter"></span>
-      </div>
-      <div class="search-wrap">
-        <input id="dictionarySearch" autocomplete="off" placeholder="Buscar no dicionário..." />
-      </div>
-      <div id="dictionaryList" class="dictionary-list"></div>
-    </section>
-
-    <section class="card custom-card">
-      <div class="section-head compact">
-        <div>
-          <span class="kicker">RASCUNHOS LOCAIS</span>
-          <h2>Adicionar termo</h2>
-        </div>
-      </div>
-      <p class="subtle">Salva apenas neste aparelho. Serve para testar palavras novas sem alterar o dicionário oficial.</p>
-      <div class="custom-grid">
-        <input id="customPt" placeholder="Português" />
-        <input id="customAbc" placeholder="ABC, ex.: weran" />
-        <input id="customIpa" placeholder="IPA opcional" />
-        <button id="saveCustomBtn" class="secondary-btn" type="button">Salvar rascunho</button>
-      </div>
-    </section>
-
-    <footer>
-      <span>Língua de Cubos de Desera</span>
-      <span>•</span>
-      <span>Dicionário em expansão</span>
-    </footer>
   </main>
 
   <script src="translator.js"></script>
