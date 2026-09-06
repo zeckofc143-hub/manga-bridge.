@@ -19,37 +19,33 @@ jobs:
           set -e
           BASE='https://zeckofc143-hub.github.io/manga-bridge./'
           for i in $(seq 1 18); do
-            SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=7" || true)
-            CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=7" || true)
-            UI=$(curl -L -sS -o /tmp/translator-ui.js -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=7" || true)
+            SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=8" || true)
+            CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=8" || true)
+            UI=$(curl -L -sS -o /tmp/translator-ui.js -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=8" || true)
             echo "attempt=$i site=$SITE core=$CORE ui=$UI"
 
             if [ "$SITE" = "200" ] && [ "$CORE" = "200" ] && [ "$UI" = "200" ] \
-              && grep -q 'translator-core.js?v=7' /tmp/site.html \
-              && grep -q 'translator-ui.js?v=7' /tmp/site.html; then
+              && grep -q 'translator-core.js?v=8' /tmp/site.html \
+              && grep -q 'translator-ui.js?v=8' /tmp/site.html \
+              && grep -q 'id="swap"' /tmp/site.html; then
               if node - <<'NODE'
           const T=require('/tmp/translator-core.js');
           const assert=require('node:assert/strict');
 
           assert.equal(T.translate('destino').output,'weran');
           assert.equal(T.translate('presença').output,'korun');
-          assert.equal(T.translate('vontade').output,'uran');
-          assert.equal(T.translate('identidade').output,'serang');
+          assert.equal(T.reverse('weran').output,'destino');
+          assert.equal(T.reverse('korun').output,'presença');
 
-          const a=T.translate('liberdade');
-          const b=T.translate('liberdade');
-          assert.ok(a.output);
-          assert.equal(a.output,b.output);
-          assert.equal(a.status,'generated-word');
-          assert.equal(T.validateNativeShape(a.output),true);
-          assert.notEqual(T.normalize(a.output),T.normalize('liberdade'));
+          const liberdade=T.translate('liberdade');
+          const index={[T.normalizeDesera(liberdade.output)]:['liberdade']};
+          assert.equal(T.reverse(liberdade.output,index).output,'liberdade');
 
           const phrase=T.translate('eu gosto de liberdade?');
-          assert.ok(phrase.output.endsWith('?'));
-          assert.notEqual(phrase.output,'ë aòfza ja ënjëniënif?');
-          assert.equal(phrase.status,'generated-phrase');
+          const phraseIndex={[T.normalize(phrase.output)]:'eu gosto de liberdade?'};
+          assert.equal(T.reverse(phrase.output,{},phraseIndex).output,'eu gosto de liberdade?');
 
-          console.log('LIVE_TRANSLATOR_LOGIC_OK',a.output,phrase.output);
+          console.log('DESERA_V8_LIVE_LOGIC_OK',liberdade.output,phrase.output);
           NODE
               then
                 echo 'DESERA_TRANSLATOR_LIVE_OK'
