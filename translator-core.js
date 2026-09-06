@@ -5,7 +5,7 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
 
-  // Léxico já fechado no material da língua + forma de Destino definida neste projeto.
+  // Léxico já fechado no material da língua + forma de Destino definida no projeto.
   const lexicon=[
     {pt:'destino',aliases:['fado'],simple:'weran',roman:'wëran',ipa:'/wəɾan/',status:'defined',kind:'concept'},
     {pt:'presença mental',aliases:['presenca mental'],simple:'korevi',roman:'korevi',ipa:'/koɾevi/',status:'canon',kind:'noun'},
@@ -47,16 +47,30 @@
   }
 
   function ascii(value){
-    return String(value||'').replace(/[ëè]/g,'e').replace(/ò/g,'o');
+    return String(value||'').toLowerCase().replace(/[ëè]/g,'e').replace(/ò/g,'o');
+  }
+
+  function normalizeDesera(value){
+    return ascii(String(value||'')).replace(/[^a-z]/g,'');
   }
 
   const lookup=new Map();
+  const reverseLexicon=new Map();
   lexicon.forEach(entry=>{
     [entry.pt,...(entry.aliases||[])].forEach(key=>lookup.set(normalize(key),entry));
+    const keys=[entry.simple,entry.roman,ascii(entry.roman)];
+    keys.forEach(key=>{
+      const k=normalizeDesera(key);
+      if(k&&!reverseLexicon.has(k)) reverseLexicon.set(k,entry.pt);
+    });
   });
 
   function findExact(value){
     return lookup.get(normalize(value))||null;
+  }
+
+  function findExactReverse(value){
+    return reverseLexicon.get(normalizeDesera(value))||null;
   }
 
   function tokenizeRoman(word){
@@ -73,7 +87,7 @@
   }
 
   function validateRoman(value){
-    const raw=String(value||'').toLowerCase();
+    const raw=ascii(String(value||''));
     const tokens=tokenizeRoman(raw);
     const allowed=new Set(romanization.map(ascii));
     return tokens.length>0&&tokens.every(t=>allowed.has(t));
@@ -100,8 +114,8 @@
     return list[seed%list.length];
   }
 
-  // Detecta apenas a família funcional para manter palavras relacionadas menos caóticas.
-  // Não tenta copiar os sons do português.
+  // Detecta uma família funcional para manter palavras relacionadas menos caóticas.
+  // Não copia os sons do português.
   function conceptProfile(value){
     let word=normalize(value).replace(/[^a-z0-9]/g,'');
     if(!word) return {key:'vazio',stem:'vazio',type:'root'};
@@ -132,7 +146,8 @@
     return zones[seed%zones.length];
   }
 
-  function makeNativeRoot(stem,salt){
+  // Mantido idêntico ao motor v7 para que palavras já geradas continuem decodificáveis.
+  function makeNativeRootV7(stem,salt){
     let seed=hash32(`${stem}|${salt||''}|desera-v7`);
     const zone=vowelZone(seed);
     const syllableCount=stem.length>=8?3:2;
@@ -140,7 +155,7 @@
 
     for(let i=0;i<syllableCount;i++){
       seed=next(seed+0x9e3779b9+i);
-      const useMarked=(seed%13===0); // sons mais marcados permanecem raros.
+      const useMarked=(seed%13===0);
       const onset=pick(useMarked?markedOnsets:nativeOnsets,seed);
       seed=next(seed);
       let vowel=pick(zone,seed);
@@ -154,36 +169,34 @@
       out+=onset+vowel+coda;
     }
 
-    // Evita colisão com o pequeno léxico já estabelecido.
-    if(knownOutputs.has(out)) return makeNativeRoot(stem,`${salt||''}x`);
+    if(knownOutputs.has(out)) return makeNativeRootV7(stem,`${salt||''}x`);
     return out;
   }
 
-  function applyGeneratedMorphology(root,type,key){
-    // Estas terminações são do motor automático, não afixos canônicos da língua.
-    // Servem apenas para conservar alguma família entre conceitos gerados.
+  function applyGeneratedMorphologyV7(root,type,key){
     const endings={verb:'a',abstract:'i',process:'en',agent:'ar',quality:'el',adverb:'e',root:''};
     const ending=endings[type]||'';
     let out=root;
-    if(ending&& !out.endsWith(ending)){
+    if(ending&&!out.endsWith(ending)){
       if(/[aeiou]$/.test(out)&&/^[aeiou]/.test(ending)) out=out.slice(0,-1);
       out+=ending;
     }
-
-    // Mantém a saída curta e dentro do perfil normal de raiz/derivação.
     if(out.length>12) out=out.slice(0,12).replace(/(?:sh|zh|kh|ch|ny|ng)?[^aeiou]*$/,'');
     if(out.length<3) out+=pick(['an','en','or'],hash32(key));
     return out;
   }
 
-  function generateLexeme(value){
+  function generateLexemeV7(value){
     const profile=conceptProfile(value);
-    const root=makeNativeRoot(profile.stem,profile.type);
-    return applyGeneratedMorphology(root,profile.type,profile.key);
+    const root=makeNativeRootV7(profile.stem,profile.type);
+    return applyGeneratedMorphologyV7(root,profile.type,profile.key);
   }
 
+  // Alias atual. Mantemos v7 para não quebrar o vocabulário já produzido pelo site.
+  const generateLexeme=generateLexemeV7;
+
   function validateNativeShape(value){
-    const word=String(value||'').toLowerCase();
+    const word=ascii(String(value||''));
     if(!word||!validateRoman(word)) return false;
     const tokens=tokenizeRoman(word);
     if(tokens[0]==='ng') return false;
@@ -235,8 +248,6 @@
       return {output:one.output,status:one.status,items:[one],canonical:one.canonical,direct:true,generatedCount:0};
     }
 
-    // Palavra/conceito único: cria uma entrada lexical estável seguindo a fonotática,
-    // em vez de cifrar ou copiar os sons do português.
     if(!/\s/.test(clean)&&!/[,.!?;:]/.test(clean)){
       const one=translateOne(clean);
       return {output:one.output,status:'generated-word',items:[one],canonical:false,direct:false,generatedCount:1};
@@ -254,7 +265,6 @@
         continue;
       }
       const key=normalize(part);
-      // A língua não exige artigo obrigatório; no modo frase os artigos portugueses são omitidos.
       if(articles.has(key)){
         items.push({input:part,output:'',status:'grammar-omitted',kind:'article',canonical:false});
         continue;
@@ -275,8 +285,123 @@
     };
   }
 
+  function candidateList(value){
+    if(value==null) return [];
+    if(Array.isArray(value)) return value.map(normalize).filter(Boolean);
+    return [normalize(value)].filter(Boolean);
+  }
+
+  function chooseCandidate(candidates){
+    const list=[...new Set(candidateList(candidates))];
+    if(!list.length) return null;
+    // Para colisões, prefere a forma mais curta e depois ordem alfabética.
+    // A UI informa todas as alternativas quando houver ambiguidade.
+    list.sort((a,b)=>a.length-b.length||a.localeCompare(b,'pt-BR'));
+    return list[0];
+  }
+
+  function reverseWord(value,index){
+    const key=normalizeDesera(value);
+    if(!key) return {input:value,output:value,status:'separator',candidates:[]};
+
+    const known=findExactReverse(key);
+    if(known) return {input:value,output:known,status:'lexicon',candidates:[known]};
+
+    let candidates=[];
+    if(index instanceof Map) candidates=candidateList(index.get(key));
+    else if(index&&typeof index==='object') candidates=candidateList(index[key]);
+
+    if(candidates.length){
+      return {
+        input:value,output:chooseCandidate(candidates),
+        status:candidates.length>1?'ambiguous':'generated-match',candidates:[...new Set(candidates)]
+      };
+    }
+
+    return {input:value,output:null,status:'unknown',candidates:[]};
+  }
+
+  function reverse(text,index,phraseIndex){
+    const clean=String(text||'').trim();
+    if(!clean) return {output:'',status:'empty',items:[],unknown:[],ambiguous:[]};
+
+    const phraseKey=normalize(clean);
+    if(phraseIndex){
+      const exact=phraseIndex instanceof Map?phraseIndex.get(phraseKey):phraseIndex[phraseKey];
+      if(exact){
+        return {output:String(exact),status:'history-exact',items:[],unknown:[],ambiguous:[],exact:true};
+      }
+    }
+
+    const parts=splitWords(text);
+    const items=[];
+    const unknown=[];
+    const ambiguous=[];
+    const out=[];
+
+    for(const part of parts){
+      if(isSeparator(part)){
+        out.push(part);
+        continue;
+      }
+      const item=reverseWord(part,index);
+      items.push(item);
+      if(item.status==='unknown'){
+        unknown.push(normalizeDesera(part));
+        out.push(part);
+      }else{
+        if(item.status==='ambiguous') ambiguous.push(item);
+        out.push(item.output||part);
+      }
+    }
+
+    return {
+      output:out.join('').replace(/\s+([,.!?;:])/g,'$1').replace(/\s{2,}/g,' ').trim(),
+      status:unknown.length?'partial':(ambiguous.length?'ambiguous':'reversed'),
+      items,unknown:[...new Set(unknown)],ambiguous
+    };
+  }
+
+  // Recebe uma lista PT-BR e procura somente as formas Desera solicitadas.
+  // Isso permite tradução reversa sem guardar um dicionário gigante no celular.
+  function findReverseMatches(candidateWords,targetWords,maxCandidates){
+    const targets=new Set((targetWords||[]).map(normalizeDesera).filter(Boolean));
+    const max=Math.max(1,Number(maxCandidates)||8);
+    const result={};
+    targets.forEach(t=>{result[t]=[];});
+    if(!targets.size) return result;
+
+    for(const raw of candidateWords||[]){
+      const word=normalize(raw);
+      if(!word||word.length<1||word.length>40||/\s/.test(word)||/[^a-zçáàâãéêíóôõúü-]/i.test(String(raw||''))) continue;
+      const generated=normalizeDesera(generateLexemeV7(word));
+      if(!targets.has(generated)) continue;
+      const bucket=result[generated];
+      if(bucket.length<max&&!bucket.includes(word)) bucket.push(word);
+    }
+    return result;
+  }
+
+  function mergeReverseIndexes(base,extra){
+    const out={};
+    const add=(key,value)=>{
+      const k=normalizeDesera(key);
+      if(!k) return;
+      const vals=candidateList(value);
+      if(!out[k]) out[k]=[];
+      for(const v of vals) if(v&&!out[k].includes(v)) out[k].push(v);
+    };
+    if(base instanceof Map) base.forEach((v,k)=>add(k,v));
+    else if(base&&typeof base==='object') Object.entries(base).forEach(([k,v])=>add(k,v));
+    if(extra instanceof Map) extra.forEach((v,k)=>add(k,v));
+    else if(extra&&typeof extra==='object') Object.entries(extra).forEach(([k,v])=>add(k,v));
+    return out;
+  }
+
   return {
-    lexicon,romanization,normalize,ascii,findExact,tokenizeRoman,validateRoman,
-    conceptProfile,generateLexeme,validateNativeShape,translateOne,translate
+    lexicon,romanization,normalize,ascii,normalizeDesera,findExact,findExactReverse,
+    tokenizeRoman,validateRoman,conceptProfile,generateLexeme,generateLexemeV7,
+    validateNativeShape,translateOne,translate,reverseWord,reverse,findReverseMatches,
+    mergeReverseIndexes,chooseCandidate
   };
 });
