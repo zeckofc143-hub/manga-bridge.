@@ -14,14 +14,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Verify translator structure
+      - name: Check translator JavaScript
+        run: |
+          node --check translator-core.js
+          node --check translator-ui.js
+      - name: Run translator tests
+        run: node tests/translator.test.js
+      - name: Verify page hooks
         shell: bash
         run: |
           set -e
           grep -q '<title>Tradutor — Cubos de Desera</title>' index.html
-          grep -q '"destino":"weran"' index.html
-          grep -q 'function generateWord' index.html
-          grep -q 'function translateText' index.html
+          grep -q 'translator-core.js' index.html
+          grep -q 'translator-ui.js' index.html
           grep -q 'id="input"' index.html
           grep -q 'id="result"' index.html
-          echo 'TRANSLATOR_UI_OK'
+          grep -q 'id="badge"' index.html
+          echo 'DESERA_TRANSLATOR_UI_OK'
