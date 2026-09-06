@@ -1,35 +1,148 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b0c10" />
-  <title>Tradutor — Cubos de Desera</title>
-  <meta name="description" content="Tradutor simples do português para a língua de Cubos de Desera em ABC normal." />
-  <link rel="stylesheet" href="translator.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b10">
+<title>Tradutor — Cubos de Desera</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:#090b10;color:#f6f7fb}body{min-height:100vh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 50% -10%,#24283a 0,#11141d 34%,#090b10 70%)}
+.wrap{width:min(760px,100%)}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:#a7afc1;font-size:12px;font-weight:800;letter-spacing:.18em}.dot{width:8px;height:8px;border-radius:50%;background:#f1f3f8;box-shadow:0 0 18px #fff}
+.card{background:rgba(17,20,29,.86);border:1px solid rgba(255,255,255,.09);border-radius:28px;padding:clamp(20px,5vw,34px);box-shadow:0 30px 80px rgba(0,0,0,.42);backdrop-filter:blur(16px)}
+h1{font-size:clamp(34px,8vw,64px);line-height:.95;letter-spacing:-.055em;margin:0 0 12px}.sub{margin:0 0 28px;color:#9ba4b8;font-size:15px;line-height:1.5}
+.label{display:flex;justify-content:space-between;align-items:center;margin:0 0 9px;color:#b8c0d0;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+textarea{width:100%;min-height:128px;resize:vertical;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:#0b0e15;color:#fff;padding:18px;font:600 19px/1.5 Inter,system-ui;outline:none;transition:.18s}textarea:focus{border-color:#737d96;box-shadow:0 0 0 4px rgba(130,143,173,.10)}textarea::placeholder{color:#555e71}
+.actions{display:flex;align-items:center;gap:10px;margin:14px 0}.translate{flex:1;border:0;border-radius:17px;padding:15px 18px;background:#f5f6fa;color:#10131a;font-weight:900;font-size:15px}.translate:active{transform:scale(.99)}.clear{border:1px solid rgba(255,255,255,.09);border-radius:17px;padding:14px 16px;background:#171b25;color:#c8cfdb;font-weight:800}
+.output{position:relative}.result{min-height:128px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:linear-gradient(180deg,#151925,#10131b);padding:18px 54px 18px 18px;font-size:clamp(24px,6vw,38px);font-weight:900;letter-spacing:-.025em;word-break:break-word;white-space:pre-wrap;color:#f9fafc}.result.empty{color:#555e71;font-weight:700;font-size:18px;letter-spacing:0}.copy{position:absolute;right:12px;top:12px;border:1px solid rgba(255,255,255,.10);border-radius:13px;background:#202534;color:#dce1eb;padding:9px 11px;font-weight:800;font-size:12px}
+.info{margin-top:11px;min-height:20px;color:#788297;font-size:12px;line-height:1.5}.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{border:1px solid rgba(255,255,255,.08);background:#11151e;color:#9fa8ba;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:700;cursor:pointer}.chip b{color:#edf0f6}
+.footer{text-align:center;color:#535b6c;font-size:11px;margin-top:14px}
+@media(max-width:560px){body{padding:14px;place-items:start center}.wrap{margin-top:10px}.card{border-radius:23px}.actions{position:sticky;bottom:10px;z-index:3}.translate{box-shadow:0 8px 24px rgba(0,0,0,.35)}textarea{min-height:112px}.result{min-height:112px}}
+</style>
 </head>
 <body>
-  <main class="page">
-    <section class="translator">
-      <div class="brand">CUBOS DE DESERA</div>
-      <h1>Tradutor</h1>
-      <p class="subtitle">Português → língua de Cubos de Desera em ABC normal</p>
+<main class="wrap">
+  <div class="brand"><span class="dot"></span>CUBOS DE DESERA</div>
+  <section class="card">
+    <h1>Tradutor</h1>
+    <p class="sub">Escreve em português. Ele devolve a forma na língua de <b>Cubos de Desera</b> usando o nosso ABC normal.</p>
 
-      <label for="sourceInput">Escreva aqui</label>
-      <textarea id="sourceInput" rows="5" autocomplete="off" spellcheck="true" placeholder="Ex.: destino"></textarea>
+    <div class="label"><span>Português</span><span id="count">0</span></div>
+    <textarea id="input" placeholder="Ex.: destino" autocomplete="off" autocapitalize="sentences"></textarea>
 
-      <div class="arrow">↓</div>
+    <div class="actions">
+      <button class="clear" id="clear" type="button">Limpar</button>
+      <button class="translate" id="translate" type="button">Traduzir</button>
+    </div>
 
-      <label for="resultOutput">Tradução</label>
-      <div class="output-wrap">
-        <textarea id="resultOutput" rows="5" readonly placeholder="weran"></textarea>
-        <button id="copyBtn" type="button">Copiar</button>
-      </div>
+    <div class="label"><span>Língua de Desera — ABC</span></div>
+    <div class="output">
+      <div class="result empty" id="result">A tradução aparece aqui.</div>
+      <button class="copy" id="copy" type="button">Copiar</button>
+    </div>
+    <div class="info" id="info">Palavras já definidas usam a forma oficial. Palavras novas recebem uma forma automática consistente com os sons da língua.</div>
 
-      <p id="status" class="status">Digite algo para traduzir.</p>
-    </section>
-  </main>
+    <div class="examples">
+      <button class="chip" data-word="destino">destino → <b>weran</b></button>
+      <button class="chip" data-word="vontade">vontade → <b>uran</b></button>
+      <button class="chip" data-word="identidade">identidade → <b>serang</b></button>
+    </div>
+  </section>
+  <div class="footer">Feito para o universo de Cubos de Desera</div>
+</main>
+<script>
+const official={
+  "destino":"weran","fado":"weran",
+  "presenca":"korun","presenca mental":"korevi","atencao":"tishen",
+  "despertar":"karen","consciencia":"leseri","memoria":"neran",
+  "querer":"vera","desejar":"vera","vontade":"uran",
+  "permanecer":"saren","continuar":"saren","identidade":"serang"
+};
 
-  <script src="translator.js"></script>
+const input=document.getElementById('input');
+const result=document.getElementById('result');
+const info=document.getElementById('info');
+const count=document.getElementById('count');
+const translateBtn=document.getElementById('translate');
+const clearBtn=document.getElementById('clear');
+const copyBtn=document.getElementById('copy');
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ç/g,'c').trim().replace(/\s+/g,' ')}
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function pick(a,n){return a[n%a.length]}
+
+// Gera uma forma estável para palavras ainda não registradas.
+// Usa apenas sequências compatíveis com a romanização/sons definidos para a língua.
+function generateWord(word){
+  const key=norm(word).replace(/[^a-z0-9]/g,'');
+  if(!key)return '';
+  let h=hash(key);
+  const onsets=['','k','s','n','v','t','l','r','m','d','g','f','sh','zh','h','w','y'];
+  const vowels=['a','e','i','o','u','ë'];
+  const codas=['','n','r','l','m','ng'];
+  const syllables=key.length<=4?2:key.length<=8?2:3;
+  let out='';
+  for(let i=0;i<syllables;i++){
+    h=(Math.imul(h^((i+1)*2654435761),2246822519))>>>0;
+    const onset=pick(onsets,h);
+    h=(h*1664525+1013904223)>>>0;
+    const vowel=pick(vowels,h);
+    h=(h*1664525+1013904223)>>>0;
+    const coda=(i===syllables-1||((h>>>4)&1))?pick(codas,h>>>8):'';
+    out+=onset+vowel+coda;
+  }
+  out=out.replace(/ë/g,'e');
+  if(out.length>10)out=out.slice(0,10).replace(/[bcdfghjklmnpqrstvwxyz]+$/,'');
+  return out||'aran';
+}
+
+function translateToken(token){
+  const key=norm(token);
+  if(official[key])return {text:official[key],official:true};
+  return {text:generateWord(token),official:false};
+}
+
+function translateText(text){
+  const trimmed=text.trim();
+  if(!trimmed)return {text:'',generated:0};
+  const direct=official[norm(trimmed)];
+  if(direct)return {text:direct,generated:0};
+  let generated=0;
+  const parts=text.split(/(\s+|[,.!?;:()\-—"“”'’]+)/);
+  const out=parts.map(part=>{
+    if(!part||/^\s+$/.test(part)||/^[,.!?;:()\-—"“”'’]+$/.test(part))return part;
+    const t=translateToken(part);if(!t.official)generated++;return t.text;
+  }).join('');
+  return {text:out,generated};
+}
+
+function run(){
+  const value=input.value;
+  count.textContent=value.length;
+  if(!value.trim()){
+    result.textContent='A tradução aparece aqui.';
+    result.classList.add('empty');
+    info.textContent='Palavras já definidas usam a forma oficial. Palavras novas recebem uma forma automática consistente com os sons da língua.';
+    return;
+  }
+  const out=translateText(value);
+  result.textContent=out.text;
+  result.classList.remove('empty');
+  info.textContent=out.generated?`${out.generated} palavra${out.generated===1?'':'s'} ainda não tinha${out.generated===1?'':'m'} forma oficial e recebeu${out.generated===1?'':'ram'} uma forma automática.`:'Forma oficial encontrada.';
+}
+
+translateBtn.addEventListener('click',run);
+input.addEventListener('input',run);
+input.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')run()});
+clearBtn.addEventListener('click',()=>{input.value='';run();input.focus()});
+copyBtn.addEventListener('click',async()=>{
+  const text=result.classList.contains('empty')?'':result.textContent;
+  if(!text)return;
+  try{await navigator.clipboard.writeText(text);copyBtn.textContent='Copiado';setTimeout(()=>copyBtn.textContent='Copiar',1100)}
+  catch{copyBtn.textContent='Selecione';setTimeout(()=>copyBtn.textContent='Copiar',1100)}
+});
+document.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>{input.value=btn.dataset.word;run();input.focus()}));
+run();
+</script>
 </body>
 </html>
