@@ -38,9 +38,9 @@ jobs:
           const probe=T.findReverseMatches(words,[liberdade],20);
           assert.ok((probe[T.normalizeDesera(liberdade)]||[]).includes('liberdade'));
 
-          const targets='sezhel rorrun tolrodu yavas taspen gisner'.split(' ');
-          const legacy=T.findReverseMatches(words,targets,20);
-          console.log('LEGACY_REVERSE_PROBE='+JSON.stringify(legacy));
+          const targets='sezhel rorrun tolrodu yavas taspen gisner gewes'.split(' ');
+          const legacy=T.findReverseMatches(words,targets,50);
+          console.log('REVERSE_PROBE='+JSON.stringify(legacy));
           console.log('PTBR_WORDS='+words.length);
           console.log('REAL_REVERSE_LOOKUP_OK liberdade='+liberdade);
           NODE
