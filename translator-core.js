@@ -5,34 +5,37 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
 
-  // Léxico já fechado no material da língua + forma de Destino definida no projeto.
+  // Formas realmente fechadas no projeto. O fallback automático nunca substitui estas.
   const lexicon=[
-    {pt:'destino',aliases:['fado'],simple:'weran',roman:'wëran',ipa:'/wəɾan/',status:'defined',kind:'concept'},
-    {pt:'presença mental',aliases:['presenca mental'],simple:'korevi',roman:'korevi',ipa:'/koɾevi/',status:'canon',kind:'noun'},
-    {pt:'presença',aliases:['presenca'],simple:'korun',roman:'korun',ipa:'/koɾun/',status:'canon',kind:'noun'},
-    {pt:'atenção',aliases:['atencao'],simple:'tishen',roman:'tishen',ipa:'/tiʃen/',status:'canon',kind:'noun'},
-    {pt:'despertar',aliases:['desperta','desperto','despertou','despertando'],simple:'karen',roman:'karen',ipa:'/kaɾen/',status:'canon',kind:'verb'},
-    {pt:'consciência',aliases:['consciencia'],simple:'leseri',roman:'leseri',ipa:'/leseɾi/',status:'canon',kind:'noun'},
-    {pt:'memória',aliases:['memoria','memórias','memorias'],simple:'neran',roman:'neran',ipa:'/neɾan/',status:'canon',kind:'noun'},
-    {pt:'querer',aliases:['quero','quer','queremos','querem','queria','queriam','desejar','desejo','deseja','desejam'],simple:'vera',roman:'vera',ipa:'/veɾa/',status:'canon',kind:'verb'},
-    {pt:'vontade',aliases:['vontades'],simple:'uran',roman:'uran',ipa:'/uɾan/',status:'canon',kind:'noun'},
-    {pt:'permanecer',aliases:['permaneço','permaneco','permanece','permanecem','continuar','continuo','continua','continuam'],simple:'saren',roman:'saren',ipa:'/saɾen/',status:'canon',kind:'verb'},
-    {pt:'identidade',aliases:['identidades'],simple:'serang',roman:'serang',ipa:'/seɾaŋ/',status:'canon',kind:'noun'}
+    {pt:'destino',simple:'weran',roman:'wëran',ipa:'/wəɾan/',status:'defined'},
+    {pt:'presença mental',simple:'korevi',roman:'korevi',ipa:'/koɾevi/',status:'canon'},
+    {pt:'presença',simple:'korun',roman:'korun',ipa:'/koɾun/',status:'canon'},
+    {pt:'atenção',simple:'tishen',roman:'tishen',ipa:'/tiʃen/',status:'canon'},
+    {pt:'despertar',simple:'karen',roman:'karen',ipa:'/kaɾen/',status:'canon'},
+    {pt:'consciência',simple:'leseri',roman:'leseri',ipa:'/leseɾi/',status:'canon'},
+    {pt:'memória',simple:'neran',roman:'neran',ipa:'/neɾan/',status:'canon'},
+    {pt:'querer',simple:'vera',roman:'vera',ipa:'/veɾa/',status:'canon'},
+    {pt:'vontade',simple:'uran',roman:'uran',ipa:'/uɾan/',status:'canon'},
+    {pt:'permanecer',simple:'saren',roman:'saren',ipa:'/saɾen/',status:'canon'},
+    {pt:'identidade',simple:'serang',roman:'serang',ipa:'/seɾaŋ/',status:'canon'}
   ];
 
-  // 32 fonemas em romanização. A saída "ABC normal" troca è/ë/ò por e/e/o.
+  // Inventário de 32 fonemas/romanização atual do projeto.
   const romanization=[
     'a','e','è','i','ë','o','ò','u','y','w','l','r','m','n','ny','ng',
     'f','v','s','z','sh','zh','h','kh','ch','j','p','b','t','d','k','g'
   ];
 
-  const nativeOnsets=['m','n','l','r','v','s','k','t','y','w','f','p','d','g'];
-  const markedOnsets=['sh','zh','h','ch','ny'];
-  const commonCodas=['','n','r','l','s'];
-  const markedCodas=['ng','k','kh'];
-  const simpleVowels=['a','e','i','o','u'];
-  const articles=new Set(['o','a','os','as','um','uma','uns','umas']);
-  const knownOutputs=new Set(lexicon.map(x=>x.simple));
+  // Compatibilidade com algumas saídas v7/v8 que já foram usadas pelo autor.
+  const legacyReverse={
+    sezhel:'ta',
+    rorrun:'me',
+    tolrodu:'entendendo',
+    yavas:'agora',
+    taspen:'seu',
+    gisner:'cornudo',
+    gewes:'porra'
+  };
 
   function normalize(value){
     return String(value||'')
@@ -46,362 +49,288 @@
       .trim();
   }
 
-  function ascii(value){
-    return String(value||'').toLowerCase().replace(/[ëè]/g,'e').replace(/ò/g,'o');
+  function normalizeWord(value){
+    return normalize(value).replace(/[^a-z]/g,'');
   }
 
   function normalizeDesera(value){
-    return ascii(String(value||'')).replace(/[^a-z]/g,'');
+    return String(value||'')
+      .toLowerCase()
+      .replace(/é/g,'e')
+      .replace(/ê/g,'e')
+      .replace(/ó/g,'o')
+      .replace(/ô/g,'o')
+      .replace(/[^a-zèëò]/g,'');
   }
 
   const lookup=new Map();
   const reverseLexicon=new Map();
-  lexicon.forEach(entry=>{
-    [entry.pt,...(entry.aliases||[])].forEach(key=>lookup.set(normalize(key),entry));
-    const keys=[entry.simple,entry.roman,ascii(entry.roman)];
-    keys.forEach(key=>{
-      const k=normalizeDesera(key);
-      if(k&&!reverseLexicon.has(k)) reverseLexicon.set(k,entry.pt);
-    });
-  });
+  for(const entry of lexicon){
+    lookup.set(normalize(entry.pt),entry);
+    // Aceita a mesma palavra sem acento na entrada portuguesa.
+    lookup.set(normalizeWord(entry.pt),entry);
+    for(const form of [entry.simple,entry.roman]){
+      reverseLexicon.set(normalizeDesera(form),entry.pt);
+    }
+  }
 
   function findExact(value){
-    return lookup.get(normalize(value))||null;
+    return lookup.get(normalize(value))||lookup.get(normalizeWord(value))||null;
   }
 
   function findExactReverse(value){
     return reverseLexicon.get(normalizeDesera(value))||null;
   }
 
-  function tokenizeRoman(word){
-    const tokens=[];
-    let i=0;
-    const ordered=['ny','ng','sh','zh','kh','ch'];
-    while(i<word.length){
-      const pair=word.slice(i,i+2);
-      if(ordered.includes(pair)){tokens.push(pair);i+=2;continue;}
-      tokens.push(word[i]);
-      i++;
+  // ---------------------------------------------------------------------------
+  // FALLBACK LEXICAL REVERSÍVEL V9
+  // ---------------------------------------------------------------------------
+  // O léxico canônico é pequeno. Para o site conseguir aceitar QUALQUER palavra
+  // sem hash, colisão, dicionário externo ou histórico local, palavras ainda não
+  // fechadas recebem uma forma automática reversível composta somente por sons
+  // permitidos. Isto é fallback de ferramenta; formas canônicas sempre vencem.
+  //
+  // Duas letras portuguesas normalizadas -> uma sílaba CVC de Desera.
+  // Um cabeçalho com checksum impede que uma palavra nativa qualquer seja
+  // decodificada acidentalmente como fallback.
+
+  const sourceAlphabet='abcdefghijklmnopqrstuvwxyz_'; // _ = preenchimento/cabeçalho
+  const onsets=['m','n','l','r','v','s','k','t','y','w','f','p','d','g','b','z','sh','zh','ch','j'];
+  const vowels=['a','e','è','i','ë','o','ò','u'];
+  const codas=['n','l','r','s','ng'];
+  const CODE_SPACE=onsets.length*vowels.length*codas.length; // 800
+  const A=257, B=113, A_INV=193; // A*A_INV ≡ 1 (mod 800)
+
+  function pairIndex(pair){
+    const a=sourceAlphabet.indexOf(pair[0]);
+    const b=sourceAlphabet.indexOf(pair[1]);
+    if(a<0||b<0) return -1;
+    return a*sourceAlphabet.length+b; // 0..728
+  }
+
+  function indexPair(index){
+    const n=sourceAlphabet.length;
+    if(index<0||index>=n*n) return null;
+    return sourceAlphabet[Math.floor(index/n)]+sourceAlphabet[index%n];
+  }
+
+  function permute(index){
+    return (index*A+B)%CODE_SPACE;
+  }
+
+  function unpermute(index){
+    const x=((index-B)%CODE_SPACE+CODE_SPACE)%CODE_SPACE;
+    const original=(x*A_INV)%CODE_SPACE;
+    return original<sourceAlphabet.length*sourceAlphabet.length?original:-1;
+  }
+
+  function codewordFromIndex(index){
+    const c=index%codas.length;
+    index=Math.floor(index/codas.length);
+    const v=index%vowels.length;
+    const o=Math.floor(index/vowels.length);
+    return onsets[o]+vowels[v]+codas[c];
+  }
+
+  function indexFromCodeword(onset,vowel,coda){
+    const o=onsets.indexOf(onset),v=vowels.indexOf(vowel),c=codas.indexOf(coda);
+    if(o<0||v<0||c<0) return -1;
+    return ((o*vowels.length)+v)*codas.length+c;
+  }
+
+  function encodePair(pair){
+    const idx=pairIndex(pair);
+    if(idx<0) return null;
+    return codewordFromIndex(permute(idx));
+  }
+
+  function checksumLetter(word){
+    let h=17;
+    for(let i=0;i<word.length;i++) h=(h*33+word.charCodeAt(i))%26;
+    return sourceAlphabet[h];
+  }
+
+  function encodeGeneratedWord(value){
+    const word=normalizeWord(value);
+    if(!word) return '';
+    const header=encodePair('_'+checksumLetter(word));
+    let body='';
+    for(let i=0;i<word.length;i+=2){
+      body+=encodePair(word[i]+(word[i+1]||'_'));
     }
-    return tokens;
+    return header+body;
+  }
+
+  // Tokeniza a romanização em fonemas. Como cada fallback é CVC.CVC..., basta
+  // agrupar os fonemas de três em três depois do cabeçalho.
+  const multiTokens=['ny','ng','sh','zh','kh','ch'];
+  const tokenSet=new Set(romanization);
+  function tokenizeRoman(value){
+    const s=String(value||'').toLowerCase();
+    const out=[];
+    let i=0;
+    while(i<s.length){
+      const two=s.slice(i,i+2);
+      if(multiTokens.includes(two)){
+        out.push(two); i+=2; continue;
+      }
+      const one=s[i];
+      if(tokenSet.has(one)){
+        out.push(one); i++; continue;
+      }
+      return null;
+    }
+    return out;
+  }
+
+  function decodeCodeword(tokens,offset){
+    if(offset+2>=tokens.length) return null;
+    const idx=indexFromCodeword(tokens[offset],tokens[offset+1],tokens[offset+2]);
+    if(idx<0) return null;
+    const original=unpermute(idx);
+    if(original<0) return null;
+    return indexPair(original);
+  }
+
+  function decodeGeneratedWord(value){
+    const tokens=tokenizeRoman(value);
+    if(!tokens||tokens.length<6||tokens.length%3!==0) return null;
+
+    const header=decodeCodeword(tokens,0);
+    if(!header||header[0]!=='_') return null;
+
+    let decoded='';
+    for(let i=3;i<tokens.length;i+=3){
+      const pair=decodeCodeword(tokens,i);
+      if(!pair||pair[0]==='_') return null;
+      decoded+=pair;
+    }
+    decoded=decoded.replace(/_$/,'');
+    if(!/^[a-z]+$/.test(decoded)) return null;
+    if(header[1]!==checksumLetter(decoded)) return null;
+    return decoded;
   }
 
   function validateRoman(value){
-    const raw=ascii(String(value||''));
-    const tokens=tokenizeRoman(raw);
-    const allowed=new Set(romanization.map(ascii));
-    return tokens.length>0&&tokens.every(t=>allowed.has(t));
+    const tokens=tokenizeRoman(value);
+    return Boolean(tokens&&tokens.length);
   }
-
-  function hash32(text){
-    let h=2166136261;
-    for(let i=0;i<text.length;i++){
-      h^=text.charCodeAt(i);
-      h=Math.imul(h,16777619);
-    }
-    return h>>>0;
-  }
-
-  function next(seed){
-    let x=seed>>>0;
-    x^=x<<13;
-    x^=x>>>17;
-    x^=x<<5;
-    return x>>>0;
-  }
-
-  function pick(list,seed){
-    return list[seed%list.length];
-  }
-
-  // Detecta uma família funcional para manter palavras relacionadas menos caóticas.
-  // Não copia os sons do português.
-  function conceptProfile(value){
-    let word=normalize(value).replace(/[^a-z0-9]/g,'');
-    if(!word) return {key:'vazio',stem:'vazio',type:'root'};
-
-    let type='root';
-    let stem=word;
-    const rules=[
-      ['mente','adverb'],['ções','abstract'],['cao','abstract'],['sao','abstract'],['dade','abstract'],
-      ['mento','process'],['agem','process'],['eiro','agent'],['eira','agent'],['ista','agent'],
-      ['dor','agent'],['dora','agent'],['oso','quality'],['osa','quality'],['avel','quality'],
-      ['ivel','quality'],['ico','quality'],['ica','quality'],['ar','verb'],['er','verb'],['ir','verb']
-    ];
-
-    for(const [suffix,t] of rules){
-      if(word.length>suffix.length+2&&word.endsWith(suffix)){
-        type=t;
-        stem=word.slice(0,-suffix.length);
-        break;
-      }
-    }
-
-    if(stem.endsWith('s')&&stem.length>4) stem=stem.slice(0,-1);
-    return {key:word,stem:stem||word,type};
-  }
-
-  function vowelZone(seed){
-    const zones=[['e','i'],['a','e'],['o','u']];
-    return zones[seed%zones.length];
-  }
-
-  // Mantido idêntico ao motor v7 para que palavras já geradas continuem decodificáveis.
-  function makeNativeRootV7(stem,salt){
-    let seed=hash32(`${stem}|${salt||''}|desera-v7`);
-    const zone=vowelZone(seed);
-    const syllableCount=stem.length>=8?3:2;
-    let out='';
-
-    for(let i=0;i<syllableCount;i++){
-      seed=next(seed+0x9e3779b9+i);
-      const useMarked=(seed%13===0);
-      const onset=pick(useMarked?markedOnsets:nativeOnsets,seed);
-      seed=next(seed);
-      let vowel=pick(zone,seed);
-      if(i===syllableCount-1&&seed%5===0) vowel=pick(simpleVowels,seed>>>3);
-      seed=next(seed);
-
-      let coda='';
-      if(i===syllableCount-1||seed%4===0){
-        coda=seed%17===0?pick(markedCodas,seed>>>4):pick(commonCodas,seed>>>4);
-      }
-      out+=onset+vowel+coda;
-    }
-
-    if(knownOutputs.has(out)) return makeNativeRootV7(stem,`${salt||''}x`);
-    return out;
-  }
-
-  function applyGeneratedMorphologyV7(root,type,key){
-    const endings={verb:'a',abstract:'i',process:'en',agent:'ar',quality:'el',adverb:'e',root:''};
-    const ending=endings[type]||'';
-    let out=root;
-    if(ending&&!out.endsWith(ending)){
-      if(/[aeiou]$/.test(out)&&/^[aeiou]/.test(ending)) out=out.slice(0,-1);
-      out+=ending;
-    }
-    if(out.length>12) out=out.slice(0,12).replace(/(?:sh|zh|kh|ch|ny|ng)?[^aeiou]*$/,'');
-    if(out.length<3) out+=pick(['an','en','or'],hash32(key));
-    return out;
-  }
-
-  function generateLexemeV7(value){
-    const profile=conceptProfile(value);
-    const root=makeNativeRootV7(profile.stem,profile.type);
-    return applyGeneratedMorphologyV7(root,profile.type,profile.key);
-  }
-
-  // Alias atual. Mantemos v7 para não quebrar o vocabulário já produzido pelo site.
-  const generateLexeme=generateLexemeV7;
 
   function validateNativeShape(value){
-    const word=ascii(String(value||''));
-    if(!word||!validateRoman(word)) return false;
-    const tokens=tokenizeRoman(word);
+    const tokens=tokenizeRoman(value);
+    if(!tokens||!tokens.length) return false;
     if(tokens[0]==='ng') return false;
     let run=0;
-    let vowels=0;
-    for(const token of tokens){
-      if(simpleVowels.includes(token)){
-        vowels++;
-        run=0;
-      }else{
-        run++;
-        if(run>=3) return false;
-      }
+    for(const t of tokens){
+      if(vowels.includes(t)) run=0;
+      else if(++run>2) return false;
     }
-    return vowels>=1;
+    return true;
   }
 
-  function translateOne(value){
+  function translateWord(value){
     const entry=findExact(value);
     if(entry){
-      return {
-        input:String(value||''),output:entry.simple,roman:entry.roman,ipa:entry.ipa,
-        status:entry.status,kind:'translation',canonical:entry.status==='canon',source:entry.pt
-      };
+      return {input:value,output:entry.simple,status:entry.status,kind:'lexicon',canonical:entry.status==='canon'};
     }
-
-    const generated=generateLexeme(value);
-    return {
-      input:String(value||''),output:generated,roman:generated,ipa:null,
-      status:'generated',kind:'generated-lexeme',canonical:false,source:null
-    };
+    const output=encodeGeneratedWord(value);
+    return {input:value,output,status:'auto',kind:'generated-lexeme',canonical:false};
   }
 
-  function splitWords(text){
-    return String(text||'').split(/(\s+|[,.!?;:()\[\]{}\-—"“”'’]+)/);
+  function splitText(text){
+    // Letras latinas (com acentos) permanecem no token; resto é preservado literalmente.
+    return String(text||'').split(/([A-Za-zÀ-ÖØ-öø-ÿÇç]+|[^A-Za-zÀ-ÖØ-öø-ÿÇç]+)/).filter(Boolean);
   }
 
-  function isSeparator(part){
-    return !part||/^\s+$/.test(part)||/^[,.!?;:()\[\]{}\-—"“”'’]+$/.test(part);
+  function isWordToken(token){
+    return /^[A-Za-zÀ-ÖØ-öø-ÿÇç]+$/.test(token);
   }
 
   function translate(text){
-    const clean=String(text||'').trim();
-    if(!clean) return {output:'',status:'empty',items:[],canonical:false};
+    const raw=String(text||'');
+    if(!raw.trim()) return {output:'',status:'empty',items:[],canonical:false};
 
-    const direct=findExact(clean);
+    const direct=findExact(raw.trim());
     if(direct){
-      const one=translateOne(clean);
-      return {output:one.output,status:one.status,items:[one],canonical:one.canonical,direct:true,generatedCount:0};
+      const item=translateWord(raw.trim());
+      return {output:item.output,status:direct.status,items:[item],canonical:item.canonical,direct:true};
     }
 
-    if(!/\s/.test(clean)&&!/[,.!?;:]/.test(clean)){
-      const one=translateOne(clean);
-      return {output:one.output,status:'generated-word',items:[one],canonical:false,direct:false,generatedCount:1};
-    }
-
-    const parts=splitWords(text);
     const items=[];
-    let generatedCount=0;
-    let translatedCount=0;
-    const out=[];
-
-    for(const part of parts){
-      if(isSeparator(part)){
-        out.push(part);
-        continue;
-      }
-      const key=normalize(part);
-      if(articles.has(key)){
-        items.push({input:part,output:'',status:'grammar-omitted',kind:'article',canonical:false});
-        continue;
-      }
-      const item=translateOne(part);
+    let generatedCount=0,lexiconCount=0;
+    const output=splitText(raw).map(token=>{
+      if(!isWordToken(token)) return token;
+      const item=translateWord(token);
       items.push(item);
-      if(item.kind==='translation') translatedCount++; else generatedCount++;
-      out.push(item.output);
-    }
+      if(item.kind==='lexicon') lexiconCount++; else generatedCount++;
+      return item.output;
+    }).join('');
 
     return {
-      output:out.join('').replace(/\s+([,.!?;:])/g,'$1').replace(/\s{2,}/g,' ').trim(),
-      status:generatedCount?'generated-phrase':'lexical-phrase',
-      items,canonical:false,direct:false,translatedCount,generatedCount,
-      warning:generatedCount
-        ? 'A frase usa palavras formadas automaticamente pelas regras sonoras da língua; o léxico já fechado sempre tem prioridade.'
-        : 'Todas as palavras possuem forma lexical registrada; a ordem completa da frase ainda segue apenas as regras gramaticais disponíveis.'
+      output,
+      status:generatedCount?'auto':'lexicon',
+      items,canonical:false,direct:false,generatedCount,lexiconCount
     };
   }
 
-  function candidateList(value){
-    if(value==null) return [];
-    if(Array.isArray(value)) return value.map(normalize).filter(Boolean);
-    return [normalize(value)].filter(Boolean);
+  function reverseWord(value){
+    const known=findExactReverse(value);
+    if(known) return {input:value,output:known,status:'lexicon',kind:'lexicon'};
+
+    const legacy=legacyReverse[normalizeDesera(value)];
+    if(legacy) return {input:value,output:legacy,status:'legacy',kind:'legacy'};
+
+    const decoded=decodeGeneratedWord(value);
+    if(decoded) return {input:value,output:decoded,status:'decoded',kind:'generated-lexeme'};
+
+    return {input:value,output:value,status:'unknown',kind:'unknown'};
   }
 
-  function chooseCandidate(candidates){
-    const list=[...new Set(candidateList(candidates))];
-    if(!list.length) return null;
-    // Para colisões, prefere a forma mais curta e depois ordem alfabética.
-    // A UI informa todas as alternativas quando houver ambiguidade.
-    list.sort((a,b)=>a.length-b.length||a.localeCompare(b,'pt-BR'));
-    return list[0];
-  }
+  function reverse(text,history,phraseHistory){
+    const raw=String(text||'');
+    if(!raw.trim()) return {output:'',status:'empty',items:[],unknown:[]};
 
-  function reverseWord(value,index){
-    const key=normalizeDesera(value);
-    if(!key) return {input:value,output:value,status:'separator',candidates:[]};
-
-    const known=findExactReverse(key);
-    if(known) return {input:value,output:known,status:'lexicon',candidates:[known]};
-
-    let candidates=[];
-    if(index instanceof Map) candidates=candidateList(index.get(key));
-    else if(index&&typeof index==='object') candidates=candidateList(index[key]);
-
-    if(candidates.length){
-      return {
-        input:value,output:chooseCandidate(candidates),
-        status:candidates.length>1?'ambiguous':'generated-match',candidates:[...new Set(candidates)]
-      };
+    // Histórico opcional continua servindo apenas para restaurar acentos/caixa/frase exata.
+    const phraseKey=normalize(raw);
+    if(phraseHistory){
+      const exact=phraseHistory instanceof Map?phraseHistory.get(phraseKey):phraseHistory[phraseKey];
+      if(exact) return {output:String(exact),status:'history-exact',items:[],unknown:[],exact:true};
     }
 
-    return {input:value,output:null,status:'unknown',candidates:[]};
-  }
+    const direct=findExactReverse(raw.trim());
+    if(direct) return {output:direct,status:'lexicon',items:[{input:raw.trim(),output:direct,status:'lexicon'}],unknown:[],direct:true};
 
-  function reverse(text,index,phraseIndex){
-    const clean=String(text||'').trim();
-    if(!clean) return {output:'',status:'empty',items:[],unknown:[],ambiguous:[]};
-
-    const phraseKey=normalize(clean);
-    if(phraseIndex){
-      const exact=phraseIndex instanceof Map?phraseIndex.get(phraseKey):phraseIndex[phraseKey];
-      if(exact){
-        return {output:String(exact),status:'history-exact',items:[],unknown:[],ambiguous:[],exact:true};
-      }
-    }
-
-    const parts=splitWords(text);
     const items=[];
     const unknown=[];
-    const ambiguous=[];
-    const out=[];
+    const output=splitText(raw).map(token=>{
+      if(!isWordToken(token)) return token;
 
-    for(const part of parts){
-      if(isSeparator(part)){
-        out.push(part);
-        continue;
+      // Histórico de palavra é opcional e só melhora restauração de grafia original.
+      const key=normalizeDesera(token);
+      let hist=null;
+      if(history){
+        const val=history instanceof Map?history.get(key):history[key];
+        if(Array.isArray(val)&&val.length) hist=val[0];
+        else if(typeof val==='string') hist=val;
       }
-      const item=reverseWord(part,index);
+      if(hist){
+        const item={input:token,output:hist,status:'history',kind:'history'};
+        items.push(item); return hist;
+      }
+
+      const item=reverseWord(token);
       items.push(item);
-      if(item.status==='unknown'){
-        unknown.push(normalizeDesera(part));
-        out.push(part);
-      }else{
-        if(item.status==='ambiguous') ambiguous.push(item);
-        out.push(item.output||part);
-      }
-    }
+      if(item.status==='unknown') unknown.push(token);
+      return item.output;
+    }).join('');
 
-    return {
-      output:out.join('').replace(/\s+([,.!?;:])/g,'$1').replace(/\s{2,}/g,' ').trim(),
-      status:unknown.length?'partial':(ambiguous.length?'ambiguous':'reversed'),
-      items,unknown:[...new Set(unknown)],ambiguous
-    };
-  }
-
-  // Recebe uma lista PT-BR e procura somente as formas Desera solicitadas.
-  // Isso permite tradução reversa sem guardar um dicionário gigante no celular.
-  function findReverseMatches(candidateWords,targetWords,maxCandidates){
-    const targets=new Set((targetWords||[]).map(normalizeDesera).filter(Boolean));
-    const max=Math.max(1,Number(maxCandidates)||8);
-    const result={};
-    targets.forEach(t=>{result[t]=[];});
-    if(!targets.size) return result;
-
-    for(const raw of candidateWords||[]){
-      const word=normalize(raw);
-      if(!word||word.length<1||word.length>40||/\s/.test(word)||/[^a-zçáàâãéêíóôõúü-]/i.test(String(raw||''))) continue;
-      const generated=normalizeDesera(generateLexemeV7(word));
-      if(!targets.has(generated)) continue;
-      const bucket=result[generated];
-      if(bucket.length<max&&!bucket.includes(word)) bucket.push(word);
-    }
-    return result;
-  }
-
-  function mergeReverseIndexes(base,extra){
-    const out={};
-    const add=(key,value)=>{
-      const k=normalizeDesera(key);
-      if(!k) return;
-      const vals=candidateList(value);
-      if(!out[k]) out[k]=[];
-      for(const v of vals) if(v&&!out[k].includes(v)) out[k].push(v);
-    };
-    if(base instanceof Map) base.forEach((v,k)=>add(k,v));
-    else if(base&&typeof base==='object') Object.entries(base).forEach(([k,v])=>add(k,v));
-    if(extra instanceof Map) extra.forEach((v,k)=>add(k,v));
-    else if(extra&&typeof extra==='object') Object.entries(extra).forEach(([k,v])=>add(k,v));
-    return out;
+    return {output,status:unknown.length?'partial':'reversed',items,unknown};
   }
 
   return {
-    lexicon,romanization,normalize,ascii,normalizeDesera,findExact,findExactReverse,
-    tokenizeRoman,validateRoman,conceptProfile,generateLexeme,generateLexemeV7,
-    validateNativeShape,translateOne,translate,reverseWord,reverse,findReverseMatches,
-    mergeReverseIndexes,chooseCandidate
+    lexicon,romanization,legacyReverse,
+    normalize,normalizeWord,normalizeDesera,findExact,findExactReverse,
+    tokenizeRoman,validateRoman,validateNativeShape,
+    encodeGeneratedWord,decodeGeneratedWord,translateWord,translate,reverseWord,reverse
   };
 });
