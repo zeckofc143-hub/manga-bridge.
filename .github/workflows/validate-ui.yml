@@ -1,4 +1,4 @@
-name: Validate MangaBridge UI
+name: Validate Desera Translator
 
 on:
   push:
@@ -14,11 +14,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Check JavaScript syntax
-        run: node --check app.js
-      - name: Verify v2 UI hooks
+      - name: Verify translator structure
+        shell: bash
         run: |
-          grep -q 'manga-bridge-task/v2' app.js
-          grep -q 'manga-bridge-translation/v2' app.js
-          grep -q 'regions-overlay' index.html
-          grep -q 'add-region' index.html
+          set -e
+          grep -q '<title>Tradutor — Cubos de Desera</title>' index.html
+          grep -q '"destino":"weran"' index.html
+          grep -q 'function generateWord' index.html
+          grep -q 'function translateText' index.html
+          grep -q 'id="input"' index.html
+          grep -q 'id="result"' index.html
+          echo 'TRANSLATOR_UI_OK'
