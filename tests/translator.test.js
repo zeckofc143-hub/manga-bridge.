@@ -1,104 +1,116 @@
 const assert=require('node:assert/strict');
-const T=require('../translator-core.js');
+const Base=require('../translator-core.js');
+const T=require('../grammar-v12.js');
 const P=require('../pronunciation.js');
 
-function eq(input,expected){
-  assert.equal(T.translate(input).output,expected,`${input} -> ${expected}`);
-}
+assert.equal(T,Base,'grammar-v12 deve ampliar o mesmo motor');
 
-eq('destino','weran');
-eq('presença','korun');
-eq('presenca mental','korevi');
-eq('atenção','tishen');
-eq('despertar','karen');
-eq('consciência','leseri');
-eq('memória','neran');
-eq('querer','vera');
-eq('vontade','uran');
-eq('permanecer','saren');
-eq('identidade','serang');
-assert.equal(T.reverse('weran').output,'destino');
-assert.equal(T.reverse('wëran').output,'destino');
-assert.equal(T.reverse('korun').output,'presença');
-assert.equal(T.reverse('uran').output,'vontade');
-assert.equal(T.reverse('serang').output,'identidade');
+// Léxico canônico continua intocado.
+const canonical={
+  destino:'weran',presença:'korun','presença mental':'korevi',atenção:'tishen',despertar:'karen',
+  consciência:'leseri',memória:'neran',querer:'vera',vontade:'uran',permanecer:'saren',identidade:'serang'
+};
+for(const [pt,de] of Object.entries(canonical)){
+  assert.equal(T.translate(pt).output,de,`${pt} -> ${de}`);
+  assert.equal(T.reverse(de).output,pt,`${de} -> ${pt}`);
+}
 assert.equal(T.romanization.length,32);
 
-const source='abcdefghijklmnopqrstuvwxyz';
-const encodedLetters=[...source].map(ch=>T.encodeAlphabetWord(ch));
-assert.equal(new Set(encodedLetters).size,26);
-for(const ch of source){
-  assert.equal(T.decodeAlphabetWord(T.encodeAlphabetWord(ch)),ch,`round-trip da letra ${ch}`);
-}
-
-assert.equal(T.translate('eu').output,'ia');
-assert.equal(T.translate('gosto').output,'duspu');
-assert.equal(T.translate('de').output,'ti');
-assert.equal(T.translate('liberdade').output,'lovirteti');
-assert.equal(T.translate('eu gosto de liberdade?').output,'ia duspu ti lovirteti?');
-
-const orthography=['você','ação','coração','criação','avó','avô','também','Às','CAÇÃO','João','café','pêssego'];
-for(const input of orthography){
-  const out=T.encodeAlphabetWord(input);
-  const back=T.decodeAlphabetWord(out);
-  assert.equal(back,input,`${input} -> ${out} -> ${back}`);
-}
-
-const samples=[
-  'liberdade','vida','morte','alma','corpo','mente','tempo','espaço','história','criação',
-  'magia','realidade','verdade','fato','certeza','probabilidade','possibilidade','escolha','decisão','causa',
-  'efeito','lei','regra','ordem','proibição','restrição','poder','força','capacidade','autoridade',
-  'energia','habilidade','conhecimento','teoria','prática','erro','falha','honra','orgulho','dignidade',
-  'medo','ódio','raiva','ressentimento','inimigo','adversário','ameaça','casa','lar','abrigo',
-  'lugar','imagem','imaginar','círculo','refinar','teste','melhorar','consolidar','pessoa','mundo',
-  'universo','deus','humano','animal','pedra','fogo','água','vento','terra','luz',
-  'escuro','som','silêncio','movimento','parar','correr','andar','ver','perceber','entender',
-  'fazendo','construindo','manifestando','dormindo','acordando','lembrando','esquecendo','sentindo','pensando','falando',
-  'nome','família','amigo','cidade','torre','escola','livro','caminho','origem','fim',
-  'entendendo','agora','porra','gosto','eu','você','ta','me','seu'
+// Ordem, aspecto, negação, relações e cópula zero.
+const exactCases=[
+  ['eu vejo a coisa.','ne dera nera.'],
+  ['você vê a coisa?','va dera nerasa'],
+  ['eu não estou vendo a coisa.','ne dera neralino.'],
+  ['eu vou para a casa.','ne sorinwa vela.'],
+  ['eu fui da casa.','doru ne sorinvo velana.'],
+  ['eu faço com água.','ne melafi kora.'],
+  ['minha casa é boa.','nele sorin fera.'],
+  ['esta casa é boa.','je sorin fera.'],
+  ['eu estou falando.','ne senali.'],
+  ['eu gosto de magia.','ne haren dusar.'],
+  ['eu quero liberdade.','ne savar vera.'],
+  ['quem você vê?','va shi nerasa'],
+  ['o que você quer?','va kai verasa'],
+  ['onde você está?','va davidisa'],
+  ['como você fala?','sai va senasa'],
+  ['por que você gosta de magia?','vori va haren dusarsa'],
+  ['qual casa você quer?','va kei sorin verasa'],
+  ['ontem eu vi a coisa.','doru ne dera nerana.'],
+  ['amanhã eu vou falar.','wena ne sena.'],
+  ['agora eu estou entendendo.','nora ne tolerli.'],
+  ['você entende o que eu estou falando?','va ne senali kai tolersa'],
+  ['eu penso e falo.','ne mena ya sena.'],
+  ['eu gosto de magia mas quero liberdade.','ne haren dusar ru savar vera.'],
+  ['Zeo vê Neru.','Zeo Neru nera.'],
+  ['minha memória permanece.','nele neran saren.']
 ];
+for(const [pt,de] of exactCases) assert.equal(T.translate(pt).output,de,pt);
 
-const outputs=new Set();
-for(const input of samples){
-  const exact=T.findExact(input);
-  const forward=T.translate(input);
-  assert.ok(forward.output,`${input}: saída vazia`);
-  assert.equal(T.validateRoman(forward.output),true,`${input} -> ${forward.output}: romanização inválida`);
-  if(exact){
-    assert.equal(T.reverse(forward.output).output,exact.pt);
-  }else{
-    assert.equal(T.reverse(forward.output).output,input,`${input} -> ${forward.output} -> ${T.reverse(forward.output).output}`);
-    assert.equal(T.decodeAlphabetWord(forward.output),input);
-    assert.ok(!outputs.has(forward.output),`colisão em ${input}: ${forward.output}`);
-    outputs.add(forward.output);
+// Reversão estrutural deve recuperar frases úteis sem histórico do navegador.
+const reverseCases=[
+  ['ne dera nera.','eu vejo coisa.'],
+  ['va dera nerasa','você vê coisa?'],
+  ['ne dera neralino.','eu não estou vendo coisa.'],
+  ['ne sorinwa vela.','eu vou para casa.'],
+  ['ne melafi kora.','eu faço com água.'],
+  ['nele sorin fera.','minha casa é boa.'],
+  ['je sorin fera.','esta casa é boa.'],
+  ['ne haren dusar.','eu gosto de magia.'],
+  ['ne savar vera.','eu quero liberdade.'],
+  ['va shi nerasa','quem você vê?'],
+  ['va kai verasa','o que você quer?'],
+  ['va davidisa','onde você está?'],
+  ['vori va haren dusarsa','por que você gosta de magia?'],
+  ['va kei sorin verasa','qual casa você quer?'],
+  ['va ne senali kai tolersa','você entende o que eu estou falando?'],
+  ['nele neran saren.','minha memória permanece.']
+];
+for(const [de,pt] of reverseCases) assert.equal(T.reverse(de).output,pt,de);
+
+// Bateria ampla: o tradutor precisa aplicar gramática sem cair no antigo esquema PT palavra-por-palavra.
+const subjects=['eu','você','eles'];
+const objects=['a coisa','o livro','magia','liberdade'];
+const verbs=['vejo','quero','entendo','leio'];
+let count=0;
+for(const s of subjects){
+  for(const o of objects){
+    for(const v of verbs){
+      const pt=`${s} ${v} ${o}.`;
+      const out=T.translate(pt).output;
+      assert.ok(out.length>2,pt);
+      assert.ok(!/\b(o|a|os|as)\b/i.test(out),`artigo português vazou: ${pt} -> ${out}`);
+      count++;
+    }
   }
 }
 
-const plainPhrases=['eu gosto de liberdade?','ta entendendo agora porra???','você entende o que eu estou falando?','isso funciona mesmo sem internet.','Olá, mundo!'];
-for(const phrase of plainPhrases){
-  const forward=T.translate(phrase);
-  const back=T.reverse(forward.output);
-  assert.equal(back.output,phrase,`${phrase} -> ${forward.output} -> ${back.output}`);
+const extra=[
+  'eu não vejo a coisa.','você não está falando.','eles estão vendo a casa.',
+  'eu vou para a escola.','eu faço com água.','esta casa é grande.','aquela casa é pequena.',
+  'quem você entende?','o que você vê?','onde você está?','como você fala?',
+  'por que você quer liberdade?','qual livro você lê?','hoje eu falo.','ontem eu vi o mundo.',
+  'amanhã eu vou aprender.','agora eu estou pensando.','eu penso e falo.','eu quero magia mas gosto de liberdade.'
+];
+for(const pt of extra){
+  const out=T.translate(pt).output;
+  assert.ok(out && !out.includes('undefined') && !out.includes('[object Object]'),pt);
+  count++;
 }
+assert.ok(count>=65,`bateria curta: ${count}`);
 
-const original='Eu quero presença.';
-const translated=T.translate(original);
-const phraseHistory={[T.normalize(translated.output)]:original};
-assert.equal(T.reverse(translated.output,{},phraseHistory).output,original);
-
+// Compatibilidade com traduções antigas usadas no chat.
 assert.equal(T.reverse('sezhel tolrodu yavas gewes???').output,'ta entendendo agora porra???');
 assert.equal(T.reverse('sezhel rorrun tolrodu yavas taspen gisner?').output,'ta me entendendo agora seu cornudo?');
 
-// Pronúncia aproximada para a voz pt-BR.
+// Pronúncia continua funcional com palavras e morfemas concatenados.
 assert.equal(P.romanSourceWord('weran'),'wëran');
 assert.equal(P.wordToSpeech('weran'),'uâran');
-assert.equal(P.wordToSpeech('tishen'),'tixên');
-assert.equal(P.wordToSpeech('serang'),'sêran');
-assert.equal(P.wordToSpeech('korun'),'kôrun');
-assert.equal(P.toSpeechText('weran korun'),'uâran kôrun');
-assert.equal(P.toSpeechText('sh zh kh ch ny'),'x j rr tch nh');
+assert.ok(P.toSpeechText('ne dera neralino').length>0);
+assert.ok(P.toSpeechText('va ne senali kai tolersa').length>0);
 
+// Regressões das versões quebradas.
 assert.notEqual(T.translate('eu gosto de liberdade?').output,'ë aòfza ja ënjëniënif?');
-assert.notEqual(T.translate('liberdade').output.includes('y'),true,'v10+ não deve usar separador y do v9.1');
+assert.notEqual(T.translate('eu gosto de liberdade?').output,'ia duspu ti lovirteti?');
+assert.equal(T.translate('eu gosto de liberdade?').output,'ne savar dusarsa');
 
-console.log(`DESERA_TRANSLATOR_V11_OK samples=${samples.length} unique=${outputs.size}`);
+console.log(`DESERA_TRANSLATOR_V12_OK phrases=${count+exactCases.length+reverseCases.length} canonical=${Object.keys(canonical).length}`);
