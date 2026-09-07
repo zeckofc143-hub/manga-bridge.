@@ -1,7 +1,8 @@
 const assert=require('node:assert/strict');
 const Base=require('../translator-core.js');
 require('../grammar-v12.js');
-const T=require('../grammar-v12-reverse.js');
+require('../grammar-v12-reverse.js');
+const T=require('../grammar-v12-final.js');
 const P=require('../pronunciation.js');
 
 assert.equal(T,Base);
@@ -65,7 +66,6 @@ const backward=[
 ];
 for(const [de,pt] of backward) assert.equal(T.reverse(de).output,pt,de);
 
-// Morfemas devem ser desmontados antes de tentar o fallback alfabético.
 for(const [surface,root,kind,val] of [
   ['nerasa','nera','question','sa'],
   ['neralino','nera','negative','no'],
