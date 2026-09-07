@@ -22,15 +22,18 @@ jobs:
             SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=12" || true)
             CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=12" || true)
             GRAM=$(curl -L -sS -o /tmp/grammar-v12.js -w '%{http_code}' --max-time 25 "${BASE}grammar-v12.js?v=12" || true)
+            REV=$(curl -L -sS -o /tmp/grammar-v12-reverse.js -w '%{http_code}' --max-time 25 "${BASE}grammar-v12-reverse.js?v=12" || true)
             PRON=$(curl -L -sS -o /tmp/pronunciation.js -w '%{http_code}' --max-time 25 "${BASE}pronunciation.js?v=12" || true)
-            echo "attempt=$i site=$SITE core=$CORE grammar=$GRAM pron=$PRON"
+            echo "attempt=$i site=$SITE core=$CORE grammar=$GRAM reverse=$REV pron=$PRON"
 
-            if [ "$SITE" = "200" ] && [ "$CORE" = "200" ] && [ "$GRAM" = "200" ] && [ "$PRON" = "200" ] \
+            if [ "$SITE" = "200" ] && [ "$CORE" = "200" ] && [ "$GRAM" = "200" ] && [ "$REV" = "200" ] && [ "$PRON" = "200" ] \
               && grep -q 'grammar-v12.js?v=12' /tmp/site.html \
+              && grep -q 'grammar-v12-reverse.js?v=12' /tmp/site.html \
               && grep -q 'TRADUTOR DESERA · V12' /tmp/site.html; then
               cp /tmp/translator-core.js /tmp/core-live.js
               sed "s#require('./translator-core.js')#require('/tmp/core-live.js')#" /tmp/grammar-v12.js > /tmp/grammar-live.js
-              node -e "const T=require('/tmp/grammar-live.js'); const a=require('node:assert/strict'); a.equal(T.translate('destino').output,'weran'); a.equal(T.reverse('weran').output,'destino'); a.equal(T.translate('eu vejo a coisa.').output,'ne dera nera.'); a.equal(T.translate('eu não estou vendo a coisa.').output,'ne dera neralino.'); a.equal(T.translate('você vê a coisa?').output,'va dera nerasa'); a.equal(T.translate('minha casa é boa.').output,'nele sorin fera.'); a.equal(T.translate('esta casa é boa.').output,'je sorin fera.'); a.equal(T.translate('eu vou para a casa.').output,'ne sorinwa vela.'); a.equal(T.translate('eu gosto de magia.').output,'ne haren dusar.'); a.equal(T.translate('você entende o que eu estou falando?').output,'va ne senali kai tolersa'); a.equal(T.reverse('va ne senali kai tolersa').output,'você entende o que eu estou falando?'); a.equal(T.translate('eu gosto de liberdade?').output,'ne savar dusarsa'); a.notEqual(T.translate('eu gosto de liberdade?').output,'ia duspu ti lovirteti?'); console.log('DESERA_V12_LIVE_GRAMMAR_OK');"
+              sed "s#require('./grammar-v12.js')#require('/tmp/grammar-live.js')#" /tmp/grammar-v12-reverse.js > /tmp/reverse-live.js
+              node -e "const T=require('/tmp/reverse-live.js'); const a=require('node:assert/strict'); a.equal(T.translate('destino').output,'weran'); a.equal(T.reverse('weran').output,'destino'); a.equal(T.translate('eu vejo a coisa.').output,'ne dera nera.'); a.equal(T.translate('eu não estou vendo a coisa.').output,'ne dera neralino.'); a.equal(T.translate('você vê a coisa?').output,'va dera nerasa'); a.equal(T.reverse('va dera nerasa').output,'você vê coisa?'); a.equal(T.translate('minha casa é boa.').output,'nele sorin fera.'); a.equal(T.translate('esta casa é boa.').output,'je sorin fera.'); a.equal(T.translate('eu vou para a casa.').output,'ne sorinwa vela.'); a.equal(T.translate('eu gosto de magia.').output,'ne haren dusar.'); a.equal(T.translate('você entende o que eu estou falando?').output,'va ne senali kai tolersa'); a.equal(T.reverse('va ne senali kai tolersa').output,'você entende o que eu estou falando?'); a.equal(T.translate('eu gosto de liberdade?').output,'ne savar dusarsa'); a.notEqual(T.translate('eu gosto de liberdade?').output,'ia duspu ti lovirteti?'); const m=T.parseMorph('nerasa'); a.equal(m.root,'nera'); a.ok(m.suffixes.some(x=>x.type==='question'&&x.value==='sa')); console.log('DESERA_V12_LIVE_GRAMMAR_OK');"
               echo 'DESERA_TRANSLATOR_V12_LIVE_OK'
               exit 0
             fi
