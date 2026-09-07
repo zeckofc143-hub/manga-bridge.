@@ -19,14 +19,14 @@ jobs:
           set -e
           BASE='https://zeckofc143-hub.github.io/manga-bridge./'
           for i in $(seq 1 18); do
-            SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=9" || true)
-            CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=9" || true)
-            UI=$(curl -L -sS -o /tmp/translator-ui.js -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=9" || true)
+            SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=10" || true)
+            CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=10" || true)
+            UI=$(curl -L -sS -o /tmp/translator-ui.js -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=10" || true)
             echo "attempt=$i site=$SITE core=$CORE ui=$UI"
 
             if [ "$SITE" = "200" ] && [ "$CORE" = "200" ] && [ "$UI" = "200" ] \
-              && grep -q 'translator-core.js?v=9' /tmp/site.html \
-              && grep -q 'translator-ui.js?v=9' /tmp/site.html; then
+              && grep -q 'translator-core.js?v=10' /tmp/site.html \
+              && grep -q 'translator-ui.js?v=10' /tmp/site.html; then
               if node - <<'NODE'
           const T=require('/tmp/translator-core.js');
           const assert=require('node:assert/strict');
@@ -36,17 +36,16 @@ jobs:
           assert.equal(T.reverse('weran').output,'destino');
           assert.equal(T.reverse('korun').output,'presença');
 
-          for(const word of ['liberdade','entendendo','agora','porra','universo','magia']){
+          assert.equal(T.translate('eu gosto de liberdade?').output,'ia duspu ti lovirteti?');
+          assert.equal(T.reverse('ia duspu ti lovirteti?').output,'eu gosto de liberdade?');
+
+          for(const word of ['liberdade','entendendo','agora','porra','universo','magia','você','criação','coração']){
             const out=T.translate(word).output;
-            assert.equal(T.normalizeWord(T.reverse(out).output),T.normalizeWord(word));
+            assert.equal(T.reverse(out).output,word,word+' round-trip');
           }
 
-          const phrase='eu gosto de liberdade?';
-          const encoded=T.translate(phrase).output;
-          assert.equal(T.normalize(T.reverse(encoded).output),T.normalize(phrase));
           assert.equal(T.reverse('sezhel tolrodu yavas gewes???').output,'ta entendendo agora porra???');
-
-          console.log('DESERA_V9_LIVE_LOGIC_OK',encoded);
+          console.log('DESERA_V10_LIVE_LOGIC_OK');
           NODE
               then
                 echo 'DESERA_TRANSLATOR_LIVE_OK'
