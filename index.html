@@ -3,37 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#08090c">
+<meta name="theme-color" content="#07090d">
 <title>Tradutor — Cubos de Desera</title>
-<meta name="description" content="Tradutor bidirecional entre português e a língua universal de Cubos de Desera em ABC normal.">
+<meta name="description" content="Tradutor Português ↔ Desera em ABC normal.">
 <style>
-:root{color-scheme:dark;--bg:#08090c;--panel:#10131a;--panel2:#0b0e13;--line:#242a35;--text:#f7f8fb;--muted:#929baa;--canon:#9be7b7;--defined:#9fc4ff;--proposal:#f0c889}
+:root{color-scheme:dark;--bg:#07090d;--panel:#0f131b;--panel2:#0a0d13;--line:#222a37;--text:#f6f8fb;--muted:#7f8999;--soft:#aeb8c8}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
-body{min-height:100vh;padding:18px;background:radial-gradient(circle at 50% -15%,rgba(93,112,156,.18),transparent 38%),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),var(--bg);background-size:auto,34px 34px,34px 34px,auto}
-.shell{width:min(820px,100%);margin:0 auto;padding:clamp(16px,6vh,70px) 0 30px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0 3px 17px}.brand{display:flex;align-items:center;gap:10px;color:#aeb7c7;font-size:12px;font-weight:900;letter-spacing:.17em}.sigil{width:13px;height:13px;border:1px solid #dce3ef;transform:rotate(45deg);box-shadow:0 0 22px rgba(222,231,255,.25)}.version{color:#646d7d;font-size:11px;font-weight:800}
-.card{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.085);border-radius:30px;background:linear-gradient(180deg,rgba(18,22,30,.97),rgba(10,12,17,.98));box-shadow:0 32px 90px rgba(0,0,0,.48)}.head{padding:clamp(22px,5vw,38px) clamp(18px,5vw,36px) 23px;border-bottom:1px solid rgba(255,255,255,.065)}h1{margin:0;font-size:clamp(40px,9vw,72px);line-height:.9;letter-spacing:-.065em}.sub{margin:15px 0 0;color:var(--muted);font-size:14px;line-height:1.55;max-width:620px}.sub strong{color:#e8ebf1}
-.work{padding:clamp(18px,4vw,30px)}.direction{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding:9px 10px 9px 14px;border:1px solid rgba(255,255,255,.07);border-radius:16px;background:#0b0e13}.directionText{font-size:12px;font-weight:900;letter-spacing:.05em;color:#bdc6d5}.swap{width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.09);background:#1a202a;color:#eef2f8;font-size:19px;font-weight:900;cursor:pointer}.swap:active{transform:scale(.96)}.swap:disabled{opacity:.45}
-.labelrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 2px 9px}.label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#a8b0bf}.count{font-size:11px;color:#687182}textarea{width:100%;min-height:132px;resize:vertical;border:1px solid var(--line);border-radius:20px;background:var(--panel2);color:var(--text);padding:18px;font:650 19px/1.55 Inter,system-ui;outline:none;transition:.18s border-color,.18s box-shadow}textarea:focus{border-color:#69758c;box-shadow:0 0 0 4px rgba(111,126,159,.10)}textarea::placeholder{color:#4d5666}
-.actions{display:flex;gap:10px;margin:13px 0 20px}.btn{border:0;border-radius:16px;padding:14px 17px;font:850 14px Inter,system-ui;cursor:pointer}.primary{flex:1;background:#f4f6fa;color:#0c1016}.secondary{background:#181d26;color:#bbc3d0;border:1px solid rgba(255,255,255,.07)}.btn:disabled{opacity:.55;cursor:wait}.output{position:relative;min-height:138px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,#141925,#0d1118);padding:18px 68px 18px 18px}.result{font-size:clamp(29px,7vw,46px);font-weight:950;line-height:1.28;letter-spacing:-.04em;word-break:break-word;white-space:pre-wrap}.result.empty{font-size:18px;font-weight:650;letter-spacing:0;color:#4f5969}.copy{position:absolute;right:12px;top:12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:#202633;color:#dce2eb;padding:8px 10px;font-weight:850;font-size:11px;cursor:pointer}.meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}.badge{border-radius:999px;padding:6px 9px;font-size:10px;font-weight:950;letter-spacing:.1em;border:1px solid transparent}.badge.neutral{color:#8e98a8;background:#161b23;border-color:#252c38}.badge.canon{color:var(--canon);background:rgba(76,180,113,.09);border-color:rgba(112,220,151,.19)}.badge.defined{color:var(--defined);background:rgba(92,137,214,.10);border-color:rgba(123,166,235,.18)}.badge.proposal{color:var(--proposal);background:rgba(201,151,69,.10);border-color:rgba(226,181,108,.19)}.status{color:#98a2b2;font-size:12px;line-height:1.5}.details{min-height:17px;margin-top:7px;color:#697385;font-size:11px;line-height:1.45}.examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{border:1px solid rgba(255,255,255,.07);background:#0c1016;color:#909aaa;border-radius:999px;padding:8px 11px;font-size:11px;font-weight:800;cursor:pointer}.chip b{color:#edf1f7}.note{margin-top:19px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);color:#667081;font-size:11px;line-height:1.55}.note strong{color:#aeb7c6}.footer{text-align:center;color:#485160;font-size:10px;margin-top:14px;letter-spacing:.08em}
-@media(max-width:560px){body{padding:12px}.shell{padding-top:8px}.top{margin-bottom:12px}.card{border-radius:24px}.head{padding:22px 17px 20px}.work{padding:16px}.actions{position:sticky;bottom:8px;z-index:4}.primary{box-shadow:0 10px 28px rgba(0,0,0,.36)}textarea{min-height:112px}.output{min-height:120px}.version{display:none}}
+body{min-height:100vh;padding:14px;background:radial-gradient(circle at 50% -20%,rgba(91,116,167,.19),transparent 42%),var(--bg)}
+.shell{width:min(760px,100%);margin:0 auto;padding:clamp(14px,5vh,54px) 0 28px}
+.brand{display:flex;align-items:center;gap:10px;margin:0 5px 14px;color:#adb7c7;font-size:11px;font-weight:900;letter-spacing:.16em}.cube{width:12px;height:12px;border:1px solid #e6ebf3;transform:rotate(45deg);box-shadow:0 0 22px rgba(230,235,243,.18)}
+.card{border:1px solid rgba(255,255,255,.08);border-radius:28px;background:linear-gradient(180deg,#111722,#0b0f16);box-shadow:0 28px 80px rgba(0,0,0,.42);overflow:hidden}.hero{padding:27px clamp(18px,5vw,34px) 22px;border-bottom:1px solid rgba(255,255,255,.055)}h1{margin:0;font-size:clamp(39px,9vw,66px);line-height:.92;letter-spacing:-.06em}.hero p{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:1.55}.hero strong{color:#e6ebf3}
+.work{padding:clamp(16px,4vw,28px)}.direction{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;padding:8px 8px 8px 13px;border:1px solid rgba(255,255,255,.065);border-radius:15px;background:#090d13}.direction span{font-size:12px;font-weight:900;color:#c2cad7}.swap{width:39px;height:39px;border-radius:11px;border:1px solid rgba(255,255,255,.08);background:#171d27;color:#f1f4f8;font-size:18px;font-weight:900;cursor:pointer}.swap:active{transform:scale(.96)}
+.labelrow{display:flex;justify-content:space-between;align-items:center;margin:0 2px 8px}.label{color:#9aa5b5;font-size:10px;font-weight:950;letter-spacing:.13em;text-transform:uppercase}.count{color:#596474;font-size:10px}
+textarea{width:100%;min-height:118px;resize:vertical;border:1px solid var(--line);border-radius:19px;background:var(--panel2);color:var(--text);padding:17px;font:650 18px/1.5 Inter,system-ui;outline:none;transition:.16s}textarea:focus{border-color:#66748c;box-shadow:0 0 0 4px rgba(102,116,140,.10)}textarea::placeholder{color:#475160}
+.actions{display:flex;gap:9px;margin:11px 0 19px}.btn{border:0;border-radius:14px;padding:13px 16px;font:850 13px Inter,system-ui;cursor:pointer}.primary{flex:1;background:#f5f7fa;color:#0a0d12}.secondary{background:#171d26;color:#aeb7c5;border:1px solid rgba(255,255,255,.06)}.btn:active{transform:scale(.99)}
+.output{position:relative;min-height:126px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#121823,#0b1017);padding:17px 65px 17px 17px}.result{font-size:clamp(27px,6.8vw,43px);font-weight:930;line-height:1.3;letter-spacing:-.035em;white-space:pre-wrap;word-break:break-word}.result.empty{font-size:16px;font-weight:650;letter-spacing:0;color:#485363}.copy{position:absolute;right:11px;top:11px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:#1b2230;color:#dfe5ee;padding:8px 9px;font:850 10px Inter,system-ui;cursor:pointer}.info{min-height:18px;margin:9px 3px 0;color:#6e798a;font-size:11px;line-height:1.45}
+.examples{display:flex;gap:7px;overflow:auto;margin-top:19px;padding-bottom:2px;scrollbar-width:none}.examples::-webkit-scrollbar{display:none}.chip{white-space:nowrap;border:1px solid rgba(255,255,255,.065);border-radius:999px;background:#0b0f15;color:#838e9e;padding:8px 11px;font:800 10px Inter,system-ui;cursor:pointer}.chip b{color:#e8edf5}.foot{text-align:center;margin-top:13px;color:#414b59;font-size:9px;font-weight:800;letter-spacing:.08em}
+@media(max-width:560px){body{padding:10px}.shell{padding-top:6px}.card{border-radius:23px}.hero{padding:22px 17px 19px}.work{padding:15px}.actions{position:sticky;bottom:7px;z-index:3}.primary{box-shadow:0 12px 28px rgba(0,0,0,.35)}textarea{min-height:106px}.output{min-height:112px}}
 </style>
 </head>
 <body>
 <main class="shell">
-  <div class="top">
-    <div class="brand"><span class="sigil"></span>CUBOS DE DESERA</div>
-    <div class="version">TRADUTOR · V8</div>
-  </div>
-
+  <div class="brand"><span class="cube"></span>CUBOS DE DESERA</div>
   <section class="card">
-    <header class="head">
+    <header class="hero">
       <h1>Tradutor</h1>
-      <p class="sub">Português ↔ <strong>língua de Cubos de Desera</strong>, usando nosso ABC normal.</p>
+      <p>Português ↔ <strong>língua de Desera</strong>. Só escrever e traduzir.</p>
     </header>
-
     <div class="work">
       <div class="direction">
-        <span class="directionText" id="directionText">Português → Desera</span>
+        <span id="directionText">Português → Desera</span>
         <button class="swap" id="swap" type="button" aria-label="Inverter tradução">↔</button>
       </div>
 
@@ -45,14 +44,12 @@ body{min-height:100vh;padding:18px;background:radial-gradient(circle at 50% -15%
         <button class="btn primary" id="translate" type="button">Traduzir</button>
       </div>
 
-      <div class="labelrow"><span class="label" id="toLabel">Língua de Desera — ABC normal</span></div>
+      <div class="labelrow"><span class="label" id="toLabel">Desera — ABC normal</span></div>
       <div class="output">
         <div class="result empty" id="result">A tradução aparece aqui.</div>
         <button class="copy" id="copy" type="button">Copiar</button>
       </div>
-
-      <div class="meta"><span class="badge neutral" id="badge">PRONTO</span><span class="status" id="status"></span></div>
-      <div class="details" id="details"></div>
+      <div class="info" id="info"></div>
 
       <div class="examples">
         <button class="chip" data-word="destino">destino → <b>weran</b></button>
@@ -60,13 +57,11 @@ body{min-height:100vh;padding:18px;background:radial-gradient(circle at 50% -15%
         <button class="chip" data-word="vontade">vontade → <b>uran</b></button>
         <button class="chip" data-word="identidade">identidade → <b>serang</b></button>
       </div>
-
-      <div class="note"><strong>Agora é reversível:</strong> o site salva as palavras que forma e consegue traduzi-las de volta. Para palavras antigas não salvas, ele procura a origem em uma lista PT-BR aberta derivada do dicionário do LibreOffice.</div>
     </div>
   </section>
-  <div class="footer">CUBOS DE DESERA · TRADUÇÃO NOS DOIS SENTIDOS</div>
+  <div class="foot">TRADUTOR DESERA · V9</div>
 </main>
-<script src="translator-core.js?v=8"></script>
-<script src="translator-ui.js?v=8"></script>
+<script src="translator-core.js?v=9"></script>
+<script src="translator-ui.js?v=9"></script>
 </body>
 </html>
