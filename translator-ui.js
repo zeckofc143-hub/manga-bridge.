@@ -1,12 +1,14 @@
 (function(){
   'use strict';
   const T=window.DeseraTranslator;
+  const P=window.DeseraPronunciation;
   const input=document.getElementById('input');
   const result=document.getElementById('result');
   const count=document.getElementById('count');
   const translateBtn=document.getElementById('translate');
   const clearBtn=document.getElementById('clear');
   const copyBtn=document.getElementById('copy');
+  const listenBtn=document.getElementById('listen');
   const swapBtn=document.getElementById('swap');
   const fromLabel=document.getElementById('fromLabel');
   const toLabel=document.getElementById('toLabel');
@@ -95,10 +97,48 @@
     input.focus();
   }
 
+  function pickBrazilianVoice(){
+    const voices=window.speechSynthesis?window.speechSynthesis.getVoices():[];
+    return voices.find(v=>String(v.lang||'').toLowerCase()==='pt-br')
+      ||voices.find(v=>String(v.lang||'').toLowerCase().startsWith('pt'))
+      ||null;
+  }
+
+  function speakDesera(){
+    if(!('speechSynthesis' in window)||typeof SpeechSynthesisUtterance==='undefined'){
+      info.textContent='Seu navegador não oferece voz de leitura.';
+      return;
+    }
+
+    const deseraText=mode==='pt-desera'
+      ? (!result.classList.contains('empty')?result.textContent:'')
+      : input.value;
+    if(!deseraText.trim()) return;
+
+    const speechText=P?P.toSpeechText(deseraText):deseraText;
+    const utter=new SpeechSynthesisUtterance(speechText);
+    utter.lang='pt-BR';
+    utter.rate=0.78;
+    utter.pitch=1;
+    const voice=pickBrazilianVoice();
+    if(voice) utter.voice=voice;
+
+    window.speechSynthesis.cancel();
+    listenBtn.textContent='🔊 Falando…';
+    info.textContent=`Pronúncia aproximada: ${speechText}`;
+    utter.onend=()=>{listenBtn.textContent='🔊 Ouvir';};
+    utter.onerror=()=>{
+      listenBtn.textContent='🔊 Ouvir';
+      info.textContent='Não consegui reproduzir a voz neste aparelho.';
+    };
+    window.speechSynthesis.speak(utter);
+  }
+
   input.addEventListener('input',render);
   translateBtn.addEventListener('click',render);
   clearBtn.addEventListener('click',()=>{input.value='';render();input.focus();});
   swapBtn.addEventListener('click',()=>swap(true));
+  listenBtn.addEventListener('click',speakDesera);
   copyBtn.addEventListener('click',async()=>{
     if(result.classList.contains('empty')) return;
     try{
