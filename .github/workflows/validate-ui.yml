@@ -25,9 +25,9 @@ jobs:
         run: |
           set -e
           grep -q '<title>Tradutor — Cubos de Desera</title>' index.html
-          grep -q 'translator-core.js?v=9' index.html
-          grep -q 'translator-ui.js?v=9' index.html
+          grep -q 'translator-core.js?v=10' index.html
+          grep -q 'translator-ui.js?v=10' index.html
           grep -q 'id="swap"' index.html
           grep -q 'id="input"' index.html
           grep -q 'id="result"' index.html
-          echo 'DESERA_TRANSLATOR_V9_UI_OK'
+          echo 'DESERA_TRANSLATOR_V10_UI_OK'
