@@ -17,6 +17,7 @@ jobs:
       - name: Check JavaScript
         run: |
           node --check translator-core.js
+          node --check pronunciation.js
           node --check translator-ui.js
       - name: Run translator tests
         run: node tests/translator.test.js
@@ -25,9 +26,11 @@ jobs:
         run: |
           set -e
           grep -q '<title>Tradutor — Cubos de Desera</title>' index.html
-          grep -q 'translator-core.js?v=10' index.html
-          grep -q 'translator-ui.js?v=10' index.html
+          grep -q 'translator-core.js?v=11' index.html
+          grep -q 'pronunciation.js?v=11' index.html
+          grep -q 'translator-ui.js?v=11' index.html
+          grep -q 'id="listen"' index.html
           grep -q 'id="swap"' index.html
           grep -q 'id="input"' index.html
           grep -q 'id="result"' index.html
-          echo 'DESERA_TRANSLATOR_V10_UI_OK'
+          echo 'DESERA_TRANSLATOR_V11_UI_OK'
