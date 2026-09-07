@@ -5,7 +5,6 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
 
-  // Léxico realmente definido no projeto. Estas formas SEMPRE vencem o modo automático.
   const lexicon=[
     {pt:'destino',simple:'weran',roman:'wëran',ipa:'/wəɾan/',status:'defined'},
     {pt:'presença mental',simple:'korevi',roman:'korevi',ipa:'/koɾevi/',status:'canon'},
@@ -20,13 +19,11 @@
     {pt:'identidade',simple:'serang',roman:'serang',ipa:'/seɾaŋ/',status:'canon'}
   ];
 
-  // 32 fonemas na romanização editorial atual.
   const romanization=[
     'a','e','è','i','ë','o','ò','u','y','w','l','r','m','n','ny','ng',
     'f','v','s','z','sh','zh','h','kh','ch','j','p','b','t','d','k','g'
   ];
 
-  // Saídas antigas já usadas pelo autor no chat. Mantidas para não quebrar testes antigos.
   const legacyReverse={
     sezhel:'ta',
     rorrun:'me',
@@ -78,19 +75,8 @@
     return reverseLexicon.get(normalizeDesera(value))||null;
   }
 
-  // ---------------------------------------------------------------------------
-  // MODO AUTOMÁTICO V10 — LETRAS -> FONEMAS, SEM HASH E SEM DICIONÁRIO EXTERNO
-  // ---------------------------------------------------------------------------
-  // A exigência do tradutor é simples: qualquer palavra deve poder ser escrita no
-  // ABC/romanização de Desera e voltar para o português. Por isso o fallback usa
-  // uma correspondência FIXA e BIJETIVA. Uma letra portuguesa gera um fonema de
-  // Desera. A mesma sequência pode ser desmontada por qualquer implementação que
-  // conheça esta tabela; não existe banco secreto nem geração aleatória.
-  //
-  // Vogais preservam o padrão C/V da palavra, mas fazem um deslocamento circular.
-  // Consoantes frequentes e codas continuam em posições pronunciáveis. Os dígrafos
-  // sh/zh/kh/ch/ny são UM fonema cada, como já definido na romanização.
-
+  // V10: correspondência fixa e reversível. Sem hash, sem sorteio e sem dicionário externo.
+  // Palavras já definidas no léxico continuam tendo prioridade absoluta.
   const letterMap={
     a:'e', e:'i', i:'o', o:'u', u:'a',
     b:'v', c:'k', d:'t', f:'f', g:'d', h:'j', j:'zh', k:'kh',
@@ -101,14 +87,13 @@
   const reverseLetterMap=new Map(Object.entries(letterMap).map(([pt,de])=>[de,pt]));
   const payloadTokens=[...reverseLetterMap.keys()].sort((a,b)=>b.length-a.length);
 
-  // Marcas reservadas. Elas preservam ortografia portuguesa sem precisar de histórico.
-  // Como não são usadas como payload isolado, a leitura reversa é inequívoca.
+  // Marcadores reservados de ortografia. Eles nunca são payload isolado.
   const accentToMarker={
     '\u0301':'ë', // agudo
     '\u0302':'è', // circunflexo
     '\u0303':'ò', // til
-    '\u0300':'y', // grave
-    '\u0327':'h'  // cedilha
+    '\u0300':'h', // grave
+    '\u0327':'y'  // cedilha
   };
   const markerToAccent=Object.fromEntries(Object.entries(accentToMarker).map(([a,m])=>[m,a]));
   const markerTokens=new Set(Object.keys(markerToAccent));
@@ -139,7 +124,6 @@
     let out='';
     for(const ch of raw) out+=encodeLetterGrapheme(ch);
     const key=normalizeDesera(out);
-    // Só usa escape quando um fallback cair exatamente em uma forma reservada.
     if(reservedOutputs.has(key)) out=escapePrefix+out;
     return out;
   }
@@ -158,7 +142,6 @@
     let raw=String(value||'');
     if(!raw) return null;
 
-    // Escape só é válido se, sem ele, a forma coincidir com uma palavra reservada.
     if(raw.toLowerCase().startsWith(escapePrefix)){
       const candidate=raw.slice(escapePrefix.length);
       if(reservedOutputs.has(normalizeDesera(candidate))) raw=candidate;
@@ -170,7 +153,8 @@
       const hit=readPayloadAt(raw,pos);
       if(!hit) return null;
       let source=reverseLetterMap.get(hit.token);
-      const wasUpper=hit.rawToken[0]&&hit.rawToken[0]===hit.rawToken[0].toUpperCase()&&hit.rawToken[0]!==hit.rawToken[0].toLowerCase();
+      const first=hit.rawToken[0];
+      const wasUpper=first&&first===first.toUpperCase()&&first!==first.toLowerCase();
       if(wasUpper) source=source.toUpperCase();
       pos=hit.next;
 
@@ -184,9 +168,7 @@
     return out;
   }
 
-  // ---------------------------------------------------------------------------
-  // DECODER V9.1 — SOMENTE COMPATIBILIDADE COM SAÍDAS JÁ GERADAS
-  // ---------------------------------------------------------------------------
+  // Decoder V9.1 mantido apenas para saídas já produzidas pela versão anterior.
   const oldSourceAlphabet='abcdefghijklmnopqrstuvwxyz_';
   const oldOnsets=['m','n','l','r','v','s','k','t','w','f','p','d','g','b','z','sh','zh','ch','j'];
   const oldVowels=['a','e','è','i','ë','o','ò','u'];
@@ -337,7 +319,6 @@
     const output=splitText(raw).map(token=>{
       if(!isWordToken(token)) return token;
 
-      // O histórico serve só para restaurar exatamente o que foi digitado naquele aparelho.
       const key=normalizeDesera(token);
       if(history){
         const val=history instanceof Map?history.get(key):history[key];
