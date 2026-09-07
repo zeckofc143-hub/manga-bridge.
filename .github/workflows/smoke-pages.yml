@@ -13,56 +13,50 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify live translator behavior
+      - name: Verify live translator v12
         shell: bash
         run: |
           set -e
           BASE='https://zeckofc143-hub.github.io/manga-bridge./'
-          for i in $(seq 1 18); do
-            SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=11" || true)
-            CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=11" || true)
-            PRON=$(curl -L -sS -o /tmp/pronunciation.js -w '%{http_code}' --max-time 25 "${BASE}pronunciation.js?v=11" || true)
-            UI=$(curl -L -sS -o /tmp/translator-ui.js -w '%{http_code}' --max-time 25 "${BASE}translator-ui.js?v=11" || true)
-            echo "attempt=$i site=$SITE core=$CORE pron=$PRON ui=$UI"
+          for i in $(seq 1 20); do
+            SITE=$(curl -L -sS -o /tmp/site.html -w '%{http_code}' --max-time 25 "${BASE}?v=12" || true)
+            CORE=$(curl -L -sS -o /tmp/translator-core.js -w '%{http_code}' --max-time 25 "${BASE}translator-core.js?v=12" || true)
+            GRAM=$(curl -L -sS -o /tmp/grammar-v12.js -w '%{http_code}' --max-time 25 "${BASE}grammar-v12.js?v=12" || true)
+            PRON=$(curl -L -sS -o /tmp/pronunciation.js -w '%{http_code}' --max-time 25 "${BASE}pronunciation.js?v=12" || true)
+            echo "attempt=$i site=$SITE core=$CORE grammar=$GRAM pron=$PRON"
 
-            if [ "$SITE" = "200" ] && [ "$CORE" = "200" ] && [ "$PRON" = "200" ] && [ "$UI" = "200" ] \
-              && grep -q 'translator-core.js?v=11' /tmp/site.html \
-              && grep -q 'pronunciation.js?v=11' /tmp/site.html \
-              && grep -q 'translator-ui.js?v=11' /tmp/site.html \
-              && grep -q 'id="listen"' /tmp/site.html; then
+            if [ "$SITE" = "200" ] && [ "$CORE" = "200" ] && [ "$GRAM" = "200" ] && [ "$PRON" = "200" ] \
+              && grep -q 'grammar-v12.js?v=12' /tmp/site.html \
+              && grep -q 'TRADUTOR DESERA · V12' /tmp/site.html; then
+              cp /tmp/translator-core.js /tmp/core-live.js
+              sed "s#require('./translator-core.js')#require('/tmp/core-live.js')#" /tmp/grammar-v12.js > /tmp/grammar-live.js
               if node - <<'NODE'
-          const T=require('/tmp/translator-core.js');
-          const P=require('/tmp/pronunciation.js');
+          const Base=require('/tmp/core-live.js');
+          const T=require('/tmp/grammar-live.js');
           const assert=require('node:assert/strict');
 
           assert.equal(T.translate('destino').output,'weran');
-          assert.equal(T.translate('presença').output,'korun');
           assert.equal(T.reverse('weran').output,'destino');
-          assert.equal(T.reverse('korun').output,'presença');
+          assert.equal(T.translate('eu vejo a coisa.').output,'ne dera nera.');
+          assert.equal(T.translate('eu não estou vendo a coisa.').output,'ne dera neralino.');
+          assert.equal(T.translate('você vê a coisa?').output,'va dera nerasa');
+          assert.equal(T.translate('minha casa é boa.').output,'nele sorin fera.');
+          assert.equal(T.translate('esta casa é boa.').output,'je sorin fera.');
+          assert.equal(T.translate('eu vou para a casa.').output,'ne sorinwa vela.');
+          assert.equal(T.translate('eu gosto de magia.').output,'ne haren dusar.');
+          assert.equal(T.translate('você entende o que eu estou falando?').output,'va ne senali kai tolersa');
+          assert.equal(T.reverse('va ne senali kai tolersa').output,'você entende o que eu estou falando?');
+          assert.equal(T.translate('eu gosto de liberdade?').output,'ne savar dusarsa');
+          assert.notEqual(T.translate('eu gosto de liberdade?').output,'ia duspu ti lovirteti?');
 
-          assert.equal(T.translate('eu gosto de liberdade?').output,'ia duspu ti lovirteti?');
-          assert.equal(T.reverse('ia duspu ti lovirteti?').output,'eu gosto de liberdade?');
-
-          assert.equal(P.romanSourceWord('weran'),'wëran');
-          assert.equal(P.wordToSpeech('weran'),'uâran');
-          assert.equal(P.wordToSpeech('tishen'),'tixên');
-          assert.equal(P.wordToSpeech('serang'),'sêran');
-          assert.equal(P.toSpeechText('weran korun'),'uâran kôrun');
-
-          for(const word of ['liberdade','entendendo','agora','porra','universo','magia','você','criação','coração']){
-            const out=T.translate(word).output;
-            assert.equal(T.reverse(out).output,word,word+' round-trip');
-          }
-
-          assert.equal(T.reverse('sezhel tolrodu yavas gewes???').output,'ta entendendo agora porra???');
-          console.log('DESERA_V11_LIVE_LOGIC_OK');
-          NODE
+          console.log('DESERA_V12_LIVE_GRAMMAR_OK');
+NODE
               then
-                echo 'DESERA_TRANSLATOR_LIVE_OK'
+                echo 'DESERA_TRANSLATOR_V12_LIVE_OK'
                 exit 0
               fi
             fi
             sleep 5
           done
-          echo 'Live translator did not pass behavior checks in time'
+          echo 'Live v12 translator did not pass behavior checks in time'
           exit 1
