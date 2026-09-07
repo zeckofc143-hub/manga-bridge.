@@ -109,7 +109,7 @@ assert.equal(T.reverse('sezhel rorrun tolrodu yavas taspen gisner?').output,'ta 
 // 9) Pronúncia: palavras canônicas usam a romanização fonológica registrada.
 assert.equal(P.romanSourceWord('weran'),'wëran');
 assert.equal(P.wordToSpeech('weran'),'uâran');
-assert.equal(P.wordToSpeech('tishen'),'tixen');
+assert.equal(P.wordToSpeech('tishen'),'tixên');
 assert.equal(P.wordToSpeech('serang'),'seran');
 assert.equal(P.toSpeechText('weran korun'),'uâran korun');
 assert.equal(P.toSpeechText('sh zh kh ch ny'),'x j rr tch nh');
