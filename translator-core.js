@@ -20,13 +20,12 @@
     {pt:'identidade',simple:'serang',roman:'serang',ipa:'/seɾaŋ/',status:'canon'}
   ];
 
-  // Inventário de 32 fonemas/romanização atual do projeto.
   const romanization=[
     'a','e','è','i','ë','o','ò','u','y','w','l','r','m','n','ny','ng',
     'f','v','s','z','sh','zh','h','kh','ch','j','p','b','t','d','k','g'
   ];
 
-  // Compatibilidade com algumas saídas v7/v8 que já foram usadas pelo autor.
+  // Compatibilidade com algumas saídas antigas já usadas no projeto/chat.
   const legacyReverse={
     sezhel:'ta',
     rorrun:'me',
@@ -67,7 +66,6 @@
   const reverseLexicon=new Map();
   for(const entry of lexicon){
     lookup.set(normalize(entry.pt),entry);
-    // Aceita a mesma palavra sem acento na entrada portuguesa.
     lookup.set(normalizeWord(entry.pt),entry);
     for(const form of [entry.simple,entry.roman]){
       reverseLexicon.set(normalizeDesera(form),entry.pt);
@@ -83,29 +81,26 @@
   }
 
   // ---------------------------------------------------------------------------
-  // FALLBACK LEXICAL REVERSÍVEL V9
+  // FALLBACK REVERSÍVEL V9.1
   // ---------------------------------------------------------------------------
-  // O léxico canônico é pequeno. Para o site conseguir aceitar QUALQUER palavra
-  // sem hash, colisão, dicionário externo ou histórico local, palavras ainda não
-  // fechadas recebem uma forma automática reversível composta somente por sons
-  // permitidos. Isto é fallback de ferramenta; formas canônicas sempre vencem.
-  //
-  // Duas letras portuguesas normalizadas -> uma sílaba CVC de Desera.
-  // Um cabeçalho com checksum impede que uma palavra nativa qualquer seja
-  // decodificada acidentalmente como fallback.
+  // O dicionário canônico ainda é pequeno. Para palavras ainda não definidas,
+  // o site usa uma forma automática totalmente reversível. Ela NÃO vira cânone.
+  // Cada par de letras portuguesas é convertido em uma sílaba CVC válida.
+  // O glide "y" funciona como fronteira interna inequívoca entre sílabas do
+  // fallback, evitando a ambiguidade de ng/ch/sh etc. que quebrava a versão 9.
 
-  const sourceAlphabet='abcdefghijklmnopqrstuvwxyz_'; // _ = preenchimento/cabeçalho
-  const onsets=['m','n','l','r','v','s','k','t','y','w','f','p','d','g','b','z','sh','zh','ch','j'];
+  const sourceAlphabet='abcdefghijklmnopqrstuvwxyz_';
+  const onsets=['m','n','l','r','v','s','k','t','w','f','p','d','g','b','z','sh','zh','ch','j'];
   const vowels=['a','e','è','i','ë','o','ò','u'];
   const codas=['n','l','r','s','ng'];
-  const CODE_SPACE=onsets.length*vowels.length*codas.length; // 800
-  const A=257, B=113, A_INV=193; // A*A_INV ≡ 1 (mod 800)
+  const CODE_SPACE=onsets.length*vowels.length*codas.length; // 760
+  const A=257, B=113, A_INV=553; // A*A_INV ≡ 1 (mod 760)
 
   function pairIndex(pair){
     const a=sourceAlphabet.indexOf(pair[0]);
     const b=sourceAlphabet.indexOf(pair[1]);
     if(a<0||b<0) return -1;
-    return a*sourceAlphabet.length+b; // 0..728
+    return a*sourceAlphabet.length+b;
   }
 
   function indexPair(index){
@@ -153,16 +148,13 @@
   function encodeGeneratedWord(value){
     const word=normalizeWord(value);
     if(!word) return '';
-    const header=encodePair('_'+checksumLetter(word));
-    let body='';
+    const chunks=[encodePair('_'+checksumLetter(word))];
     for(let i=0;i<word.length;i+=2){
-      body+=encodePair(word[i]+(word[i+1]||'_'));
+      chunks.push(encodePair(word[i]+(word[i+1]||'_')));
     }
-    return header+body;
+    return chunks.join('y');
   }
 
-  // Tokeniza a romanização em fonemas. Como cada fallback é CVC.CVC..., basta
-  // agrupar os fonemas de três em três depois do cabeçalho.
   const multiTokens=['ny','ng','sh','zh','kh','ch'];
   const tokenSet=new Set(romanization);
   function tokenizeRoman(value){
@@ -183,9 +175,10 @@
     return out;
   }
 
-  function decodeCodeword(tokens,offset){
-    if(offset+2>=tokens.length) return null;
-    const idx=indexFromCodeword(tokens[offset],tokens[offset+1],tokens[offset+2]);
+  function decodeCodewordText(chunk){
+    const tokens=tokenizeRoman(chunk);
+    if(!tokens||tokens.length!==3) return null;
+    const idx=indexFromCodeword(tokens[0],tokens[1],tokens[2]);
     if(idx<0) return null;
     const original=unpermute(idx);
     if(original<0) return null;
@@ -193,18 +186,20 @@
   }
 
   function decodeGeneratedWord(value){
-    const tokens=tokenizeRoman(value);
-    if(!tokens||tokens.length<6||tokens.length%3!==0) return null;
+    const raw=String(value||'').toLowerCase();
+    const chunks=raw.split('y');
+    if(chunks.length<2||chunks.some(x=>!x)) return null;
 
-    const header=decodeCodeword(tokens,0);
+    const header=decodeCodewordText(chunks[0]);
     if(!header||header[0]!=='_') return null;
 
     let decoded='';
-    for(let i=3;i<tokens.length;i+=3){
-      const pair=decodeCodeword(tokens,i);
+    for(let i=1;i<chunks.length;i++){
+      const pair=decodeCodewordText(chunks[i]);
       if(!pair||pair[0]==='_') return null;
       decoded+=pair;
     }
+
     decoded=decoded.replace(/_$/,'');
     if(!/^[a-z]+$/.test(decoded)) return null;
     if(header[1]!==checksumLetter(decoded)) return null;
@@ -217,6 +212,15 @@
   }
 
   function validateNativeShape(value){
+    // Se for fallback V9.1, valida cada bloco CVC separadamente.
+    if(String(value||'').includes('y')){
+      const chunks=String(value).toLowerCase().split('y');
+      if(chunks.length>=2&&chunks.every(chunk=>{
+        const t=tokenizeRoman(chunk);
+        return t&&t.length===3&&onsets.includes(t[0])&&vowels.includes(t[1])&&codas.includes(t[2]);
+      })) return true;
+    }
+
     const tokens=tokenizeRoman(value);
     if(!tokens||!tokens.length) return false;
     if(tokens[0]==='ng') return false;
@@ -238,7 +242,6 @@
   }
 
   function splitText(text){
-    // Letras latinas (com acentos) permanecem no token; resto é preservado literalmente.
     return String(text||'').split(/([A-Za-zÀ-ÖØ-öø-ÿÇç]+|[^A-Za-zÀ-ÖØ-öø-ÿÇç]+)/).filter(Boolean);
   }
 
@@ -290,7 +293,6 @@
     const raw=String(text||'');
     if(!raw.trim()) return {output:'',status:'empty',items:[],unknown:[]};
 
-    // Histórico opcional continua servindo apenas para restaurar acentos/caixa/frase exata.
     const phraseKey=normalize(raw);
     if(phraseHistory){
       const exact=phraseHistory instanceof Map?phraseHistory.get(phraseKey):phraseHistory[phraseKey];
@@ -305,7 +307,6 @@
     const output=splitText(raw).map(token=>{
       if(!isWordToken(token)) return token;
 
-      // Histórico de palavra é opcional e só melhora restauração de grafia original.
       const key=normalizeDesera(token);
       let hist=null;
       if(history){
