@@ -13,8 +13,8 @@
   const directionText=document.getElementById('directionText');
   const info=document.getElementById('info');
 
-  const WORD_HISTORY='desera.words.v9';
-  const PHRASE_HISTORY='desera.phrases.v9';
+  const WORD_HISTORY='desera.words.v10';
+  const PHRASE_HISTORY='desera.phrases.v10';
   let mode='pt-desera';
 
   function readStore(key){
@@ -60,17 +60,17 @@
       result.classList.remove('empty');
       remember(input.value,out);
       info.textContent=out.direct&&out.status==='canon'
-        ? 'Palavra canônica da língua.'
+        ? 'Forma canônica.'
         : out.direct&&out.status==='defined'
           ? 'Forma definida no projeto.'
-          : 'Tradução automática reversível em ABC normal.';
+          : 'Traduzido.';
     }else{
       const out=T.reverse(input.value,readStore(WORD_HISTORY),readStore(PHRASE_HISTORY));
       result.textContent=out.output||'—';
       result.classList.remove('empty');
       info.textContent=out.unknown&&out.unknown.length
         ? `Não reconhecido: ${out.unknown.join(', ')}`
-        : 'Tradução reversa concluída.';
+        : 'Traduzido.';
     }
   }
 
