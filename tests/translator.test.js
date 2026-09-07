@@ -1,5 +1,6 @@
 const assert=require('node:assert/strict');
 const T=require('../translator-core.js');
+const P=require('../pronunciation.js');
 
 function eq(input,expected){
   assert.equal(T.translate(input).output,expected,`${input} -> ${expected}`);
@@ -32,7 +33,7 @@ for(const ch of source){
   assert.equal(T.decodeAlphabetWord(T.encodeAlphabetWord(ch)),ch,`round-trip da letra ${ch}`);
 }
 
-// 3) Saídas esperadas: curtas e formadas letra/fonema, não blocos CVC com separador.
+// 3) Saídas esperadas: curtas e formadas letra/fonema.
 assert.equal(T.translate('eu').output,'ia');
 assert.equal(T.translate('gosto').output,'duspu');
 assert.equal(T.translate('de').output,'ti');
@@ -105,8 +106,16 @@ assert.equal(T.reverse(translated.output,{},phraseHistory).output,original);
 assert.equal(T.reverse('sezhel tolrodu yavas gewes???').output,'ta entendendo agora porra???');
 assert.equal(T.reverse('sezhel rorrun tolrodu yavas taspen gisner?').output,'ta me entendendo agora seu cornudo?');
 
-// 9) Regressão do erro inicial.
-assert.notEqual(T.translate('eu gosto de liberdade?').output,'ë aòfza ja ënjëniënif?');
-assert.notEqual(T.translate('liberdade').output.includes('y'),true,'v10 não deve usar separador y do v9.1');
+// 9) Pronúncia: palavras canônicas usam a romanização fonológica registrada.
+assert.equal(P.romanSourceWord('weran'),'wëran');
+assert.equal(P.wordToSpeech('weran'),'uâran');
+assert.equal(P.wordToSpeech('tishen'),'tixen');
+assert.equal(P.wordToSpeech('serang'),'seran');
+assert.equal(P.toSpeechText('weran korun'),'uâran korun');
+assert.equal(P.toSpeechText('sh zh kh ch ny'),'x j rr tch nh');
 
-console.log(`DESERA_TRANSLATOR_V10_OK samples=${samples.length} unique=${outputs.size}`);
+// 10) Regressão do erro inicial.
+assert.notEqual(T.translate('eu gosto de liberdade?').output,'ë aòfza ja ënjëniënif?');
+assert.notEqual(T.translate('liberdade').output.includes('y'),true,'v10+ não deve usar separador y do v9.1');
+
+console.log(`DESERA_TRANSLATOR_V11_OK samples=${samples.length} unique=${outputs.size}`);
