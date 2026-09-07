@@ -45,7 +45,7 @@ jobs:
 
           assert.equal(P.romanSourceWord('weran'),'wëran');
           assert.equal(P.wordToSpeech('weran'),'uâran');
-          assert.equal(P.wordToSpeech('tishen'),'tixen');
+          assert.equal(P.wordToSpeech('tishen'),'tixên');
           assert.equal(P.toSpeechText('weran korun'),'uâran korun');
 
           for(const word of ['liberdade','entendendo','agora','porra','universo','magia','você','criação','coração']){
